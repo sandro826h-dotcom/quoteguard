@@ -25,3 +25,8 @@
 - 做了什么：新增 src/quoteguard/{util,llm,executor,stats}.py、configs/models.yaml 及测试。三个服务商（DeepSeek、百炼、硅基流动）OpenAI 兼容适配，QG_PROXY_AUTH=1 时不带鉴权头；冻结计划执行器（批次锁、排他写入、逐次尝试留痕、断点续跑、预算硬上限、额度耗尽与余额不足停批、跨批次支出账）；统计函数（McNemar 精确、配对与分层置换、通用分层置换、整簇 bootstrap、Tango 非劣效、Holm）。经 reviewer 两轮审查。
 - 结果：本块测试 83 项通过；未发起任何网络或模型调用。
 - 未决（协议冻结前）：主终点 3 两层共用任务，需事前定主分析（整簇 bootstrap 为主或分层 Tango 合并）；check_protocol 改为实时计算协议文件哈希；valid=false 观测按失败计入写进协议；ConnectionError 类错误标 possibly_billed。预试验第 0 步核实：模型名、思考开关参数、seed、图片格式、余额不足报错体、单图 token 数；kimi 使用服务商默认 temperature 需在报告中写明。
+
+## 2026-10-09 工作块②③：数据结构、参数快照、两套计算器
+- 做了什么：新增 src/quoteguard/{schema,params,calc_py,calc_xlsx}.py 及测试；税率快照 data/params/tariff_snapshot_2026-10-09.json（来源 URL、日期、sha256，统计号与排除项核对记录），原始导出 data/params/raw/ch99.json 与第 99 章相关条文摘录。计算器 A 为 Python（Decimal），计算器 B 为带公式的 Excel 工作簿经 LibreOffice 重算后读回，两者不共享计算逻辑。经 reviewer 两轮审查，修正 DDP 范围为关税加 MPF 时误免 HMF、Excel 取整前舍入过粗、档位间隙等问题。
+- 结果：12 个手算案例与 40 组随机案例两套结果一致（差额不超过 0.01 元）；全量测试 122 项通过。第三类商品由双肩包改为旅行袋（4202.92.3131），因常见尺寸双肩包在 2026-11-09 前有原 301 排除项；方案第五节已同步。
+- 未决：MPF FY2027 数值、汇率仍为 assumed，需在冻结协议前替换；快递分段进位列为已知局限。

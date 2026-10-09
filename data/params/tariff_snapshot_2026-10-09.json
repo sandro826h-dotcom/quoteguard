@@ -1,0 +1,238 @@
+{
+  "snapshot_id": "tariff-2026-10-09",
+  "retrieved_at": "2026-10-09",
+  "origin": "CN",
+  "notes": "Rates from USITC HTS 2026 Revision 20 (current release from 2026-09-28), REST search/exportList and Chapter 99 PDF. IEEPA headings 9903.01.20/.24 remain printed in Rev 20 but CBP ceased collection from 2026-02-24; Section 122 heading 9903.03.01 expired at close of 2026-07-23 per Chapter 99 compiler's note. Both are excluded.",
+  "hts": {
+    "6109.10.00": {
+      "desc": "T-shirts etc., knitted, of cotton",
+      "components": [
+        {
+          "component": "mfn",
+          "rate": "0.165",
+          "cite": "HTS 2026 Rev20 6109.10.00 general",
+          "status": "verified"
+        },
+        {
+          "component": "s301_list4A",
+          "rate": "0.075",
+          "cite": "HTS 9903.88.15, U.S. note 20(s)",
+          "status": "verified"
+        },
+        {
+          "component": "s301_2026",
+          "rate": "0.125",
+          "cite": "HTS 9903.05.31, U.S. note 52(a); 91 FR 47318",
+          "status": "verified"
+        }
+      ],
+      "stat_suffix_checked": {
+        "conclusion": "REST search lists 14 ten-digit statistical suffixes (04, 07, 11, 12, 14, 18, 23, 27, 37, 40, 45, 60, 65, 70); the 16.5% general rate and the Section 301 headings apply at the 8-digit level, with no suffix-specific rate.",
+        "date": "2026-10-09",
+        "basis": "https://hts.usitc.gov/reststop/search?keyword=6109.10.00"
+      },
+      "exclusions_checked": {
+        "conclusion": "Not listed in U.S. note 20(vvv) or 20(www), the only Section 301 exclusion subdivisions in effect. No exclusion applies. Listed in the List 4A table of U.S. note 20(s).",
+        "date": "2026-10-09",
+        "basis": "data/params/raw/ch99.json; Chapter 99 PDF text (U.S. note 20(vvv), 20(www), note 52); U.S. note 20 (Compiler's note): only subdivisions (vvv) and (www) are in effect; headings 9903.88.69 and 9903.88.70 run through 2026-11-09"
+      }
+    },
+    "3926.90.99": {
+      "desc": "Other articles of plastics",
+      "components": [
+        {
+          "component": "mfn",
+          "rate": "0.053",
+          "cite": "HTS 2026 Rev20 3926.90.99 general",
+          "status": "verified"
+        },
+        {
+          "component": "s301_list4A",
+          "rate": "0.075",
+          "cite": "HTS 9903.88.15, U.S. note 20(s)",
+          "status": "verified"
+        },
+        {
+          "component": "s301_2026",
+          "rate": "0.125",
+          "cite": "HTS 9903.05.31, U.S. note 52(a); 91 FR 47318",
+          "status": "verified"
+        }
+      ],
+      "stat_suffix_checked": {
+        "conclusion": "REST search lists suffixes 05, 15, 20, 25, 30, 40, 50, 87, 89; a plastic phone case is expected under 3926.90.99.89 (Other); classification of the product itself not verified against CBP rulings.",
+        "date": "2026-10-09",
+        "basis": "https://hts.usitc.gov/reststop/search?keyword=3926.90.99"
+      },
+      "exclusions_checked": {
+        "conclusion": "U.S. note 20(vvv)(iv)(4) excludes statistical numbers 3926.90.9915 and 3926.90.9920 (from 2026-07-01; 3926.90.9910 before) from List 4A under heading 9903.88.69, in effect through 2026-11-09 (not expired on 2026-10-09). 3926.90.9989 is excluded only for the specific medical products in U.S. note 20(vvv)(iv)(10)-(11) (sterile surgical drapes, sterile transfer containers), which do not include phone cases, so the 7.5% List 4A component applies to a phone case. U.S. note 52(d) lists 3926.90.99 only for civil aircraft parts.",
+        "date": "2026-10-09",
+        "basis": "data/params/raw/ch99.json; Chapter 99 PDF text (U.S. note 20(vvv), 20(www), note 52); U.S. note 20 (Compiler's note): only subdivisions (vvv) and (www) are in effect; headings 9903.88.69 and 9903.88.70 run through 2026-11-09"
+      }
+    },
+    "4202.92.31": {
+      "desc": "Bags with outer surface of man-made fiber textile; tasks use suffix 31 (Other, e.g. travel bags), not 20 (Backpacks)",
+      "components": [
+        {
+          "component": "mfn",
+          "rate": "0.176",
+          "cite": "HTS 2026 Rev20 4202.92.31 general",
+          "status": "verified"
+        },
+        {
+          "component": "s301_list3",
+          "rate": "0.25",
+          "cite": "HTS 9903.88.03, U.S. note 20(f)",
+          "status": "verified"
+        },
+        {
+          "component": "s301_2026",
+          "rate": "0.125",
+          "cite": "HTS 9903.05.31, U.S. note 52(a); 91 FR 47318",
+          "status": "verified"
+        }
+      ],
+      "stat_suffix_checked": {
+        "conclusion": "REST search lists suffix 20 (Backpacks) and 31 (Other).",
+        "date": "2026-10-09",
+        "basis": "https://hts.usitc.gov/reststop/search?keyword=4202.92.31"
+      },
+      "exclusions_checked": {
+        "conclusion": "U.S. note 20(vvv)(iii)(29) excludes 4202.92.3120 backpacks of man-made fiber textile, 35 to 75 cm high, 19 to 34 cm wide, 5 to 26 cm deep, from the List 3 duty under heading 9903.88.69, in effect through 2026-11-09 (not expired on 2026-10-09). The snapshot keeps the 25% List 3 component, which applies to backpacks outside these dimensions and to suffix 31; for a backpack within the dimensions the List 3 component is 0.",
+        "date": "2026-10-09",
+        "basis": "data/params/raw/ch99.json; Chapter 99 PDF text (U.S. note 20(vvv), 20(www), note 52); U.S. note 20 (Compiler's note): only subdivisions (vvv) and (www) are in effect; headings 9903.88.69 and 9903.88.70 run through 2026-11-09"
+      }
+    },
+    "9503.00.00": {
+      "desc": "Toys",
+      "components": [
+        {
+          "component": "mfn",
+          "rate": "0",
+          "cite": "HTS 2026 Rev20 9503.00.00 general (Free)",
+          "status": "verified"
+        },
+        {
+          "component": "s301_list4B",
+          "rate": "0",
+          "cite": "HTS 9903.88.16 suspended, U.S. note 20(t)–(u)",
+          "status": "verified"
+        },
+        {
+          "component": "s301_2026",
+          "rate": "0.125",
+          "cite": "HTS 9903.05.31, U.S. note 52(a); 91 FR 47318",
+          "status": "verified"
+        }
+      ],
+      "stat_suffix_checked": {
+        "conclusion": "REST search lists suffixes 11, 13, 71, 73, 90.",
+        "date": "2026-10-09",
+        "basis": "https://hts.usitc.gov/reststop/search?keyword=9503.00.00"
+      },
+      "exclusions_checked": {
+        "conclusion": "Not listed in U.S. note 20(vvv) or 20(www). List 4B (heading 9903.88.16, U.S. note 20(t)-(u)) is suspended per the Compiler's note, so the 0 rate needs no exclusion.",
+        "date": "2026-10-09",
+        "basis": "data/params/raw/ch99.json; Chapter 99 PDF text (U.S. note 20(vvv), 20(www), note 52); U.S. note 20 (Compiler's note): only subdivisions (vvv) and (www) are in effect; headings 9903.88.69 and 9903.88.70 run through 2026-11-09"
+      }
+    }
+  },
+  "fees": {
+    "mpf_rate": {
+      "value": "0.003464",
+      "cite": "19 CFR 24.23",
+      "status": "verified"
+    },
+    "mpf_min_usd": {
+      "value": "33.58",
+      "cite": "FY2027 values in 91 FR (doc 2026-15530) not yet read; FY2026 value used",
+      "status": "assumed"
+    },
+    "mpf_max_usd": {
+      "value": "651.50",
+      "cite": "FY2027 values in 91 FR (doc 2026-15530) not yet read; FY2026 value used",
+      "status": "assumed"
+    },
+    "mpf_informal_usd": {
+      "value": "2.69",
+      "cite": "informal entry MPF; to verify against doc 2026-15530",
+      "status": "assumed"
+    },
+    "formal_entry_threshold_usd": {
+      "value": "2500",
+      "cite": "19 CFR 143.21",
+      "status": "verified"
+    },
+    "hmf_rate": {
+      "value": "0.00125",
+      "cite": "19 CFR 24.24",
+      "status": "verified"
+    }
+  },
+  "fx": {
+    "CNY_per_USD": {
+      "value": "7.10",
+      "date": "2026-10-09",
+      "cite": "placeholder pending CFETS central parity",
+      "status": "assumed"
+    }
+  },
+  "sources": [
+    {
+      "name": "ch99.json",
+      "desc": "HTS REST exportList, headings 9903.00 to 9903.99, HTS 2026 Revision 20",
+      "url": "https://hts.usitc.gov/reststop/exportList?from=9903.00.00&to=9903.99.99&format=JSON&styles=false",
+      "retrieved_at": "2026-10-09",
+      "sha256": "22ff7d8f7d9d4841f3738a4f48767e51545c882738229b7f8ef3db43abca9417",
+      "path": "data/params/raw/ch99.json"
+    },
+    {
+      "name": "ch99.pdf",
+      "desc": "HTS 2026 Revision 20, Chapter 99 PDF (not stored in repository)",
+      "url": "https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter%2099",
+      "retrieved_at": "2026-10-09",
+      "sha256": "53c7858d3c70583537684f7e78b9fc1bd222a51a857d5f331f67d2468d48986c",
+      "path": null
+    },
+    {
+      "name": "ch99.txt",
+      "desc": "pdftotext output of ch99.pdf, used for note 20 and note 52 searches (not stored in repository)",
+      "url": null,
+      "retrieved_at": "2026-10-09",
+      "sha256": "337646abc1076207b3e407ded61e08dfa15aadca6ae4b886a2cfd62c0da21f97",
+      "path": null
+    },
+    {
+      "name": "search_6109.10.00.json",
+      "desc": "HTS REST search for statistical suffixes of 6109.10.00 (not stored in repository)",
+      "url": "https://hts.usitc.gov/reststop/search?keyword=6109.10.00",
+      "retrieved_at": "2026-10-09",
+      "sha256": "35f1fc7aa669b094e389a04d95b1555c6d83b13dee81fc1072d33d90b41cec20",
+      "path": null
+    },
+    {
+      "name": "search_3926.90.99.json",
+      "desc": "HTS REST search for statistical suffixes of 3926.90.99 (not stored in repository)",
+      "url": "https://hts.usitc.gov/reststop/search?keyword=3926.90.99",
+      "retrieved_at": "2026-10-09",
+      "sha256": "09bb67a63f9750e23bda98679bf72fa6fc82e750d44a2ecec3128ea0866ad501",
+      "path": null
+    },
+    {
+      "name": "search_4202.92.31.json",
+      "desc": "HTS REST search for statistical suffixes of 4202.92.31 (not stored in repository)",
+      "url": "https://hts.usitc.gov/reststop/search?keyword=4202.92.31",
+      "retrieved_at": "2026-10-09",
+      "sha256": "2de2fe60b5c1f461139d5c0cb652745dcde89e6feabb788074defc97edd5bcad",
+      "path": null
+    },
+    {
+      "name": "search_9503.00.00.json",
+      "desc": "HTS REST search for statistical suffixes of 9503.00.00 (not stored in repository)",
+      "url": "https://hts.usitc.gov/reststop/search?keyword=9503.00.00",
+      "retrieved_at": "2026-10-09",
+      "sha256": "3ecbd24f93704794cd731cbe2868392b0fdd227b19d22640a8200af25df0de9b",
+      "path": null
+    }
+  ]
+}

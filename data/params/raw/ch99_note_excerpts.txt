@@ -1,0 +1,136 @@
+Source: HTS 2026 Rev 20 Chapter 99 PDF (pdftotext -layout), sha256 recorded in tariff snapshot sources.
+
+--- ch99.txt lines 26513-26524
+            (44)    Backpacks and duffel bags with an outer surface of a blend of hemp and organic cotton, each measuring not less
+                    than 38 cm by 30 cm by 15 cm and not more than 36 cm by 72 cm by 34 cm (described in statistical reporting
+                    number 4202.92.2000)
+
+            (45)    Backpacks with outer surface of textile materials of man-made fibers, each measuring at least 35 cm but not more
+                    than 75 cm in height, at least 19 cm but not more than 34 cm in width, and at least 5 cm but not more than 26 cm
+                    in depth (described in statistical reporting number 4202.92.3120)
+
+            (46)    Fishing tackle bags of man-made fibers, each measuring at least 5 cm but not more than 17 cm in width, at least
+                    23 cm but not more than 27 cm in height and at least 37 cm but not more than 43 cm in depth, with a shoulder
+                    strap and carrying handles (described in statistical reporting number 4202.92.3131)
+
+
+--- ch99.txt lines 27160-27171
+                        2.5 kg (described in statistical reporting number 4202.12.8130)
+
+                 (19)   Backpacks with hydration system, each measuring not more than 51 cm by 28 cm by 9 cm, weighing not more
+                        than 1 kg (described in statistical reporting number 4202.92.0400)
+
+                 (20)   Backpacks of 66.66 tex polyester, each measuring not more than 57 cm by 44 cm by 11 cm (described in statistical
+                        reporting number 4202.92.3120)
+
+                 (21)   Duffel bags of polyester, each measuring not more than 81 cm by 39 cm by 11 cm, weighing not more than 7 kg
+                        (described in statistical reporting number 4202.92.3131)
+
+                 (22)   Duffel bags made predominantly of man-made fibers, each measuring not more than 98 cm by 52 cm by 17 cm,
+
+--- ch99.txt lines 27609-27620
+
+                 (26)   Automotive constant velocity (“CV”) joint boots and rack and pinion bellows, of neoprene (described in statistical
+                        reporting number 4016.99.6050)
+
+                 (27)   Backpacks with outer surface of textile materials of man-made fibers, each with padded and insulated zippered
+                        compartments measuring not more than 27 cm by 19 cm by 21.5 cm (described in statistical reporting number
+                        4202.92.3120)
+                        Harmonized Tariff Schedule of the United States Revision 20 (2026)
+                                                      Annotated for Statistical Reporting Purposes
+                                                                                                                                                       XXII
+                                                                                                                                             99 - III - 237
+U.S. Notes (con.)
+
+--- ch99.txt lines 29431-29442
+
+            (69)    Backpacks with hydration system, each measuring not more than 51 cm by 28 cm by 9 cm, weighing not more
+                    than 1 kg (described in statistical reporting number 4202.92.0400)
+
+            (70)    Backpacks with outer surface of textile materials of man-made fibers, each measuring at least 35 cm but not more
+                    than 75 cm in height, at least 19 cm but not more than 34 cm in width, and at least 5 cm but not more than 26 cm
+                    in depth (described in statistical reporting number 4202.92.3120)
+
+            (71)    Duffel bags made predominantly of man-made fibers, each measuring not more than 98 cm by 52 cm by 17 cm,
+                    weighing not more than 7 kg, with wheels (described in statistical reporting number 4202.92.3131)
+
+            (72)    Duffel bags of polyester, each measuring not more than 81 cm by 39 cm by 11 cm, weighing not more than 7 kg
+
+--- ch99.txt lines 32098-32109
+
+            (48)    Backpacks with hydration system, each measuring not more than 51 cm by 28 cm by 9 cm, weighing not more
+                    than 1 kg (described in statistical reporting number 4202.92.0400)
+
+            (49)    Backpacks with outer surface of textile materials of man-made fibers, each measuring at least 35 cm but not more
+                    than 75 cm in height, at least 19 cm but not more than 34 cm in width, and at least 5 cm but not more than 26 cm
+                    in depth (described in statistical reporting number 4202.92.3120)
+
+            (50)    Duffel bags made predominantly of man-made fibers, weighing not more than 7 kg, with wheels (described in
+                    statistical reporting number 4202.92.3131)
+
+            (51)    Duffel bags of polyester, weighing not more than 7 kg (described in statistical reporting number 4202.92.3131)
+
+--- ch99.txt lines 33412-33423
+                        top attached to a rounded, tapered plug with a protruding stirrer, measuring at least 55 mm but not more than
+                        120.7 mm in overall length, and weighing at least 0.6 g but not more than 1.1 g each, of a kind used with lids for
+                        beverage containers (described in statistical reporting number 3923.50.0000)
+
+                 (29)   Backpacks with outer surface of textile materials of man-made fibers, each measuring at least 35 cm but not more
+                        than 75 cm in height, at least 19 cm but not more than 34 cm in width, and at least 5 cm but not more than 26 cm
+                        in depth (described in statistical reporting number 4202.92.3120)
+
+                 (30)   Silk fabrics, containing 85 percent or more by weight of silk or of silk waste other than noil silk, the foregoing not
+                        printed, not jacquard woven, measuring over 127 cm in width (described in statistical reporting number
+                        5007.20.0065)
+                        Harmonized Tariff Schedule of the United States Revision 20 (2026)
+
+--- ch99.txt lines 33594-33605
+            (1)     0505.10.0050
+
+            (2)     0505.10.0055
+
+            (3)     3401.19.0000
+
+            (4)     3926.90.9910 prior to July 1, 2026; described in statistical reporting numbers 3926.90.9915 or 3926.90.9920
+                    effective July 1, 2026
+
+            (5)     5504.10.0000
+
+            (6)     6210.10.5010
+
+--- ch99.txt lines 33609-33620
+            (8)     6506.10.6030
+
+            (9)     Sodium alginate resins (CAS No. 9005-38-3) (described in statistical reporting number 3913.10.0000)
+
+            (10)    Single-use sterile drapes and covers of plastics, of a kind used to protect the sterile field in surgical operating
+                    rooms (described in statistical reporting number 3926.90.9990 prior to July 1, 2020; described in statistical reporting
+                    number 3926.90.9985 effective July 1, 2020; described in statistical reporting number 3926.90.9989 effective July
+                    1, 2024)
+
+            (11)    Sterile decanters of polystyrene plastics, each of a kind used to transfer aseptic fluids or medication to and from
+                    sterile bags, vials or glass containers (described in statistical reporting number 3926.90.9990 prior to July 1, 2020;
+                    described in statistical reporting number 3926.90.9985 effective July 1, 2020; described in statistical reporting
+
+--- ch99.txt lines 37689-37710 (U.S. note 52(a))
+52.
+
+      (a)     Except as provided in headings 9903.05.85–9903.06.21 and in subdivisions (b) through (k) of this note, and other than
+              products for personal use included in accompanied baggage of persons arriving in the United States, headings
+              9903.05.20–9903.05.84 impose additional ad valorem rates of duty on imports of all products of the countries provided
+              for in these headings. Notwithstanding U.S. note 1 to this subchapter, all products that are subject to the additional ad
+              valorem rates of duty imposed by these headings shall also be subject to the general rates of duty imposed under
+              subheadings in chapters 1 to 97 of the tariff schedule. Except as provided in subdivisions (b) through (k) of this note, all
+              products that are subject to the additional ad valorem rates of duty imposed by headings 9903.05.20–9903.05.84 shall
+              also be subject to any additional duty provided for in this subchapter or in subchapter IV of chapter 99. Products that are
+              eligible for special tariff treatment under general note 3(c)(i) to the tariff schedule, or that are eligible for temporary duty
+              exemptions or reductions under subchapter II to chapter 99, shall be subject to the additional ad valorem rates of duty
+              imposed by headings 9903.05.20–9903.05.84, except as otherwise provided in this note.
+
+            The additional duties imposed by headings 9903.05.20–9903.05.84 shall not apply to goods for which entry is properly claimed
+            under a provision of chapter 98 of the tariff schedule pursuant to applicable regulations of U.S. Customs and Border Protection
+            (“CBP”), and whenever CBP agrees that entry under such a provision is appropriate, except for goods entered under
+            subheadings 9802.00.40, 9802.00.50 or 9802.00.60 or heading 9802.00.80. For goods entered under subheadings 9802.00.40,
+            9802.00.50 and 9802.00.60, the additional duties apply to the value of repairs, alterations or processing performed, as
+            described in the applicable subheading. For goods entered under heading 9802.00.80, the additional duties apply to the
+            value of the article assembled abroad, less the cost or value of such products of the United States, as described.
