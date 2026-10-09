@@ -7,3 +7,7 @@
 - 从上一个项目复制迁移参考代码到 reference/echoguard/，只读，已去掉学校信息和成员姓名。
 - 尚未进行任何模型调用。
 - 未决：真实调用的预算上限待定。
+
+## 2026-10-09 子代理与模型分工
+- 新增 .claude/agents/：implementer（Sonnet，编码与测试）、bulk-data（Haiku，录入与匿名化扫描）、reviewer（Opus，只读独立审查）。
+- CLAUDE.md 新增“模型分工”一节：主会话用 Opus 做判断，按表委托，reviewer 设四个强制检查点。
