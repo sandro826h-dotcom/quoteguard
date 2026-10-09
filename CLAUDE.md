@@ -32,12 +32,15 @@
 - 模型适配器的改造：原版从环境变量读 API key。云端环境的 key 由 API credentials 代理注入，会话内读不到 key。改造为：
   - 设置 QG_PROXY_AUTH=1 时，请求不带 Authorization 头；
   - 本地运行时仍从环境变量读 key。
-- 默认端点：
-  - DeepSeek：https://api.deepseek.com/v1
-  - 通义千问：https://dashscope.aliyuncs.com/compatible-mode/v1
-  - Kimi：https://api.moonshot.cn/v1
+- 实验模型阵容见 docs/plan/AIC_最终方案.md 第六节（6 个配置）。端点：
+  - DeepSeek 官方（V4-Pro、V4-Flash）：https://api.deepseek.com/v1
+  - 阿里云百炼（qwen3-max、qwen-plus、千问 VL）：https://dashscope.aliyuncs.com/compatible-mode/v1
+  - 硅基流动（GLM-5.3、Kimi-K2.6、GLM-4.5V）：https://api.siliconflow.cn/v1
+  - 三家都兼容 OpenAI 接口，适配器按服务商区分，模型名原样记录。
+- 硅基流动账户只有代金券、余额为 0。代金券用完后返回余额不足错误，处理方式同下面的千问免费额度：停止批次、保存记录、报告用户。
+- 开发调试（单元联调、接口试通，不属于预试验和正式实验）优先用硅基流动限定代金券覆盖的旧模型，例如 deepseek-ai/DeepSeek-V3.2、Qwen/Qwen3-VL-32B-Instruct、zai-org/GLM-4.5V，以节省正式实验的额度。调用前先确认模型仍在线。
 - 每次运行都要记录：模型、参数、提示词哈希、随机种子、原始响应。
-- 视觉输入：千问用百炼视觉模型（核实当前端点），Kimi 只收 base64，DeepSeek 视觉只限 flash 型号。
+- 视觉输入：千问用百炼视觉模型（核实当前端点），Kimi 与 GLM 视觉经硅基流动调用（核实图片传入格式），DeepSeek 视觉只限 flash 型号。
 - 千问使用免费额度（每个模型每个账号 100 万 Token），额度用完时返回 HTTP 403、错误码 `AllocationQuota.FreeTierOnly`。执行器遇到这个错误：停止该批次，保存已完成的记录，向用户报告需要更换 key；不重试，不换模型。换 key 后从断点续跑。
 - 货代名称在数据和材料中匿名化；登记库查询保存为带日期的快照。
 

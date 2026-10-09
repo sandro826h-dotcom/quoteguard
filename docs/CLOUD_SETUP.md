@@ -26,8 +26,7 @@
 api.deepseek.com
 dashscope.aliyuncs.com
 *.maas.aliyuncs.com
-api.moonshot.cn
-api.kimi.com
+api.siliconflow.cn
 hts.usitc.gov
 www.federalregister.gov
 www.fmc.gov
@@ -40,7 +39,7 @@ credit.customs.gov.cn
 |---|---|---|
 | DeepSeek | api.deepseek.com | Authorization / Bearer / 你的 DeepSeek key |
 | DashScope | dashscope.aliyuncs.com，*.maas.aliyuncs.com | Authorization / Bearer / 你的 DashScope key |
-| Moonshot | api.moonshot.cn | Authorization / Bearer / 你的 Moonshot key |
+| SiliconFlow | api.siliconflow.cn | Authorization / Bearer / 你的硅基流动 key |
 
 每条填完点 Connect，单独保存。key 保存后无法再查看，填错就删掉重加。会话内的 Claude 和它运行的命令都读不到 key，也不要把 key 发到聊天里。
 
@@ -49,7 +48,6 @@ credit.customs.gov.cn
 **Environment variables**：
 ```
 QG_PROXY_AUTH=1
-KIMI_BASE_URL=https://api.moonshot.cn/v1
 BASH_DEFAULT_TIMEOUT_MS=600000
 ```
 

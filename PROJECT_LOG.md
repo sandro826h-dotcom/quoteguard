@@ -11,3 +11,7 @@
 ## 2026-10-09 子代理与模型分工
 - 新增 .claude/agents/：implementer（Sonnet，编码与测试）、bulk-data（Haiku，录入与匿名化扫描）、reviewer（Opus，只读独立审查）。
 - CLAUDE.md 新增“模型分工”一节：主会话用 Opus 做判断，按表委托，reviewer 设四个强制检查点。
+
+## 2026-10-09 模型阵容
+- 定为 6 个配置：强模型档 DeepSeek-V4-Pro、qwen3-max、GLM-5.3、Kimi-K2.6；低成本档 DeepSeek-V4-Flash、qwen-plus。GLM 与 Kimi 经硅基流动调用。已写入 AIC_最终方案.md 第六节与 CLAUDE.md。
+- 未决：真实调用预算上限。
