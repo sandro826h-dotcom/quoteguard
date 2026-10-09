@@ -19,7 +19,7 @@
 
 ## 3. 配置云环境
 
-在 claude.ai/code 的环境选择器里新建一个环境，名称填 `aic`。
+环境 `aic` 已由 Cowork 建好（网络、环境变量、安装脚本均已填写）。还需要你在 claude.ai/code 的环境选择器里编辑 `aic`，按下表添加三条 Network secrets。下面保留完整配置，供核对或重建。
 
 **Network access** 选 Custom，在 Allowed domains 中逐行填入下面的域名，并勾选 Also include default list of common package managers：
 ```
@@ -27,11 +27,14 @@ api.deepseek.com
 dashscope.aliyuncs.com
 *.maas.aliyuncs.com
 api.moonshot.cn
+api.kimi.com
 hts.usitc.gov
 www.federalregister.gov
+www.fmc.gov
+credit.customs.gov.cn
 ```
 
-**API credentials**（Pro 和 Max 套餐才有这一栏）：点 Add credential，每家模型添加一条，Credential type 保持 Bearer：
+**Network secrets**（文档称 API credentials，Pro 和 Max 套餐才有这一栏）：点 Add secret，每家模型添加一条，Credential type 保持 Bearer：
 
 | Name | Allowed websites | Custom headers：Name / Prefix / Value |
 |---|---|---|
