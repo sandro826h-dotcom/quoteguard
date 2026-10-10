@@ -18,6 +18,7 @@ LAYERS = ("explicit", "implicit", "conflict", "insufficient")
 SPAN_KINDS = ("text", "cell", "region")
 FIELD_STATUS = ("stated", "implied", "missing", "conflicting")
 CURRENCIES = ("CNY", "USD")
+RATE_UNITS = ("per_kg", "per_cbm", "per_shpt")
 BASES = ("per_kg", "per_ctn", "per_shpt", "pct_freight")
 CONDITIONS = ("always", "residential", "remote", "ctn_longest_side_gt", "ctn_kg_gt")
 DDP_SCOPES = ("duty", "duty_mpf", "all")
@@ -275,6 +276,7 @@ class RateTier(_Base):
     max_kg: Optional[Decimal]
     price: Decimal
     currency: str
+    unit: str = "per_kg"
 
     def __post_init__(self):
         self.min_kg, self.max_kg, self.price = _dec(self.min_kg), _dec_opt(self.max_kg), _dec(self.price)
@@ -285,11 +287,12 @@ class RateTier(_Base):
             raise ValueError("RateTier.max_kg < min_kg")
         _pos("RateTier.price", self.price, strict=False)
         _enum("RateTier.currency", self.currency, CURRENCIES)
+        _enum("RateTier.unit", self.unit, RATE_UNITS)
 
     @classmethod
     def from_dict(cls, d: dict) -> "RateTier":
         _need(d, "min_kg", "max_kg", "price", "currency")
-        return cls(d["min_kg"], d["max_kg"], d["price"], d["currency"])
+        return cls(d["min_kg"], d["max_kg"], d["price"], d["currency"], d.get("unit", "per_kg"))
 
 
 @dataclass
@@ -411,6 +414,48 @@ def _missing() -> Field:
     return Field(None, "missing", [])
 
 
+def _check_term_value(name: str, v: Any) -> None:
+    """Type and range check of one (non-missing, non-conflicting) term value."""
+    if name == "mode":
+        _enum("QuoteTerms.mode", v, MODES)
+    elif name in ("channel", "liability"):
+        _is_str("QuoteTerms." + name, v, False)
+    elif name in ("min_kg_shipment", "min_kg_carton", "broker_fee_cny", "isf_fee_cny"):
+        _pos("QuoteTerms." + name, v, strict=False)
+    elif name == "fuel_pct":
+        _pos("QuoteTerms.fuel_pct", v, strict=False)
+        if v > 1:
+            raise ValueError("fuel_pct must be a fraction in [0, 1]")
+    elif name in ("dim_divisor", "rounding_kg"):
+        _pos("QuoteTerms." + name, v)
+    elif name in ("rate_tiers", "surcharges", "claims"):
+        cls = {"rate_tiers": RateTier, "surcharges": Surcharge, "claims": Claim}[name]
+        if not isinstance(v, list) or not all(isinstance(i, cls) for i in v):
+            raise ValueError(f"QuoteTerms.{name} must be a list of {cls.__name__}")
+        for i in v:
+            i.validate()
+    elif name == "ddp":
+        if not isinstance(v, DDP):
+            raise ValueError("QuoteTerms.ddp must be DDP")
+        v.validate()
+    elif name in ("includes", "excludes"):
+        if not isinstance(v, list) or not all(isinstance(i, str) for i in v):
+            raise ValueError(f"QuoteTerms.{name} must be a list of str")
+    elif name == "transit_days":
+        if (not isinstance(v, list) or len(v) != 2 or
+                not all(isinstance(i, int) and not isinstance(i, bool) for i in v) or v[0] > v[1]):
+            raise ValueError("QuoteTerms.transit_days must be [min, max] ints")
+    elif name == "validity":
+        if not isinstance(v, list) or len(v) != 2:
+            raise ValueError("QuoteTerms.validity must be [from, to]")
+        try:
+            a, b = (None if x is None else date.fromisoformat(x) for x in v)
+        except (TypeError, ValueError) as e:
+            raise ValueError("QuoteTerms.validity must hold ISO dates (null allowed)") from e
+        if a is not None and b is not None and a > b:
+            raise ValueError("QuoteTerms.validity from > to")
+
+
 @dataclass
 class QuoteTerms(_Base):
     channel: Field = field(default_factory=_missing)
@@ -437,7 +482,14 @@ class QuoteTerms(_Base):
         for name, dec in _TERM_CODECS.items():
             f = getattr(self, name)
             if dec is _dec and isinstance(f, Field) and f.value is not None:
-                f.value = _dec(f.value)
+                if f.status == "conflicting" and isinstance(f.value, list):
+                    f.value = [None if x is None else _dec(x) for x in f.value]
+                else:
+                    f.value = _dec(f.value)
+
+    def conflicting(self) -> list:
+        """Names of terms whose status is 'conflicting'."""
+        return [n for n in _TERM_CODECS if getattr(self, n).status == "conflicting"]
 
     def defaulted(self) -> list:
         """Names of optional terms that are missing and treated as zero / absent in a calculation."""
@@ -466,47 +518,16 @@ class QuoteTerms(_Base):
             v = f.value
             if v is None:
                 continue
-            if name == "mode":
-                _enum("QuoteTerms.mode", v, MODES)
-            elif name in ("channel", "liability"):
-                _is_str("QuoteTerms." + name, v, False)
-            elif name in ("min_kg_shipment", "min_kg_carton", "broker_fee_cny", "isf_fee_cny"):
-                _pos("QuoteTerms." + name, v, strict=False)
-            elif name == "fuel_pct":
-                _pos("QuoteTerms.fuel_pct", v, strict=False)
-                if v > 1:
-                    raise ValueError("fuel_pct must be a fraction in [0, 1]")
-            elif name in ("dim_divisor", "rounding_kg"):
-                _pos("QuoteTerms." + name, v)
-            elif name in ("rate_tiers", "surcharges", "claims"):
-                cls = {"rate_tiers": RateTier, "surcharges": Surcharge, "claims": Claim}[name]
-                if not isinstance(v, list) or not all(isinstance(i, cls) for i in v):
-                    raise ValueError(f"QuoteTerms.{name} must be a list of {cls.__name__}")
-                for i in v:
-                    i.validate()
-            elif name == "ddp":
-                if not isinstance(v, DDP):
-                    raise ValueError("QuoteTerms.ddp must be DDP")
-                v.validate()
-            elif name in ("includes", "excludes"):
-                if not isinstance(v, list) or not all(isinstance(i, str) for i in v):
-                    raise ValueError(f"QuoteTerms.{name} must be a list of str")
-            elif name == "transit_days":
-                if (not isinstance(v, list) or len(v) != 2 or
-                        not all(isinstance(i, int) and not isinstance(i, bool) for i in v) or v[0] > v[1]):
-                    raise ValueError("QuoteTerms.transit_days must be [min, max] ints")
-            elif name == "validity":
+            if f.status == "conflicting":
+                # the value holds the two normalised candidates
                 if not isinstance(v, list) or len(v) != 2:
-                    raise ValueError("QuoteTerms.validity must be [from, to]")
-                try:
-                    a, b = (date.fromisoformat(x) for x in v)
-                except (TypeError, ValueError) as e:
-                    raise ValueError("QuoteTerms.validity must hold ISO dates") from e
-                if a > b:
-                    raise ValueError("QuoteTerms.validity from > to")
-        mins = [t.min_kg for t in (self.rate_tiers.value or [])]
-        if len(set(mins)) != len(mins):
-            raise ValueError("rate_tiers have duplicate min_kg")
+                    raise ValueError(f"QuoteTerms.{name}: a conflicting value must be a list of 2 candidates")
+                continue
+            _check_term_value(name, v)
+        if self.rate_tiers.status != "conflicting":
+            mins = [t.min_kg for t in (self.rate_tiers.value or [])]
+            if len(set(mins)) != len(mins):
+                raise ValueError("rate_tiers have duplicate min_kg")
 
     def to_dict(self) -> dict:
         out = {}
@@ -518,8 +539,13 @@ class QuoteTerms(_Base):
     @classmethod
     def from_dict(cls, d: dict) -> "QuoteTerms":
         _need(d)
-        return cls(**{n: Field.from_dict(d[n], dec) if n in d else _missing()
-                      for n, dec in _TERM_CODECS.items()})
+        def field_of(n, dec):
+            if n not in d:
+                return _missing()
+            if dec is not None and d[n].get("status") == "conflicting" and isinstance(d[n].get("value"), list):
+                return Field.from_dict(d[n], lambda v, dec=dec: [None if x is None else dec(x) for x in v])
+            return Field.from_dict(d[n], dec)
+        return cls(**{n: field_of(n, dec) for n, dec in _TERM_CODECS.items()})
 
 
 # ---------------------------------------------------------------- task level
@@ -658,10 +684,25 @@ class SeedQuote(_Base):
     raw_sha256: str
     anon_sha256: Optional[str]
     is_real: bool
+    source_id: Optional[str] = None
+    source_class: Optional[str] = None
+    publisher_alias: Optional[str] = None
+    price_form: Optional[str] = None
+    date_status: Optional[str] = None
+    dest_region: Optional[str] = None
 
     def validate(self) -> None:
         for nm in ("seed_id", "source_type", "source_url", "forwarder_alias", "modality", "channel", "raw_sha256"):
             _is_str("SeedQuote." + nm, getattr(self, nm))
+        _enum("SeedQuote.source_type", self.source_type, ("web_page", "pdf", "image"))
+        for nm, allowed in (("source_class", ("forwarder", "carrier_published")),
+                            ("price_form", ("published_tier", "starting_price", "range")),
+                            ("date_status", ("current", "expired", "unknown"))):
+            if getattr(self, nm) is not None:
+                _enum("SeedQuote." + nm, getattr(self, nm), allowed)
+        for nm in ("source_id", "publisher_alias", "dest_region"):
+            if getattr(self, nm) is not None:
+                _is_str("SeedQuote." + nm, getattr(self, nm), False)
         for nm in ("captured_at", "page_date"):
             v = getattr(self, nm)
             if v is None and nm == "page_date":
@@ -679,4 +720,107 @@ class SeedQuote(_Base):
               "channel", "raw_sha256", "is_real")
         return cls(d["seed_id"], d["source_type"], d["source_url"], d["captured_at"], d.get("page_date"),
                    d["forwarder_alias"], d["modality"], d["channel"], d["raw_sha256"],
-                   d.get("anon_sha256"), d["is_real"])
+                   d.get("anon_sha256"), d["is_real"], d.get("source_id"), d.get("source_class"),
+                   d.get("publisher_alias"), d.get("price_form"), d.get("date_status"), d.get("dest_region"))
+
+
+@dataclass
+class LabelRecord(_Base):
+    """One annotated seed quote: metadata, per-field terms and free-form notes
+    (for example range_max or rate_tiers_other).
+
+    terms maps each QuoteTerms attribute name to a Field. A field with status 'conflicting' holds a
+    list of exactly 2 candidate values, each of the field's normal type (for rate_tiers, each
+    candidate is a list of RateTier). Missing attribute names are treated as status 'missing'.
+    """
+    seed_id: str
+    annotator: str
+    annotated_at: str
+    minutes_spent: Decimal
+    initial_label_model: Optional[str]
+    meta: SeedQuote
+    terms: dict
+    notes: dict = field(default_factory=dict)
+
+    def __post_init__(self):
+        self.minutes_spent = _dec(self.minutes_spent)
+        if isinstance(self.terms, dict):
+            for name in _TERM_CODECS:
+                self.terms.setdefault(name, _missing())
+            for name, f in self.terms.items():
+                if (_TERM_CODECS.get(name) is _dec and isinstance(f, Field) and f.value is not None):
+                    if f.status == "conflicting" and isinstance(f.value, list):
+                        f.value = [None if x is None else _dec(x) for x in f.value]
+                    else:
+                        f.value = _dec(f.value)
+
+    def validate(self) -> None:
+        _is_str("LabelRecord.seed_id", self.seed_id)
+        _is_str("LabelRecord.annotator", self.annotator)
+        try:
+            date.fromisoformat(self.annotated_at)
+        except (TypeError, ValueError) as e:
+            raise ValueError(f"LabelRecord.annotated_at not ISO: {self.annotated_at!r}") from e
+        _pos("LabelRecord.minutes_spent", self.minutes_spent, strict=False)
+        if self.initial_label_model is not None:
+            _is_str("LabelRecord.initial_label_model", self.initial_label_model)
+        if not isinstance(self.meta, SeedQuote):
+            raise ValueError("LabelRecord.meta must be SeedQuote")
+        self.meta.validate()
+        if self.meta.seed_id != self.seed_id:
+            raise ValueError("LabelRecord.seed_id differs from meta.seed_id")
+        if not isinstance(self.terms, dict):
+            raise ValueError("LabelRecord.terms must be a dict of Field")
+        for name, f in self.terms.items():
+            if name not in _TERM_CODECS:
+                raise ValueError(f"LabelRecord.terms: unknown field {name!r}")
+            if not isinstance(f, Field):
+                raise ValueError(f"LabelRecord.terms[{name}] must be a Field")
+            f.validate()
+            if f.value is None:
+                continue
+            if f.status == "conflicting":
+                if not isinstance(f.value, list) or len(f.value) != 2:
+                    raise ValueError(f"LabelRecord.terms[{name}]: conflicting value must be a list of 2 candidates")
+                for cand in f.value:
+                    if cand is None:
+                        raise ValueError(f"LabelRecord.terms[{name}]: conflicting candidate is None")
+                    _check_term_value(name, cand)
+            else:
+                _check_term_value(name, f.value)
+        if not isinstance(self.notes, dict):
+            raise ValueError("LabelRecord.notes must be dict")
+
+    def has_conflicts(self) -> bool:
+        return any(f.status == "conflicting" for f in self.terms.values())
+
+    def to_quote_terms(self) -> "QuoteTerms":
+        """Convert to QuoteTerms; raises ValueError when any field is conflicting."""
+        bad = [n for n, f in self.terms.items() if f.status == "conflicting"]
+        if bad:
+            raise ValueError(f"conflicting fields cannot be converted: {bad}")
+        return QuoteTerms.from_dict(self._terms_dict())
+
+    def _terms_dict(self) -> dict:
+        return {n: {"value": _enc(f.value), "status": f.status, "spans": [s.to_dict() for s in f.spans]}
+                for n, f in self.terms.items()}
+
+    def to_dict(self) -> dict:
+        return {"seed_id": self.seed_id, "annotator": self.annotator, "annotated_at": self.annotated_at,
+                "minutes_spent": str(self.minutes_spent), "initial_label_model": self.initial_label_model,
+                "meta": self.meta.to_dict(), "terms": self._terms_dict(), "notes": _enc(self.notes)}
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "LabelRecord":
+        _need(d, "seed_id", "annotator", "annotated_at", "minutes_spent", "meta", "terms")
+        terms = {}
+        for n, fd in d["terms"].items():
+            if n not in _TERM_CODECS:
+                raise ValueError(f"LabelRecord.terms: unknown field {n!r}")
+            dec = _TERM_CODECS[n]
+            if dec is not None and fd.get("status") == "conflicting" and isinstance(fd.get("value"), list):
+                terms[n] = Field.from_dict(fd, lambda v, dec=dec: [None if x is None else dec(x) for x in v])
+            else:
+                terms[n] = Field.from_dict(fd, dec)
+        return cls(d["seed_id"], d["annotator"], d["annotated_at"], d["minutes_spent"],
+                   d.get("initial_label_model"), SeedQuote.from_dict(d["meta"]), terms, d.get("notes", {}))

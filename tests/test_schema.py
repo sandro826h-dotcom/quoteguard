@@ -5,7 +5,7 @@ import pytest
 
 from quoteguard.schema import (
     DDP, Candidate, Carton, Claim, Destination, Evidence, Field, Gold, Goods, QuoteTerms,
-    RateTier, SeedQuote, Shipment, Span, Surcharge, Task)
+    LabelRecord, RateTier, SeedQuote, Shipment, Span, Surcharge, Task)
 
 
 def rt(x):
@@ -35,7 +35,7 @@ def terms():
         ddp=DDP(True, "duty", "capped", "3", "forwarder"),
         broker_fee_cny=Decimal("100"), isf_fee_cny=None, transit_days=[7, 10],
         validity=["2026-10-01", "2026-12-31"], liability="RMB 20/kg",
-        claims=[Claim("NVOCC", "FWD-01", "123", "US")])
+        claims=[Claim("NVOCC", "F01", "123", "US")])
 
 
 def test_shipment_roundtrip():
@@ -67,10 +67,10 @@ def test_other_classes_roundtrip():
     rt(c)
     task = Task("t1", "dev", "explicit", ship(), [c], "rule1", "snap1", "g1", 7)
     rt(task)
-    rt(Evidence("e1", "c1", Claim("NVOCC", "FWD-01"), {"date": "2026-10-09"}, "supported"))
+    rt(Evidence("e1", "c1", Claim("NVOCC", "F01"), {"date": "2026-10-09"}, "supported"))
     rt(Gold("t1", {"c1": {"total_cny": "100.00"}},
             {"type": "choose", "choice": "c1", "opt_cost_cny": "100.00"}, [], {"c1": "ab"}))
-    rt(SeedQuote("s1", "web", "http://x", "2026-10-01", None, "FWD-01", "image", "air", "ab", None, True))
+    rt(SeedQuote("s1", "web_page", "http://x", "2026-10-01", None, "F01", "image", "air", "ab", None, True))
 
 
 def test_invalid_values():
@@ -126,3 +126,102 @@ def test_terms_validation():
     t.transit_days = Field([10, 7], "stated")
     with pytest.raises(ValueError):
         t.validate()
+
+
+def seed(**kw):
+    base = dict(seed_id="Q16-u1", source_type="web_page", source_url="F05-src-1", captured_at="2026-10-09",
+                page_date="2026-09-20", forwarder_alias="F05", modality="text", channel="air", raw_sha256="ab",
+                anon_sha256="cd", is_real=True)
+    base.update(kw)
+    return SeedQuote(**base)
+
+
+def test_seedquote_new_fields():
+    old = rt(SeedQuote("s1", "image", "u", "2026-10-01", None, "F1", "table", "air", "ab", None, True))
+    assert old.source_id is None and old.price_form is None
+    full = rt(seed(source_id="Q16", source_class="forwarder", publisher_alias="F05",
+                   price_form="published_tier", date_status="current", dest_region="US West"))
+    assert full.source_class == "forwarder"
+    # dicts from before the new fields still load
+    d = seed().to_dict()
+    for k in ("source_id", "source_class", "publisher_alias", "price_form", "date_status", "dest_region"):
+        d.pop(k)
+    assert SeedQuote.from_dict(d) == seed()
+    for bad in (dict(source_type="web"), dict(source_class="agent"), dict(price_form="fixed"),
+                dict(date_status="old"), dict(modality="video")):
+        with pytest.raises(ValueError):
+            seed(**bad).validate()
+
+
+def test_ratetier_unit():
+    assert RateTier(0, None, 1, "CNY").unit == "per_kg"
+    t = rt(RateTier(0, None, 1, "CNY", "per_cbm"))
+    assert t.unit == "per_cbm"
+    old = RateTier.from_dict({"min_kg": "0", "max_kg": None, "price": "1", "currency": "CNY"})
+    assert old.unit == "per_kg"
+    with pytest.raises(ValueError):
+        RateTier(0, None, 1, "CNY", "per_pallet").validate()
+
+
+def label_terms():
+    t = terms().to_dict()
+    from quoteguard.schema import QuoteTerms as QT
+    out = QT.from_dict(t)
+    d = {n: getattr(out, n) for n in t}
+    d["min_kg_shipment"] = Field([Decimal("12"), Decimal("6")], "conflicting",
+                                 [Span("d", "text", "min 12kg"), Span("d", "text", "min 6kg")])
+    d["rate_tiers"] = Field([[RateTier(0, 30, 40, "CNY")], [RateTier(0, 50, 40, "CNY")]], "conflicting")
+    d["validity"] = Field(["2026-10-01", None], "stated")
+    return d
+
+
+def test_label_record_roundtrip():
+    rec = LabelRecord("Q16-u1", "A", "2026-10-10", "12.5", None, seed(seed_id="Q16-u1"), label_terms(),
+                      {"range_max": "12", "rate_tiers_other": [{"unit": "per_cbm"}]})
+    r = rt(rec)
+    assert r.minutes_spent == Decimal("12.5")
+    assert r.terms["min_kg_shipment"].value == [Decimal("12"), Decimal("6")]
+    assert r.terms["rate_tiers"].value[1][0].max_kg == 50
+    assert r.has_conflicts()
+    clean = {k: v for k, v in label_terms().items() if v.status != "conflicting"}
+    rec2 = LabelRecord("Q16-u1", "B", "2026-10-10", 3, "model-x", seed(), clean)
+    assert rt(rec2).terms["min_kg_shipment"].status == "missing"
+
+
+def test_label_record_to_quote_terms():
+    with pytest.raises(ValueError):
+        LabelRecord("Q16-u1", "A", "2026-10-10", 1, None, seed(), label_terms()).to_quote_terms()
+    clean = {k: v for k, v in label_terms().items() if v.status != "conflicting"}
+    qt = LabelRecord("Q16-u1", "A", "2026-10-10", 1, None, seed(), clean).to_quote_terms()
+    assert isinstance(qt, QuoteTerms)
+    qt.validate()
+    assert qt.plain("fuel_pct") == Decimal("0.1") and qt.plain("validity") == ["2026-10-01", None]
+    assert qt.min_kg_shipment.status == "missing"
+
+
+def test_label_record_invalid():
+    def rec(**kw):
+        base = dict(seed_id="Q16-u1", annotator="A", annotated_at="2026-10-10", minutes_spent=1,
+                    initial_label_model=None, meta=seed(), terms=label_terms(), notes={})
+        base.update(kw)
+        return LabelRecord(**base)
+    rec().validate()
+    with pytest.raises(ValueError):
+        rec(seed_id="other").validate()
+    with pytest.raises(ValueError):
+        rec(annotated_at="yesterday").validate()
+    with pytest.raises(ValueError):
+        rec(notes=[]).validate()
+    for name, bad_field in (
+            ("min_kg_shipment", Field([Decimal("12")], "conflicting")),               # wrong length
+            ("min_kg_shipment", Field(Decimal("12"), "conflicting")),                 # not a list
+            ("min_kg_shipment", Field([Decimal("12"), Decimal("-1")], "conflicting")),  # candidate out of range
+            ("rate_tiers", Field([[RateTier(0, 5, 1, "CNY")], [1]], "conflicting"))):
+        t = label_terms()
+        t[name] = bad_field
+        with pytest.raises(ValueError):
+            rec(terms=t).validate()
+    t = label_terms()
+    t["bogus"] = Field(1, "stated")
+    with pytest.raises(ValueError):
+        rec(terms=t).validate()

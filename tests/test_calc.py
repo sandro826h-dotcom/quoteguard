@@ -46,7 +46,7 @@ def both(shipment, terms, snap, tmp_path):
         assert abs(x - y) <= TOL, (c, x, y)
     assert [c for c, _ in a.contingent] == [c for c, _ in b["contingent"]]
     assert abs(sum((x for _, x in a.contingent), D(0)) - sum((x for _, x in b["contingent"]), D(0))) <= TOL
-    for k in ("snapshot_id", "assumptions", "overrides", "defaulted", "fx_date"):
+    for k in ("snapshot_id", "snapshot_version", "snapshot_sha256", "assumptions", "overrides", "defaulted", "fx_date"):
         assert getattr(a, k) == b[k], k
     assert Path(b["workbook"]).exists()
     return a, b
@@ -76,6 +76,35 @@ def simple(sid, mode="air", cartons=None, goods=None, **kw):
 
 
 # ------------------------------------------------------------------ hand-computed cases
+def test_conflicting_term_rejected(snap, tmp_path):
+    from quoteguard.schema import Field
+    s, t = hand_case()
+    t.min_kg_shipment = Field([D(21), D(10)], "conflicting")
+    with pytest.raises(ValueError, match="conflicting"):
+        landed_cost(s, t, snap)
+    with pytest.raises(ValueError, match="conflicting"):
+        landed_cost_xlsx(s, t, snap, tmp_path)   # fails before soffice runs
+    assert not list(tmp_path.glob("*.xlsx"))
+
+
+def test_non_per_kg_tier_rejected(snap, tmp_path):
+    s, t = hand_case()
+    t.rate_tiers.value = [RateTier(0, None, 40, "CNY", "per_cbm")]
+    with pytest.raises(ValueError):
+        landed_cost(s, t, snap)
+    with pytest.raises(ValueError):
+        landed_cost_xlsx(s, t, snap, tmp_path)   # fails before soffice runs
+
+
+@slow
+def test_snapshot_version_and_hash(snap, tmp_path):
+    import hashlib
+    s, t = hand_case()
+    a, b = both(s, t, snap, tmp_path)
+    assert a.snapshot_version == "2026-10-10.1"
+    assert a.snapshot_sha256 == hashlib.sha256(SNAP_PATH.read_bytes()).hexdigest() == b["snapshot_sha256"]
+
+
 @slow
 def test_hand_case(snap, tmp_path):
     s, t = hand_case()

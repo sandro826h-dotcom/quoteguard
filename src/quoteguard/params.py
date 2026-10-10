@@ -4,6 +4,7 @@ Overridden parameters get status 'override' and are listed by Snapshot.overrides
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from decimal import Decimal
 from pathlib import Path
@@ -21,8 +22,10 @@ def _d(x) -> Decimal:
 
 
 class Snapshot:
-    def __init__(self, raw: dict, overrides: Optional[dict] = None):
+    def __init__(self, raw: dict, overrides: Optional[dict] = None, sha256: str = ""):
         self.raw = raw
+        self.version: str = raw.get("version", "")
+        self.sha256: str = sha256  # sha256 of the snapshot file as loaded (before overrides)
         self.snapshot_id: str = raw["snapshot_id"]
         self.retrieved_at: str = raw.get("retrieved_at", "")
         self._hts = raw["hts"]
@@ -79,5 +82,5 @@ class Snapshot:
 
 
 def load_snapshot(path, overrides: Optional[dict] = None) -> Snapshot:
-    with open(Path(path), encoding="utf-8") as f:
-        return Snapshot(json.load(f), overrides)
+    data = Path(path).read_bytes()
+    return Snapshot(json.loads(data.decode("utf-8")), overrides, hashlib.sha256(data).hexdigest())

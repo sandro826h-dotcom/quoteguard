@@ -38,6 +38,8 @@ class CostBreakdown:
     per_unit_cny: Decimal
     assumptions: list = field(default_factory=list)  # assumed parameters actually used by this shipment
     snapshot_id: str = ""
+    snapshot_version: str = ""
+    snapshot_sha256: str = ""
     overrides: list = field(default_factory=list)    # [{name, original, value}]
     defaulted: list = field(default_factory=list)    # missing terms handled by default values
     fx_date: str = ""
@@ -75,6 +77,8 @@ def chargeable_weight(shipment: Shipment, terms: QuoteTerms) -> Decimal:
 def landed_cost(shipment: Shipment, terms: QuoteTerms, snapshot: Snapshot) -> CostBreakdown:
     shipment.validate()
     terms.validate()
+    if terms.conflicting():
+        raise ValueError(f"conflicting quote terms cannot be calculated: {terms.conflicting()}")
     if terms.plain("mode") is not None and terms.plain("mode") != shipment.mode:
         raise ValueError(f"terms mode {terms.plain('mode')!r} != shipment mode {shipment.mode!r}")
     fx = snapshot.fx_cny_per_usd()
@@ -83,6 +87,9 @@ def landed_cost(shipment: Shipment, terms: QuoteTerms, snapshot: Snapshot) -> Co
         return amount * fx if cur == "USD" else amount
 
     w = chargeable_weight(shipment, terms)
+
+    if any(t.unit != "per_kg" for t in _need(terms, "rate_tiers")):
+        raise ValueError("only per_kg rate tiers can be calculated")
 
     # freight: tier with the largest min_kg not above w, applied to the whole chargeable weight
     cands = [t for t in _need(terms, "rate_tiers") if t.min_kg <= w]
@@ -156,6 +163,8 @@ def landed_cost(shipment: Shipment, terms: QuoteTerms, snapshot: Snapshot) -> Co
         per_unit_cny=money(total / qty),
         assumptions=snapshot.assumed_among(used_fees, [g.hts for g in shipment.goods]),
         snapshot_id=snapshot.snapshot_id,
+        snapshot_version=snapshot.version,
+        snapshot_sha256=snapshot.sha256,
         overrides=snapshot.overrides(),
         defaulted=terms.defaulted(),
         fx_date=snapshot.fx_date() or "",

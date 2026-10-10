@@ -81,11 +81,15 @@ def _num(x):
 def _build(shipment: Shipment, terms: QuoteTerms, snap: Snapshot) -> Workbook:
     shipment.validate()
     terms.validate()
+    if terms.conflicting():
+        raise ValueError(f"conflicting quote terms cannot be calculated: {terms.conflicting()}")
     if terms.plain("mode") is not None and terms.plain("mode") != shipment.mode:
         raise ValueError(f"terms mode {terms.plain('mode')!r} != shipment mode {shipment.mode!r}")
     for nm in ("dim_divisor", "rounding_kg", "rate_tiers"):
         if terms.plain(nm) is None:
             raise ValueError(f"quote terms missing required field: {nm}")
+    if any(t.unit != "per_kg" for t in terms.plain("rate_tiers")):
+        raise ValueError("only per_kg rate tiers can be calculated")
 
     wb = Workbook()
     P = wb.active
@@ -199,7 +203,7 @@ def _build(shipment: Shipment, terms: QuoteTerms, snap: Snapshot) -> Workbook:
 
 def _input_hash(shipment, terms, snap) -> str:
     blob = json.dumps({"s": shipment.to_dict(), "t": terms.to_dict(), "id": snap.snapshot_id,
-                       "fees": snap._fees, "fx": snap._fx, "hts": snap.raw["hts"]}, sort_keys=True)
+                       "sha": snap.sha256, "fees": snap._fees, "fx": snap._fx, "hts": snap.raw["hts"]}, sort_keys=True)
     return hashlib.sha256(blob.encode()).hexdigest()[:12]
 
 
@@ -258,6 +262,8 @@ def landed_cost_xlsx(shipment: Shipment, terms: QuoteTerms, snapshot: Snapshot, 
         "lines": lines,
         "contingent": contingent,
         "snapshot_id": snapshot.snapshot_id,
+        "snapshot_version": snapshot.version,
+        "snapshot_sha256": snapshot.sha256,
         "assumptions": snapshot.assumed_among(used_fees, [g.hts for g in shipment.goods]),
         "overrides": snapshot.overrides(),
         "defaulted": terms.defaulted(),
