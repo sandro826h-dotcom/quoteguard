@@ -1,0 +1,49 @@
+{
+  "status": "review_pending_no_gold_labels_no_model_calls",
+  "units": 28,
+  "originals": 10,
+  "publishers": 7,
+  "forwarder_units": 22,
+  "carrier_units": 6,
+  "recent_tiered_forwarder_units": 6,
+  "recent_originals": 2,
+  "recent_publishers": 1,
+  "source_counts": {
+    "Q01": 3,
+    "Q02": 3,
+    "Q03": 3,
+    "Q04": 1,
+    "Q05": 3,
+    "Q06": 3,
+    "Q07": 3,
+    "Q08": 3,
+    "Q16": 3,
+    "Q17": 3
+  },
+  "publisher_counts": {
+    "F01": 3,
+    "F02": 3,
+    "F03": 4,
+    "F04": 6,
+    "DHL": 3,
+    "UPS": 3,
+    "F05": 6
+  },
+  "source_type_counts": {
+    "pdf": 9,
+    "web_page": 19
+  },
+  "blind_units": 15,
+  "schema_validation": "28/28 SeedQuote.validate and from_dict/to_dict roundtrip passed",
+  "pricing_pdf_decimal_preservation_check": "10 selected pricing pages passed",
+  "head_reference": "e417971d5360fb6825a749c64129122db34346bb",
+  "norm_sha256": "86508d359ed9e23bf717a823c2e8cb9e43a54ca16f1b3e0da4db34804c0f37e3",
+  "schema_sha256": "7e456bfed0aba3206ad3eda9a6a6544bd3ea28be31a7f13c7a05b5ebcfdfe4b7",
+  "parameter_snapshot_sha256": "b6e9ddba89f6cac6b8556ce1d72989002a4029b3e182b6c8a9843b00cba3152c",
+  "units_sha256": "6b5f9fe60660a097400b0688c9908ba00a6c64564010b9fc1c259041f503cc9a",
+  "blind_subset_sha256": "96e29ac8f0b3ad02f0031eca78702e4625e5fe0c6d7e4ab520c45144d498a64a",
+  "model_api_calls": 0,
+  "blind_sampler_reproduces": true,
+  "blank_label_verification": "A/B each 15 empty forms; dates, duration, all terms and inferred metadata unfilled",
+  "forwarder_text_anonymity_scan": "7 text assets passed known-name/domain/phone/company-address check"
+}

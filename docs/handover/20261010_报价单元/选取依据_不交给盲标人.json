@@ -1,0 +1,198 @@
+[
+  {
+    "seed_id": "Q01-u1",
+    "supporting_fragment": "5.80 5.51 5.43 5.29 5.08 5.08",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q01-u2",
+    "supporting_fragment": "5.94 5.65 5.58 5.43 5.29 5.29",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q01-u3",
+    "supporting_fragment": "6.23 5.94 5.80 5.58 5.51 5.51",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q02-u1",
+    "supporting_fragment": "¥9.6/kg起",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q02-u2",
+    "supporting_fragment": "¥5.4/kg起",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q02-u3",
+    "supporting_fragment": "¥4.76/kg起",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q03-u1",
+    "supporting_fragment": "价格低至10.5元/KG",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q03-u2",
+    "supporting_fragment": "价格超低4.3元/KG",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q03-u3",
+    "supporting_fragment": "价格超低7.5元/KG",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q04-u1",
+    "supporting_fragment": "78\t70\t69\t67\t66",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q05-u1",
+    "supporting_fragment": "12–15 元/kg",
+    "annotation_state": "not_started",
+    "reason": "摘要仅写服务大类，未唯一指定一个渠道及目的区域，不另增单元；取首个明确CLX价表的三个区域。摘要/正文价差仍保留供标注。",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q05-u2",
+    "supporting_fragment": "14–17 元/kg",
+    "annotation_state": "not_started",
+    "reason": "摘要仅写服务大类，未唯一指定一个渠道及目的区域，不另增单元；取首个明确CLX价表的三个区域。摘要/正文价差仍保留供标注。",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q05-u3",
+    "supporting_fragment": "16–19 元/kg",
+    "annotation_state": "not_started",
+    "reason": "摘要仅写服务大类，未唯一指定一个渠道及目的区域，不另增单元；取首个明确CLX价表的三个区域。摘要/正文价差仍保留供标注。",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q06-u1",
+    "supporting_fragment": "53–57元/kg",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q06-u2",
+    "supporting_fragment": "55–59元/kg",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q06-u3",
+    "supporting_fragment": "56–62元/kg",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q07-u1",
+    "supporting_fragment": "3,549",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q07-u2",
+    "supporting_fragment": "69元",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q07-u3",
+    "supporting_fragment": "199元",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q08-u1",
+    "supporting_fragment": "2,537.10",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q08-u2",
+    "supporting_fragment": "RMB320",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q08-u3",
+    "supporting_fragment": "Worldwide Express Saver",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q16-u1",
+    "supporting_fragment": "66\t63\t60\t57",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q16-u2",
+    "supporting_fragment": "65\t62\t59\t57",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q16-u3",
+    "supporting_fragment": "60\t58\t56\t54",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q17-u1",
+    "supporting_fragment": "18.5\t17.5\t16.5\t16.5\t15.5",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q17-u2",
+    "supporting_fragment": "20.5\t19.5\t18.5\t18.5\t17.5",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  },
+  {
+    "seed_id": "Q17-u3",
+    "supporting_fragment": "21.5\t20.5\t19.5\t19.5\t18.5",
+    "annotation_state": "not_started",
+    "reason": "按原件首次出现、同时具备渠道/美国目的地/数值价格的信息取前三个；导航的明确单一渠道起价亦纳入",
+    "channel_note": "允许压缩表内换行为空格；地名按原件写法。承运商名称掩盖后保留服务名。"
+  }
+]

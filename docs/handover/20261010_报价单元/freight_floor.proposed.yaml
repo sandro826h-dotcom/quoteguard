@@ -1,0 +1,16 @@
+# 待复审：采用后再复制为 data/taskgen/freight_floor.yaml
+status: proposed
+fx_cny_per_usd: "6.7330"
+freight_floor:
+  air:
+    west: "34.203640"
+    middle: "35.617570"
+    east: "37.098830"
+  sea: {}
+  express: {}
+provenance:
+  air.west: [Q01-u1]
+  air.middle: [Q01-u2]
+  air.east: [Q01-u3]
+disabled_verify_band: [sea, express]
+# dest_zone 键名须由实现方与真实枚举对齐，不擅自覆盖现有配置。

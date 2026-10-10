@@ -1,0 +1,39 @@
+{
+  "status": "proposed_not_frozen",
+  "parameter_snapshot_sha256": "b6e9ddba89f6cac6b8556ce1d72989002a4029b3e182b6c8a9843b00cba3152c",
+  "rows": [
+    {
+      "mode": "air",
+      "dest_zone": "west",
+      "source_unit": "Q01-u1",
+      "lowest_usd_per_kg": "5.08",
+      "fx_cny_per_usd": "6.7330",
+      "cny_per_kg_exact": "34.203640",
+      "status": "proposed_requires_source_selection_review"
+    },
+    {
+      "mode": "air",
+      "dest_zone": "middle",
+      "source_unit": "Q01-u2",
+      "lowest_usd_per_kg": "5.29",
+      "fx_cny_per_usd": "6.7330",
+      "cny_per_kg_exact": "35.617570",
+      "status": "proposed_requires_source_selection_review"
+    },
+    {
+      "mode": "air",
+      "dest_zone": "east",
+      "source_unit": "Q01-u3",
+      "lowest_usd_per_kg": "5.51",
+      "fx_cny_per_usd": "6.7330",
+      "cny_per_kg_exact": "37.098830",
+      "status": "proposed_requires_source_selection_review"
+    }
+  ],
+  "disabled_modes": [
+    "sea",
+    "express"
+  ],
+  "rounding": "单价换算保留 Decimal 精度；最终金额舍入按方案。不要先把参照单价舍入为分。",
+  "scope_note": "规范第十二节不设发布日期下限；Q01 的current只按明确起生效至下次更新判断，不证明已向货代核实为最新可成交价格。"
+}

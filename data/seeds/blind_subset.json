@@ -1,0 +1,56 @@
+{
+  "status": "draft_pending_selection_review_do_not_run_models",
+  "random_seed": 20261010,
+  "algorithm": "sorted strata + Python Random(MT19937) per-stratum shuffle; quotas 4 carrier PDF, 2 forwarder PDF, 9 forwarder web; caps checked during greedy selection",
+  "units_sha256": "6b5f9fe60660a097400b0688c9908ba00a6c64564010b9fc1c259041f503cc9a",
+  "selected_ids": [
+    "Q08-u1",
+    "Q08-u2",
+    "Q07-u1",
+    "Q07-u2",
+    "Q01-u1",
+    "Q01-u3",
+    "Q16-u1",
+    "Q16-u3",
+    "Q17-u3",
+    "Q02-u2",
+    "Q17-u2",
+    "Q03-u1",
+    "Q03-u2",
+    "Q05-u3",
+    "Q02-u1"
+  ],
+  "stratum_counts": {
+    "carrier_published|pdf": 4,
+    "forwarder|pdf": 2,
+    "forwarder|web_page": 9
+  },
+  "publisher_counts": {
+    "UPS": 2,
+    "DHL": 2,
+    "F01": 2,
+    "F05": 4,
+    "F02": 2,
+    "F03": 2,
+    "F04": 1
+  },
+  "source_counts": {
+    "Q08": 2,
+    "Q07": 2,
+    "Q01": 2,
+    "Q16": 2,
+    "Q17": 2,
+    "Q02": 2,
+    "Q03": 2,
+    "Q05": 1
+  },
+  "exceptions": [
+    {
+      "source_type": "image",
+      "required": 3,
+      "available": 0,
+      "selected": 0,
+      "reason": "没有独立图片价卡原件；网页整页截图不是新的 image 原件。按规范实有数量处理，需评审记录。"
+    }
+  ]
+}

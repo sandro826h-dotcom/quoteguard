@@ -1,0 +1,62 @@
+[
+  {
+    "source_id": "Q09",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q10",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q11",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q12",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q13",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q14",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q15",
+    "reason": "原PDF未保存；检索摘录不代替原件",
+    "status": "excluded_missing_original"
+  },
+  {
+    "source_id": "Q18",
+    "reason": "同一发布主体 F05 已按 Q16、Q17 原件/单元顺序取满6个；不是缺原件",
+    "status": "excluded_publisher_cap"
+  },
+  {
+    "source_id": "Q19",
+    "reason": "同一发布主体 F05 已按 Q16、Q17 原件/单元顺序取满6个；不是缺原件",
+    "status": "excluded_publisher_cap"
+  },
+  {
+    "source_id": "Q20",
+    "reason": "转载的公众号原文及日期尚未实证；转载许可尚未核查",
+    "status": "excluded_source_unverified"
+  },
+  {
+    "source_id": "Q21",
+    "reason": "只有查价入口，没有取得价格数值",
+    "status": "excluded_no_price"
+  },
+  {
+    "source_id": "Q22",
+    "reason": "新检查的近期货代说明文章只引用内部报价表，无公开价格数值；不能作为报价",
+    "status": "excluded_no_price"
+  }
+]
