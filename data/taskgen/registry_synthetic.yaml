@@ -5,38 +5,38 @@ snapshot_id: syn-registry-2026-10-10
 is_synthetic: true
 dev:
   fmc:   # 模拟美国 FMC OTI 名单
-    - {name: "SYN-Harbor Lane Logistics", license_no: "SYN-FMC-0001", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Bluewater Cargo", license_no: "SYN-FMC-0002", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Pacific Span Freight", license_no: "SYN-FMC-0003", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Meridian Forwarding", license_no: "SYN-FMC-0004", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Cedar Bay Shipping", license_no: "SYN-FMC-0005", oti_type: NVOCC, status: revoked, is_synthetic: true}
-    - {name: "SYN-Northgate Express", license_no: "SYN-FMC-0006", oti_type: NVOCC, status: revoked, is_synthetic: true}
-    - {name: "SYN-Redwood Forwarders", license_no: "SYN-FMC-0007", oti_type: OFF, status: active, is_synthetic: true}
-    - {name: "SYN-Summit Ocean Agency", license_no: "SYN-FMC-0008", oti_type: OFF, status: active, is_synthetic: true}
+    - {name: "SYN-Harbor Lane Logistics", license_no: "SYN-FMC-0001", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Bluewater Cargo", license_no: "SYN-FMC-0002", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Pacific Span Freight", license_no: "SYN-FMC-0003", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Meridian Forwarding", license_no: "SYN-FMC-0004", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Cedar Bay Shipping", license_no: "SYN-FMC-0005", oti_type: "NVOCC", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Northgate Express", license_no: "SYN-FMC-0006", oti_type: "NVOCC", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Redwood Forwarders", license_no: "SYN-FMC-0007", oti_type: "OFF", status: "active", is_synthetic: true}
+    - {name: "SYN-Summit Ocean Agency", license_no: "SYN-FMC-0008", oti_type: "OFF", status: "active", is_synthetic: true}
   cn:    # 模拟国内登记：交通运输部无船承运备案与海关企业信用公示
-    - {name: "SYN-Eastlake Logistics", reg_no: "SYN-MOT-0001", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Harbor Lane Logistics", reg_no: "SYN-MOT-0002", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Jade River Cargo", reg_no: "SYN-MOT-0003", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Stonebridge Freight", reg_no: "SYN-MOT-0004", cert_type: mot_nvocc_filing, status: revoked, is_synthetic: true}
-    - {name: "SYN-Eastlake Logistics", reg_no: "SYN-AEO-0001", cert_type: aeo_advanced, status: active, is_synthetic: true}
-    - {name: "SYN-Jade River Cargo", reg_no: "SYN-AEO-0002", cert_type: aeo_advanced, status: active, is_synthetic: true}
+    - {name: "SYN-Eastlake Logistics", reg_no: "SYN-MOT-0001", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Harbor Lane Logistics", reg_no: "SYN-MOT-0002", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Jade River Cargo", reg_no: "SYN-MOT-0003", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Stonebridge Freight", reg_no: "SYN-MOT-0004", cert_type: "mot_nvocc_filing", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Eastlake Logistics", reg_no: "SYN-AEO-0001", cert_type: "aeo_advanced", status: "active", is_synthetic: true}
+    - {name: "SYN-Jade River Cargo", reg_no: "SYN-AEO-0002", cert_type: "aeo_advanced", status: "active", is_synthetic: true}
 test:
   fmc:
-    - {name: "SYN-Tidal Reach Logistics", license_no: "SYN-FMC-1001", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Larkspur Cargo", license_no: "SYN-FMC-1002", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Granite Coast Freight", license_no: "SYN-FMC-1003", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Oakline Forwarding", license_no: "SYN-FMC-1004", oti_type: NVOCC, status: active, is_synthetic: true}
-    - {name: "SYN-Silverfin Shipping", license_no: "SYN-FMC-1005", oti_type: NVOCC, status: revoked, is_synthetic: true}
-    - {name: "SYN-Westmark Express", license_no: "SYN-FMC-1006", oti_type: NVOCC, status: revoked, is_synthetic: true}
-    - {name: "SYN-Ashgrove Forwarders", license_no: "SYN-FMC-1007", oti_type: OFF, status: active, is_synthetic: true}
-    - {name: "SYN-Highmast Ocean Agency", license_no: "SYN-FMC-1008", oti_type: OFF, status: active, is_synthetic: true}
+    - {name: "SYN-Tidal Reach Logistics", license_no: "SYN-FMC-1001", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Larkspur Cargo", license_no: "SYN-FMC-1002", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Granite Coast Freight", license_no: "SYN-FMC-1003", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Oakline Forwarding", license_no: "SYN-FMC-1004", oti_type: "NVOCC", status: "active", is_synthetic: true}
+    - {name: "SYN-Silverfin Shipping", license_no: "SYN-FMC-1005", oti_type: "NVOCC", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Westmark Express", license_no: "SYN-FMC-1006", oti_type: "NVOCC", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Ashgrove Forwarders", license_no: "SYN-FMC-1007", oti_type: "OFF", status: "active", is_synthetic: true}
+    - {name: "SYN-Highmast Ocean Agency", license_no: "SYN-FMC-1008", oti_type: "OFF", status: "active", is_synthetic: true}
   cn:
-    - {name: "SYN-Lakeshore Logistics", reg_no: "SYN-MOT-1001", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Tidal Reach Logistics", reg_no: "SYN-MOT-1002", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Amber Delta Cargo", reg_no: "SYN-MOT-1003", cert_type: mot_nvocc_filing, status: active, is_synthetic: true}
-    - {name: "SYN-Brightwater Freight", reg_no: "SYN-MOT-1004", cert_type: mot_nvocc_filing, status: revoked, is_synthetic: true}
-    - {name: "SYN-Lakeshore Logistics", reg_no: "SYN-AEO-1001", cert_type: aeo_advanced, status: active, is_synthetic: true}
-    - {name: "SYN-Amber Delta Cargo", reg_no: "SYN-AEO-1002", cert_type: aeo_advanced, status: active, is_synthetic: true}
+    - {name: "SYN-Lakeshore Logistics", reg_no: "SYN-MOT-1001", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Tidal Reach Logistics", reg_no: "SYN-MOT-1002", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Amber Delta Cargo", reg_no: "SYN-MOT-1003", cert_type: "mot_nvocc_filing", status: "active", is_synthetic: true}
+    - {name: "SYN-Brightwater Freight", reg_no: "SYN-MOT-1004", cert_type: "mot_nvocc_filing", status: "revoked", is_synthetic: true}
+    - {name: "SYN-Lakeshore Logistics", reg_no: "SYN-AEO-1001", cert_type: "aeo_advanced", status: "active", is_synthetic: true}
+    - {name: "SYN-Amber Delta Cargo", reg_no: "SYN-AEO-1002", cert_type: "aeo_advanced", status: "active", is_synthetic: true}
 generator_aux:   # 不得进入模型输入
   dev:
     unregistered_entities:
