@@ -660,3 +660,99 @@ def test_review_source_check_uses_reviewer_text(env):
     fb = run()
     assert fb["diagnostics"]["review"]["text_fallback"] == [cid]
     assert fb["diagnostics"]["review_disagreements"] != {}
+
+
+# ---------------------------------------------------------------- fixes from the pilot extraction diagnosis
+def _sc(code, basis, amount, **kw):
+    return dict({"code": code, "basis": basis, "amount": amount, "currency": "CNY", "condition": "always",
+                 "threshold": None}, **kw)
+
+
+def test_contingent_flag_needs_evidence_in_the_quote():
+    raw = {"surcharges": {"status": "stated", "value": [
+        _sc("Remote area 地区附加费", "per_kg", 10, condition="remote", contingent=True),
+        _sc("Oversize 费", "per_ctn", 61.5, condition="ctn_longest_side_gt", threshold=58, contingent=True),
+        _sc("海关抽检费", "per_shpt", 800, contingent=False),
+        _sc("旺季费", "per_kg", 1, contingent=True)],
+        "quotes": ["Remote area 地区附加费：10 CNY per kg（Remote area 地址）", "Oversize 费：61.5 CNY per ctn",
+                   "旺季费 1 元/kg，仅在发生时收取"]}}
+    got = {s.code: s.contingent for s in mp.normalize(raw).plain("surcharges")}
+    assert got == {"REM": False, "OVS": False, "INSP": True, "旺季费": True}
+    # the code default for the inspection fee holds without quotes; an explicit false from the model is kept off
+    assert mp.normalize({"surcharges": {"status": "stated", "value": [_sc("查验费", "per_shpt", 800)]}}
+                        ).plain("surcharges")[0].contingent is True
+
+
+def test_contingent_surcharge_no_longer_drops_the_cost(env):
+    t, g = first_where(env, _explicit_choose, "explicit task with a choice")
+    cid = next(c.cand_id for c in t.candidates if any(
+        s.amount > 0 for s in (true_terms(t, g, c.cand_id).plain("surcharges") or [])))
+    ex = {k: raw_from(v) for k, v in truth(t, g).items()}
+    for s in ex[cid]["surcharges"]["value"]:
+        s["contingent"] = True               # what the models did
+    out = mp.run_m2(t, ti_of(t), ex, env["snap"])
+    assert out["per_cand"][cid]["cost_cny"] == D(g.per_cand[cid]["total_cny"])
+
+
+def test_fee_entries_in_surcharges_go_to_their_own_terms():
+    raw = {"surcharges": {"status": "stated", "quotes": [], "value": [
+        _sc("FSC", "pct_freight", 0.2, currency=None), _sc("REM", "per_kg", 7, condition="remote"),
+        _sc("Customs filing fee", "per_shpt", 150), _sc("ISF 申报费", "per_shpt", 200)]},
+        "fuel_pct": {"status": "missing"}, "broker_fee_cny": {"status": "missing"},
+        "isf_fee_cny": {"status": "missing"}}
+    t = mp.normalize(raw)
+    assert [s.code for s in t.plain("surcharges")] == ["REM"]
+    assert (t.fuel_pct.value, t.broker_fee_cny.value, t.isf_fee_cny.value) == (D("0.2"), D(150), D(200))
+    assert t.fuel_pct.status == "stated"
+    assert any("moved to fuel_pct" in n for n in t.norm_notes)
+    # already given: the entry is dropped, never charged twice
+    raw["fuel_pct"] = {"status": "stated", "value": 0.2, "quotes": []}
+    raw["broker_fee_cny"] = {"status": "stated", "value": 150, "quotes": []}
+    t2 = mp.normalize(raw)
+    assert [s.code for s in t2.plain("surcharges")] == ["REM"] and t2.broker_fee_cny.value == D(150)
+    # an entry that cannot be moved stays a surcharge
+    raw3 = {"surcharges": {"status": "stated", "quotes": [], "value": [
+        _sc("Customs filing fee", "per_kg", 2), _sc("燃油费", "per_kg", 1), _sc("住宅派送费", "per_ctn", 5)]}}
+    t3 = mp.normalize(raw3)
+    assert len(t3.plain("surcharges")) == 3 and t3.broker_fee_cny.status == "missing"
+
+
+def test_pilot_air_quote_prices_correctly(env):
+    # shape of a recorded ds_flash response: fuel and customs fee also listed among the surcharges,
+    # every fee flagged contingent
+    raw = {"mode": {"status": "stated", "value": "air", "quotes": []},
+           "rate_tiers": {"status": "stated", "quotes": [], "value": [
+               {"min_kg": 0, "price": 37.5, "currency": "CNY"}, {"min_kg": 21, "price": 36, "currency": "CNY"}]},
+           "min_kg_shipment": {"status": "stated", "value": 21, "quotes": []},
+           "dim_divisor": {"status": "stated", "value": 6000, "quotes": []},
+           "rounding_kg": {"status": "stated", "value": 1, "quotes": []},
+           "surcharges": {"status": "stated", "quotes": ["Remote area 地区附加费：10 CNY per kg"], "value": [
+               _sc("FSC", "pct_freight", 0.2, currency=None),
+               _sc("Remote area", "per_kg", 10, condition="remote", contingent=True),
+               _sc("Customs filing fee", "per_shpt", 150)]},
+           "fuel_pct": {"status": "stated", "value": 0.2, "quotes": []},
+           "transit_days": {"status": "stated", "value": [6, 9], "quotes": []}}
+    t = mp.normalize(raw, "air")
+    assert [(s.code, s.contingent) for s in t.plain("surcharges")] == [("REM", False)]
+    assert t.fuel_pct.value == D("0.2") and t.broker_fee_cny.value == D(150)
+
+
+def test_zero_wording_in_quotes_reads_null_as_zero():
+    raw = {"min_kg_shipment": {"status": "stated", "value": None, "quotes": ["Whole lot 最低计费重 | 不设"]},
+           "fuel_pct": {"status": "stated", "value": None, "quotes": ["燃油附加费 | 不收"]},
+           "broker_fee_cny": {"status": "stated", "value": None, "quotes": ["Customs 备注"]},
+           "isf_fee_cny": {"status": "stated", "value": None, "quotes": []},
+           "min_kg_carton": {"status": "conflicting", "value": [None, 22], "quotes": ["单箱不设最低计费重", "备注 22kg"]}}
+    t = mp.normalize(raw)
+    assert (t.min_kg_shipment.status, t.min_kg_shipment.value) == ("stated", D(0))
+    assert t.fuel_pct.value == D(0)
+    assert t.broker_fee_cny.status == "missing" and t.isf_fee_cny.status == "missing"
+    assert t.min_kg_carton.status == "conflicting" and t.min_kg_carton.value == [D(0), D(22)]
+    # a term the quote does not zero stays unreadable
+    assert mp.normalize({"dim_divisor": {"status": "stated", "value": None, "quotes": ["不设"]}}
+                        ).dim_divisor.status == "missing"
+
+
+def test_liability_object_becomes_text():
+    t = mp.normalize({"liability": {"status": "stated", "value": {"basis": "declared_value", "cap": 20}}})
+    assert t.liability.status == "stated" and "declared_value" in t.liability.value

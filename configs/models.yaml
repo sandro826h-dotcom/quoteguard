@@ -5,6 +5,7 @@
 # runs/step0_models_list/ (2026-10-10) and, except dev_ds and dev_vl, a step-0 call returned
 # the same model name (runs/step0-live, step0b-live, step0c-live).
 # image_token_bound (optional, default 4000): per-image token allowance in the cost upper bound.
+# stream (optional, default true): set false for a provider that cannot stream; requests stream by default.
 # tier: strong | low | dev | vision (vision-only configs referenced by vision_config_id)
 models:
   - config_id: ds_pro

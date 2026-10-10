@@ -35,6 +35,7 @@ def cfg(provider="siliconflow", temperature=0, extra=None):
 
 
 def client(**kw):
+    kw.setdefault("stream", False)
     return Client(sleep=lambda s: None, backoff_s=0, rate_limit_delay_s=0, **kw)
 
 
@@ -42,8 +43,8 @@ def capture(monkeypatch, responses):
     calls = []
     it = iter(responses)
 
-    def post(self, url, headers=None, json=None, timeout=None):
-        calls.append({"url": url, "headers": headers, "json": json})
+    def post(self, url, headers=None, json=None, timeout=None, stream=None):
+        calls.append({"url": url, "headers": headers, "json": json, "stream": stream, "timeout": timeout})
         r = next(it)
         if isinstance(r, Exception):
             raise r
@@ -227,7 +228,7 @@ def test_read_timeout_marked_possibly_billed(env):
 
 def test_429_retry_after(env):
     sleeps = []
-    c = Client(sleep=sleeps.append, backoff_s=0, rate_limit_delay_s=0)
+    c = Client(sleep=sleeps.append, backoff_s=0, rate_limit_delay_s=0, stream=False)
     capture(env, [FakeResp(429, "slow down", headers={"Retry-After": "7"}), FakeResp()])
     assert c.complete(cfg(), []).attempt == 2
     assert sleeps == [7.0]
@@ -238,3 +239,185 @@ def test_auth_failed_stops(env):
     with pytest.raises(BatchStop) as e:
         client().complete(cfg(), [])
     assert e.value.reason == "auth_failed"
+
+
+# ---------------------------------------------------------------- streaming
+class FakeStream:
+    def __init__(self, lines, status=200, headers=None, fail_after=None, exc=None, text=None):
+        self.status_code = status
+        self.headers = headers if headers is not None else {"x-request-id": "rid-s"}
+        self._lines, self._fail_after, self._exc = lines, fail_after, exc
+        self.text = text if text is not None else "\n".join(lines)
+
+    def iter_lines(self):
+        for i, ln in enumerate(self._lines):
+            if self._fail_after is not None and i >= self._fail_after:
+                raise self._exc
+            yield ln.encode("utf-8") if i % 2 else ln
+
+
+def chunk(content=None, reasoning=None, finish=None, usage=None, model="m-ret", cid="c-1", choices=True):
+    d = {"id": cid, "model": model}
+    if choices:
+        delta = {}
+        if content is not None:
+            delta["content"] = content
+        if reasoning is not None:
+            delta["reasoning_content"] = reasoning
+        d["choices"] = [{"index": 0, "delta": delta, "finish_reason": finish}]
+    else:
+        d["choices"] = []
+    if usage:
+        d["usage"] = usage
+    return "data: " + json.dumps(d, ensure_ascii=False)
+
+
+USAGE = {"prompt_tokens": 12, "completion_tokens": 7, "total_tokens": 19}
+
+
+def good_stream():
+    return [chunk(reasoning="think "), "", chunk(reasoning="more"), chunk(content="你"), chunk(content="好"),
+            ": keep-alive", chunk(finish="stop"), chunk(usage=USAGE, choices=False), "data: [DONE]"]
+
+
+def test_stream_default_payload_and_timeout(env):
+    calls = capture(env, [FakeStream(good_stream())])
+    r = Client(sleep=lambda s: None).complete(cfg(), [])
+    c = calls[0]
+    assert c["json"]["stream"] is True and c["json"]["stream_options"] == {"include_usage": True}
+    assert c["stream"] is True and c["timeout"] == (15.0, 120.0)
+    assert r.streamed and r.text == "你好" and r.reasoning_content == "think more"
+    assert r.finish_reason == "stop" and r.usage == USAGE and r.returned_model == "m-ret"
+    assert r.request_id == "rid-s" and r.valid and r.stream_complete and r.http_status == 200
+    assert "[DONE]" in r.raw_body and ": keep-alive" in r.raw_body and r.raw_body.startswith("data:")
+    assert r.attempts[0]["usage"] == USAGE
+
+
+def test_stream_request_id_falls_back_to_chunk_id(env):
+    capture(env, [FakeStream(good_stream(), headers={})])
+    assert Client(sleep=lambda s: None).complete(cfg(), []).request_id == "c-1"
+
+
+def test_stream_can_be_disabled_by_client_or_config(env):
+    calls = capture(env, [FakeResp()])
+    Client(sleep=lambda s: None, stream=False).complete(cfg(), [])
+    assert "stream" not in calls[0]["json"] and calls[0]["stream"] is False
+    calls = capture(env, [FakeResp()])
+    c = ModelConfig("c", "siliconflow", "m", "dev", None, 0, 100, {}, False, stream=False)
+    Client(sleep=lambda s: None).complete(c, [])
+    assert "stream" not in calls[0]["json"]
+    assert load_models()["ds_flash"].stream is None
+
+
+def test_stream_non_200_uses_full_body_and_same_classification(env):
+    capture(env, [FakeStream([], status=402, text='{"message":"x"}')])
+    with pytest.raises(BatchStop) as e:
+        Client(sleep=lambda s: None).complete(cfg(), [])
+    assert e.value.reason == "insufficient_balance"
+    calls = capture(env, [FakeStream([], status=502, text="upstream request failed"), FakeStream(good_stream())])
+    r = Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    assert len(calls) == 2 and r.attempts[0]["http_status"] == 502 and "upstream" in r.attempts[0]["body"]
+
+
+def test_stream_break_is_retryable_and_possibly_billed(env):
+    broken = FakeStream(good_stream(), fail_after=3, exc=requests.exceptions.ChunkedEncodingError("cut"))
+    calls = capture(env, [broken, FakeStream(good_stream())])
+    r = Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    assert len(calls) == 2 and r.attempt == 2
+    assert r.attempts[0]["possibly_billed"] is True and r.attempts[0]["error"] == "ChunkedEncodingError"
+    capture(env, [FakeStream(good_stream(), fail_after=2, exc=requests.ConnectionError("x"))] * 3)
+    with pytest.raises(ProviderCallError) as e:
+        Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    assert sum(a["possibly_billed"] for a in e.value.metadata["attempts"]) == 3
+    capture(env, [FakeStream(good_stream(), fail_after=2, exc=requests.ReadTimeout("gap"))] * 3)
+    with pytest.raises(ProviderCallError):
+        Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+
+
+def test_stream_ends_without_done_or_usage(env):
+    capture(env, [FakeStream([chunk(content="par"), chunk(content="tial")])])
+    r = Client(sleep=lambda s: None).complete(cfg(), [])
+    assert r.text == "partial" and r.usage == {} and r.valid is False and r.stream_complete is False
+
+
+def test_stream_json_fallback_when_stream_ignored(env):
+    capture(env, [FakeStream([json.dumps(OK_BODY)])])
+    r = Client(sleep=lambda s: None).complete(cfg(), [])
+    assert r.text == "hello" and r.usage["prompt_tokens"] == 10 and r.streamed is False
+
+
+def test_stream_redacts_key_in_raw_body(env):
+    capture(env, [FakeStream([f"data: {json.dumps({'echo': KEY})}"] + good_stream())])
+    r = Client(sleep=lambda s: None).complete(cfg(), [])
+    assert KEY not in r.raw_body and r.body_redacted is True
+
+
+# ---------------------------------------------------------------- review fixes
+def test_gateway_errors_possibly_billed_and_retried_once(env):
+    for st in (502, 504):
+        calls = capture(env, [FakeResp(st, "upstream request failed")] * 3)
+        with pytest.raises(ProviderCallError) as e:
+            client(max_retries=2).complete(cfg(), [])
+        assert len(calls) == 2                      # one retry at most
+        att = e.value.metadata["attempts"]
+        assert [a["possibly_billed"] for a in att] == [True, True]
+    calls = capture(env, [FakeResp(502, "bad gateway"), FakeResp()])
+    r = client().complete(cfg(), [])
+    assert r.attempt == 2 and r.attempts[0]["possibly_billed"] is True and r.attempts[1]["possibly_billed"] is False
+    # other 5xx keep the full retry budget and are not marked billed
+    calls = capture(env, [FakeResp(503, "busy")] * 3)
+    with pytest.raises(ProviderCallError) as e:
+        client(max_retries=2).complete(cfg(), [])
+    assert len(calls) == 3 and not any(a["possibly_billed"] for a in e.value.metadata["attempts"])
+
+
+def test_in_stream_error_chunks(env):
+    err = lambda code, msg="x": "data: " + json.dumps({"error": {"code": code, "message": msg}})
+    env.setenv("DASHSCOPE_API_KEY", "k" * 12)
+    capture(env, [FakeStream([chunk(content="a"), err("AllocationQuota.FreeTierOnly")])])
+    with pytest.raises(BatchStop) as e:
+        Client(sleep=lambda s: None).complete(cfg("dashscope"), [])
+    assert e.value.reason == "quota_exhausted"
+    assert "AllocationQuota" in e.value.attempts[0]["body"] and e.value.attempts[0]["possibly_billed"] is True
+    capture(env, [FakeStream([err("30001", "x")])])
+    with pytest.raises(BatchStop) as e:
+        Client(sleep=lambda s: None).complete(cfg(), [])
+    assert e.value.reason == "insufficient_balance"
+    capture(env, [FakeStream([err("Arrearage")])])
+    with pytest.raises(BatchStop) as e:
+        Client(sleep=lambda s: None).complete(cfg("dashscope"), [])
+    assert e.value.reason == "insufficient_balance"
+    capture(env, [FakeStream([err("invalid_api_key")])])
+    with pytest.raises(BatchStop) as e:
+        Client(sleep=lambda s: None).complete(cfg(), [])
+    assert e.value.reason == "auth_failed"
+    # any other in-stream error is retried
+    calls = capture(env, [FakeStream([err("server_busy")]), FakeStream(good_stream())])
+    r = Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    assert len(calls) == 2 and r.attempts[0]["error"] == "StreamError" and r.text == "你好"
+
+
+def test_broken_stream_keeps_received_lines_redacted(env):
+    lines = [chunk(content="partial"), f"data: {json.dumps({'echo': KEY})}"] + good_stream()
+    capture(env, [FakeStream(lines, fail_after=2, exc=requests.exceptions.ChunkedEncodingError("cut"))] * 3)
+    with pytest.raises(ProviderCallError) as e:
+        Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    body = e.value.metadata["attempts"][0]["body"]
+    assert "partial" in body and KEY not in body and "[REDACTED]" in body and len(body) <= llm.BODY_LIMIT
+
+
+def test_response_is_closed(env):
+    closed = []
+
+    class R(FakeStream):
+        def close(self):
+            closed.append(1)
+    capture(env, [R(good_stream())])
+    Client(sleep=lambda s: None).complete(cfg(), [])
+    capture(env, [R([], status=400, text="bad")])
+    with pytest.raises(ProviderCallError):
+        Client(sleep=lambda s: None).complete(cfg(), [])
+    capture(env, [R(good_stream(), fail_after=1, exc=requests.ConnectionError("x"))] * 3)
+    with pytest.raises(ProviderCallError):
+        Client(sleep=lambda s: None, backoff_s=0).complete(cfg(), [])
+    assert len(closed) == 2 + 3

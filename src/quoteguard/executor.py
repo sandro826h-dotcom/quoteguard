@@ -168,6 +168,15 @@ class MockClient:
                            endpoint="mock://" + config.provider)
 
 
+def upper_cost(req: dict, cfg: ModelConfig, rate: dict):
+    """(currency, upper-bound cost of one attempt): input bytes / 2 plus the image allowance, plus max_tokens."""
+    if req.get("max_tokens") is not None:
+        cfg = dataclasses.replace(cfg, max_tokens=req["max_tokens"])
+    in_tok = (len((req["system"] or "").encode("utf-8")) + len(req["text"].encode("utf-8"))) / 2 \
+        + cfg.image_token_bound * len(req["images"])
+    return rate["currency"], (in_tok * rate["input"] + cfg.max_tokens * rate["output"]) / 1e6
+
+
 def _file_key(run_key: str) -> str:
     return sha256_text(run_key)[:24]
 
@@ -253,12 +262,7 @@ class Executor:
                               [(data, im["mime"]) for (data, _), im in zip(loaded, req["images"])])
 
     def _upper_cost(self, req, cfg: ModelConfig):
-        if req.get("max_tokens") is not None:
-            cfg = dataclasses.replace(cfg, max_tokens=req["max_tokens"])
-        rate = self.rates[cfg.config_id]
-        in_tok = (len((req["system"] or "").encode("utf-8")) + len(req["text"].encode("utf-8"))) / 2 \
-            + cfg.image_token_bound * len(req["images"])
-        return rate["currency"], (in_tok * rate["input"] + cfg.max_tokens * rate["output"]) / 1e6
+        return upper_cost(req, cfg, self.rates[cfg.config_id])
 
     def _cost(self, usage, req, cfg):
         rate = self.rates[cfg.config_id]
@@ -475,7 +479,7 @@ class Executor:
                    "extra_payload": cfg.extra_payload, "seed": req["seed"],
                    "prompt_sha256": req["prompt_sha256"], "raw_body": resp.raw_body, "text": resp.text,
                    "valid": resp.valid, "body_redacted": resp.body_redacted,
-                   "has_reasoning_content": "reasoning_content" in resp.raw_body,
+                   "has_reasoning_content": bool(resp.reasoning_content), "streamed": resp.streamed,
                    "usage": resp.usage, "finish_reason": resp.finish_reason, "request_id": resp.request_id,
                    "latency_ms": resp.latency_ms, "http_status": resp.http_status, "attempt": resp.attempt,
                    "attempts": resp.attempts, "started_at": started_at, "finished_at": utc_now(),

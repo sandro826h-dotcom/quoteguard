@@ -49,3 +49,14 @@ def test_verify_terms_conflicting_keeps_when_one_fragment_found():
                                      [Span("e", "text", "除以 5000"), Span("e", "text", "除以 6000")]))
     out, down = verify_terms(t, TEXT)
     assert down == [] and out.dim_divisor.status == "conflicting"
+
+
+def test_verify_tolerates_moved_spaces():
+    src = "报价有效期2026-10-01 至2026-10-31"
+    assert verify("报价有效期2026-10-01 至 2026-10-31", src)
+    assert verify("报价有效期 2026-10-01至2026-10-31", src)
+    assert verify("Whole lot最低计费重", "| Whole lot 最低计费重 | 不设 |")
+    assert not verify("报价有效期2026-10-01 至 2026-11-30", src)
+    t = QuoteTerms(dim_divisor=Field(D(6000), "stated", [Span("e", "text", "体积重 除以6000")]))
+    out, down = verify_terms(t, "体积重除以 6000")
+    assert down == [] and out.dim_divisor.status == "stated"

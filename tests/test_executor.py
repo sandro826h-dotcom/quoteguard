@@ -48,6 +48,7 @@ def env(monkeypatch):
     for v in ("DEEPSEEK_API_KEY", "DASHSCOPE_API_KEY", "SILICONFLOW_API_KEY"):
         monkeypatch.setenv(v, "unit-test-key-0000")
     monkeypatch.delenv("QG_PROXY_AUTH", raising=False)
+    monkeypatch.setattr(ex.llm, "DEFAULT_STREAM", False)   # most tests fake single JSON responses
     for p in ("DEEPSEEK", "DASHSCOPE", "SILICONFLOW"):
         monkeypatch.delenv(f"QG_{p}_BASE_URL", raising=False)
     return monkeypatch
@@ -64,7 +65,7 @@ def patch_post(monkeypatch, handler):
     calls = []
     seen_headers = patch_post.headers = []
 
-    def post(self, url, headers=None, json=None, timeout=None):
+    def post(self, url, headers=None, json=None, timeout=None, stream=None):
         calls.append((url, json))
         seen_headers.append(headers)
         return handler(url, json)
@@ -434,7 +435,7 @@ def test_invalid_200_saved_as_observation(tmp_path, env):
 def test_read_timeout_charged_at_upper_bound(tmp_path, env):
     state = {"n": 0}
 
-    def post(self, url, headers=None, json=None, timeout=None):
+    def post(self, url, headers=None, json=None, timeout=None, stream=None):
         state["n"] += 1
         if state["n"] == 1:
             raise requests.ReadTimeout("slow")
@@ -664,3 +665,83 @@ def test_max_tokens_override_in_hash_payload_and_observation(tmp_path, env):
         ex.load_plan(write_plan(tmp_path, [bad], name="bad.json"), load_models())
     with pytest.raises(PlanError, match="max_tokens"):
         ex.load_plan(write_plan(tmp_path, [dict(r, max_tokens=0)], name="bad2.json"), load_models())
+
+
+# ---------------------------------------------------------------- streamed executor path
+class SSE:
+    def __init__(self, lines, status=200, fail_after=None, exc=None):
+        self.status_code, self.headers, self.text = status, {"x-request-id": "r"}, "\n".join(lines)
+        self.lines, self.fail_after, self.exc = lines, fail_after, exc
+
+    def iter_lines(self):
+        for i, ln in enumerate(self.lines):
+            if self.fail_after is not None and i >= self.fail_after:
+                raise self.exc
+            yield ln.encode()
+
+
+def sse_lines(usage=True, done=True, reasoning="why"):
+    c = lambda d: "data: " + json.dumps(d)
+    out = [c({"id": "i", "model": "ret", "choices": [{"delta": {"reasoning_content": reasoning}}]}),
+           c({"id": "i", "model": "ret", "choices": [{"delta": {"content": "{}"}, "finish_reason": None}]}),
+           c({"id": "i", "model": "ret", "choices": [{"delta": {}, "finish_reason": "stop"}]})]
+    if usage:
+        out.append(c({"id": "i", "model": "ret", "choices": [],
+                      "usage": {"prompt_tokens": 100, "completion_tokens": 50}}))
+    if done:
+        out.append("data: [DONE]")
+    return out
+
+
+def test_streamed_observation(tmp_path, env):
+    env.setattr(ex.llm, "DEFAULT_STREAM", True)
+    calls = patch_post(env, lambda u, j: SSE(sse_lines()))
+    e = Executor(write_plan(tmp_path, [req("ds_flash", 0)]), tmp_path / "runs", "live")
+    assert e.run()["status"] == "completed"
+    assert calls[0][1]["stream"] is True
+    o = json.loads(obs_files(e.dir)[0].read_text())
+    assert o["streamed"] is True and o["has_reasoning_content"] is True and o["text"] == "{}"
+    assert o["raw_body"].count("data:") == 5 and o["cost_estimate"]["input_tokens"] == 100
+    assert o["valid"] is True and o["model"]["returned"] == "ret"
+    # without reasoning chunks the flag is false even if the word appears in the raw body
+    patch_post(env, lambda u, j: SSE(sse_lines(reasoning="")))
+    e2 = Executor(write_plan(tmp_path, [req("ds_flash", 0)], name="p2.json"), tmp_path / "runs2", "live")
+    e2.run()
+    assert json.loads(obs_files(e2.dir)[0].read_text())["has_reasoning_content"] is False
+
+
+def test_stream_without_usage_billed_at_upper_bound(tmp_path, env):
+    env.setattr(ex.llm, "DEFAULT_STREAM", True)
+    patch_post(env, lambda u, j: SSE(sse_lines(usage=False, done=False)))
+    e = Executor(write_plan(tmp_path, [req("ds_flash", 0)]), tmp_path / "runs", "live")
+    e.run()
+    o = json.loads(obs_files(e.dir)[0].read_text())
+    _, upper = e._upper_cost(req("ds_flash", 0), e.models["ds_flash"])
+    assert o["cost_estimate"]["usage_missing"] is True and o["cost_estimate"]["amount"] == pytest.approx(upper)
+    assert o["valid"] is False
+
+
+def test_stream_break_charged_as_possibly_billed(tmp_path, env):
+    env.setattr(ex.llm, "DEFAULT_STREAM", True)
+    import quoteguard.llm as L
+    orig = L.Client.__init__
+    env.setattr(L.Client, "__init__", lambda self, **kw: orig(self, sleep=lambda s: None, backoff_s=0))
+    patch_post(env, lambda u, j: SSE(sse_lines(), fail_after=2, exc=requests.exceptions.ChunkedEncodingError("cut")))
+    e = Executor(write_plan(tmp_path, [req("ds_flash", 0)]), tmp_path / "runs", "live", max_consecutive_errors=1)
+    m = e.run()
+    _, upper = e._upper_cost(req("ds_flash", 0), e.models["ds_flash"])
+    assert m["status"] == "incomplete_errors" and not obs_files(e.dir)
+    assert m["spent"]["USD"] == pytest.approx(3 * upper)   # three attempts, each possibly billed
+
+
+def test_gateway_errors_charged_at_upper_bound(tmp_path, env):
+    import quoteguard.llm as L
+    orig = L.Client.__init__
+    env.setattr(L.Client, "__init__", lambda self, **kw: orig(self, sleep=lambda s: None, backoff_s=0))
+    calls = patch_post(env, lambda u, j: FakeResp(502, "upstream request failed"))
+    e = Executor(write_plan(tmp_path, [req("ds_flash", 0)]), tmp_path / "runs", "live", max_consecutive_errors=1)
+    m = e.run()
+    _, upper = e._upper_cost(req("ds_flash", 0), e.models["ds_flash"])
+    assert len(calls) == 2 and m["spent"]["USD"] == pytest.approx(2 * upper)
+    rec = json.loads(next((e.dir / "errors").glob("*.json")).read_text())
+    assert rec["possibly_billed_cost"]["attempts"] == 2
