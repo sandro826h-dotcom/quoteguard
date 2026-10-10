@@ -1,0 +1,148 @@
+{
+ "budget": {
+  "CNY": 5.0,
+  "USD": 0.5
+ },
+ "kind": "dev",
+ "plan_id": "pilotb-B-retry",
+ "rates": {
+  "ds_flash": {
+   "currency": "USD",
+   "input": 0.5,
+   "output": 1.0
+  },
+  "ds_pro": {
+   "currency": "USD",
+   "input": 2.0,
+   "output": 4.0
+  },
+  "glm": {
+   "currency": "CNY",
+   "input": 8.0,
+   "output": 28.0
+  },
+  "glm_v": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 12.0
+  },
+  "kimi": {
+   "currency": "CNY",
+   "input": 6.5,
+   "output": 27.0
+  },
+  "qwen_max": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  },
+  "qwen_plus": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  },
+  "qwen_vl": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  }
+ },
+ "requests": [
+  {
+   "cand_id": "ALL",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 4000,
+   "method": "M0",
+   "prompt_sha256": "d925f62b7d6fa210b0a22df7c6e03d26372cb8aa3bc88d3c7bdea5983752b988",
+   "repeat": 0,
+   "run_key": "pilotb|M0|kimi|T-dev-020|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "我是做亚马逊的卖家，这票货要从国内发到美国，下面是货的情况和几家货代给我的报价。帮我看看选哪家最划算，有没有什么坑。\n\n【货物】\n品名与件数：棉制 T 恤，360 件，单价 6.2 美元。\n货值合计：2232 美元。\n运输方式：空派。\n箱数与箱规：共 5 箱，5 箱，每箱 55×40×35 cm，18 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 12 天内到仓。\n发运日期：2026-10-27。\n\n【报价】\n【报价1】\nFWD-15\nQuoted by：SYN-Tallmast Logistics\n走空派A渠道\n运输方式为Air\n0-20kg，单价47.6 CNY per kg\n21-100kg，单价46.5 CNY per kg\n101-300kg，单价45 CNY per kg\n301kg起，单价44.6 CNY per kg\nWhole lot 12kg起计\n体积重除以6000\n计费重按1kg进位\nRemote area地区附加费：8 CNY per kg（Remote area地址）\nOversize费：47.5 CNY per ctn（单箱最长边超58cm）\n查验费：1344.5 CNY per shpt，按实际发生收取\nCustoms filing fee 400 CNY per shpt\n报价包含：头程运费、目的港清关、关税、MPF\n不含：查验费、仓储费\nDDP包税，含全部进口环节税费\nImporter（IOR）：Forwarder\nTransit 7-10 days\n报价有效期2026-10-01至2026-10-31\nClaim：按运费3倍赔付\n有问题随时联系FBA头程可订，pls confirm\n合成示例\n\n【报价2】\n## 价格\n\n**FWD-70 头程价格**\n\n报价主体：SYN-Meridian Forwarding\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 空派 A |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-20kg | 62元/kg |  |\n| 21-100kg | 60.7元/kg |  |\n| 101-300kg | 60.7元/kg |  |\n| 301kg起 | 59.1元/kg |  |\n| 运输方式 | 空运 |  |\n| 偏远地区附加费 | 6.5元/kg（偏远地址） |  |\n| 超尺寸费 | 56.5元/箱（单箱最长边超58cm） |  |\n| 燃油附加费 | 10% |  |\n| 报价包含 | 头程运费、目的港清关 |  |\n| 不含费用 | 查验费、仓储费 |  |\n| 时效 | 6-9天 |  |\n| 整票最低计费重 | 12kg |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 1kg |  |\n| 资质 | 持有NVOCC，持证公司SYN-Meridian Forwarding，登记号SYN-FMC-0004 |  |\n| 赔付 | 丢失按运费赔付，破损不赔 |  |\n| 有效期 | 2026-10-01至2026-10-31 |  |\n\n【报价3】\nFWD-88：\nQuoted by：SYN-Ironwood Transit\n1) 走空派 A 渠道\n2) 0-20kg，单价40 CNY per kg\n3) 21-100kg，单价36 CNY per kg\n4) 101-300kg，单价36 CNY per kg\n5) 301kg 起，单价34 CNY per kg\n6) 运输方式为 Air\n7) 到仓价，税金客户另付\n8) Importer (IOR)：Seller\n9) Remote area 地区附加费：6 CNY per kg（Remote area 地址）\n10) Oversize 费：50.5 CNY per ctn（单箱最长边超58cm）\n11) FSC 10%\n12) 报价包含：头程运费、目的港清关\n13) 不含：查验费、仓储费、关税、MPF\n14) Transit 7-10 days\n15) Whole lot 21kg 起计\n16) 体积重除以6000\n17) 计费重按1kg 进位\n18) Customs filing fee 400 CNY per shpt\n19) Claim：按运费 3 倍赔付\n20) 报价有效期2026-10-01 至2026-10-31\nFBA 头程可订, pls confirm\n\n【报价4】\nFWD-06报价如下：\nQuoted by：SYN-Orchid Global Trade\n- 走空派 A 渠道\n- 运输方式为 Air\n- 0-20kg，单价39 CNY per kg\n- 21-100kg，单价36 CNY per kg\n- 101-300kg，单价35 CNY per kg\n- 301kg 起，单价34.5 CNY per kg\n- Whole lot 21kg 起计\n- 体积重除以6000\n- 计费重按1kg 进位\n- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\n- Oversize 费：79 CNY per ctn（单箱最长边超58cm）\n- 查验费：810 CNY per shpt，按实际发生收取\n- Customs filing fee 400 CNY per shpt\n- 报价包含：头程运费、目的港清关\n- 不含：查验费、仓储费、关税、MPF\n- 关税另计\n- Importer (IOR)：Seller\n- Transit 6-9 days\n- 报价有效期2026-10-01 至2026-10-31\n- Claim：按申报货值赔付，上限 20 美元/kg\n有问题随时联系 FBA 头程可订, pls confirm\n\n最后请单独用一行 JSON 给出结论，格式为：{\"choice\": \"报价编号或‘需要追问’\", \"risks\": [\"风险1\", \"风险2\"], \"questions\": [\"要问货代的问题\"]}"
+  },
+  {
+   "cand_id": "ALL",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 8000,
+   "method": "M1",
+   "prompt_sha256": "13a0666924e8741c5fa5db4daff03bb28b18f6f25bfada88b54d6a2d0a1c8515",
+   "repeat": 0,
+   "run_key": "pilotb|M1|kimi|T-dev-020|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "你是跨境物流成本审计员。请按下列步骤审计每一份报价，再按决策规则给出结论。\n\n【货物】\n品名与件数：棉制 T 恤，360 件，单价 6.2 美元。\n货值合计：2232 美元。\n运输方式：空派。\n箱数与箱规：共 5 箱，5 箱，每箱 55×40×35 cm，18 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 12 天内到仓。\n发运日期：2026-10-27。\n\n【参数】（日期 2026-10-09）\n汇率：1 美元 = 6.733 元人民币。\n该商品的美国进口关税合计税率：36.5%（MFN 16.5% + 301 清单 7.5% + 新 301 12.5%）。\nMPF：正式报关（货值超过 2500 美元）按货值 0.3464%，最低 34.58 美元、最高 670.86 美元；非正式报关 2.77 美元。HMF：仅海运，货值 0.125%。\n不包税运价参照下限：快递：无参照值；空运：西部 32.79 元/kg；全国 32.79 元/kg；海运：无参照值。按邮编首位判定区域：0–3 东部，4–7 中部，8–9 西部，无对应区域值时用全国值。\n\n【登记库查询快照】\n美国 FMC 持证名单（OTI）\n| 名称 | 许可证号 | 类型 | 状态 |\n|---|---|---|---|\n| SYN-Harbor Lane Logistics | SYN-FMC-0001 | NVOCC（无船承运人） | 有效 |\n| SYN-Bluewater Cargo | SYN-FMC-0002 | NVOCC（无船承运人） | 有效 |\n| SYN-Pacific Span Freight | SYN-FMC-0003 | NVOCC（无船承运人） | 有效 |\n| SYN-Meridian Forwarding | SYN-FMC-0004 | NVOCC（无船承运人） | 有效 |\n| SYN-Cedar Bay Shipping | SYN-FMC-0005 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Northgate Express | SYN-FMC-0006 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Redwood Forwarders | SYN-FMC-0007 | OFF（海运货代，非无船承运人） | 有效 |\n| SYN-Summit Ocean Agency | SYN-FMC-0008 | OFF（海运货代，非无船承运人） | 有效 |\n\n国内登记（交通运输部无船承运备案、海关企业信用）\n| 名称 | 登记号 | 类别 | 状态 |\n|---|---|---|---|\n| SYN-Eastlake Logistics | SYN-MOT-0001 | 交通运输部无船承运备案 | 有效 |\n| SYN-Harbor Lane Logistics | SYN-MOT-0002 | 交通运输部无船承运备案 | 有效 |\n| SYN-Jade River Cargo | SYN-MOT-0003 | 交通运输部无船承运备案 | 有效 |\n| SYN-Stonebridge Freight | SYN-MOT-0004 | 交通运输部无船承运备案 | 已吊销 |\n| SYN-Eastlake Logistics | SYN-AEO-0001 | 海关高级认证企业 | 有效 |\n| SYN-Jade River Cargo | SYN-AEO-0002 | 海关高级认证企业 | 有效 |\n\n名单之外的主体视为未登记。\n\n【步骤】\n1. 逐份列出报价条款：重量档与单价、整票与单箱最低计费重、计泡系数、计重进位、附加费（含脚注与附表中的费用）、燃油、报关费、ISF 费、包税范围与进口商主体、时效、有效期、资质宣称。\n2. 找出前后矛盾的条款和缺少的必需条款（重量档、计泡系数、最低计费重、有效期、不含项、包税条款；快递另加燃油；海运另加 ISF）。\n3. 计算每份报价的计费重与卖家需支付的确定到仓成本（元），或然费用（如查验费）单列不计入。不包税时卖家另付关税、MPF、海运另付 HMF。\n4. 包税报价：税费下限 =（关税 + MPF，海运加 HMF）÷ 计费重。报价自身收费 ÷ 计费重低于税费下限为“高”；低于税费下限加参照下限为“需核实”；否则“无”。\n5. 资质宣称：对照登记库快照判定为“有证据”“证据不足”“与宣称矛盾”“与本次运输不相关”（规则见下）。\n6. 决策规则：满足时效且包税风险不为“高”的报价构成可行集，选确定成本最低者；若矛盾或缺失的条款在合理取值范围内会改变最优选择，不作推荐，改为追问，并列出要追问的条款。\n\n【计算与判定规则】\n- 计费重：每箱取实重、体积重（长×宽×高÷计泡系数）、单箱最低计费重三者中最大者，按计重进位步长向上取整，乘以箱数后求和，再与整票最低计费重取大。\n- 重量档：取下限不超过计费重的最高一档，整票按该档单价计。\n- 燃油附加费只按运费计。住宅派送费、偏远地区费只在地址条件满足时计入。报价未写出的可选费用（报关费、各项附加费、空运与快递的 ISF 等）按 0 计，不算缺失。\n- 关税按货值计，不含运费。包税只免除报价写明的税项，其余税项由卖家另付（例如只包关税时卖家另付 MPF，海运另付 HMF）。\n- 快递与海运没有参照下限时，不设“需核实”档。\n- 资质：宣称未写管辖地时两个登记库都查，任一库有记录即“有证据”；记录已注销、类型不符或编号不符为“与宣称矛盾”；空运或快递援引海运执照、认证主体与报价主体不一致、以中国海关认证证明美国清关能力，为“与本次运输不相关”；FMC 的无船承运人须为 NVOCC 类型；海关企业信用记录不能证明无船承运业务备案。\n- 追问判定中“合理取值范围”指：计泡系数 5000 或 6000；燃油附加费 0、10% 或 20%；整票最低计费重 0、45 或 100 kg；ISF 申报费 0 或 200 元；报关费 0、150 或 400 元；包税条款为不包税、全包、包关税与 MPF、只包关税之一；前后矛盾的条款取原文两个值。\n\n【报价】\n【报价1】\nFWD-15\nQuoted by：SYN-Tallmast Logistics\n走空派A渠道\n运输方式为Air\n0-20kg，单价47.6 CNY per kg\n21-100kg，单价46.5 CNY per kg\n101-300kg，单价45 CNY per kg\n301kg起，单价44.6 CNY per kg\nWhole lot 12kg起计\n体积重除以6000\n计费重按1kg进位\nRemote area地区附加费：8 CNY per kg（Remote area地址）\nOversize费：47.5 CNY per ctn（单箱最长边超58cm）\n查验费：1344.5 CNY per shpt，按实际发生收取\nCustoms filing fee 400 CNY per shpt\n报价包含：头程运费、目的港清关、关税、MPF\n不含：查验费、仓储费\nDDP包税，含全部进口环节税费\nImporter（IOR）：Forwarder\nTransit 7-10 days\n报价有效期2026-10-01至2026-10-31\nClaim：按运费3倍赔付\n有问题随时联系FBA头程可订，pls confirm\n合成示例\n\n【报价2】\n## 价格\n\n**FWD-70 头程价格**\n\n报价主体：SYN-Meridian Forwarding\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 空派 A |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-20kg | 62元/kg |  |\n| 21-100kg | 60.7元/kg |  |\n| 101-300kg | 60.7元/kg |  |\n| 301kg起 | 59.1元/kg |  |\n| 运输方式 | 空运 |  |\n| 偏远地区附加费 | 6.5元/kg（偏远地址） |  |\n| 超尺寸费 | 56.5元/箱（单箱最长边超58cm） |  |\n| 燃油附加费 | 10% |  |\n| 报价包含 | 头程运费、目的港清关 |  |\n| 不含费用 | 查验费、仓储费 |  |\n| 时效 | 6-9天 |  |\n| 整票最低计费重 | 12kg |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 1kg |  |\n| 资质 | 持有NVOCC，持证公司SYN-Meridian Forwarding，登记号SYN-FMC-0004 |  |\n| 赔付 | 丢失按运费赔付，破损不赔 |  |\n| 有效期 | 2026-10-01至2026-10-31 |  |\n\n【报价3】\nFWD-88：\nQuoted by：SYN-Ironwood Transit\n1) 走空派 A 渠道\n2) 0-20kg，单价40 CNY per kg\n3) 21-100kg，单价36 CNY per kg\n4) 101-300kg，单价36 CNY per kg\n5) 301kg 起，单价34 CNY per kg\n6) 运输方式为 Air\n7) 到仓价，税金客户另付\n8) Importer (IOR)：Seller\n9) Remote area 地区附加费：6 CNY per kg（Remote area 地址）\n10) Oversize 费：50.5 CNY per ctn（单箱最长边超58cm）\n11) FSC 10%\n12) 报价包含：头程运费、目的港清关\n13) 不含：查验费、仓储费、关税、MPF\n14) Transit 7-10 days\n15) Whole lot 21kg 起计\n16) 体积重除以6000\n17) 计费重按1kg 进位\n18) Customs filing fee 400 CNY per shpt\n19) Claim：按运费 3 倍赔付\n20) 报价有效期2026-10-01 至2026-10-31\nFBA 头程可订, pls confirm\n\n【报价4】\nFWD-06报价如下：\nQuoted by：SYN-Orchid Global Trade\n- 走空派 A 渠道\n- 运输方式为 Air\n- 0-20kg，单价39 CNY per kg\n- 21-100kg，单价36 CNY per kg\n- 101-300kg，单价35 CNY per kg\n- 301kg 起，单价34.5 CNY per kg\n- Whole lot 21kg 起计\n- 体积重除以6000\n- 计费重按1kg 进位\n- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\n- Oversize 费：79 CNY per ctn（单箱最长边超58cm）\n- 查验费：810 CNY per shpt，按实际发生收取\n- Customs filing fee 400 CNY per shpt\n- 报价包含：头程运费、目的港清关\n- 不含：查验费、仓储费、关税、MPF\n- 关税另计\n- Importer (IOR)：Seller\n- Transit 6-9 days\n- 报价有效期2026-10-01 至2026-10-31\n- Claim：按申报货值赔付，上限 20 美元/kg\n有问题随时联系 FBA 头程可订, pls confirm\n\n最后请单独用一行 JSON 给出结论，格式为：\n{\"choice\": \"报价编号或‘需要追问’\", \"ask_fields\": [\"报价编号.条款名\"], \"per_quote\": {\"报价1\": {\"cost_cny\": 数字或null, \"ddp_level\": \"无|需核实|高\", \"claims\": [\"有证据|证据不足|与宣称矛盾|与本次运输不相关\"], \"hidden_fees\": [\"费用名\"], \"conflicts\": [\"条款名\"], \"gaps\": [\"条款名\"]}}, \"questions\": [\"要问货代的问题\"]}"
+  },
+  {
+   "cand_id": "C1",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 2500,
+   "method": "extract",
+   "prompt_sha256": "957d5f21f0ae90684118e943597db6f7d01a0fc2de446e50a5dcec1dcd5f6a40",
+   "repeat": 1,
+   "run_key": "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+   "seed": 20261010,
+   "stage": "extract",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "请从下面这份货代报价中抽取条款，只抽取原文写明或能由表头唯一推出的内容，不要推测。每个条款给出状态和原文片段。\n\n状态：stated（原文写明）、implied（由表头或注释唯一推出）、missing（原文没有）、conflicting（原文两处写法不同，两个值都给出）。\n原文片段必须逐字摘自报价原文。\n\n【报价原文】\nFWD-15\nQuoted by：SYN-Tallmast Logistics\n走空派A渠道\n运输方式为Air\n0-20kg，单价47.6 CNY per kg\n21-100kg，单价46.5 CNY per kg\n101-300kg，单价45 CNY per kg\n301kg起，单价44.6 CNY per kg\nWhole lot 12kg起计\n体积重除以6000\n计费重按1kg进位\nRemote area地区附加费：8 CNY per kg（Remote area地址）\nOversize费：47.5 CNY per ctn（单箱最长边超58cm）\n查验费：1344.5 CNY per shpt，按实际发生收取\nCustoms filing fee 400 CNY per shpt\n报价包含：头程运费、目的港清关、关税、MPF\n不含：查验费、仓储费\nDDP包税，含全部进口环节税费\nImporter（IOR）：Forwarder\nTransit 7-10 days\n报价有效期2026-10-01至2026-10-31\nClaim：按运费3倍赔付\n有问题随时联系FBA头程可订，pls confirm\n合成示例\n\n只输出一个 JSON 对象，键为下列条款名，每个值为 {\"status\": ..., \"value\": ..., \"quotes\": [\"原文片段\"]}：\nmode（express/air/sea）、rate_tiers（[{\"min_kg\": 数字, \"price\": 数字, \"currency\": \"CNY|USD\"}]）、min_kg_shipment、min_kg_carton、dim_divisor、rounding_kg、surcharges（[{\"code\": 原文费用名, \"basis\": \"per_kg|per_ctn|per_shpt|pct_freight\", \"amount\": 数字, \"currency\": ..., \"condition\": \"always|residential|remote|ctn_longest_side_gt|ctn_kg_gt\", \"threshold\": 数字或null, \"contingent\": true/false}]）、fuel_pct（小数）、includes、excludes、ddp（{\"is_ddp\": true/false, \"scope\": \"duty|duty_mpf|all\", \"duty_terms\": \"included|actual|capped\", \"cap_cny_per_kg\": 数字或null, \"ior\": \"forwarder|seller|unspecified\"}）、broker_fee_cny、isf_fee_cny、transit_days（[最少, 最多]）、validity、liability、claims（[{\"type\": 原文资质说法, \"entity\": 主体, \"reg_no\": 编号或null, \"jurisdiction\": \"US|CN|null\"}]）、quote_entity（报价主体名称）。\nconflicting 时 value 为两个值的列表。"
+  },
+  {
+   "cand_id": "C2",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 2500,
+   "method": "extract",
+   "prompt_sha256": "9f49252eb78f1b7a13856d856ba282a472cea30fcf3dae1c312e0e091dcc8dc7",
+   "repeat": 1,
+   "run_key": "pilotb|extract|kimi|T-dev-020|extract|C2|r1",
+   "seed": 20261010,
+   "stage": "extract",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "请从下面这份货代报价中抽取条款，只抽取原文写明或能由表头唯一推出的内容，不要推测。每个条款给出状态和原文片段。\n\n状态：stated（原文写明）、implied（由表头或注释唯一推出）、missing（原文没有）、conflicting（原文两处写法不同，两个值都给出）。\n原文片段必须逐字摘自报价原文。\n\n【报价原文】\n## 价格\n\n**FWD-70 头程价格**\n\n报价主体：SYN-Meridian Forwarding\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 空派 A |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-20kg | 62元/kg |  |\n| 21-100kg | 60.7元/kg |  |\n| 101-300kg | 60.7元/kg |  |\n| 301kg起 | 59.1元/kg |  |\n| 运输方式 | 空运 |  |\n| 偏远地区附加费 | 6.5元/kg（偏远地址） |  |\n| 超尺寸费 | 56.5元/箱（单箱最长边超58cm） |  |\n| 燃油附加费 | 10% |  |\n| 报价包含 | 头程运费、目的港清关 |  |\n| 不含费用 | 查验费、仓储费 |  |\n| 时效 | 6-9天 |  |\n| 整票最低计费重 | 12kg |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 1kg |  |\n| 资质 | 持有NVOCC，持证公司SYN-Meridian Forwarding，登记号SYN-FMC-0004 |  |\n| 赔付 | 丢失按运费赔付，破损不赔 |  |\n| 有效期 | 2026-10-01至2026-10-31 |  |\n\n只输出一个 JSON 对象，键为下列条款名，每个值为 {\"status\": ..., \"value\": ..., \"quotes\": [\"原文片段\"]}：\nmode（express/air/sea）、rate_tiers（[{\"min_kg\": 数字, \"price\": 数字, \"currency\": \"CNY|USD\"}]）、min_kg_shipment、min_kg_carton、dim_divisor、rounding_kg、surcharges（[{\"code\": 原文费用名, \"basis\": \"per_kg|per_ctn|per_shpt|pct_freight\", \"amount\": 数字, \"currency\": ..., \"condition\": \"always|residential|remote|ctn_longest_side_gt|ctn_kg_gt\", \"threshold\": 数字或null, \"contingent\": true/false}]）、fuel_pct（小数）、includes、excludes、ddp（{\"is_ddp\": true/false, \"scope\": \"duty|duty_mpf|all\", \"duty_terms\": \"included|actual|capped\", \"cap_cny_per_kg\": 数字或null, \"ior\": \"forwarder|seller|unspecified\"}）、broker_fee_cny、isf_fee_cny、transit_days（[最少, 最多]）、validity、liability、claims（[{\"type\": 原文资质说法, \"entity\": 主体, \"reg_no\": 编号或null, \"jurisdiction\": \"US|CN|null\"}]）、quote_entity（报价主体名称）。\nconflicting 时 value 为两个值的列表。"
+  },
+  {
+   "cand_id": "C3",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 2500,
+   "method": "extract",
+   "prompt_sha256": "ee613b9c3fbd1fd3308c9e36bd4d7ede64bfa2d221b9290b4cb8268fcaecc25f",
+   "repeat": 1,
+   "run_key": "pilotb|extract|kimi|T-dev-020|extract|C3|r1",
+   "seed": 20261010,
+   "stage": "extract",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "请从下面这份货代报价中抽取条款，只抽取原文写明或能由表头唯一推出的内容，不要推测。每个条款给出状态和原文片段。\n\n状态：stated（原文写明）、implied（由表头或注释唯一推出）、missing（原文没有）、conflicting（原文两处写法不同，两个值都给出）。\n原文片段必须逐字摘自报价原文。\n\n【报价原文】\nFWD-88：\nQuoted by：SYN-Ironwood Transit\n1) 走空派 A 渠道\n2) 0-20kg，单价40 CNY per kg\n3) 21-100kg，单价36 CNY per kg\n4) 101-300kg，单价36 CNY per kg\n5) 301kg 起，单价34 CNY per kg\n6) 运输方式为 Air\n7) 到仓价，税金客户另付\n8) Importer (IOR)：Seller\n9) Remote area 地区附加费：6 CNY per kg（Remote area 地址）\n10) Oversize 费：50.5 CNY per ctn（单箱最长边超58cm）\n11) FSC 10%\n12) 报价包含：头程运费、目的港清关\n13) 不含：查验费、仓储费、关税、MPF\n14) Transit 7-10 days\n15) Whole lot 21kg 起计\n16) 体积重除以6000\n17) 计费重按1kg 进位\n18) Customs filing fee 400 CNY per shpt\n19) Claim：按运费 3 倍赔付\n20) 报价有效期2026-10-01 至2026-10-31\nFBA 头程可订, pls confirm\n\n只输出一个 JSON 对象，键为下列条款名，每个值为 {\"status\": ..., \"value\": ..., \"quotes\": [\"原文片段\"]}：\nmode（express/air/sea）、rate_tiers（[{\"min_kg\": 数字, \"price\": 数字, \"currency\": \"CNY|USD\"}]）、min_kg_shipment、min_kg_carton、dim_divisor、rounding_kg、surcharges（[{\"code\": 原文费用名, \"basis\": \"per_kg|per_ctn|per_shpt|pct_freight\", \"amount\": 数字, \"currency\": ..., \"condition\": \"always|residential|remote|ctn_longest_side_gt|ctn_kg_gt\", \"threshold\": 数字或null, \"contingent\": true/false}]）、fuel_pct（小数）、includes、excludes、ddp（{\"is_ddp\": true/false, \"scope\": \"duty|duty_mpf|all\", \"duty_terms\": \"included|actual|capped\", \"cap_cny_per_kg\": 数字或null, \"ior\": \"forwarder|seller|unspecified\"}）、broker_fee_cny、isf_fee_cny、transit_days（[最少, 最多]）、validity、liability、claims（[{\"type\": 原文资质说法, \"entity\": 主体, \"reg_no\": 编号或null, \"jurisdiction\": \"US|CN|null\"}]）、quote_entity（报价主体名称）。\nconflicting 时 value 为两个值的列表。"
+  },
+  {
+   "cand_id": "C4",
+   "config_id": "kimi",
+   "experiment": "pilotb",
+   "images": [],
+   "max_tokens": 2500,
+   "method": "extract",
+   "prompt_sha256": "e73619c11889b716463d3492490eb1a3276773096d7c458ee5155f453bdf3cb6",
+   "repeat": 1,
+   "run_key": "pilotb|extract|kimi|T-dev-020|extract|C4|r1",
+   "seed": 20261010,
+   "stage": "extract",
+   "system": null,
+   "task_id": "T-dev-020",
+   "text": "请从下面这份货代报价中抽取条款，只抽取原文写明或能由表头唯一推出的内容，不要推测。每个条款给出状态和原文片段。\n\n状态：stated（原文写明）、implied（由表头或注释唯一推出）、missing（原文没有）、conflicting（原文两处写法不同，两个值都给出）。\n原文片段必须逐字摘自报价原文。\n\n【报价原文】\nFWD-06报价如下：\nQuoted by：SYN-Orchid Global Trade\n- 走空派 A 渠道\n- 运输方式为 Air\n- 0-20kg，单价39 CNY per kg\n- 21-100kg，单价36 CNY per kg\n- 101-300kg，单价35 CNY per kg\n- 301kg 起，单价34.5 CNY per kg\n- Whole lot 21kg 起计\n- 体积重除以6000\n- 计费重按1kg 进位\n- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\n- Oversize 费：79 CNY per ctn（单箱最长边超58cm）\n- 查验费：810 CNY per shpt，按实际发生收取\n- Customs filing fee 400 CNY per shpt\n- 报价包含：头程运费、目的港清关\n- 不含：查验费、仓储费、关税、MPF\n- 关税另计\n- Importer (IOR)：Seller\n- Transit 6-9 days\n- 报价有效期2026-10-01 至2026-10-31\n- Claim：按申报货值赔付，上限 20 美元/kg\n有问题随时联系 FBA 头程可订, pls confirm\n\n只输出一个 JSON 对象，键为下列条款名，每个值为 {\"status\": ..., \"value\": ..., \"quotes\": [\"原文片段\"]}：\nmode（express/air/sea）、rate_tiers（[{\"min_kg\": 数字, \"price\": 数字, \"currency\": \"CNY|USD\"}]）、min_kg_shipment、min_kg_carton、dim_divisor、rounding_kg、surcharges（[{\"code\": 原文费用名, \"basis\": \"per_kg|per_ctn|per_shpt|pct_freight\", \"amount\": 数字, \"currency\": ..., \"condition\": \"always|residential|remote|ctn_longest_side_gt|ctn_kg_gt\", \"threshold\": 数字或null, \"contingent\": true/false}]）、fuel_pct（小数）、includes、excludes、ddp（{\"is_ddp\": true/false, \"scope\": \"duty|duty_mpf|all\", \"duty_terms\": \"included|actual|capped\", \"cap_cny_per_kg\": 数字或null, \"ior\": \"forwarder|seller|unspecified\"}）、broker_fee_cny、isf_fee_cny、transit_days（[最少, 最多]）、validity、liability、claims（[{\"type\": 原文资质说法, \"entity\": 主体, \"reg_no\": 编号或null, \"jurisdiction\": \"US|CN|null\"}]）、quote_entity（报价主体名称）。\nconflicting 时 value 为两个值的列表。"
+  }
+ ]
+}

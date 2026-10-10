@@ -48,3 +48,13 @@
 {"amount": 0.037456, "at": "2026-10-10T13:53:25.230537Z", "batch_id": "pilotb-B-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|glm|T-dev-020|extract|C2|r1"}
 {"amount": 0.033392, "at": "2026-10-10T13:53:33.785120Z", "batch_id": "pilotb-B-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|glm|T-dev-020|extract|C3|r1"}
 {"amount": 0.033476, "at": "2026-10-10T13:53:42.516913Z", "batch_id": "pilotb-B-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|glm|T-dev-020|extract|C4|r1"}
+{"amount": 0.11984, "at": "2026-10-10T14:10:13.709019Z", "batch_id": "pilota-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilota|M0|qwen_plus|T-dev-004|answer|ALL|r0"}
+{"amount": 0.266984, "at": "2026-10-10T14:12:34.235379Z", "batch_id": "pilota-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilota|M1|qwen_plus|T-dev-004|answer|ALL|r0"}
+{"amount": 0.119596, "at": "2026-10-10T14:13:37.047615Z", "batch_id": "pilota-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilota|M0|qwen_plus|T-dev-010|answer|ALL|r0"}
+{"amount": 0.2862, "at": "2026-10-10T14:16:08.035925Z", "batch_id": "pilota-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilota|M1|qwen_plus|T-dev-010|answer|ALL|r0"}
+{"amount": 0.066041, "at": "2026-10-10T14:17:19.836226Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|M0|kimi|T-dev-020|answer|ALL|r0"}
+{"amount": 0.2241525, "at": "2026-10-10T14:21:46.745251Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|M1|kimi|T-dev-020|answer|ALL|r0"}
+{"amount": 0.0344655, "at": "2026-10-10T14:22:18.952025Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|kimi|T-dev-020|extract|C1|r1"}
+{"amount": 0.032994, "at": "2026-10-10T14:22:53.279467Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|kimi|T-dev-020|extract|C2|r1"}
+{"amount": 0.028969, "at": "2026-10-10T14:23:21.831961Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|kimi|T-dev-020|extract|C3|r1"}
+{"amount": 0.0349705, "at": "2026-10-10T14:24:07.574103Z", "batch_id": "pilotb-B-retry-live", "currency": "CNY", "kind": "observation", "run_key": "pilotb|extract|kimi|T-dev-020|extract|C4|r1"}

@@ -1,0 +1,38 @@
+{
+  "batch_id": "pilota-B-retry-live",
+  "budget": {
+    "CNY": 5.0,
+    "USD": 0.5
+  },
+  "completed": 4,
+  "created_at": "2026-10-10T14:09:09.879314Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-10T14:16:08.036578Z",
+  "identity": {
+    "base_urls": {
+      "dashscope": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    },
+    "executor_sha256": "50cc1a5df861bd7a2e3fd962db85677729a08b1da2abbf04386a58e063711c81",
+    "llm_sha256": "11ab74b6e9a624515798f2d24b7c8b217861a034b787a3909c253a12b5a7bb0f",
+    "mode": "live",
+    "models_sha256": "af83895bcb0478cf6e17d17dd0fd7435455a6efebcf982547b7e13b834a67679",
+    "plan_sha256": "ce37c7d3545889937308e302a0305b324955a1b7e1102550f6f339deaa6c1a92",
+    "util_sha256": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "kind": "dev",
+  "plan_id": "pilota-B-retry",
+  "runs": [
+    {
+      "finished_at": "2026-10-10T14:16:08.036526Z",
+      "skipped_done": 0,
+      "started_at": "2026-10-10T14:09:09.879774Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "CNY": 0.79262
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 4
+}

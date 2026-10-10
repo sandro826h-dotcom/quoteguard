@@ -1,0 +1,116 @@
+{
+ "budget": {
+  "CNY": 5.0,
+  "USD": 0.5
+ },
+ "kind": "dev",
+ "plan_id": "pilota-B-retry",
+ "rates": {
+  "ds_flash": {
+   "currency": "USD",
+   "input": 0.5,
+   "output": 1.0
+  },
+  "ds_pro": {
+   "currency": "USD",
+   "input": 2.0,
+   "output": 4.0
+  },
+  "glm": {
+   "currency": "CNY",
+   "input": 8.0,
+   "output": 28.0
+  },
+  "glm_v": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 12.0
+  },
+  "kimi": {
+   "currency": "CNY",
+   "input": 6.5,
+   "output": 27.0
+  },
+  "qwen_max": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  },
+  "qwen_plus": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  },
+  "qwen_vl": {
+   "currency": "CNY",
+   "input": 4.0,
+   "output": 40.0
+  }
+ },
+ "requests": [
+  {
+   "cand_id": "ALL",
+   "config_id": "qwen_plus",
+   "experiment": "pilota",
+   "images": [],
+   "max_tokens": 4000,
+   "method": "M0",
+   "prompt_sha256": "8820af856f3ab35d2eb2f3b349fc3cf030c57e1e1d9bd2d2e182d91964d97647",
+   "repeat": 0,
+   "run_key": "pilota|M0|qwen_plus|T-dev-004|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-004",
+   "text": "我是做亚马逊的卖家，这票货要从国内发到美国，下面是货的情况和几家货代给我的报价。帮我看看选哪家最划算，有没有什么坑。\n\n【货物】\n品名与件数：玩具，90 件，单价 5.2 美元。\n货值合计：468 美元。\n运输方式：空派。\n箱数与箱规：共 3 箱，3 箱，每箱 58×48×42 cm，12 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 12 天内到仓。\n发运日期：2026-10-30。\n\n【报价】\n【报价1】\nFWD-80:  \n报价主体：SYN-Harbor Lane Logistics  \n走空派 B渠道  \n0-20kg，单价37.5元/kg  \n21-100kg，单价35元/kg  \n101-300kg，单价34.5元/kg  \n301kg起，单价33.5元/kg  \n运输方式为空运  \nDAP，进口环节税由买家负担  \n进口商（IOR）：卖家  \n住宅派送费：5美元/箱（送住宅地址）  \n超重费：83元/箱（单箱超22kg）  \n燃油附加费10%  \n报价包含：头程运费、目的港清关  \n不含：查验费、仓储费、关税、MPF  \n时效9-13天  \n不设最低计费重  \n体积重除以6000  \n计费重按0.5kg进位  \n清关费400元/票  \n赔付：按运费 3 倍赔付  \n报价有效期2026-10-01至2026-10-31  \n备注：整票45kg起计\n\n【报价2】\nFWD-70报价如下：\nQuoted by：SYN-Orchid Global Trade\n- 走空派 A 渠道\n- 运输方式为 Air\n- 0-20kg，单价37.5 CNY per kg\n- 21-100kg，单价37.5 CNY per kg\n- 101-300kg，单价36 CNY per kg\n- 301kg 起，单价34.5 CNY per kg\n- Whole lot 12kg 起计\n- 体积重除以6000\n- 计费重按1kg 进位\n- FSC 20%\n- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\n- Oversize 费：70 CNY per ctn（单箱最长边超58cm）\n- Customs filing fee 150 CNY per shpt\n- 报价包含：头程运费、目的港清关\n- 不含：查验费、仓储费、关税、MPF\n- 不含税，关税客户自理\n- Importer (IOR)：Seller\n- SYN-Orchid Global Trade 已取得 NVOCC\n- Transit 6-9 days\n- 报价有效期2026-10-01 至2026-10-31\n- Claim：按申报货值赔付，上限 20 美元/kg\n有问题随时联系 FBA 头程可订, pls confirm\n\n【报价3】\nFWD-58：\nQuoted by：SYN-Bluewater Cargo\n1) 走空派 A 渠道\n2) 0-20kg，单价37.5 CNY per kg\n3) 21-100kg，单价36 CNY per kg\n4) 101-300kg，单价36 CNY per kg\n5) 301kg 起，单价34.5 CNY per kg\n6) 运输方式为 Air\n7) 不含税，关税客户自理\n8) Importer (IOR)：Seller\n9) Remote area 地区附加费：10 CNY per kg（Remote area 地址）\n10) Oversize 费：61.5 CNY per ctn（单箱最长边超58cm）\n11) FSC 20%\n12) 报价包含：头程运费、目的港清关\n13) 不含：查验费、仓储费、关税、MPF\n14) Transit 7-10 days\n15) Whole lot 21kg 起计\n16) 体积重除以6000\n17) 计费重按1kg 进位\n18) SYN-Bluewater Cargo 已取得 NVOCC\n19) Claim：按申报货值赔付，上限 20 美元/kg\n20) 报价有效期2026-10-01 至2026-10-31\nFBA 头程可订, pls confirm\n\n【报价4】\n## 报价\n\n**FWD-40 报价单**\n\nQuoted by：SYN-Pacific Span Freight\n\n| 序号 | 项目 | 内容 |\n|---|---|---|\n| 1 | 运输方式 | Air |\n| 2 | 渠道 | 空派 A |\n| 3 | Transit | 7-10 days |\n\n| 序号 | 重量段 | 单价 |\n|---|---|---|\n| 4 | 0-20kg | 40.6 CNY per kg |\n| 5 | 21-100kg | 39.7 CNY per kg |\n| 6 | 101-300kg | 38.8 CNY per kg |\n| 7 | 301kg 起 | 37 CNY per kg |\n| 8 | Remote area 地区附加费 | 9.5 CNY per kg（Remote area 地址） |\n| 9 | 查验费 | 1002.5 CNY per shpt，按实际发生收取 |\n| 10 | Whole lot 最低计费重 | 100kg |\n| 11 | 体积重除数 | 6000 |\n| 12 | 计费重进位 | 1kg |\n| 13 | 税务条款 | DDP 包税，仅含关税 |\n| 14 | Importer | Forwarder |\n| 15 | 报价包含 | 头程运费、目的港清关、关税 |\n| 16 | 不含费用 | 查验费、仓储费、MPF |\n| 17 | Customs filing fee | 400 CNY per shpt |\n| 18 | 有效期 | 2026-10-01 至2026-10-31 |\n| 19 | Claim | 按运费 3 倍赔付 |\n\n> 备注：Whole lot 45kg 起计\n\n最后请单独用一行 JSON 给出结论，格式为：{\"choice\": \"报价编号或‘需要追问’\", \"risks\": [\"风险1\", \"风险2\"], \"questions\": [\"要问货代的问题\"]}"
+  },
+  {
+   "cand_id": "ALL",
+   "config_id": "qwen_plus",
+   "experiment": "pilota",
+   "images": [],
+   "max_tokens": 8000,
+   "method": "M1",
+   "prompt_sha256": "ebf20d4738c99bf5daaeea02ca67b639916c4cbc0204e085ab35561a3ae5a269",
+   "repeat": 0,
+   "run_key": "pilota|M1|qwen_plus|T-dev-004|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-004",
+   "text": "你是跨境物流成本审计员。请按下列步骤审计每一份报价，再按决策规则给出结论。\n\n【货物】\n品名与件数：玩具，90 件，单价 5.2 美元。\n货值合计：468 美元。\n运输方式：空派。\n箱数与箱规：共 3 箱，3 箱，每箱 58×48×42 cm，12 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 12 天内到仓。\n发运日期：2026-10-30。\n\n【参数】（日期 2026-10-09）\n汇率：1 美元 = 6.733 元人民币。\n该商品的美国进口关税合计税率：12.5%（MFN 0% + 301 清单 0% + 新 301 12.5%）。\nMPF：正式报关（货值超过 2500 美元）按货值 0.3464%，最低 34.58 美元、最高 670.86 美元；非正式报关 2.77 美元。HMF：仅海运，货值 0.125%。\n不包税运价参照下限：快递：无参照值；空运：西部 32.79 元/kg；全国 32.79 元/kg；海运：无参照值。按邮编首位判定区域：0–3 东部，4–7 中部，8–9 西部，无对应区域值时用全国值。\n\n【登记库查询快照】\n美国 FMC 持证名单（OTI）\n| 名称 | 许可证号 | 类型 | 状态 |\n|---|---|---|---|\n| SYN-Harbor Lane Logistics | SYN-FMC-0001 | NVOCC（无船承运人） | 有效 |\n| SYN-Bluewater Cargo | SYN-FMC-0002 | NVOCC（无船承运人） | 有效 |\n| SYN-Pacific Span Freight | SYN-FMC-0003 | NVOCC（无船承运人） | 有效 |\n| SYN-Meridian Forwarding | SYN-FMC-0004 | NVOCC（无船承运人） | 有效 |\n| SYN-Cedar Bay Shipping | SYN-FMC-0005 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Northgate Express | SYN-FMC-0006 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Redwood Forwarders | SYN-FMC-0007 | OFF（海运货代，非无船承运人） | 有效 |\n| SYN-Summit Ocean Agency | SYN-FMC-0008 | OFF（海运货代，非无船承运人） | 有效 |\n\n国内登记（交通运输部无船承运备案、海关企业信用）\n| 名称 | 登记号 | 类别 | 状态 |\n|---|---|---|---|\n| SYN-Eastlake Logistics | SYN-MOT-0001 | 交通运输部无船承运备案 | 有效 |\n| SYN-Harbor Lane Logistics | SYN-MOT-0002 | 交通运输部无船承运备案 | 有效 |\n| SYN-Jade River Cargo | SYN-MOT-0003 | 交通运输部无船承运备案 | 有效 |\n| SYN-Stonebridge Freight | SYN-MOT-0004 | 交通运输部无船承运备案 | 已吊销 |\n| SYN-Eastlake Logistics | SYN-AEO-0001 | 海关高级认证企业 | 有效 |\n| SYN-Jade River Cargo | SYN-AEO-0002 | 海关高级认证企业 | 有效 |\n\n名单之外的主体视为未登记。\n\n【步骤】\n1. 逐份列出报价条款：重量档与单价、整票与单箱最低计费重、计泡系数、计重进位、附加费（含脚注与附表中的费用）、燃油、报关费、ISF 费、包税范围与进口商主体、时效、有效期、资质宣称。\n2. 找出前后矛盾的条款和缺少的必需条款（重量档、计泡系数、最低计费重、有效期、不含项、包税条款；快递另加燃油；海运另加 ISF）。\n3. 计算每份报价的计费重与卖家需支付的确定到仓成本（元），或然费用（如查验费）单列不计入。不包税时卖家另付关税、MPF、海运另付 HMF。\n4. 包税报价：税费下限 =（关税 + MPF，海运加 HMF）÷ 计费重。报价自身收费 ÷ 计费重低于税费下限为“高”；低于税费下限加参照下限为“需核实”；否则“无”。\n5. 资质宣称：对照登记库快照判定为“有证据”“证据不足”“与宣称矛盾”“与本次运输不相关”（规则见下）。\n6. 决策规则：满足时效且包税风险不为“高”的报价构成可行集，选确定成本最低者；若矛盾或缺失的条款在合理取值范围内会改变最优选择，不作推荐，改为追问，并列出要追问的条款。\n\n【计算与判定规则】\n- 计费重：每箱取实重、体积重（长×宽×高÷计泡系数）、单箱最低计费重三者中最大者，按计重进位步长向上取整，乘以箱数后求和，再与整票最低计费重取大。\n- 重量档：取下限不超过计费重的最高一档，整票按该档单价计。\n- 燃油附加费只按运费计。住宅派送费、偏远地区费只在地址条件满足时计入。报价未写出的可选费用（报关费、各项附加费、空运与快递的 ISF 等）按 0 计，不算缺失。\n- 关税按货值计，不含运费。包税只免除报价写明的税项，其余税项由卖家另付（例如只包关税时卖家另付 MPF，海运另付 HMF）。\n- 快递与海运没有参照下限时，不设“需核实”档。\n- 资质：宣称未写管辖地时两个登记库都查，任一库有记录即“有证据”；记录已注销、类型不符或编号不符为“与宣称矛盾”；空运或快递援引海运执照、认证主体与报价主体不一致、以中国海关认证证明美国清关能力，为“与本次运输不相关”；FMC 的无船承运人须为 NVOCC 类型；海关企业信用记录不能证明无船承运业务备案。\n- 追问判定中“合理取值范围”指：计泡系数 5000 或 6000；燃油附加费 0、10% 或 20%；整票最低计费重 0、45 或 100 kg；ISF 申报费 0 或 200 元；报关费 0、150 或 400 元；包税条款为不包税、全包、包关税与 MPF、只包关税之一；前后矛盾的条款取原文两个值。\n\n【报价】\n【报价1】\nFWD-80:  \n报价主体：SYN-Harbor Lane Logistics  \n走空派 B渠道  \n0-20kg，单价37.5元/kg  \n21-100kg，单价35元/kg  \n101-300kg，单价34.5元/kg  \n301kg起，单价33.5元/kg  \n运输方式为空运  \nDAP，进口环节税由买家负担  \n进口商（IOR）：卖家  \n住宅派送费：5美元/箱（送住宅地址）  \n超重费：83元/箱（单箱超22kg）  \n燃油附加费10%  \n报价包含：头程运费、目的港清关  \n不含：查验费、仓储费、关税、MPF  \n时效9-13天  \n不设最低计费重  \n体积重除以6000  \n计费重按0.5kg进位  \n清关费400元/票  \n赔付：按运费 3 倍赔付  \n报价有效期2026-10-01至2026-10-31  \n备注：整票45kg起计\n\n【报价2】\nFWD-70报价如下：\nQuoted by：SYN-Orchid Global Trade\n- 走空派 A 渠道\n- 运输方式为 Air\n- 0-20kg，单价37.5 CNY per kg\n- 21-100kg，单价37.5 CNY per kg\n- 101-300kg，单价36 CNY per kg\n- 301kg 起，单价34.5 CNY per kg\n- Whole lot 12kg 起计\n- 体积重除以6000\n- 计费重按1kg 进位\n- FSC 20%\n- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\n- Oversize 费：70 CNY per ctn（单箱最长边超58cm）\n- Customs filing fee 150 CNY per shpt\n- 报价包含：头程运费、目的港清关\n- 不含：查验费、仓储费、关税、MPF\n- 不含税，关税客户自理\n- Importer (IOR)：Seller\n- SYN-Orchid Global Trade 已取得 NVOCC\n- Transit 6-9 days\n- 报价有效期2026-10-01 至2026-10-31\n- Claim：按申报货值赔付，上限 20 美元/kg\n有问题随时联系 FBA 头程可订, pls confirm\n\n【报价3】\nFWD-58：\nQuoted by：SYN-Bluewater Cargo\n1) 走空派 A 渠道\n2) 0-20kg，单价37.5 CNY per kg\n3) 21-100kg，单价36 CNY per kg\n4) 101-300kg，单价36 CNY per kg\n5) 301kg 起，单价34.5 CNY per kg\n6) 运输方式为 Air\n7) 不含税，关税客户自理\n8) Importer (IOR)：Seller\n9) Remote area 地区附加费：10 CNY per kg（Remote area 地址）\n10) Oversize 费：61.5 CNY per ctn（单箱最长边超58cm）\n11) FSC 20%\n12) 报价包含：头程运费、目的港清关\n13) 不含：查验费、仓储费、关税、MPF\n14) Transit 7-10 days\n15) Whole lot 21kg 起计\n16) 体积重除以6000\n17) 计费重按1kg 进位\n18) SYN-Bluewater Cargo 已取得 NVOCC\n19) Claim：按申报货值赔付，上限 20 美元/kg\n20) 报价有效期2026-10-01 至2026-10-31\nFBA 头程可订, pls confirm\n\n【报价4】\n## 报价\n\n**FWD-40 报价单**\n\nQuoted by：SYN-Pacific Span Freight\n\n| 序号 | 项目 | 内容 |\n|---|---|---|\n| 1 | 运输方式 | Air |\n| 2 | 渠道 | 空派 A |\n| 3 | Transit | 7-10 days |\n\n| 序号 | 重量段 | 单价 |\n|---|---|---|\n| 4 | 0-20kg | 40.6 CNY per kg |\n| 5 | 21-100kg | 39.7 CNY per kg |\n| 6 | 101-300kg | 38.8 CNY per kg |\n| 7 | 301kg 起 | 37 CNY per kg |\n| 8 | Remote area 地区附加费 | 9.5 CNY per kg（Remote area 地址） |\n| 9 | 查验费 | 1002.5 CNY per shpt，按实际发生收取 |\n| 10 | Whole lot 最低计费重 | 100kg |\n| 11 | 体积重除数 | 6000 |\n| 12 | 计费重进位 | 1kg |\n| 13 | 税务条款 | DDP 包税，仅含关税 |\n| 14 | Importer | Forwarder |\n| 15 | 报价包含 | 头程运费、目的港清关、关税 |\n| 16 | 不含费用 | 查验费、仓储费、MPF |\n| 17 | Customs filing fee | 400 CNY per shpt |\n| 18 | 有效期 | 2026-10-01 至2026-10-31 |\n| 19 | Claim | 按运费 3 倍赔付 |\n\n> 备注：Whole lot 45kg 起计\n\n最后请单独用一行 JSON 给出结论，格式为：\n{\"choice\": \"报价编号或‘需要追问’\", \"ask_fields\": [\"报价编号.条款名\"], \"per_quote\": {\"报价1\": {\"cost_cny\": 数字或null, \"ddp_level\": \"无|需核实|高\", \"claims\": [\"有证据|证据不足|与宣称矛盾|与本次运输不相关\"], \"hidden_fees\": [\"费用名\"], \"conflicts\": [\"条款名\"], \"gaps\": [\"条款名\"]}}, \"questions\": [\"要问货代的问题\"]}"
+  },
+  {
+   "cand_id": "ALL",
+   "config_id": "qwen_plus",
+   "experiment": "pilota",
+   "images": [],
+   "max_tokens": 4000,
+   "method": "M0",
+   "prompt_sha256": "3d089a8081468bffe18485be2bd2add18ab1b9bff9739200ab6860377486924b",
+   "repeat": 0,
+   "run_key": "pilota|M0|qwen_plus|T-dev-010|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-010",
+   "text": "我是做亚马逊的卖家，这票货要从国内发到美国，下面是货的情况和几家货代给我的报价。帮我看看选哪家最划算，有没有什么坑。\n\n【货物】\n品名与件数：棉制 T 恤，900 件，单价 3.7 美元。\n货值合计：3330 美元。\n运输方式：快递。\n箱数与箱规：共 9 箱，9 箱，每箱 60×40×40 cm，25 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 6 天内到仓。\n发运日期：2026-10-16。\n\n【报价】\n【报价1】\n## 报价\n\n**FWD-02 报价单**\n\nQuoted by：SYN-Harbor Lane Logistics\n\n| 序号 | 项目 | 内容 |\n|---|---|---|\n| 1 | 运输方式 | Courier |\n| 2 | 渠道 | 快递专线 A |\n| 3 | Transit | 3-5 days |\n\n| 序号 | 重量段 | 单价 |\n|---|---|---|\n| 4 | 0-20kg | 44 CNY per kg |\n| 5 | 21-44kg | 44 CNY per kg |\n| 6 | 45-99kg | 36 CNY per kg |\n| 7 | 100kg 起 | 32.5 CNY per kg |\n| 8 | Residential 派送费 | 4 USD per ctn（送 Residential 地址） |\n| 9 | Remote area 地区附加费 | 6 CNY per kg（Remote area 地址） |\n| 10 | Oversize 费 | 69.5 CNY per ctn（单箱最长边超58cm） |\n| 11 | Whole lot 最低计费重 | 不设 |\n| 12 | 体积重除数 | 5000 |\n| 13 | 计费重进位 | 0.5kg |\n| 14 | 税务条款 | 关税另计 |\n| 15 | Importer | Seller |\n| 16 | 报价包含 | 头程运费、目的港清关 |\n| 17 | 不含费用 | 查验费、仓储费、关税、MPF |\n| 18 | 有效期 | 2026-10-01 至2026-10-31 |\n| 19 | Claim | 丢失按运费赔付，破损不赔 |\n\n## 附加费项目\n\n| 序号 | 附加费项目 | 金额及条件 |\n|---|---|---|\n| 1 | FSC | 20% |\n\n【报价2】\n## 价格档\n\n**FWD-08 价格表**\n\n报价主体：SYN-Pacific Span Freight\n\n| 项目 | 内容 |\n|---|---|\n| 渠道 | 快递专线 A |\n| 运输方式 | 国际快递 |\n\n| 重量段 | 单价 |\n|---|---|\n| 0-20kg | 49.5元/kg |\n| 21-44kg | 44.5元/kg |\n| 45-99kg | 38元/kg |\n| 100kg起 | 33元/kg |\n| 整票最低计费重 | 不设 |\n| 体积重除数 | 5000 |\n| 计费重进位 | 0.5kg |\n| 燃油附加费 | 10% |\n| 住宅派送费 | 6美元/箱（送住宅地址） |\n| 偏远地区附加费 | 10元/kg（偏远地址） |\n| 报价包含 | 头程运费、目的港清关 |\n| 不含费用 | 查验费、仓储费、关税、MPF |\n| 税务条款 | 到仓价，税金客户另付 |\n| 进口商 | 卖家 |\n| 时效 | 3-5天 |\n| 有效期 | 2026-10-01至2026-10-31 |\n| 赔付 | 按申报货值赔付，上限 20 美元/kg |\n\n【报价3】\n## 价格\n\n**FWD-42 头程价格**\n\n报价主体：SYN-Ironwood Transit\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 快递经济线 |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-44kg | 36.5元/kg |  |\n| 45-99kg | 31.5元/kg |  |\n| 100kg起 | 30.5元/kg |  |\n| 运输方式 | 国际快递 |  |\n| 税务条款 | DAP，进口环节税由买家负担 |  |\n| 进口商 | 卖家 |  |\n| 偏远地区附加费 | 6元/kg（偏远地址） |  |\n| 超尺寸费 | 79.5元/箱（单箱最长边超58cm） |  |\n| 燃油附加费 | 不收 |  |\n| 报价包含 | 头程运费、目的港清关 |  |\n| 不含费用 | 查验费、仓储费、关税、MPF |  |\n| 时效 | 5-8天 |  |\n| 整票最低计费重 | 45kg |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 1kg |  |\n| 清关费 | 150元/票 |  |\n| 赔付 | 按运费 3 倍赔付 |  |\n| 有效期 | 2026-10-01至2026-10-31 |  |\n\n【报价4】\n## 价格\n\n**FWD-53 头程价格**\n\nQuoted by：SYN-Vantage Route\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 快递专线 B |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-44kg | 66.5 CNY per kg |  |\n| 45-99kg | 63.9 CNY per kg |  |\n| 100kg 起 | 59.3 CNY per kg |  |\n| 运输方式 | Courier |  |\n| 税务条款 | DDP 包税，含关税和 MPF |  |\n| Importer | Forwarder |  |\n| Residential 派送费 | 5 USD per ctn（送 Residential 地址） |  |\n| Remote area 地区附加费 | 8 CNY per kg（Remote area 地址） |  |\n| 超重费 | 89 CNY per ctn（单箱超22kg） |  |\n| FSC | 不收 |  |\n| 报价包含 | 头程运费、目的港清关、关税、MPF |  |\n| 不含费用 | 查验费、仓储费 |  |\n| Transit | 4-7 days |  |\n| Whole lot 最低计费重 | 不设 |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 0.5kg |  |\n| Claim | 丢失按运费赔付，破损不赔 |  |\n| 有效期 | 2026-10-01 至2026-10-31 |  |\n\n> 备注：Customs filing fee 150 CNY per shpt\n\n最后请单独用一行 JSON 给出结论，格式为：{\"choice\": \"报价编号或‘需要追问’\", \"risks\": [\"风险1\", \"风险2\"], \"questions\": [\"要问货代的问题\"]}"
+  },
+  {
+   "cand_id": "ALL",
+   "config_id": "qwen_plus",
+   "experiment": "pilota",
+   "images": [],
+   "max_tokens": 8000,
+   "method": "M1",
+   "prompt_sha256": "0f1b91217ecb3858832d5ab69dcd87015ae7a8d1f4b7492762d58113a0ec2da8",
+   "repeat": 0,
+   "run_key": "pilota|M1|qwen_plus|T-dev-010|answer|ALL|r0",
+   "seed": 20261010,
+   "stage": "answer",
+   "system": null,
+   "task_id": "T-dev-010",
+   "text": "你是跨境物流成本审计员。请按下列步骤审计每一份报价，再按决策规则给出结论。\n\n【货物】\n品名与件数：棉制 T 恤，900 件，单价 3.7 美元。\n货值合计：3330 美元。\n运输方式：快递。\n箱数与箱规：共 9 箱，9 箱，每箱 60×40×40 cm，25 kg。\n目的仓 CMH1，邮编 43062，地址类型：商业，是否偏远地区：否。\n时效要求：发运后 6 天内到仓。\n发运日期：2026-10-16。\n\n【参数】（日期 2026-10-09）\n汇率：1 美元 = 6.733 元人民币。\n该商品的美国进口关税合计税率：36.5%（MFN 16.5% + 301 清单 7.5% + 新 301 12.5%）。\nMPF：正式报关（货值超过 2500 美元）按货值 0.3464%，最低 34.58 美元、最高 670.86 美元；非正式报关 2.77 美元。HMF：仅海运，货值 0.125%。\n不包税运价参照下限：快递：无参照值；空运：西部 32.79 元/kg；全国 32.79 元/kg；海运：无参照值。按邮编首位判定区域：0–3 东部，4–7 中部，8–9 西部，无对应区域值时用全国值。\n\n【登记库查询快照】\n美国 FMC 持证名单（OTI）\n| 名称 | 许可证号 | 类型 | 状态 |\n|---|---|---|---|\n| SYN-Harbor Lane Logistics | SYN-FMC-0001 | NVOCC（无船承运人） | 有效 |\n| SYN-Bluewater Cargo | SYN-FMC-0002 | NVOCC（无船承运人） | 有效 |\n| SYN-Pacific Span Freight | SYN-FMC-0003 | NVOCC（无船承运人） | 有效 |\n| SYN-Meridian Forwarding | SYN-FMC-0004 | NVOCC（无船承运人） | 有效 |\n| SYN-Cedar Bay Shipping | SYN-FMC-0005 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Northgate Express | SYN-FMC-0006 | NVOCC（无船承运人） | 已吊销 |\n| SYN-Redwood Forwarders | SYN-FMC-0007 | OFF（海运货代，非无船承运人） | 有效 |\n| SYN-Summit Ocean Agency | SYN-FMC-0008 | OFF（海运货代，非无船承运人） | 有效 |\n\n国内登记（交通运输部无船承运备案、海关企业信用）\n| 名称 | 登记号 | 类别 | 状态 |\n|---|---|---|---|\n| SYN-Eastlake Logistics | SYN-MOT-0001 | 交通运输部无船承运备案 | 有效 |\n| SYN-Harbor Lane Logistics | SYN-MOT-0002 | 交通运输部无船承运备案 | 有效 |\n| SYN-Jade River Cargo | SYN-MOT-0003 | 交通运输部无船承运备案 | 有效 |\n| SYN-Stonebridge Freight | SYN-MOT-0004 | 交通运输部无船承运备案 | 已吊销 |\n| SYN-Eastlake Logistics | SYN-AEO-0001 | 海关高级认证企业 | 有效 |\n| SYN-Jade River Cargo | SYN-AEO-0002 | 海关高级认证企业 | 有效 |\n\n名单之外的主体视为未登记。\n\n【步骤】\n1. 逐份列出报价条款：重量档与单价、整票与单箱最低计费重、计泡系数、计重进位、附加费（含脚注与附表中的费用）、燃油、报关费、ISF 费、包税范围与进口商主体、时效、有效期、资质宣称。\n2. 找出前后矛盾的条款和缺少的必需条款（重量档、计泡系数、最低计费重、有效期、不含项、包税条款；快递另加燃油；海运另加 ISF）。\n3. 计算每份报价的计费重与卖家需支付的确定到仓成本（元），或然费用（如查验费）单列不计入。不包税时卖家另付关税、MPF、海运另付 HMF。\n4. 包税报价：税费下限 =（关税 + MPF，海运加 HMF）÷ 计费重。报价自身收费 ÷ 计费重低于税费下限为“高”；低于税费下限加参照下限为“需核实”；否则“无”。\n5. 资质宣称：对照登记库快照判定为“有证据”“证据不足”“与宣称矛盾”“与本次运输不相关”（规则见下）。\n6. 决策规则：满足时效且包税风险不为“高”的报价构成可行集，选确定成本最低者；若矛盾或缺失的条款在合理取值范围内会改变最优选择，不作推荐，改为追问，并列出要追问的条款。\n\n【计算与判定规则】\n- 计费重：每箱取实重、体积重（长×宽×高÷计泡系数）、单箱最低计费重三者中最大者，按计重进位步长向上取整，乘以箱数后求和，再与整票最低计费重取大。\n- 重量档：取下限不超过计费重的最高一档，整票按该档单价计。\n- 燃油附加费只按运费计。住宅派送费、偏远地区费只在地址条件满足时计入。报价未写出的可选费用（报关费、各项附加费、空运与快递的 ISF 等）按 0 计，不算缺失。\n- 关税按货值计，不含运费。包税只免除报价写明的税项，其余税项由卖家另付（例如只包关税时卖家另付 MPF，海运另付 HMF）。\n- 快递与海运没有参照下限时，不设“需核实”档。\n- 资质：宣称未写管辖地时两个登记库都查，任一库有记录即“有证据”；记录已注销、类型不符或编号不符为“与宣称矛盾”；空运或快递援引海运执照、认证主体与报价主体不一致、以中国海关认证证明美国清关能力，为“与本次运输不相关”；FMC 的无船承运人须为 NVOCC 类型；海关企业信用记录不能证明无船承运业务备案。\n- 追问判定中“合理取值范围”指：计泡系数 5000 或 6000；燃油附加费 0、10% 或 20%；整票最低计费重 0、45 或 100 kg；ISF 申报费 0 或 200 元；报关费 0、150 或 400 元；包税条款为不包税、全包、包关税与 MPF、只包关税之一；前后矛盾的条款取原文两个值。\n\n【报价】\n【报价1】\n## 报价\n\n**FWD-02 报价单**\n\nQuoted by：SYN-Harbor Lane Logistics\n\n| 序号 | 项目 | 内容 |\n|---|---|---|\n| 1 | 运输方式 | Courier |\n| 2 | 渠道 | 快递专线 A |\n| 3 | Transit | 3-5 days |\n\n| 序号 | 重量段 | 单价 |\n|---|---|---|\n| 4 | 0-20kg | 44 CNY per kg |\n| 5 | 21-44kg | 44 CNY per kg |\n| 6 | 45-99kg | 36 CNY per kg |\n| 7 | 100kg 起 | 32.5 CNY per kg |\n| 8 | Residential 派送费 | 4 USD per ctn（送 Residential 地址） |\n| 9 | Remote area 地区附加费 | 6 CNY per kg（Remote area 地址） |\n| 10 | Oversize 费 | 69.5 CNY per ctn（单箱最长边超58cm） |\n| 11 | Whole lot 最低计费重 | 不设 |\n| 12 | 体积重除数 | 5000 |\n| 13 | 计费重进位 | 0.5kg |\n| 14 | 税务条款 | 关税另计 |\n| 15 | Importer | Seller |\n| 16 | 报价包含 | 头程运费、目的港清关 |\n| 17 | 不含费用 | 查验费、仓储费、关税、MPF |\n| 18 | 有效期 | 2026-10-01 至2026-10-31 |\n| 19 | Claim | 丢失按运费赔付，破损不赔 |\n\n## 附加费项目\n\n| 序号 | 附加费项目 | 金额及条件 |\n|---|---|---|\n| 1 | FSC | 20% |\n\n【报价2】\n## 价格档\n\n**FWD-08 价格表**\n\n报价主体：SYN-Pacific Span Freight\n\n| 项目 | 内容 |\n|---|---|\n| 渠道 | 快递专线 A |\n| 运输方式 | 国际快递 |\n\n| 重量段 | 单价 |\n|---|---|\n| 0-20kg | 49.5元/kg |\n| 21-44kg | 44.5元/kg |\n| 45-99kg | 38元/kg |\n| 100kg起 | 33元/kg |\n| 整票最低计费重 | 不设 |\n| 体积重除数 | 5000 |\n| 计费重进位 | 0.5kg |\n| 燃油附加费 | 10% |\n| 住宅派送费 | 6美元/箱（送住宅地址） |\n| 偏远地区附加费 | 10元/kg（偏远地址） |\n| 报价包含 | 头程运费、目的港清关 |\n| 不含费用 | 查验费、仓储费、关税、MPF |\n| 税务条款 | 到仓价，税金客户另付 |\n| 进口商 | 卖家 |\n| 时效 | 3-5天 |\n| 有效期 | 2026-10-01至2026-10-31 |\n| 赔付 | 按申报货值赔付，上限 20 美元/kg |\n\n【报价3】\n## 价格\n\n**FWD-42 头程价格**\n\n报价主体：SYN-Ironwood Transit\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 快递经济线 |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-44kg | 36.5元/kg |  |\n| 45-99kg | 31.5元/kg |  |\n| 100kg起 | 30.5元/kg |  |\n| 运输方式 | 国际快递 |  |\n| 税务条款 | DAP，进口环节税由买家负担 |  |\n| 进口商 | 卖家 |  |\n| 偏远地区附加费 | 6元/kg（偏远地址） |  |\n| 超尺寸费 | 79.5元/箱（单箱最长边超58cm） |  |\n| 燃油附加费 | 不收 |  |\n| 报价包含 | 头程运费、目的港清关 |  |\n| 不含费用 | 查验费、仓储费、关税、MPF |  |\n| 时效 | 5-8天 |  |\n| 整票最低计费重 | 45kg |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 1kg |  |\n| 清关费 | 150元/票 |  |\n| 赔付 | 按运费 3 倍赔付 |  |\n| 有效期 | 2026-10-01至2026-10-31 |  |\n\n【报价4】\n## 价格\n\n**FWD-53 头程价格**\n\nQuoted by：SYN-Vantage Route\n\n| 项目 | 内容 |  |\n|---|---|---|\n| 渠道 | 快递专线 B |  |\n\n| 重量段 | 单价 |  |\n|---|---|---|\n| 0-44kg | 66.5 CNY per kg |  |\n| 45-99kg | 63.9 CNY per kg |  |\n| 100kg 起 | 59.3 CNY per kg |  |\n| 运输方式 | Courier |  |\n| 税务条款 | DDP 包税，含关税和 MPF |  |\n| Importer | Forwarder |  |\n| Residential 派送费 | 5 USD per ctn（送 Residential 地址） |  |\n| Remote area 地区附加费 | 8 CNY per kg（Remote area 地址） |  |\n| 超重费 | 89 CNY per ctn（单箱超22kg） |  |\n| FSC | 不收 |  |\n| 报价包含 | 头程运费、目的港清关、关税、MPF |  |\n| 不含费用 | 查验费、仓储费 |  |\n| Transit | 4-7 days |  |\n| Whole lot 最低计费重 | 不设 |  |\n| 体积重除数 | 6000 |  |\n| 计费重进位 | 0.5kg |  |\n| Claim | 丢失按运费赔付，破损不赔 |  |\n| 有效期 | 2026-10-01 至2026-10-31 |  |\n\n> 备注：Customs filing fee 150 CNY per shpt\n\n最后请单独用一行 JSON 给出结论，格式为：\n{\"choice\": \"报价编号或‘需要追问’\", \"ask_fields\": [\"报价编号.条款名\"], \"per_quote\": {\"报价1\": {\"cost_cny\": 数字或null, \"ddp_level\": \"无|需核实|高\", \"claims\": [\"有证据|证据不足|与宣称矛盾|与本次运输不相关\"], \"hidden_fees\": [\"费用名\"], \"conflicts\": [\"条款名\"], \"gaps\": [\"条款名\"]}}, \"questions\": [\"要问货代的问题\"]}"
+  }
+ ]
+}
