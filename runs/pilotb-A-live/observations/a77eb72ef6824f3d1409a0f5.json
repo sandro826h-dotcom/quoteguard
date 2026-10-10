@@ -1,0 +1,82 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 256,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 2298,
+        "prompt_tokens": 2298,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 2554
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C1",
+  "config_id": "kimi",
+  "cost_estimate": {
+    "amount": 0.021849,
+    "currency": "CNY",
+    "input_tokens": 2298,
+    "output_tokens": 256,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "pilotb",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:42:17.076359Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 8901.16,
+  "max_tokens": 1200,
+  "max_tokens_override": 1200,
+  "method": "transcribe",
+  "model": {
+    "requested": "Pro/moonshotai/Kimi-K2.6",
+    "returned": "Pro/moonshotai/Kimi-K2.6"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "76398694a711936c841baccc92e9ba0fd3245ec05e77ecd1d1fef23ba271e591",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a1260cb37cd1d964a2f4ebdb431af8\",\"object\":\"chat.completion\",\"created\":1791639729,\"model\":\"Pro/moonshotai/Kimi-K2.6\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"FWD-15\\nQuoted by：SYN-Tallmast Logistics\\n走空派A渠道\\n运输方式为Air\\n0-20kg，单价47.6 CNY per kg\\n21-100kg，单价46.5 CNY per kg\\n101-300kg，单价45 CNY per kg\\n301kg起，单价44.6 CNY per kg\\nWhole lot 12kg起计\\n体积重除以6000\\n计费重按1kg进位\\nRemote area地区附加费：8 CNY per kg（Remote area地址）\\nOversize费：47.5 CNY per ctn（单箱最长边超58cm）\\n查验费：1344.5 CNY per shpt，按实际发生收取\\nCustoms filing fee 400 CNY per shpt\\n报价包含：头程运费、目的港清关、关税、MPF\\n不含：查验费、仓储费\\nDDP包税，含全部进口环节税费\\nImporter（IOR）：Forwarder\\nTransit 7-10 days\\n报价有效期2026-10-01至2026-10-31\\nClaim：按运费3倍赔付\\n有问题随时联系FBA头程可订，pls confirm\\n合成示例\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":2298,\"completion_tokens\":256,\"total_tokens\":2554,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2298},\"system_fingerprint\":\"\"}",
+  "repeat": 0,
+  "request_id": "01a1260cb37cd1d964a2f4ebdb431af8",
+  "run_key": "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0",
+  "seed": 20261010,
+  "stage": "transcribe",
+  "started_at": "2026-10-10T13:42:08.174074Z",
+  "task_id": "T-dev-020",
+  "temperature": null,
+  "text": "FWD-15\nQuoted by：SYN-Tallmast Logistics\n走空派A渠道\n运输方式为Air\n0-20kg，单价47.6 CNY per kg\n21-100kg，单价46.5 CNY per kg\n101-300kg，单价45 CNY per kg\n301kg起，单价44.6 CNY per kg\nWhole lot 12kg起计\n体积重除以6000\n计费重按1kg进位\nRemote area地区附加费：8 CNY per kg（Remote area地址）\nOversize费：47.5 CNY per ctn（单箱最长边超58cm）\n查验费：1344.5 CNY per shpt，按实际发生收取\nCustoms filing fee 400 CNY per shpt\n报价包含：头程运费、目的港清关、关税、MPF\n不含：查验费、仓储费\nDDP包税，含全部进口环节税费\nImporter（IOR）：Forwarder\nTransit 7-10 days\n报价有效期2026-10-01至2026-10-31\nClaim：按运费3倍赔付\n有问题随时联系FBA头程可订，pls confirm\n合成示例",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 256,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 2298,
+    "prompt_tokens": 2298,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 2554
+  },
+  "valid": true
+}

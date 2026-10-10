@@ -1,0 +1,8 @@
+{
+  "config_id": "ds_flash",
+  "intent_at": "2026-10-10T13:43:11.616310Z",
+  "n": 1,
+  "prompt_sha256": "1cc5e5dbd78af963c16854df842348963016f04ffcef69ee2f4e167664c168b2",
+  "provider": "deepseek",
+  "run_key": "pilota|extract|ds_flash|T-dev-004|extract|C4|r1"
+}

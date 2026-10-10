@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-10T13:44:09.205400Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    },
+    {
+      "attempt": 2,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    },
+    {
+      "attempt": 3,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    }
+  ],
+  "error": "ProviderCallError: dashscope call failed (HTTP 502)",
+  "metadata": {
+    "attempt": 3,
+    "attempts": [
+      {
+        "attempt": 1,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      },
+      {
+        "attempt": 2,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      },
+      {
+        "attempt": 3,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      }
+    ],
+    "classification": "retryable",
+    "error_code": "",
+    "http_status": 502,
+    "model": "qwen-plus",
+    "provider": "dashscope"
+  },
+  "n": 1,
+  "possibly_billed_cost": null,
+  "provider": "dashscope",
+  "run_key": "pilota|M0|qwen_plus|T-dev-004|answer|ALL|r0",
+  "stop_reason": null
+}

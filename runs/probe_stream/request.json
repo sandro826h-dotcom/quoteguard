@@ -1,0 +1,1 @@
+{"model": "qwen-plus", "messages": [{"role": "user", "content": "请写一篇约 1500 字的说明文，介绍集装箱海运从订舱到提柜的完整流程。"}], "max_tokens": 2500, "temperature": 0, "enable_thinking": false, "stream": true, "stream_options": {"include_usage": true}}

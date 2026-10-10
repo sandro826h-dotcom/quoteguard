@@ -1,0 +1,83 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 977,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 707,
+        "prompt_tokens": 707,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1684
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C1",
+  "config_id": "glm",
+  "cost_estimate": {
+    "amount": 0.033012,
+    "currency": "CNY",
+    "input_tokens": 707,
+    "output_tokens": 977,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "pilotb",
+  "extra_payload": {
+    "enable_thinking": false,
+    "thinking_budget": 1
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:53:15.481885Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 9234.39,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "zai-org/GLM-5.3",
+    "returned": "zai-org/GLM-5.3"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "1a8a7794285e4f59ae1779a230ddf24b13a63f4fe98e3057831c4a168e5c1830",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a12616b0910196c91f57046662b3a4\",\"object\":\"chat.completion\",\"created\":1791640383,\"model\":\"zai-org/GLM-5.3\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"mode\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"air\\\", \\\"quotes\\\": [\\\"走空派 A 渠道\\\", \\\"运输方式为 Air\\\"]}, \\\"rate_tiers\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"min_kg\\\": 0, \\\"price\\\": 47.6, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 21, \\\"price\\\": 46.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 101, \\\"price\\\": 45, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 301, \\\"price\\\": 44.6, \\\"currency\\\": \\\"CNY\\\"}], \\\"quotes\\\": [\\\"0-20kg，单价47.6 CNY per kg\\\", \\\"21-100kg，单价46.5 CNY per kg\\\", \\\"101-300kg，单价45 CNY per kg\\\", \\\"301kg起，单价44.6 CNY per kg\\\"]}, \\\"min_kg_shipment\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 12, \\\"quotes\\\": [\\\"Whole lot 12kg 起计\\\"]}, \\\"min_kg_carton\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []}, \\\"dim_divisor\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 6000, \\\"quotes\\\": [\\\"体积重除以6000\\\"]}, \\\"rounding_kg\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 1, \\\"quotes\\\": [\\\"计费重按1kg 进位\\\"]}, \\\"surcharges\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"code\\\": \\\"Remote area 地区附加费\\\", \\\"basis\\\": \\\"per_kg\\\", \\\"amount\\\": 8, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"remote\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}, {\\\"code\\\": \\\"Oversize 费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 47.5, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"ctn_longest_side_gt\\\", \\\"threshold\\\": 58, \\\"contingent\\\": true}, {\\\"code\\\": \\\"查验费\\\", \\\"basis\\\": \\\"per_shpt\\\", \\\"amount\\\": 1344.5, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"always\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}], \\\"quotes\\\": [\\\"Remote area 地区附加费：8 CNY per kg（Remote area 地址）\\\", \\\"Oversize 费：47.5 CNY per ctn（单箱最长边超58cm）\\\", \\\"查验费：1344.5 CNY per shpt，按实际发生收取\\\"]}, \\\"fuel_pct\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []}, \\\"includes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\", \\\"关税\\\", \\\"MPF\\\"], \\\"quotes\\\": [\\\"报价包含：头程运费、目的港清关、关税、MPF\\\"]}, \\\"excludes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\"], \\\"quotes\\\": [\\\"不含：查验费、仓储费\\\"]}, \\\"ddp\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": {\\\"is_ddp\\\": true, \\\"scope\\\": \\\"all\\\", \\\"duty_terms\\\": \\\"included\\\", \\\"cap_cny_per_kg\\\": null, \\\"ior\\\": \\\"forwarder\\\"}, \\\"quotes\\\": [\\\"DDP 包税，含全部进口环节税费\\\", \\\"Importer (IOR)：Forwarder\\\"]}, \\\"broker_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []}, \\\"isf_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []}, \\\"transit_days\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [7, 10], \\\"quotes\\\": [\\\"Transit 7-10 days\\\"]}, \\\"validity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"2026-10-01 至2026-10-31\\\", \\\"quotes\\\": [\\\"报价有效期2026-10-01 至2026-10-31\\\"]}, \\\"liability\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"按运费 3 倍赔付\\\", \\\"quotes\\\": [\\\"Claim：按运费 3 倍赔付\\\"]}, \\\"claims\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": [], \\\"quotes\\\": []}, \\\"quote_entity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"SYN-Tallmast Logistics\\\", \\\"quotes\\\": [\\\"Quoted by: SYN-Tallmast Logistics\\\"]}}\",\"reasoning_content\":\"Let\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":707,\"completion_tokens\":977,\"total_tokens\":1684,\"completion_tokens_details\":{\"reasoning_tokens\":2},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":707},\"system_fingerprint\":\"\"}",
+  "repeat": 1,
+  "request_id": "01a12616b0910196c91f57046662b3a4",
+  "run_key": "pilotb|extract|glm|T-dev-020|extract|C1|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:53:06.246661Z",
+  "task_id": "T-dev-020",
+  "temperature": 0,
+  "text": "{\"mode\": {\"status\": \"stated\", \"value\": \"air\", \"quotes\": [\"走空派 A 渠道\", \"运输方式为 Air\"]}, \"rate_tiers\": {\"status\": \"stated\", \"value\": [{\"min_kg\": 0, \"price\": 47.6, \"currency\": \"CNY\"}, {\"min_kg\": 21, \"price\": 46.5, \"currency\": \"CNY\"}, {\"min_kg\": 101, \"price\": 45, \"currency\": \"CNY\"}, {\"min_kg\": 301, \"price\": 44.6, \"currency\": \"CNY\"}], \"quotes\": [\"0-20kg，单价47.6 CNY per kg\", \"21-100kg，单价46.5 CNY per kg\", \"101-300kg，单价45 CNY per kg\", \"301kg起，单价44.6 CNY per kg\"]}, \"min_kg_shipment\": {\"status\": \"stated\", \"value\": 12, \"quotes\": [\"Whole lot 12kg 起计\"]}, \"min_kg_carton\": {\"status\": \"missing\", \"value\": null, \"quotes\": []}, \"dim_divisor\": {\"status\": \"stated\", \"value\": 6000, \"quotes\": [\"体积重除以6000\"]}, \"rounding_kg\": {\"status\": \"stated\", \"value\": 1, \"quotes\": [\"计费重按1kg 进位\"]}, \"surcharges\": {\"status\": \"stated\", \"value\": [{\"code\": \"Remote area 地区附加费\", \"basis\": \"per_kg\", \"amount\": 8, \"currency\": \"CNY\", \"condition\": \"remote\", \"threshold\": null, \"contingent\": true}, {\"code\": \"Oversize 费\", \"basis\": \"per_ctn\", \"amount\": 47.5, \"currency\": \"CNY\", \"condition\": \"ctn_longest_side_gt\", \"threshold\": 58, \"contingent\": true}, {\"code\": \"查验费\", \"basis\": \"per_shpt\", \"amount\": 1344.5, \"currency\": \"CNY\", \"condition\": \"always\", \"threshold\": null, \"contingent\": true}], \"quotes\": [\"Remote area 地区附加费：8 CNY per kg（Remote area 地址）\", \"Oversize 费：47.5 CNY per ctn（单箱最长边超58cm）\", \"查验费：1344.5 CNY per shpt，按实际发生收取\"]}, \"fuel_pct\": {\"status\": \"missing\", \"value\": null, \"quotes\": []}, \"includes\": {\"status\": \"stated\", \"value\": [\"头程运费\", \"目的港清关\", \"关税\", \"MPF\"], \"quotes\": [\"报价包含：头程运费、目的港清关、关税、MPF\"]}, \"excludes\": {\"status\": \"stated\", \"value\": [\"查验费\", \"仓储费\"], \"quotes\": [\"不含：查验费、仓储费\"]}, \"ddp\": {\"status\": \"stated\", \"value\": {\"is_ddp\": true, \"scope\": \"all\", \"duty_terms\": \"included\", \"cap_cny_per_kg\": null, \"ior\": \"forwarder\"}, \"quotes\": [\"DDP 包税，含全部进口环节税费\", \"Importer (IOR)：Forwarder\"]}, \"broker_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []}, \"isf_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []}, \"transit_days\": {\"status\": \"stated\", \"value\": [7, 10], \"quotes\": [\"Transit 7-10 days\"]}, \"validity\": {\"status\": \"stated\", \"value\": \"2026-10-01 至2026-10-31\", \"quotes\": [\"报价有效期2026-10-01 至2026-10-31\"]}, \"liability\": {\"status\": \"stated\", \"value\": \"按运费 3 倍赔付\", \"quotes\": [\"Claim：按运费 3 倍赔付\"]}, \"claims\": {\"status\": \"missing\", \"value\": [], \"quotes\": []}, \"quote_entity\": {\"status\": \"stated\", \"value\": \"SYN-Tallmast Logistics\", \"quotes\": [\"Quoted by: SYN-Tallmast Logistics\"]}}",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 977,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 707,
+    "prompt_tokens": 707,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1684
+  },
+  "valid": true
+}

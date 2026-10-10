@@ -1,0 +1,8 @@
+{"ds_flash": {"currency": "USD", "input": 0.5, "output": 1.0},
+ "ds_pro": {"currency": "USD", "input": 2.0, "output": 4.0},
+ "qwen_plus": {"currency": "CNY", "input": 4.0, "output": 40.0},
+ "qwen_max": {"currency": "CNY", "input": 4.0, "output": 40.0},
+ "qwen_vl": {"currency": "CNY", "input": 4.0, "output": 40.0},
+ "glm": {"currency": "CNY", "input": 8.0, "output": 28.0},
+ "glm_v": {"currency": "CNY", "input": 4.0, "output": 12.0},
+ "kimi": {"currency": "CNY", "input": 6.5, "output": 27.0}}

@@ -1,0 +1,23 @@
+美国 FMC 持证名单（OTI）
+| 名称 | 许可证号 | 类型 | 状态 |
+|---|---|---|---|
+| SYN-Harbor Lane Logistics | SYN-FMC-0001 | NVOCC（无船承运人） | 有效 |
+| SYN-Bluewater Cargo | SYN-FMC-0002 | NVOCC（无船承运人） | 有效 |
+| SYN-Pacific Span Freight | SYN-FMC-0003 | NVOCC（无船承运人） | 有效 |
+| SYN-Meridian Forwarding | SYN-FMC-0004 | NVOCC（无船承运人） | 有效 |
+| SYN-Cedar Bay Shipping | SYN-FMC-0005 | NVOCC（无船承运人） | 已吊销 |
+| SYN-Northgate Express | SYN-FMC-0006 | NVOCC（无船承运人） | 已吊销 |
+| SYN-Redwood Forwarders | SYN-FMC-0007 | OFF（海运货代，非无船承运人） | 有效 |
+| SYN-Summit Ocean Agency | SYN-FMC-0008 | OFF（海运货代，非无船承运人） | 有效 |
+
+国内登记（交通运输部无船承运备案、海关企业信用）
+| 名称 | 登记号 | 类别 | 状态 |
+|---|---|---|---|
+| SYN-Eastlake Logistics | SYN-MOT-0001 | 交通运输部无船承运备案 | 有效 |
+| SYN-Harbor Lane Logistics | SYN-MOT-0002 | 交通运输部无船承运备案 | 有效 |
+| SYN-Jade River Cargo | SYN-MOT-0003 | 交通运输部无船承运备案 | 有效 |
+| SYN-Stonebridge Freight | SYN-MOT-0004 | 交通运输部无船承运备案 | 已吊销 |
+| SYN-Eastlake Logistics | SYN-AEO-0001 | 海关高级认证企业 | 有效 |
+| SYN-Jade River Cargo | SYN-AEO-0002 | 海关高级认证企业 | 有效 |
+
+名单之外的主体视为未登记。

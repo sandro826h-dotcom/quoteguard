@@ -1,0 +1,96 @@
+{
+  "budget": {
+    "CNY": 5.0,
+    "USD": 0.5
+  },
+  "kind": "dev",
+  "plan_id": "pilotb-A",
+  "rates": {
+    "ds_flash": {
+      "currency": "USD",
+      "input": 0.5,
+      "output": 1.0
+    },
+    "ds_pro": {
+      "currency": "USD",
+      "input": 2.0,
+      "output": 4.0
+    },
+    "glm": {
+      "currency": "CNY",
+      "input": 8.0,
+      "output": 28.0
+    },
+    "glm_v": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 12.0
+    },
+    "kimi": {
+      "currency": "CNY",
+      "input": 6.5,
+      "output": 27.0
+    },
+    "qwen_max": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_plus": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_vl": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    }
+  },
+  "requests": [
+    {
+      "cand_id": "C1",
+      "config_id": "glm_v",
+      "experiment": "pilotb",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/pilot_inputs/b/render/T-dev-020/C1/C1.png",
+          "sha256": "b9b113f6907057950ea2750e22e62332d0b65d1fd775cd398b26512394ef9cb4"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "76398694a711936c841baccc92e9ba0fd3245ec05e77ecd1d1fef23ba271e591",
+      "repeat": 0,
+      "run_key": "pilotb|transcribe|glm_v|T-dev-020|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-dev-020",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "kimi",
+      "experiment": "pilotb",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/pilot_inputs/b/render/T-dev-020/C1/C1.png",
+          "sha256": "b9b113f6907057950ea2750e22e62332d0b65d1fd775cd398b26512394ef9cb4"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "76398694a711936c841baccc92e9ba0fd3245ec05e77ecd1d1fef23ba271e591",
+      "repeat": 0,
+      "run_key": "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-dev-020",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    }
+  ]
+}

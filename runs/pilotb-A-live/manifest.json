@@ -1,0 +1,38 @@
+{
+  "batch_id": "pilotb-A-live",
+  "budget": {
+    "CNY": 5.0,
+    "USD": 0.5
+  },
+  "completed": 2,
+  "created_at": "2026-10-10T13:42:01.388050Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-10T13:42:17.078733Z",
+  "identity": {
+    "base_urls": {
+      "siliconflow": "https://api.siliconflow.cn/v1"
+    },
+    "executor_sha256": "849fa527bb54cae808cbef7b859ee74004e4fd64bd4ea1055b261e9e51666718",
+    "llm_sha256": "077b95dca6ced3030b1912c437087c3afe8a84eec9991830828662d14c483100",
+    "mode": "live",
+    "models_sha256": "fbbf0856f0f682dd586369841ba102b706c0c89469cf0ff38f526b9e8a12996b",
+    "plan_sha256": "d7a4fb315be1b3f31b5bed82eeb83604b4ccc7b510bd8fe2bd8494a0e3e4f99a",
+    "util_sha256": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "kind": "dev",
+  "plan_id": "pilotb-A",
+  "runs": [
+    {
+      "finished_at": "2026-10-10T13:42:17.078690Z",
+      "skipped_done": 0,
+      "started_at": "2026-10-10T13:42:01.388787Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "CNY": 0.034101
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 2
+}

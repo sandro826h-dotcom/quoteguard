@@ -1,0 +1,72 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 966,
+        "prompt_tokens": 789,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1755
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C2",
+  "config_id": "qwen_plus",
+  "cost_estimate": {
+    "amount": 0.041796,
+    "currency": "CNY",
+    "input_tokens": 789,
+    "output_tokens": 966,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:51:29.815241Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 21981.59,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "qwen-plus",
+    "returned": "qwen-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "50fbab953616b25614c5ae13c94b40c4f2d3137d0e4707f0089543f5edfb698d",
+  "provider": "dashscope",
+  "raw_body": "{\"model\":\"qwen-plus\",\"id\":\"chatcmpl-9ec5ffbe-6d58-94be-9dee-d1a2ce33d50b\",\"choices\":[{\"message\":{\"content\":\"{\\n  \\\"mode\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"express\\\", \\\"quotes\\\": [\\\"运输方式 | 国际快递\\\"]},\\n  \\\"rate_tiers\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"min_kg\\\": 0, \\\"price\\\": 49.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 21, \\\"price\\\": 44.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 45, \\\"price\\\": 38, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 100, \\\"price\\\": 33, \\\"currency\\\": \\\"CNY\\\"}], \\\"quotes\\\": [\\\"0-20kg | 49.5元/kg\\\", \\\"21-44kg | 44.5元/kg\\\", \\\"45-99kg | 38元/kg\\\", \\\"100kg起 | 33元/kg\\\"]},\\n  \\\"min_kg_shipment\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": null, \\\"quotes\\\": [\\\"整票最低计费重 | 不设\\\"]},\\n  \\\"min_kg_carton\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"dim_divisor\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 5000, \\\"quotes\\\": [\\\"体积重除数 | 5000\\\"]},\\n  \\\"rounding_kg\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 0.5, \\\"quotes\\\": [\\\"计费重进位 | 0.5kg\\\"]},\\n  \\\"surcharges\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"code\\\": \\\"住宅派送费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 6, \\\"currency\\\": \\\"USD\\\", \\\"condition\\\": \\\"residential\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}, {\\\"code\\\": \\\"偏远地区附加费\\\", \\\"basis\\\": \\\"per_kg\\\", \\\"amount\\\": 10, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"remote\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}], \\\"quotes\\\": [\\\"住宅派送费 | 6美元/箱（送住宅地址）\\\", \\\"偏远地区附加费 | 10元/kg（偏远地址）\\\"]},\\n  \\\"fuel_pct\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 0.1, \\\"quotes\\\": [\\\"燃油附加费 | 10%\\\"]},\\n  \\\"includes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\"], \\\"quotes\\\": [\\\"报价包含 | 头程运费、目的港清关\\\"]},\\n  \\\"excludes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"关税\\\", \\\"MPF\\\"], \\\"quotes\\\": [\\\"不含费用 | 查验费、仓储费、关税、MPF\\\"]},\\n  \\\"ddp\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": {\\\"is_ddp\\\": false, \\\"scope\\\": \\\"duty\\\", \\\"duty_terms\\\": \\\"actual\\\", \\\"cap_cny_per_kg\\\": null, \\\"ior\\\": \\\"seller\\\"}, \\\"quotes\\\": [\\\"税务条款 | 到仓价，税金客户另付\\\", \\\"进口商 | 卖家\\\"]},\\n  \\\"broker_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"isf_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"transit_days\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [3, 5], \\\"quotes\\\": [\\\"时效 | 3-5天\\\"]},\\n  \\\"validity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"2026-10-01\\\", \\\"2026-10-31\\\"], \\\"quotes\\\": [\\\"有效期 | 2026-10-01至2026-10-31\\\"]},\\n  \\\"liability\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": {\\\"basis\\\": \\\"declared_value\\\", \\\"cap_per_kg_usd\\\": 20}, \\\"quotes\\\": [\\\"赔付 | 按申报货值赔付，上限 20 美元/kg\\\"]},\\n  \\\"claims\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"quote_entity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"SYN-Pacific Span Freight\\\", \\\"quotes\\\": [\\\"报价主体：SYN-Pacific Span Freight\\\"]}\\n}\",\"role\":\"assistant\"},\"index\":0,\"finish_reason\":\"stop\"}],\"created\":1791640268,\"object\":\"chat.completion\",\"usage\":{\"total_tokens\":1755,\"completion_tokens\":966,\"prompt_tokens\":789,\"prompt_tokens_details\":{\"cached_tokens\":0}}}",
+  "repeat": 1,
+  "request_id": "9ec5ffbe-6d58-94be-9dee-d1a2ce33d50b",
+  "run_key": "pilota|extract|qwen_plus|T-dev-010|extract|C2|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:51:07.832331Z",
+  "task_id": "T-dev-010",
+  "temperature": 0,
+  "text": "{\n  \"mode\": {\"status\": \"stated\", \"value\": \"express\", \"quotes\": [\"运输方式 | 国际快递\"]},\n  \"rate_tiers\": {\"status\": \"stated\", \"value\": [{\"min_kg\": 0, \"price\": 49.5, \"currency\": \"CNY\"}, {\"min_kg\": 21, \"price\": 44.5, \"currency\": \"CNY\"}, {\"min_kg\": 45, \"price\": 38, \"currency\": \"CNY\"}, {\"min_kg\": 100, \"price\": 33, \"currency\": \"CNY\"}], \"quotes\": [\"0-20kg | 49.5元/kg\", \"21-44kg | 44.5元/kg\", \"45-99kg | 38元/kg\", \"100kg起 | 33元/kg\"]},\n  \"min_kg_shipment\": {\"status\": \"stated\", \"value\": null, \"quotes\": [\"整票最低计费重 | 不设\"]},\n  \"min_kg_carton\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"dim_divisor\": {\"status\": \"stated\", \"value\": 5000, \"quotes\": [\"体积重除数 | 5000\"]},\n  \"rounding_kg\": {\"status\": \"stated\", \"value\": 0.5, \"quotes\": [\"计费重进位 | 0.5kg\"]},\n  \"surcharges\": {\"status\": \"stated\", \"value\": [{\"code\": \"住宅派送费\", \"basis\": \"per_ctn\", \"amount\": 6, \"currency\": \"USD\", \"condition\": \"residential\", \"threshold\": null, \"contingent\": true}, {\"code\": \"偏远地区附加费\", \"basis\": \"per_kg\", \"amount\": 10, \"currency\": \"CNY\", \"condition\": \"remote\", \"threshold\": null, \"contingent\": true}], \"quotes\": [\"住宅派送费 | 6美元/箱（送住宅地址）\", \"偏远地区附加费 | 10元/kg（偏远地址）\"]},\n  \"fuel_pct\": {\"status\": \"stated\", \"value\": 0.1, \"quotes\": [\"燃油附加费 | 10%\"]},\n  \"includes\": {\"status\": \"stated\", \"value\": [\"头程运费\", \"目的港清关\"], \"quotes\": [\"报价包含 | 头程运费、目的港清关\"]},\n  \"excludes\": {\"status\": \"stated\", \"value\": [\"查验费\", \"仓储费\", \"关税\", \"MPF\"], \"quotes\": [\"不含费用 | 查验费、仓储费、关税、MPF\"]},\n  \"ddp\": {\"status\": \"stated\", \"value\": {\"is_ddp\": false, \"scope\": \"duty\", \"duty_terms\": \"actual\", \"cap_cny_per_kg\": null, \"ior\": \"seller\"}, \"quotes\": [\"税务条款 | 到仓价，税金客户另付\", \"进口商 | 卖家\"]},\n  \"broker_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"isf_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"transit_days\": {\"status\": \"stated\", \"value\": [3, 5], \"quotes\": [\"时效 | 3-5天\"]},\n  \"validity\": {\"status\": \"stated\", \"value\": [\"2026-10-01\", \"2026-10-31\"], \"quotes\": [\"有效期 | 2026-10-01至2026-10-31\"]},\n  \"liability\": {\"status\": \"stated\", \"value\": {\"basis\": \"declared_value\", \"cap_per_kg_usd\": 20}, \"quotes\": [\"赔付 | 按申报货值赔付，上限 20 美元/kg\"]},\n  \"claims\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"quote_entity\": {\"status\": \"stated\", \"value\": \"SYN-Pacific Span Freight\", \"quotes\": [\"报价主体：SYN-Pacific Span Freight\"]}\n}",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 966,
+    "prompt_tokens": 789,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1755
+  },
+  "valid": true
+}

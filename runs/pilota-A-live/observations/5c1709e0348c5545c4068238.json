@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 220,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 675,
+        "prompt_tokens": 675,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 895
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C1",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 0.0005575,
+    "currency": "USD",
+    "input_tokens": 675,
+    "output_tokens": 220,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:41:53.016758Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 2497.35,
+  "max_tokens": 1200,
+  "max_tokens_override": 1200,
+  "method": "transcribe",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "7160b411f121dd66d218a2bb26969ae56624362fe744cc911e4445205c1053c5",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"0999fa30-bf43-46b8-a7a3-56e2ac0d69b7\",\"object\":\"chat.completion\",\"created\":1791639711,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"FWD-80:\\n报价主体：SYN-Harbor Lane Logistics\\n走空派B渠道\\n0-20kg，单价37.5元/kg\\n21-100kg，单价35元/kg\\n101-300kg，单价34.5元/kg\\n301kg起，单价33.5元/kg\\n运输方式为空运\\nDAP，进口环节税由买家负担\\n进口商（IOR）：卖家\\n住宅派送费：5美元/箱（送住宅地址）\\n超重费：83元/箱（单箱超22kg）\\n燃油附加费10%\\n报价包含：头程运费、目的港清关\\n不含：查验费、仓储费、关税、MPF\\n时效9-13天\\n不设最低计费重\\n体积重除以6000\\n计费重按0.5kg进位\\n清关费400元/票\\n赔付：按运费3倍赔付\\n报价有效期2026-10-01至2026-10-31\\n备注：整票45kg起计\\n合成示例\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":675,\"completion_tokens\":220,\"total_tokens\":895,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":675},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 0,
+  "request_id": "0999fa30-bf43-46b8-a7a3-56e2ac0d69b7",
+  "run_key": "pilota|transcribe|ds_flash|T-dev-004|transcribe|C1|r0",
+  "seed": 20261010,
+  "stage": "transcribe",
+  "started_at": "2026-10-10T13:41:50.518221Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "FWD-80:\n报价主体：SYN-Harbor Lane Logistics\n走空派B渠道\n0-20kg，单价37.5元/kg\n21-100kg，单价35元/kg\n101-300kg，单价34.5元/kg\n301kg起，单价33.5元/kg\n运输方式为空运\nDAP，进口环节税由买家负担\n进口商（IOR）：卖家\n住宅派送费：5美元/箱（送住宅地址）\n超重费：83元/箱（单箱超22kg）\n燃油附加费10%\n报价包含：头程运费、目的港清关\n不含：查验费、仓储费、关税、MPF\n时效9-13天\n不设最低计费重\n体积重除以6000\n计费重按0.5kg进位\n清关费400元/票\n赔付：按运费3倍赔付\n报价有效期2026-10-01至2026-10-31\n备注：整票45kg起计\n合成示例",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 220,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 675,
+    "prompt_tokens": 675,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 895
+  },
+  "valid": true
+}

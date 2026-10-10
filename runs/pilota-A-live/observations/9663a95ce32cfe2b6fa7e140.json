@@ -1,0 +1,82 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 260,
+        "completion_tokens_details": {
+          "text_tokens": 260
+        },
+        "prompt_tokens": 1084,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 1025,
+          "text_tokens": 59
+        },
+        "total_tokens": 1344
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C1",
+  "config_id": "qwen_vl",
+  "cost_estimate": {
+    "amount": 0.014736,
+    "currency": "CNY",
+    "input_tokens": 1084,
+    "output_tokens": 260,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:42:00.203969Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 9680.61,
+  "max_tokens": 1200,
+  "max_tokens_override": 1200,
+  "method": "transcribe",
+  "model": {
+    "requested": "qwen3-vl-plus",
+    "returned": "qwen3-vl-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "7160b411f121dd66d218a2bb26969ae56624362fe744cc911e4445205c1053c5",
+  "provider": "dashscope",
+  "raw_body": "{\"choices\":[{\"message\":{\"content\":\"FWD-80:  \\n报价主体：SYN-Harbor Lane Logistics  \\n走空派 B渠道  \\n0-20kg，单价37.5元/kg  \\n21-100kg，单价35元/kg  \\n101-300kg，单价34.5元/kg  \\n301kg起，单价33.5元/kg  \\n运输方式为空运  \\nDAP，进口环节税由买家负担  \\n进口商（IOR）：卖家  \\n住宅派送费：5美元/箱（送住宅地址）  \\n超重费：83元/箱（单箱超22kg）  \\n燃油附加费10%  \\n报价包含：头程运费、目的港清关  \\n不含：查验费、仓储费、关税、MPF  \\n时效9-13天  \\n不设最低计费重  \\n体积重除以6000  \\n计费重按0.5kg进位  \\n清关费400元/票  \\n赔付：按运费 3 倍赔付  \\n报价有效期2026-10-01至2026-10-31  \\n备注：整票45kg起计\",\"reasoning_content\":\"\",\"role\":\"assistant\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1084,\"completion_tokens\":260,\"total_tokens\":1344,\"completion_tokens_details\":{\"text_tokens\":260},\"prompt_tokens_details\":{\"image_tokens\":1025,\"text_tokens\":59,\"cached_tokens\":0}},\"created\":1791639720,\"system_fingerprint\":null,\"model\":\"qwen3-vl-plus\",\"id\":\"chatcmpl-7efc3a0c-c9df-9242-bbf5-a7e6f004323b\"}",
+  "repeat": 0,
+  "request_id": "7efc3a0c-c9df-9242-bbf5-a7e6f004323b",
+  "run_key": "pilota|transcribe|qwen_vl|T-dev-004|transcribe|C1|r0",
+  "seed": 20261010,
+  "stage": "transcribe",
+  "started_at": "2026-10-10T13:41:50.521912Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "FWD-80:  \n报价主体：SYN-Harbor Lane Logistics  \n走空派 B渠道  \n0-20kg，单价37.5元/kg  \n21-100kg，单价35元/kg  \n101-300kg，单价34.5元/kg  \n301kg起，单价33.5元/kg  \n运输方式为空运  \nDAP，进口环节税由买家负担  \n进口商（IOR）：卖家  \n住宅派送费：5美元/箱（送住宅地址）  \n超重费：83元/箱（单箱超22kg）  \n燃油附加费10%  \n报价包含：头程运费、目的港清关  \n不含：查验费、仓储费、关税、MPF  \n时效9-13天  \n不设最低计费重  \n体积重除以6000  \n计费重按0.5kg进位  \n清关费400元/票  \n赔付：按运费 3 倍赔付  \n报价有效期2026-10-01至2026-10-31  \n备注：整票45kg起计",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 260,
+    "completion_tokens_details": {
+      "text_tokens": 260
+    },
+    "prompt_tokens": 1084,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "image_tokens": 1025,
+      "text_tokens": 59
+    },
+    "total_tokens": 1344
+  },
+  "valid": true
+}

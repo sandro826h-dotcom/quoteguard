@@ -1,0 +1,112 @@
+# Model configurations for experiments. Model names and the thinking-switch parameter
+# names were checked in step 0 (runs/step0-live, step0b-live, step0c-live, 2026-10-10).
+# Model names are checked against each provider's /models listing (executor check subcommand).
+# verified: true = the model name appears in the provider /models listing saved in
+# runs/step0_models_list/ (2026-10-10) and, except dev_ds and dev_vl, a step-0 call returned
+# the same model name (runs/step0-live, step0b-live, step0c-live).
+# image_token_bound (optional, default 4000): per-image token allowance in the cost upper bound.
+# tier: strong | low | dev | vision (vision-only configs referenced by vision_config_id)
+models:
+  - config_id: ds_pro
+    provider: deepseek
+    model: deepseek-v4-pro
+    tier: strong
+    vision_config_id: ds_flash
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {thinking: {type: disabled}}
+    verified: true
+  - config_id: ds_flash
+    provider: deepseek
+    model: deepseek-flash
+    tier: low
+    vision_config_id: ds_flash
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {thinking: {type: disabled}}
+    verified: true
+    image_token_bound: 1500  # step0: 615 tokens for a 1200x800 image
+  - config_id: ds_flash_think
+    provider: deepseek
+    model: deepseek-flash
+    tier: low
+    vision_config_id: ds_flash
+    temperature: null
+    max_tokens: 8000
+    extra_payload: {thinking: {type: enabled}}
+    verified: true
+  - config_id: qwen_max
+    provider: dashscope
+    model: qwen3.8-max-0902
+    tier: strong
+    vision_config_id: qwen_vl
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false}
+    verified: true
+  - config_id: qwen_plus
+    provider: dashscope
+    model: qwen-plus
+    tier: low
+    vision_config_id: qwen_vl
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false}
+    verified: true
+  - config_id: qwen_vl
+    provider: dashscope
+    model: qwen3-vl-plus
+    tier: vision
+    vision_config_id: null
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false}
+    verified: true
+    image_token_bound: 2000  # step0: 970 tokens for a 1200x800 image
+  - config_id: glm
+    provider: siliconflow
+    model: zai-org/GLM-5.3
+    tier: strong
+    vision_config_id: glm_v
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false, thinking_budget: 1}  # GLM-5.3 cannot disable thinking on SiliconFlow or DashScope (step0b, step0c, 2026-10-10); minimum budget
+    verified: true
+  - config_id: glm_v
+    provider: siliconflow
+    model: zai-org/GLM-4.5V
+    tier: vision
+    vision_config_id: null
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false}
+    verified: true
+    image_token_bound: 3000  # step0: 1267 tokens for a 1200x800 image
+  - config_id: kimi
+    provider: siliconflow
+    model: Pro/moonshotai/Kimi-K2.6
+    tier: strong
+    vision_config_id: kimi
+    temperature: null
+    max_tokens: 2000
+    extra_payload: {enable_thinking: false}
+    verified: true
+    image_token_bound: 3000  # step0: 1269 tokens for a 1200x800 image
+  - config_id: dev_ds
+    provider: siliconflow
+    model: deepseek-ai/DeepSeek-V3.2
+    tier: dev
+    vision_config_id: dev_vl
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {}
+    verified: true
+  - config_id: dev_vl
+    provider: siliconflow
+    model: Qwen/Qwen3-VL-32B-Instruct
+    tier: dev
+    vision_config_id: null
+    temperature: 0
+    max_tokens: 2000
+    extra_payload: {}
+    verified: true

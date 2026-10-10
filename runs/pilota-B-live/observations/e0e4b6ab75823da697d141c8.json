@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1154,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 738,
+        "prompt_tokens": 738,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1892
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C3",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 0.001523,
+    "currency": "USD",
+    "input_tokens": 738,
+    "output_tokens": 1154,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:43:11.614372Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 3582.34,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "158ed0fbb71794406cf5b47d7f90e29b07d93706a0c15bfcc1e234c98e7cfaab",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"7402e694-56a9-4127-8b2c-9b0135c56335\",\"object\":\"chat.completion\",\"created\":1791639788,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\n  \\\"mode\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"air\\\",\\n    \\\"quotes\\\": [\\\"运输方式为 Air\\\"]\\n  },\\n  \\\"rate_tiers\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"min_kg\\\": 0, \\\"price\\\": 37.5, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 21, \\\"price\\\": 36, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 101, \\\"price\\\": 36, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 301, \\\"price\\\": 34.5, \\\"currency\\\": \\\"CNY\\\"}\\n    ],\\n    \\\"quotes\\\": [\\n      \\\"0-20kg，单价37.5 CNY per kg\\\",\\n      \\\"21-100kg，单价36 CNY per kg\\\",\\n      \\\"101-300kg，单价36 CNY per kg\\\",\\n      \\\"301kg 起，单价34.5 CNY per kg\\\"\\n    ]\\n  },\\n  \\\"min_kg_shipment\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 21,\\n    \\\"quotes\\\": [\\\"Whole lot 21kg 起计\\\"]\\n  },\\n  \\\"min_kg_carton\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"dim_divisor\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 6000,\\n    \\\"quotes\\\": [\\\"体积重除以6000\\\"]\\n  },\\n  \\\"rounding_kg\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 1,\\n    \\\"quotes\\\": [\\\"计费重按1kg 进位\\\"]\\n  },\\n  \\\"surcharges\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\n        \\\"code\\\": \\\"Remote area\\\",\\n        \\\"basis\\\": \\\"per_kg\\\",\\n        \\\"amount\\\": 10,\\n        \\\"currency\\\": \\\"CNY\\\",\\n        \\\"condition\\\": \\\"remote\\\",\\n        \\\"threshold\\\": null,\\n        \\\"contingent\\\": true\\n      },\\n      {\\n        \\\"code\\\": \\\"Oversize\\\",\\n        \\\"basis\\\": \\\"per_ctn\\\",\\n        \\\"amount\\\": 61.5,\\n        \\\"currency\\\": \\\"CNY\\\",\\n        \\\"condition\\\": \\\"ctn_longest_side_gt\\\",\\n        \\\"threshold\\\": 58,\\n        \\\"contingent\\\": true\\n      }\\n    ],\\n    \\\"quotes\\\": [\\n      \\\"Remote area 地区附加费：10 CNY per kg（Remote area 地址）\\\",\\n      \\\"Oversize 费：61.5 CNY per ctn（单箱最长边超58cm）\\\"\\n    ]\\n  },\\n  \\\"fuel_pct\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 0.2,\\n    \\\"quotes\\\": [\\\"FSC 20%\\\"]\\n  },\\n  \\\"includes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\"],\\n    \\\"quotes\\\": [\\\"报价包含：头程运费、目的港清关\\\"]\\n  },\\n  \\\"excludes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"关税\\\", \\\"MPF\\\"],\\n    \\\"quotes\\\": [\\\"不含：查验费、仓储费、关税、MPF\\\"]\\n  },\\n  \\\"ddp\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": {\\n      \\\"is_ddp\\\": false,\\n      \\\"scope\\\": \\\"duty_mpf\\\",\\n      \\\"duty_terms\\\": \\\"actual\\\",\\n      \\\"cap_cny_per_kg\\\": null,\\n      \\\"ior\\\": \\\"seller\\\"\\n    },\\n    \\\"quotes\\\": [\\n      \\\"不含税，关税客户自理\\\",\\n      \\\"Importer (IOR)：Seller\\\",\\n      \\\"不含：查验费、仓储费、关税、MPF\\\"\\n    ]\\n  },\\n  \\\"broker_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"isf_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"transit_days\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [7, 10],\\n    \\\"quotes\\\": [\\\"Transit 7-10 days\\\"]\\n  },\\n  \\\"validity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"2026-10-01 至2026-10-31\\\",\\n    \\\"quotes\\\": [\\\"报价有效期2026-10-01 至2026-10-31\\\"]\\n  },\\n  \\\"liability\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"按申报货值赔付，上限 20 美元/kg\\\",\\n    \\\"quotes\\\": [\\\"Claim：按申报货值赔付，上限 20 美元/kg\\\"]\\n  },\\n  \\\"claims\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\n        \\\"type\\\": \\\"NVOCC\\\",\\n        \\\"entity\\\": \\\"SYN-Bluewater Cargo\\\",\\n        \\\"reg_no\\\": null,\\n        \\\"jurisdiction\\\": null\\n      }\\n    ],\\n    \\\"quotes\\\": [\\\"SYN-Bluewater Cargo 已取得 NVOCC\\\"]\\n  },\\n  \\\"quote_entity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"SYN-Bluewater Cargo\\\",\\n    \\\"quotes\\\": [\\\"Quoted by：SYN-Bluewater Cargo\\\"]\\n  }\\n}\\n```\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":738,\"completion_tokens\":1154,\"total_tokens\":1892,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":738},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "7402e694-56a9-4127-8b2c-9b0135c56335",
+  "run_key": "pilota|extract|ds_flash|T-dev-004|extract|C3|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:43:08.031006Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "```json\n{\n  \"mode\": {\n    \"status\": \"stated\",\n    \"value\": \"air\",\n    \"quotes\": [\"运输方式为 Air\"]\n  },\n  \"rate_tiers\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"min_kg\": 0, \"price\": 37.5, \"currency\": \"CNY\"},\n      {\"min_kg\": 21, \"price\": 36, \"currency\": \"CNY\"},\n      {\"min_kg\": 101, \"price\": 36, \"currency\": \"CNY\"},\n      {\"min_kg\": 301, \"price\": 34.5, \"currency\": \"CNY\"}\n    ],\n    \"quotes\": [\n      \"0-20kg，单价37.5 CNY per kg\",\n      \"21-100kg，单价36 CNY per kg\",\n      \"101-300kg，单价36 CNY per kg\",\n      \"301kg 起，单价34.5 CNY per kg\"\n    ]\n  },\n  \"min_kg_shipment\": {\n    \"status\": \"stated\",\n    \"value\": 21,\n    \"quotes\": [\"Whole lot 21kg 起计\"]\n  },\n  \"min_kg_carton\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"dim_divisor\": {\n    \"status\": \"stated\",\n    \"value\": 6000,\n    \"quotes\": [\"体积重除以6000\"]\n  },\n  \"rounding_kg\": {\n    \"status\": \"stated\",\n    \"value\": 1,\n    \"quotes\": [\"计费重按1kg 进位\"]\n  },\n  \"surcharges\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"code\": \"Remote area\",\n        \"basis\": \"per_kg\",\n        \"amount\": 10,\n        \"currency\": \"CNY\",\n        \"condition\": \"remote\",\n        \"threshold\": null,\n        \"contingent\": true\n      },\n      {\n        \"code\": \"Oversize\",\n        \"basis\": \"per_ctn\",\n        \"amount\": 61.5,\n        \"currency\": \"CNY\",\n        \"condition\": \"ctn_longest_side_gt\",\n        \"threshold\": 58,\n        \"contingent\": true\n      }\n    ],\n    \"quotes\": [\n      \"Remote area 地区附加费：10 CNY per kg（Remote area 地址）\",\n      \"Oversize 费：61.5 CNY per ctn（单箱最长边超58cm）\"\n    ]\n  },\n  \"fuel_pct\": {\n    \"status\": \"stated\",\n    \"value\": 0.2,\n    \"quotes\": [\"FSC 20%\"]\n  },\n  \"includes\": {\n    \"status\": \"stated\",\n    \"value\": [\"头程运费\", \"目的港清关\"],\n    \"quotes\": [\"报价包含：头程运费、目的港清关\"]\n  },\n  \"excludes\": {\n    \"status\": \"stated\",\n    \"value\": [\"查验费\", \"仓储费\", \"关税\", \"MPF\"],\n    \"quotes\": [\"不含：查验费、仓储费、关税、MPF\"]\n  },\n  \"ddp\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"is_ddp\": false,\n      \"scope\": \"duty_mpf\",\n      \"duty_terms\": \"actual\",\n      \"cap_cny_per_kg\": null,\n      \"ior\": \"seller\"\n    },\n    \"quotes\": [\n      \"不含税，关税客户自理\",\n      \"Importer (IOR)：Seller\",\n      \"不含：查验费、仓储费、关税、MPF\"\n    ]\n  },\n  \"broker_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"isf_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"transit_days\": {\n    \"status\": \"stated\",\n    \"value\": [7, 10],\n    \"quotes\": [\"Transit 7-10 days\"]\n  },\n  \"validity\": {\n    \"status\": \"stated\",\n    \"value\": \"2026-10-01 至2026-10-31\",\n    \"quotes\": [\"报价有效期2026-10-01 至2026-10-31\"]\n  },\n  \"liability\": {\n    \"status\": \"stated\",\n    \"value\": \"按申报货值赔付，上限 20 美元/kg\",\n    \"quotes\": [\"Claim：按申报货值赔付，上限 20 美元/kg\"]\n  },\n  \"claims\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"type\": \"NVOCC\",\n        \"entity\": \"SYN-Bluewater Cargo\",\n        \"reg_no\": null,\n        \"jurisdiction\": null\n      }\n    ],\n    \"quotes\": [\"SYN-Bluewater Cargo 已取得 NVOCC\"]\n  },\n  \"quote_entity\": {\n    \"status\": \"stated\",\n    \"value\": \"SYN-Bluewater Cargo\",\n    \"quotes\": [\"Quoted by：SYN-Bluewater Cargo\"]\n  }\n}\n```",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1154,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 738,
+    "prompt_tokens": 738,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1892
+  },
+  "valid": true
+}

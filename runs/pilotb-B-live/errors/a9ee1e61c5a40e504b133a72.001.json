@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-10T13:55:20.918384Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    },
+    {
+      "attempt": 2,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    },
+    {
+      "attempt": 3,
+      "body": "upstream request failed",
+      "classification": "retryable",
+      "error": null,
+      "http_status": 502,
+      "possibly_billed": false,
+      "usage": null
+    }
+  ],
+  "error": "ProviderCallError: siliconflow call failed (HTTP 502)",
+  "metadata": {
+    "attempt": 3,
+    "attempts": [
+      {
+        "attempt": 1,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      },
+      {
+        "attempt": 2,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      },
+      {
+        "attempt": 3,
+        "body": "upstream request failed",
+        "classification": "retryable",
+        "error": null,
+        "http_status": 502,
+        "possibly_billed": false,
+        "usage": null
+      }
+    ],
+    "classification": "retryable",
+    "error_code": "",
+    "http_status": 502,
+    "model": "Pro/moonshotai/Kimi-K2.6",
+    "provider": "siliconflow"
+  },
+  "n": 1,
+  "possibly_billed_cost": null,
+  "provider": "siliconflow",
+  "run_key": "pilotb|M0|kimi|T-dev-020|answer|ALL|r0",
+  "stop_reason": null
+}

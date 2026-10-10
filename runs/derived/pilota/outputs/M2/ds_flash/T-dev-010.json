@@ -1,0 +1,140 @@
+{
+  "ask_fields": [],
+  "calls": [
+    "pilota|extract|ds_flash|T-dev-010|extract|C1|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C2|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C3|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C4|r1"
+  ],
+  "choice": "C2",
+  "config_id": "ds_flash",
+  "cost": {
+    "CNY": 0.0,
+    "USD": 0.005995499999999999
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.0,
+      "USD": 0.005995499999999999
+    },
+    "direct_calls": [
+      "pilota|extract|ds_flash|T-dev-010|extract|C1|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C2|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C3|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C4|r1"
+    ],
+    "review": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "review_calls": [],
+    "transcription_booking": "full",
+    "transcription_calls": [],
+    "transcription_share": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.0,
+      "USD": 0.0
+    }
+  },
+  "decision": "choose",
+  "diagnostics": {
+    "extraction_failures": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "norm_notes": {
+      "C1": [
+        "unmapped surcharge name: 'FSC'"
+      ],
+      "C2": [
+        "unmapped surcharge name: '燃油附加费'"
+      ],
+      "C4": [
+        "unmapped surcharge name: 'Customs filing fee'"
+      ]
+    }
+  },
+  "method": "M2",
+  "parse_error": null,
+  "parse_ok": true,
+  "per_cand": {
+    "C1": {
+      "claim_status": null,
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "18653.95",
+      "ddp_level": null,
+      "defaulted": [
+        "min_kg_shipment",
+        "min_kg_carton",
+        "broker_fee_cny",
+        "isf_fee_cny"
+      ],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct",
+        "surcharges"
+      ]
+    },
+    "C2": {
+      "claim_status": null,
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "17326.45",
+      "ddp_level": null,
+      "defaulted": [
+        "min_kg_shipment",
+        "min_kg_carton",
+        "broker_fee_cny",
+        "isf_fee_cny"
+      ],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct",
+        "surcharges"
+      ]
+    },
+    "C3": {
+      "claim_status": null,
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "15428.95",
+      "ddp_level": null,
+      "defaulted": [
+        "min_kg_carton",
+        "isf_fee_cny"
+      ],
+      "gaps": [],
+      "hidden_fees": [
+        "broker_fee_cny"
+      ]
+    },
+    "C4": {
+      "claim_status": null,
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "13492.50",
+      "ddp_level": null,
+      "defaulted": [
+        "min_kg_shipment",
+        "min_kg_carton",
+        "broker_fee_cny",
+        "isf_fee_cny"
+      ],
+      "gaps": [],
+      "hidden_fees": [
+        "surcharges"
+      ]
+    }
+  },
+  "questions": [],
+  "raw_text": null,
+  "risks": [],
+  "task_id": "T-dev-010"
+}

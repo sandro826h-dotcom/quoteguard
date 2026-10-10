@@ -1,0 +1,72 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1151,
+        "prompt_tokens": 793,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1944
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C2",
+  "config_id": "qwen_plus",
+  "cost_estimate": {
+    "amount": 0.049212,
+    "currency": "CNY",
+    "input_tokens": 793,
+    "output_tokens": 1151,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:46:38.228692Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 25989.96,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "qwen-plus",
+    "returned": "qwen-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "e7c00725e2cb399ac841e33df58a222c4a7045b50cbfbdf3e516f72da64ce4f9",
+  "provider": "dashscope",
+  "raw_body": "{\"model\":\"qwen-plus\",\"id\":\"chatcmpl-417a6b88-401f-9845-9b4a-5c2d57f297e1\",\"choices\":[{\"message\":{\"content\":\"{\\n  \\\"mode\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"air\\\", \\\"quotes\\\": [\\\"- 运输方式为 Air\\\"]},\\n  \\\"rate_tiers\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"min_kg\\\": 0, \\\"price\\\": 37.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 21, \\\"price\\\": 37.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 101, \\\"price\\\": 36, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 301, \\\"price\\\": 34.5, \\\"currency\\\": \\\"CNY\\\"}], \\\"quotes\\\": [\\\"- 0-20kg，单价37.5 CNY per kg\\\", \\\"- 21-100kg，单价37.5 CNY per kg\\\", \\\"- 101-300kg，单价36 CNY per kg\\\", \\\"- 301kg 起，单价34.5 CNY per kg\\\"]},\\n  \\\"min_kg_shipment\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 12, \\\"quotes\\\": [\\\"- Whole lot 12kg 起计\\\"]},\\n  \\\"min_kg_carton\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"dim_divisor\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 6000, \\\"quotes\\\": [\\\"- 体积重除以6000\\\"]},\\n  \\\"rounding_kg\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 1, \\\"quotes\\\": [\\\"- 计费重按1kg 进位\\\"]},\\n  \\\"surcharges\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"code\\\": \\\"FSC\\\", \\\"basis\\\": \\\"pct_freight\\\", \\\"amount\\\": 20, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"always\\\", \\\"threshold\\\": null, \\\"contingent\\\": false}, {\\\"code\\\": \\\"Remote area 地区附加费\\\", \\\"basis\\\": \\\"per_kg\\\", \\\"amount\\\": 7, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"remote\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}, {\\\"code\\\": \\\"Oversize 费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 70, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"ctn_longest_side_gt\\\", \\\"threshold\\\": 58, \\\"contingent\\\": true}, {\\\"code\\\": \\\"Customs filing fee\\\", \\\"basis\\\": \\\"per_shpt\\\", \\\"amount\\\": 150, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"always\\\", \\\"threshold\\\": null, \\\"contingent\\\": false}], \\\"quotes\\\": [\\\"- FSC 20%\\\", \\\"- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\\\", \\\"- Oversize 费：70 CNY per ctn（单箱最长边超58cm）\\\", \\\"- Customs filing fee 150 CNY per shpt\\\"]},\\n  \\\"fuel_pct\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 0.2, \\\"quotes\\\": [\\\"- FSC 20%\\\"]},\\n  \\\"includes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\"], \\\"quotes\\\": [\\\"- 报价包含：头程运费、目的港清关\\\"]},\\n  \\\"excludes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"关税\\\", \\\"MPF\\\"], \\\"quotes\\\": [\\\"- 不含：查验费、仓储费、关税、MPF\\\"]},\\n  \\\"ddp\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": {\\\"is_ddp\\\": false, \\\"scope\\\": \\\"duty\\\", \\\"duty_terms\\\": \\\"actual\\\", \\\"cap_cny_per_kg\\\": null, \\\"ior\\\": \\\"seller\\\"}, \\\"quotes\\\": [\\\"- 不含税，关税客户自理\\\", \\\"- Importer (IOR)：Seller\\\"]},\\n  \\\"broker_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"isf_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"transit_days\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [6, 9], \\\"quotes\\\": [\\\"- Transit 6-9 days\\\"]},\\n  \\\"validity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"2026-10-01\\\", \\\"2026-10-31\\\"], \\\"quotes\\\": [\\\"- 报价有效期2026-10-01 至2026-10-31\\\"]},\\n  \\\"liability\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"claims\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"type\\\": \\\"申报货值\\\", \\\"entity\\\": \\\"申报货值\\\", \\\"reg_no\\\": null, \\\"jurisdiction\\\": null}], \\\"quotes\\\": [\\\"- Claim：按申报货值赔付，上限 20 美元/kg\\\"]},\\n  \\\"quote_entity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"SYN-Orchid Global Trade\\\", \\\"quotes\\\": [\\\"Quoted by：SYN-Orchid Global Trade\\\"]}\\n}\",\"role\":\"assistant\"},\"index\":0,\"finish_reason\":\"stop\"}],\"created\":1791639972,\"object\":\"chat.completion\",\"usage\":{\"total_tokens\":1944,\"completion_tokens\":1151,\"prompt_tokens\":793,\"prompt_tokens_details\":{\"cached_tokens\":0}}}",
+  "repeat": 1,
+  "request_id": "417a6b88-401f-9845-9b4a-5c2d57f297e1",
+  "run_key": "pilota|extract|qwen_plus|T-dev-004|extract|C2|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:46:12.237800Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "{\n  \"mode\": {\"status\": \"stated\", \"value\": \"air\", \"quotes\": [\"- 运输方式为 Air\"]},\n  \"rate_tiers\": {\"status\": \"stated\", \"value\": [{\"min_kg\": 0, \"price\": 37.5, \"currency\": \"CNY\"}, {\"min_kg\": 21, \"price\": 37.5, \"currency\": \"CNY\"}, {\"min_kg\": 101, \"price\": 36, \"currency\": \"CNY\"}, {\"min_kg\": 301, \"price\": 34.5, \"currency\": \"CNY\"}], \"quotes\": [\"- 0-20kg，单价37.5 CNY per kg\", \"- 21-100kg，单价37.5 CNY per kg\", \"- 101-300kg，单价36 CNY per kg\", \"- 301kg 起，单价34.5 CNY per kg\"]},\n  \"min_kg_shipment\": {\"status\": \"stated\", \"value\": 12, \"quotes\": [\"- Whole lot 12kg 起计\"]},\n  \"min_kg_carton\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"dim_divisor\": {\"status\": \"stated\", \"value\": 6000, \"quotes\": [\"- 体积重除以6000\"]},\n  \"rounding_kg\": {\"status\": \"stated\", \"value\": 1, \"quotes\": [\"- 计费重按1kg 进位\"]},\n  \"surcharges\": {\"status\": \"stated\", \"value\": [{\"code\": \"FSC\", \"basis\": \"pct_freight\", \"amount\": 20, \"currency\": \"CNY\", \"condition\": \"always\", \"threshold\": null, \"contingent\": false}, {\"code\": \"Remote area 地区附加费\", \"basis\": \"per_kg\", \"amount\": 7, \"currency\": \"CNY\", \"condition\": \"remote\", \"threshold\": null, \"contingent\": true}, {\"code\": \"Oversize 费\", \"basis\": \"per_ctn\", \"amount\": 70, \"currency\": \"CNY\", \"condition\": \"ctn_longest_side_gt\", \"threshold\": 58, \"contingent\": true}, {\"code\": \"Customs filing fee\", \"basis\": \"per_shpt\", \"amount\": 150, \"currency\": \"CNY\", \"condition\": \"always\", \"threshold\": null, \"contingent\": false}], \"quotes\": [\"- FSC 20%\", \"- Remote area 地区附加费：7 CNY per kg（Remote area 地址）\", \"- Oversize 费：70 CNY per ctn（单箱最长边超58cm）\", \"- Customs filing fee 150 CNY per shpt\"]},\n  \"fuel_pct\": {\"status\": \"stated\", \"value\": 0.2, \"quotes\": [\"- FSC 20%\"]},\n  \"includes\": {\"status\": \"stated\", \"value\": [\"头程运费\", \"目的港清关\"], \"quotes\": [\"- 报价包含：头程运费、目的港清关\"]},\n  \"excludes\": {\"status\": \"stated\", \"value\": [\"查验费\", \"仓储费\", \"关税\", \"MPF\"], \"quotes\": [\"- 不含：查验费、仓储费、关税、MPF\"]},\n  \"ddp\": {\"status\": \"stated\", \"value\": {\"is_ddp\": false, \"scope\": \"duty\", \"duty_terms\": \"actual\", \"cap_cny_per_kg\": null, \"ior\": \"seller\"}, \"quotes\": [\"- 不含税，关税客户自理\", \"- Importer (IOR)：Seller\"]},\n  \"broker_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"isf_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"transit_days\": {\"status\": \"stated\", \"value\": [6, 9], \"quotes\": [\"- Transit 6-9 days\"]},\n  \"validity\": {\"status\": \"stated\", \"value\": [\"2026-10-01\", \"2026-10-31\"], \"quotes\": [\"- 报价有效期2026-10-01 至2026-10-31\"]},\n  \"liability\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"claims\": {\"status\": \"stated\", \"value\": [{\"type\": \"申报货值\", \"entity\": \"申报货值\", \"reg_no\": null, \"jurisdiction\": null}], \"quotes\": [\"- Claim：按申报货值赔付，上限 20 美元/kg\"]},\n  \"quote_entity\": {\"status\": \"stated\", \"value\": \"SYN-Orchid Global Trade\", \"quotes\": [\"Quoted by：SYN-Orchid Global Trade\"]}\n}",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1151,
+    "prompt_tokens": 793,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1944
+  },
+  "valid": true
+}

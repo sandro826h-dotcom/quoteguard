@@ -1,0 +1,654 @@
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","created":1791640961,"object":"chat.completion.chunk","usage":null,"choices":[{"logprobs":null,"index":0,"delta":{"content":"","role":"assistant"},"finish_reason":null}]}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"集装箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"海运从"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"订舱到"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"提柜："},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"一场全球供应链的精密协"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"奏曲  \n\n在"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"世界贸易的宏大"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"图景中，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"集装箱海运是当之无愧"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的“主动脉”"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"——全球约90"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"%的制成品通过"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"这一方式跨越海洋"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。而这条动脉"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的每一次搏动，都"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"始于一个看似简单的"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"动作：订舱；"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"终于一个具象的"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"节点：提柜。这"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"短短数日的"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"流程，实则是"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"跨国协作、系统"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"联动与规则严守"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的缩影。本文"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"将系统梳理从"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货主发起订"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"舱至成功提取"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"空箱（提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"柜）的完整流程，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"揭示其背后严谨"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的逻辑与精密"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的节奏。\n\n**"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"一、订舱："},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"启动海运旅程的“"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"第一指令”**  \n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"订舱（Booking"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"）是整个流程"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的起点，本质"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"是货主或"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"其代理向船"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"公司（或无"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"船承运人N"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"VOCC）预约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"舱位的法律"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"行为。通常由"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货代（货运"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"代理）代为操作"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。货主需提供"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"详尽信息：货物"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"品名、件"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"数、毛重、体积"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、HS编码、始"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"发港与目的"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"港、预计出运"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"日期、贸易术语"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"（如FOB、C"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"IF）、是否需要"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"特殊箱型（如冷藏"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱、开顶"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱、框架箱）"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"等。船公司据此"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"审核舱位可用"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"性、运价及"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"截单/截"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"港时间，并发出"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"《订舱确认"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"书》（Booking"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" Confirmation），其中明确船"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"名、航次"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、ETD（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"预计离港日"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"）、ETA（预计抵"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"港日）、箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"型箱量、运费"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"条款及关键时间节点"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。此时，运输"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"合同关系即告"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"成立，舱位锁定"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，不可随意取消"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"或变更——这是"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"海运信用体系的基石。\n\n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**二、订"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"舱确认后的并"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"行准备：单"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"证、装箱与"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"报关协同推进"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**  \n订舱并非"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"孤立动作，而是"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"触发一系列并行作业"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的“启动键”。  \n\n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"首先，单证组"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"开始制作核心文件。出口"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"报关需《"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"商业发票》《装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱单》《合同"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"》《报关委托"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"书》等；若涉及"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"监管条件（如机电"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"产品需《机电"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"产品自动进口许可证》，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"食品需《卫生"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"证书》），须"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"提前申领。"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"同时，货代"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"向船公司申请"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"订舱号（Booking"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" No.）与"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"提单号（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"B/L No.），为"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"后续单证流转"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"铺路。  \n\n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"其次，“装箱”"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"环节悄然启动。此处"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"需明确：提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"柜前的装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱，实为“装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"空箱”。货"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"主根据自身仓储"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"与生产节奏，向"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货代或船公司指定"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的堆场（CY"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"）或内装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"仓库（CFS"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"）预约提取空集装箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。这一环节即"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"“提柜”"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"——但需强调"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，此“柜"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"”为空箱，是"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"后续装载货物的容器"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。  \n\n**三"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、提柜：获取"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"运输载体的关键一步"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**  \n“提柜”"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"（Container Pickup）指"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货主或车队"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"凭有效凭证，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"从指定地点提取"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"空集装箱的操作。其"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"流程环环相扣"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"：  \n\n1."},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" **获取提柜"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"指令**：货代"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"将船公司签"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"发的《设备"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"交接单》（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"EIR, Equipment"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" Interchange Receipt）电子版"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"或纸质版交付"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货主。E"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"IR是集装箱流转"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的“身份证”，载"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"明箱号、箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"型、尺寸、所属"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"船公司、提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱地点、有效期"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"及责任条款。  \n\n2"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":". **预约提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱**：货主"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"或车队登录码头"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"/堆场系统"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"（如上海洋"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"山港的S"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"IPG平台、深圳"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"盐田港的Y"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"ICT系统），输入"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"EIR号预约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"提箱时段。"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"大型港口实行分"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"时预约制，以"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"避免拥堵。  \n\n3"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":". **现场提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"柜**：车队"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"按预约时间抵达"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"指定堆场，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"出示司机身份证、车辆"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"行驶证、E"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"IR原件及盖"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"章的《提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱委托书》。"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"堆场工作人员核"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"验无误后，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"发放《出场设备"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"交接单》（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"俗称“小票"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"”），并指引"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"至指定箱区"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。司机自行拖"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"走空箱——"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"此时集装箱尚未装载"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货物，故称"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"“空箱提"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"柜”。  \n\n4"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":". **装箱与封"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱**：空"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱提回工厂"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"或仓库后，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货主组织装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"货。装箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"须符合《国际"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"海运危险货物规则"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"》（IMDG"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" Code）等安全规范"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，超重、偏"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"载、混装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"禁忌品均被"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"严禁。装毕"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，施加唯一"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"编号的铅封"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"（Seal），拍照"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"留存封号，确保运输"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"途中完整性可追溯。  \n\n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**四、还"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"重柜与截"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"港：流程闭环"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"前的最后冲刺**  \n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"装箱完毕后，满"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"载货物的集装箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"（重柜）需在"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"船公司规定的“截"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"港时间”（CY"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" Closing Time）前送"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"返码头或指定堆"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"场。此时间"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"通常比船舶ET"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"D提前24–"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"72小时，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"是硬性截止"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"线。逾期则"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"无法上船，面临"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"甩柜（Miss"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"ed Cut-off）风险"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，导致交货延误、"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"产生滞港费甚至"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"违约赔偿。  \n\n货"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"主或车队凭"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"EIR、装"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"箱单、封"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"号等文件办理"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"“重柜进场"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"”。堆场核"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"对箱号、封"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"号、重量（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"部分港口强制要求提供"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"VGM，即Verified"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":" Gross Mass，验证"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"总重）后签"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"发《进港单"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"》（Gate Receipt"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"），完成物理交接。至此"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，“提柜—"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"装箱—还"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"重柜”链条"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"闭合，集装箱"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"正式进入码头待"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"装序列。  \n\n**五"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、流程背后的支撑"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"体系：技术、"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"规则与协同**  \n这一"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"看似线性的流程，"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"实则依赖多重"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"保障：  \n- **数字化"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"平台**：全球主要"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"船公司（马"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"士基、中远"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"海运）及港口"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"均接入EDI（电子数据"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"交换）系统，实现"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"订舱、E"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"IR发放、预约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、状态查询全程"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"线上化；  \n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"- **国际公约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"约束**：《"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"海牙规则》《鹿"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"特丹规则》界定"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"各方权责；"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"《SOLAS公约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"》强制VGM申报"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，保障船舶配"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"载安全；  \n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"- **多方协同机制"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**：货主"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、货代、船"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"公司、堆场、码头"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、海关、车队"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"形成责任链，任"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"一环节延迟（"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"如报关未"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"放行、堆"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"场爆仓、"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"天气停航）均"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"可能引发连锁反应。  \n\n"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"**结语**"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"  \n从轻点鼠标"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"发出订舱申请"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，到钢铁巨柜"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"稳稳驶离"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"码头，集装箱海运"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的“订舱—"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"提柜”流程"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"不足一周，却浓缩"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"了全球化物流的全部"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"智慧：它是标准化"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的胜利（ISO"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"集装箱规格统一）、契约"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"精神的体现（严格"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"履约）、技术赋能"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"的成果（全程"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"可追溯），更是"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"无数从业者在规则"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"框架内精准协作的结晶"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。理解这一流程"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，不仅有助于企业"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"规避操作风险，更"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"让我们看见——那"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"漂洋过海的每一个"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"集装箱，承载的不仅是货物"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"，更是现代世界"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"赖以运转的秩序"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"、信任与效率"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"。（全文约152"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":"0字）"},"index":0,"finish_reason":null,"logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[{"delta":{"content":""},"index":0,"finish_reason":"stop","logprobs":null}],"created":1791640961,"object":"chat.completion.chunk","usage":null}
+
+data: {"model":"qwen-plus","id":"chatcmpl-0c95efb9-d0cd-9a37-9780-aa2575f3e313","choices":[],"created":1791640961,"object":"chat.completion.chunk","usage":{"total_tokens":1483,"completion_tokens":1448,"prompt_tokens":35,"prompt_tokens_details":{"cached_tokens":0}}}
+
+data: [DONE]
+

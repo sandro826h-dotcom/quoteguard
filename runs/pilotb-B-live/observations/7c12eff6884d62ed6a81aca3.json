@@ -1,0 +1,83 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1108,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 804,
+        "prompt_tokens": 804,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1912
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C2",
+  "config_id": "glm",
+  "cost_estimate": {
+    "amount": 0.037456,
+    "currency": "CNY",
+    "input_tokens": 804,
+    "output_tokens": 1108,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "pilotb",
+  "extra_payload": {
+    "enable_thinking": false,
+    "thinking_budget": 1
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:53:25.228562Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 9742.58,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "zai-org/GLM-5.3",
+    "returned": "zai-org/GLM-5.3"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "9f49252eb78f1b7a13856d856ba282a472cea30fcf3dae1c312e0e091dcc8dc7",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a12616e106953dbdec5a7a020ac1f9\",\"object\":\"chat.completion\",\"created\":1791640396,\"model\":\"zai-org/GLM-5.3\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\n  \\\"mode\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"air\\\",\\n    \\\"quotes\\\": [\\\"运输方式\\\", \\\"空运\\\", \\\"渠道\\\", \\\"空派 A\\\"]\\n  },\\n  \\\"rate_tiers\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"min_kg\\\": 0, \\\"price\\\": 62, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 21, \\\"price\\\": 60.7, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 101, \\\"price\\\": 60.7, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 301, \\\"price\\\": 59.1, \\\"currency\\\": \\\"CNY\\\"}\\n    ],\\n    \\\"quotes\\\": [\\\"0-20kg | 62元/kg\\\", \\\"21-100kg | 60.7元/kg\\\", \\\"101-300kg | 60.7元/kg\\\", \\\"301kg起 | 59.1元/kg\\\"]\\n  },\\n  \\\"min_kg_shipment\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 12,\\n    \\\"quotes\\\": [\\\"整票最低计费重 | 12kg\\\"]\\n  },\\n  \\\"min_kg_carton\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"dim_divisor\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 6000,\\n    \\\"quotes\\\": [\\\"体积重除数 | 6000\\\"]\\n  },\\n  \\\"rounding_kg\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 1,\\n    \\\"quotes\\\": [\\\"计费重进位 | 1kg\\\"]\\n  },\\n  \\\"surcharges\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"code\\\": \\\"偏远地区附加费\\\", \\\"basis\\\": \\\"per_kg\\\", \\\"amount\\\": 6.5, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"remote\\\", \\\"threshold\\\": null, \\\"contingent\\\": true},\\n      {\\\"code\\\": \\\"超尺寸费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 56.5, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"ctn_longest_side_gt\\\", \\\"threshold\\\": 58, \\\"contingent\\\": true}\\n    ],\\n    \\\"quotes\\\": [\\\"偏远地区附加费 | 6.5元/kg（偏远地址）\\\", \\\"超尺寸费 | 56.5元/箱（单箱最长边超58cm）\\\"]\\n  },\\n  \\\"fuel_pct\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 0.10,\\n    \\\"quotes\\\": [\\\"燃油附加费 | 10%\\\"]\\n  },\\n  \\\"includes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"头程运费、目的港清关\\\",\\n    \\\"quotes\\\": [\\\"报价包含 | 头程运费、目的港清关\\\"]\\n  },\\n  \\\"excludes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"查验费、仓储费\\\",\\n    \\\"quotes\\\": [\\\"不含费用 | 查验费、仓储费\\\"]\\n  },\\n  \\\"ddp\\\": {\\n    \\\"status\\\": \\\"implied\\\",\\n    \\\"value\\\": {\\n      \\\"is_ddp\\\": false,\\n      \\\"scope\\\": \\\"duty\\\",\\n      \\\"duty_terms\\\": \\\"actual\\\",\\n      \\\"cap_cny_per_kg\\\": null,\\n      \\\"ior\\\": \\\"unspecified\\\"\\n    },\\n    \\\"quotes\\\": [\\\"报价包含 | 头程运费、目的港清关\\\"]\\n  },\\n  \\\"broker_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"isf_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"transit_days\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [6, 9],\\n    \\\"quotes\\\": [\\\"时效 | 6-9天\\\"]\\n  },\\n  \\\"validity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"2026-10-01至2026-10-31\\\",\\n    \\\"quotes\\\": [\\\"有效期 | 2026-10-01至2026-10-31\\\"]\\n  },\\n  \\\"liability\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"丢失按运费赔付，破损不赔\\\",\\n    \\\"quotes\\\": [\\\"赔付 | 丢失按运费赔付，破损不赔\\\"]\\n  },\\n  \\\"claims\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"type\\\": \\\"持有NVOCC\\\", \\\"entity\\\": \\\"SYN-Meridian Forwarding\\\", \\\"reg_no\\\": \\\"SYN-FMC-0004\\\", \\\"jurisdiction\\\": \\\"US\\\"}\\n    ],\\n    \\\"quotes\\\": [\\\"资质 | 持有NVOCC，持证公司SYN-Meridian Forwarding，登记号SYN-FMC-0004\\\"]\\n  },\\n  \\\"quote_entity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"SYN-Meridian Forwarding\\\",\\n    \\\"quotes\\\": [\\\"报价主体：SYN-Meridian Forwarding\\\"]\\n  }\\n}\\n```\",\"reasoning_content\":\"Let\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":804,\"completion_tokens\":1108,\"total_tokens\":1912,\"completion_tokens_details\":{\"reasoning_tokens\":2},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":804},\"system_fingerprint\":\"\"}",
+  "repeat": 1,
+  "request_id": "01a12616e106953dbdec5a7a020ac1f9",
+  "run_key": "pilotb|extract|glm|T-dev-020|extract|C2|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:53:15.485000Z",
+  "task_id": "T-dev-020",
+  "temperature": 0,
+  "text": "```json\n{\n  \"mode\": {\n    \"status\": \"stated\",\n    \"value\": \"air\",\n    \"quotes\": [\"运输方式\", \"空运\", \"渠道\", \"空派 A\"]\n  },\n  \"rate_tiers\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"min_kg\": 0, \"price\": 62, \"currency\": \"CNY\"},\n      {\"min_kg\": 21, \"price\": 60.7, \"currency\": \"CNY\"},\n      {\"min_kg\": 101, \"price\": 60.7, \"currency\": \"CNY\"},\n      {\"min_kg\": 301, \"price\": 59.1, \"currency\": \"CNY\"}\n    ],\n    \"quotes\": [\"0-20kg | 62元/kg\", \"21-100kg | 60.7元/kg\", \"101-300kg | 60.7元/kg\", \"301kg起 | 59.1元/kg\"]\n  },\n  \"min_kg_shipment\": {\n    \"status\": \"stated\",\n    \"value\": 12,\n    \"quotes\": [\"整票最低计费重 | 12kg\"]\n  },\n  \"min_kg_carton\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"dim_divisor\": {\n    \"status\": \"stated\",\n    \"value\": 6000,\n    \"quotes\": [\"体积重除数 | 6000\"]\n  },\n  \"rounding_kg\": {\n    \"status\": \"stated\",\n    \"value\": 1,\n    \"quotes\": [\"计费重进位 | 1kg\"]\n  },\n  \"surcharges\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"code\": \"偏远地区附加费\", \"basis\": \"per_kg\", \"amount\": 6.5, \"currency\": \"CNY\", \"condition\": \"remote\", \"threshold\": null, \"contingent\": true},\n      {\"code\": \"超尺寸费\", \"basis\": \"per_ctn\", \"amount\": 56.5, \"currency\": \"CNY\", \"condition\": \"ctn_longest_side_gt\", \"threshold\": 58, \"contingent\": true}\n    ],\n    \"quotes\": [\"偏远地区附加费 | 6.5元/kg（偏远地址）\", \"超尺寸费 | 56.5元/箱（单箱最长边超58cm）\"]\n  },\n  \"fuel_pct\": {\n    \"status\": \"stated\",\n    \"value\": 0.10,\n    \"quotes\": [\"燃油附加费 | 10%\"]\n  },\n  \"includes\": {\n    \"status\": \"stated\",\n    \"value\": \"头程运费、目的港清关\",\n    \"quotes\": [\"报价包含 | 头程运费、目的港清关\"]\n  },\n  \"excludes\": {\n    \"status\": \"stated\",\n    \"value\": \"查验费、仓储费\",\n    \"quotes\": [\"不含费用 | 查验费、仓储费\"]\n  },\n  \"ddp\": {\n    \"status\": \"implied\",\n    \"value\": {\n      \"is_ddp\": false,\n      \"scope\": \"duty\",\n      \"duty_terms\": \"actual\",\n      \"cap_cny_per_kg\": null,\n      \"ior\": \"unspecified\"\n    },\n    \"quotes\": [\"报价包含 | 头程运费、目的港清关\"]\n  },\n  \"broker_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"isf_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"transit_days\": {\n    \"status\": \"stated\",\n    \"value\": [6, 9],\n    \"quotes\": [\"时效 | 6-9天\"]\n  },\n  \"validity\": {\n    \"status\": \"stated\",\n    \"value\": \"2026-10-01至2026-10-31\",\n    \"quotes\": [\"有效期 | 2026-10-01至2026-10-31\"]\n  },\n  \"liability\": {\n    \"status\": \"stated\",\n    \"value\": \"丢失按运费赔付，破损不赔\",\n    \"quotes\": [\"赔付 | 丢失按运费赔付，破损不赔\"]\n  },\n  \"claims\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"type\": \"持有NVOCC\", \"entity\": \"SYN-Meridian Forwarding\", \"reg_no\": \"SYN-FMC-0004\", \"jurisdiction\": \"US\"}\n    ],\n    \"quotes\": [\"资质 | 持有NVOCC，持证公司SYN-Meridian Forwarding，登记号SYN-FMC-0004\"]\n  },\n  \"quote_entity\": {\n    \"status\": \"stated\",\n    \"value\": \"SYN-Meridian Forwarding\",\n    \"quotes\": [\"报价主体：SYN-Meridian Forwarding\"]\n  }\n}\n```",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1108,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 804,
+    "prompt_tokens": 804,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1912
+  },
+  "valid": true
+}

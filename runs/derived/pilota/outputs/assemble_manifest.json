@@ -1,0 +1,15 @@
+{
+  "actual_spend": {
+    "CNY": 0.37217599999999995,
+    "USD": 0.0294535
+  },
+  "dir": "runs/derived/pilota/outputs",
+  "missing_observations": [
+    "pilota|M0|qwen_plus|T-dev-004|answer|ALL|r0",
+    "pilota|M0|qwen_plus|T-dev-010|answer|ALL|r0",
+    "pilota|M1|qwen_plus|T-dev-004|answer|ALL|r0",
+    "pilota|M1|qwen_plus|T-dev-010|answer|ALL|r0"
+  ],
+  "n_observations": 22,
+  "n_outputs": 20
+}

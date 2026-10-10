@@ -1,0 +1,72 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 969,
+        "prompt_tokens": 703,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1672
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C1",
+  "config_id": "qwen_plus",
+  "cost_estimate": {
+    "amount": 0.041572,
+    "currency": "CNY",
+    "input_tokens": 703,
+    "output_tokens": 969,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:46:12.234710Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 25427.17,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "qwen-plus",
+    "returned": "qwen-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "041ef527f4fad11b76546036643ce3d1b889c0baa7af03f45878285df3f9f91d",
+  "provider": "dashscope",
+  "raw_body": "{\"model\":\"qwen-plus\",\"id\":\"chatcmpl-8f76ee08-567a-98af-8161-2fe48d302b02\",\"choices\":[{\"message\":{\"content\":\"{\\n  \\\"mode\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"air\\\", \\\"quotes\\\": [\\\"运输方式为空运\\\"]},\\n  \\\"rate_tiers\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"min_kg\\\": 0, \\\"price\\\": 37.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 21, \\\"price\\\": 35, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 101, \\\"price\\\": 34.5, \\\"currency\\\": \\\"CNY\\\"}, {\\\"min_kg\\\": 301, \\\"price\\\": 33.5, \\\"currency\\\": \\\"CNY\\\"}], \\\"quotes\\\": [\\\"0-20kg，单价37.5元/kg\\\", \\\"21-100kg，单价35元/kg\\\", \\\"101-300kg，单价34.5元/kg\\\", \\\"301kg起，单价33.5元/kg\\\"]},\\n  \\\"min_kg_shipment\\\": {\\\"status\\\": \\\"implied\\\", \\\"value\\\": 45, \\\"quotes\\\": [\\\"备注：整票45kg起计\\\"]},\\n  \\\"min_kg_carton\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 22, \\\"quotes\\\": [\\\"超重费：83元/箱（单箱超22kg）\\\"]},\\n  \\\"dim_divisor\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 6000, \\\"quotes\\\": [\\\"体积重除以6000\\\"]},\\n  \\\"rounding_kg\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 0.5, \\\"quotes\\\": [\\\"计费重按0.5kg进位\\\"]},\\n  \\\"surcharges\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [{\\\"code\\\": \\\"住宅派送费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 5, \\\"currency\\\": \\\"USD\\\", \\\"condition\\\": \\\"residential\\\", \\\"threshold\\\": null, \\\"contingent\\\": true}, {\\\"code\\\": \\\"超重费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 83, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"ctn_kg_gt\\\", \\\"threshold\\\": 22, \\\"contingent\\\": true}], \\\"quotes\\\": [\\\"住宅派送费：5美元/箱（送住宅地址）\\\", \\\"超重费：83元/箱（单箱超22kg）\\\"]},\\n  \\\"fuel_pct\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": 0.1, \\\"quotes\\\": [\\\"燃油附加费10%\\\"]},\\n  \\\"includes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\"], \\\"quotes\\\": [\\\"报价包含：头程运费、目的港清关\\\"]},\\n  \\\"excludes\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"关税\\\", \\\"MPF\\\"], \\\"quotes\\\": [\\\"不含：查验费、仓储费、关税、MPF\\\"]},\\n  \\\"ddp\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": {\\\"is_ddp\\\": false, \\\"scope\\\": \\\"duty\\\", \\\"duty_terms\\\": \\\"actual\\\", \\\"cap_cny_per_kg\\\": null, \\\"ior\\\": \\\"seller\\\"}, \\\"quotes\\\": [\\\"DAP，进口环节税由买家负担\\\", \\\"进口商（IOR）：卖家\\\"]},\\n  \\\"broker_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"isf_fee_cny\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"transit_days\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [9, 13], \\\"quotes\\\": [\\\"时效9-13天\\\"]},\\n  \\\"validity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": [\\\"2026-10-01\\\", \\\"2026-10-31\\\"], \\\"quotes\\\": [\\\"报价有效期2026-10-01至2026-10-31\\\"]},\\n  \\\"liability\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"3倍运费\\\", \\\"quotes\\\": [\\\"赔付：按运费 3 倍赔付\\\"]},\\n  \\\"claims\\\": {\\\"status\\\": \\\"missing\\\", \\\"value\\\": null, \\\"quotes\\\": []},\\n  \\\"quote_entity\\\": {\\\"status\\\": \\\"stated\\\", \\\"value\\\": \\\"SYN-Harbor Lane Logistics\\\", \\\"quotes\\\": [\\\"报价主体：SYN-Harbor Lane Logistics\\\"]}\\n}\",\"role\":\"assistant\"},\"index\":0,\"finish_reason\":\"stop\"}],\"created\":1791639950,\"object\":\"chat.completion\",\"usage\":{\"total_tokens\":1672,\"completion_tokens\":969,\"prompt_tokens\":703,\"prompt_tokens_details\":{\"cached_tokens\":0}}}",
+  "repeat": 1,
+  "request_id": "8f76ee08-567a-98af-8161-2fe48d302b02",
+  "run_key": "pilota|extract|qwen_plus|T-dev-004|extract|C1|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:45:46.806668Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "{\n  \"mode\": {\"status\": \"stated\", \"value\": \"air\", \"quotes\": [\"运输方式为空运\"]},\n  \"rate_tiers\": {\"status\": \"stated\", \"value\": [{\"min_kg\": 0, \"price\": 37.5, \"currency\": \"CNY\"}, {\"min_kg\": 21, \"price\": 35, \"currency\": \"CNY\"}, {\"min_kg\": 101, \"price\": 34.5, \"currency\": \"CNY\"}, {\"min_kg\": 301, \"price\": 33.5, \"currency\": \"CNY\"}], \"quotes\": [\"0-20kg，单价37.5元/kg\", \"21-100kg，单价35元/kg\", \"101-300kg，单价34.5元/kg\", \"301kg起，单价33.5元/kg\"]},\n  \"min_kg_shipment\": {\"status\": \"implied\", \"value\": 45, \"quotes\": [\"备注：整票45kg起计\"]},\n  \"min_kg_carton\": {\"status\": \"stated\", \"value\": 22, \"quotes\": [\"超重费：83元/箱（单箱超22kg）\"]},\n  \"dim_divisor\": {\"status\": \"stated\", \"value\": 6000, \"quotes\": [\"体积重除以6000\"]},\n  \"rounding_kg\": {\"status\": \"stated\", \"value\": 0.5, \"quotes\": [\"计费重按0.5kg进位\"]},\n  \"surcharges\": {\"status\": \"stated\", \"value\": [{\"code\": \"住宅派送费\", \"basis\": \"per_ctn\", \"amount\": 5, \"currency\": \"USD\", \"condition\": \"residential\", \"threshold\": null, \"contingent\": true}, {\"code\": \"超重费\", \"basis\": \"per_ctn\", \"amount\": 83, \"currency\": \"CNY\", \"condition\": \"ctn_kg_gt\", \"threshold\": 22, \"contingent\": true}], \"quotes\": [\"住宅派送费：5美元/箱（送住宅地址）\", \"超重费：83元/箱（单箱超22kg）\"]},\n  \"fuel_pct\": {\"status\": \"stated\", \"value\": 0.1, \"quotes\": [\"燃油附加费10%\"]},\n  \"includes\": {\"status\": \"stated\", \"value\": [\"头程运费\", \"目的港清关\"], \"quotes\": [\"报价包含：头程运费、目的港清关\"]},\n  \"excludes\": {\"status\": \"stated\", \"value\": [\"查验费\", \"仓储费\", \"关税\", \"MPF\"], \"quotes\": [\"不含：查验费、仓储费、关税、MPF\"]},\n  \"ddp\": {\"status\": \"stated\", \"value\": {\"is_ddp\": false, \"scope\": \"duty\", \"duty_terms\": \"actual\", \"cap_cny_per_kg\": null, \"ior\": \"seller\"}, \"quotes\": [\"DAP，进口环节税由买家负担\", \"进口商（IOR）：卖家\"]},\n  \"broker_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"isf_fee_cny\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"transit_days\": {\"status\": \"stated\", \"value\": [9, 13], \"quotes\": [\"时效9-13天\"]},\n  \"validity\": {\"status\": \"stated\", \"value\": [\"2026-10-01\", \"2026-10-31\"], \"quotes\": [\"报价有效期2026-10-01至2026-10-31\"]},\n  \"liability\": {\"status\": \"stated\", \"value\": \"3倍运费\", \"quotes\": [\"赔付：按运费 3 倍赔付\"]},\n  \"claims\": {\"status\": \"missing\", \"value\": null, \"quotes\": []},\n  \"quote_entity\": {\"status\": \"stated\", \"value\": \"SYN-Harbor Lane Logistics\", \"quotes\": [\"报价主体：SYN-Harbor Lane Logistics\"]}\n}",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 969,
+    "prompt_tokens": 703,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1672
+  },
+  "valid": true
+}

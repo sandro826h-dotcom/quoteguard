@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1036,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 776,
+        "prompt_tokens": 776,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1812
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C3",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 0.001424,
+    "currency": "USD",
+    "input_tokens": 776,
+    "output_tokens": 1036,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:43:44.946814Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 3241.73,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "08d56b43cc4985968cf9713efd6fe2404da929b28ef9bc54b4fca360c79418a4",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"70eb2562-4f0b-4d6a-9bec-df15c46da8ee\",\"object\":\"chat.completion\",\"created\":1791639822,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\n  \\\"mode\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"express\\\",\\n    \\\"quotes\\\": [\\\"渠道 | 快递经济线\\\", \\\"运输方式 | 国际快递\\\"]\\n  },\\n  \\\"rate_tiers\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"min_kg\\\": 0, \\\"price\\\": 36.5, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 45, \\\"price\\\": 31.5, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 100, \\\"price\\\": 30.5, \\\"currency\\\": \\\"CNY\\\"}\\n    ],\\n    \\\"quotes\\\": [\\\"0-44kg | 36.5元/kg\\\", \\\"45-99kg | 31.5元/kg\\\", \\\"100kg起 | 30.5元/kg\\\"]\\n  },\\n  \\\"min_kg_shipment\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 45,\\n    \\\"quotes\\\": [\\\"整票最低计费重 | 45kg\\\"]\\n  },\\n  \\\"min_kg_carton\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"dim_divisor\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 6000,\\n    \\\"quotes\\\": [\\\"体积重除数 | 6000\\\"]\\n  },\\n  \\\"rounding_kg\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 1,\\n    \\\"quotes\\\": [\\\"计费重进位 | 1kg\\\"]\\n  },\\n  \\\"surcharges\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"code\\\": \\\"偏远地区附加费\\\", \\\"basis\\\": \\\"per_kg\\\", \\\"amount\\\": 6, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"remote\\\", \\\"threshold\\\": null, \\\"contingent\\\": true},\\n      {\\\"code\\\": \\\"超尺寸费\\\", \\\"basis\\\": \\\"per_ctn\\\", \\\"amount\\\": 79.5, \\\"currency\\\": \\\"CNY\\\", \\\"condition\\\": \\\"ctn_longest_side_gt\\\", \\\"threshold\\\": 58, \\\"contingent\\\": true}\\n    ],\\n    \\\"quotes\\\": [\\\"偏远地区附加费 | 6元/kg（偏远地址）\\\", \\\"超尺寸费 | 79.5元/箱（单箱最长边超58cm）\\\"]\\n  },\\n  \\\"fuel_pct\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 0,\\n    \\\"quotes\\\": [\\\"燃油附加费 | 不收\\\"]\\n  },\\n  \\\"includes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\"],\\n    \\\"quotes\\\": [\\\"报价包含 | 头程运费、目的港清关\\\"]\\n  },\\n  \\\"excludes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"关税\\\", \\\"MPF\\\"],\\n    \\\"quotes\\\": [\\\"不含费用 | 查验费、仓储费、关税、MPF\\\"]\\n  },\\n  \\\"ddp\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": {\\\"is_ddp\\\": false, \\\"scope\\\": \\\"duty_mpf\\\", \\\"duty_terms\\\": \\\"actual\\\", \\\"cap_cny_per_kg\\\": null, \\\"ior\\\": \\\"seller\\\"},\\n    \\\"quotes\\\": [\\\"税务条款 | DAP，进口环节税由买家负担\\\", \\\"进口商 | 卖家\\\", \\\"不含费用 | 查验费、仓储费、关税、MPF\\\"]\\n  },\\n  \\\"broker_fee_cny\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 150,\\n    \\\"quotes\\\": [\\\"清关费 | 150元/票\\\"]\\n  },\\n  \\\"isf_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"transit_days\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [5, 8],\\n    \\\"quotes\\\": [\\\"时效 | 5-8天\\\"]\\n  },\\n  \\\"validity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"2026-10-01至2026-10-31\\\",\\n    \\\"quotes\\\": [\\\"有效期 | 2026-10-01至2026-10-31\\\"]\\n  },\\n  \\\"liability\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"按运费 3 倍赔付\\\",\\n    \\\"quotes\\\": [\\\"赔付 | 按运费 3 倍赔付\\\"]\\n  },\\n  \\\"claims\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"quote_entity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"SYN-Ironwood Transit\\\",\\n    \\\"quotes\\\": [\\\"报价主体：SYN-Ironwood Transit\\\"]\\n  }\\n}\\n```\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":776,\"completion_tokens\":1036,\"total_tokens\":1812,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":776},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "70eb2562-4f0b-4d6a-9bec-df15c46da8ee",
+  "run_key": "pilota|extract|ds_flash|T-dev-010|extract|C3|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:43:41.704063Z",
+  "task_id": "T-dev-010",
+  "temperature": 0,
+  "text": "```json\n{\n  \"mode\": {\n    \"status\": \"stated\",\n    \"value\": \"express\",\n    \"quotes\": [\"渠道 | 快递经济线\", \"运输方式 | 国际快递\"]\n  },\n  \"rate_tiers\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"min_kg\": 0, \"price\": 36.5, \"currency\": \"CNY\"},\n      {\"min_kg\": 45, \"price\": 31.5, \"currency\": \"CNY\"},\n      {\"min_kg\": 100, \"price\": 30.5, \"currency\": \"CNY\"}\n    ],\n    \"quotes\": [\"0-44kg | 36.5元/kg\", \"45-99kg | 31.5元/kg\", \"100kg起 | 30.5元/kg\"]\n  },\n  \"min_kg_shipment\": {\n    \"status\": \"stated\",\n    \"value\": 45,\n    \"quotes\": [\"整票最低计费重 | 45kg\"]\n  },\n  \"min_kg_carton\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"dim_divisor\": {\n    \"status\": \"stated\",\n    \"value\": 6000,\n    \"quotes\": [\"体积重除数 | 6000\"]\n  },\n  \"rounding_kg\": {\n    \"status\": \"stated\",\n    \"value\": 1,\n    \"quotes\": [\"计费重进位 | 1kg\"]\n  },\n  \"surcharges\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"code\": \"偏远地区附加费\", \"basis\": \"per_kg\", \"amount\": 6, \"currency\": \"CNY\", \"condition\": \"remote\", \"threshold\": null, \"contingent\": true},\n      {\"code\": \"超尺寸费\", \"basis\": \"per_ctn\", \"amount\": 79.5, \"currency\": \"CNY\", \"condition\": \"ctn_longest_side_gt\", \"threshold\": 58, \"contingent\": true}\n    ],\n    \"quotes\": [\"偏远地区附加费 | 6元/kg（偏远地址）\", \"超尺寸费 | 79.5元/箱（单箱最长边超58cm）\"]\n  },\n  \"fuel_pct\": {\n    \"status\": \"stated\",\n    \"value\": 0,\n    \"quotes\": [\"燃油附加费 | 不收\"]\n  },\n  \"includes\": {\n    \"status\": \"stated\",\n    \"value\": [\"头程运费\", \"目的港清关\"],\n    \"quotes\": [\"报价包含 | 头程运费、目的港清关\"]\n  },\n  \"excludes\": {\n    \"status\": \"stated\",\n    \"value\": [\"查验费\", \"仓储费\", \"关税\", \"MPF\"],\n    \"quotes\": [\"不含费用 | 查验费、仓储费、关税、MPF\"]\n  },\n  \"ddp\": {\n    \"status\": \"stated\",\n    \"value\": {\"is_ddp\": false, \"scope\": \"duty_mpf\", \"duty_terms\": \"actual\", \"cap_cny_per_kg\": null, \"ior\": \"seller\"},\n    \"quotes\": [\"税务条款 | DAP，进口环节税由买家负担\", \"进口商 | 卖家\", \"不含费用 | 查验费、仓储费、关税、MPF\"]\n  },\n  \"broker_fee_cny\": {\n    \"status\": \"stated\",\n    \"value\": 150,\n    \"quotes\": [\"清关费 | 150元/票\"]\n  },\n  \"isf_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"transit_days\": {\n    \"status\": \"stated\",\n    \"value\": [5, 8],\n    \"quotes\": [\"时效 | 5-8天\"]\n  },\n  \"validity\": {\n    \"status\": \"stated\",\n    \"value\": \"2026-10-01至2026-10-31\",\n    \"quotes\": [\"有效期 | 2026-10-01至2026-10-31\"]\n  },\n  \"liability\": {\n    \"status\": \"stated\",\n    \"value\": \"按运费 3 倍赔付\",\n    \"quotes\": [\"赔付 | 按运费 3 倍赔付\"]\n  },\n  \"claims\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"quote_entity\": {\n    \"status\": \"stated\",\n    \"value\": \"SYN-Ironwood Transit\",\n    \"quotes\": [\"报价主体：SYN-Ironwood Transit\"]\n  }\n}\n```",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1036,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 776,
+    "prompt_tokens": 776,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1812
+  },
+  "valid": true
+}

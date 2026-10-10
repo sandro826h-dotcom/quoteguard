@@ -1,0 +1,85 @@
+{
+  "ask_fields": [],
+  "calls": [
+    "pilota|transcribe|qwen_vl|T-dev-004|transcribe|C1|r0"
+  ],
+  "choice": null,
+  "config_id": "qwen_plus",
+  "cost": {
+    "CNY": 0.014736,
+    "USD": 0.0
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "direct_calls": [],
+    "review": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "review_calls": [],
+    "transcription_booking": "full",
+    "transcription_calls": [
+      "pilota|transcribe|qwen_vl|T-dev-004|transcribe|C1|r0"
+    ],
+    "transcription_share": {
+      "CNY": 0.014736,
+      "USD": 0.0
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.014736,
+      "USD": 0.0
+    }
+  },
+  "decision": null,
+  "method": "M0",
+  "parse_error": "missing observation",
+  "parse_ok": false,
+  "per_cand": {
+    "C1": {
+      "claim_status": null,
+      "conflicts": [],
+      "cost_cny": null,
+      "ddp_level": null,
+      "gaps": [],
+      "hidden_fees": []
+    },
+    "C2": {
+      "claim_status": null,
+      "conflicts": [],
+      "cost_cny": null,
+      "ddp_level": null,
+      "gaps": [],
+      "hidden_fees": []
+    },
+    "C3": {
+      "claim_status": null,
+      "conflicts": [],
+      "cost_cny": null,
+      "ddp_level": null,
+      "gaps": [],
+      "hidden_fees": []
+    },
+    "C4": {
+      "claim_status": null,
+      "conflicts": [],
+      "cost_cny": null,
+      "ddp_level": null,
+      "gaps": [],
+      "hidden_fees": []
+    }
+  },
+  "questions": [],
+  "quote_map": {
+    "报价1": "C1",
+    "报价2": "C2",
+    "报价3": "C3",
+    "报价4": "C4"
+  },
+  "raw_text": null,
+  "risks": [],
+  "task_id": "T-dev-004"
+}

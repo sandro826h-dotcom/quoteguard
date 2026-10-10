@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1168,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 817,
+        "prompt_tokens": 817,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1985
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C4",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 0.0015765,
+    "currency": "USD",
+    "input_tokens": 817,
+    "output_tokens": 1168,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "pilota",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T13:43:15.103079Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 3484.68,
+  "max_tokens": 2500,
+  "max_tokens_override": 2500,
+  "method": "extract",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "1cc5e5dbd78af963c16854df842348963016f04ffcef69ee2f4e167664c168b2",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"d375b6ba-c50e-434e-a546-ec86a1c0809e\",\"object\":\"chat.completion\",\"created\":1791639791,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"mode\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"air\\\",\\n    \\\"quotes\\\": [\\\"运输方式 | Air\\\"]\\n  },\\n  \\\"rate_tiers\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\\"min_kg\\\": 0, \\\"price\\\": 40.6, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 21, \\\"price\\\": 39.7, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 101, \\\"price\\\": 38.8, \\\"currency\\\": \\\"CNY\\\"},\\n      {\\\"min_kg\\\": 301, \\\"price\\\": 37, \\\"currency\\\": \\\"CNY\\\"}\\n    ],\\n    \\\"quotes\\\": [\\n      \\\"0-20kg | 40.6 CNY per kg\\\",\\n      \\\"21-100kg | 39.7 CNY per kg\\\",\\n      \\\"101-300kg | 38.8 CNY per kg\\\",\\n      \\\"301kg 起 | 37 CNY per kg\\\"\\n    ]\\n  },\\n  \\\"min_kg_shipment\\\": {\\n    \\\"status\\\": \\\"conflicting\\\",\\n    \\\"value\\\": [100, 45],\\n    \\\"quotes\\\": [\\n      \\\"Whole lot 最低计费重 | 100kg\\\",\\n      \\\"备注：Whole lot 45kg 起计\\\"\\n    ]\\n  },\\n  \\\"min_kg_carton\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"dim_divisor\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 6000,\\n    \\\"quotes\\\": [\\\"体积重除数 | 6000\\\"]\\n  },\\n  \\\"rounding_kg\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": 1,\\n    \\\"quotes\\\": [\\\"计费重进位 | 1kg\\\"]\\n  },\\n  \\\"surcharges\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\n      {\\n        \\\"code\\\": \\\"Remote area 地区附加费\\\",\\n        \\\"basis\\\": \\\"per_kg\\\",\\n        \\\"amount\\\": 9.5,\\n        \\\"currency\\\": \\\"CNY\\\",\\n        \\\"condition\\\": \\\"remote\\\",\\n        \\\"threshold\\\": null,\\n        \\\"contingent\\\": true\\n      },\\n      {\\n        \\\"code\\\": \\\"查验费\\\",\\n        \\\"basis\\\": \\\"per_shpt\\\",\\n        \\\"amount\\\": 1002.5,\\n        \\\"currency\\\": \\\"CNY\\\",\\n        \\\"condition\\\": \\\"always\\\",\\n        \\\"threshold\\\": null,\\n        \\\"contingent\\\": true\\n      },\\n      {\\n        \\\"code\\\": \\\"Customs filing fee\\\",\\n        \\\"basis\\\": \\\"per_shpt\\\",\\n        \\\"amount\\\": 400,\\n        \\\"currency\\\": \\\"CNY\\\",\\n        \\\"condition\\\": \\\"always\\\",\\n        \\\"threshold\\\": null,\\n        \\\"contingent\\\": false\\n      }\\n    ],\\n    \\\"quotes\\\": [\\n      \\\"Remote area 地区附加费 | 9.5 CNY per kg（Remote area 地址）\\\",\\n      \\\"查验费 | 1002.5 CNY per shpt，按实际发生收取\\\",\\n      \\\"Customs filing fee | 400 CNY per shpt\\\"\\n    ]\\n  },\\n  \\\"fuel_pct\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"includes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"头程运费\\\", \\\"目的港清关\\\", \\\"关税\\\"],\\n    \\\"quotes\\\": [\\\"报价包含 | 头程运费、目的港清关、关税\\\"]\\n  },\\n  \\\"excludes\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [\\\"查验费\\\", \\\"仓储费\\\", \\\"MPF\\\"],\\n    \\\"quotes\\\": [\\\"不含费用 | 查验费、仓储费、MPF\\\"]\\n  },\\n  \\\"ddp\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": {\\n      \\\"is_ddp\\\": true,\\n      \\\"scope\\\": \\\"duty\\\",\\n      \\\"duty_terms\\\": \\\"included\\\",\\n      \\\"cap_cny_per_kg\\\": null,\\n      \\\"ior\\\": \\\"forwarder\\\"\\n    },\\n    \\\"quotes\\\": [\\n      \\\"税务条款 | DDP 包税，仅含关税\\\",\\n      \\\"Importer | Forwarder\\\"\\n    ]\\n  },\\n  \\\"broker_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"isf_fee_cny\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"transit_days\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": [7, 10],\\n    \\\"quotes\\\": [\\\"Transit | 7-10 days\\\"]\\n  },\\n  \\\"validity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"2026-10-01 至2026-10-31\\\",\\n    \\\"quotes\\\": [\\\"有效期 | 2026-10-01 至2026-10-31\\\"]\\n  },\\n  \\\"liability\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"按运费 3 倍赔付\\\",\\n    \\\"quotes\\\": [\\\"Claim | 按运费 3 倍赔付\\\"]\\n  },\\n  \\\"claims\\\": {\\n    \\\"status\\\": \\\"missing\\\",\\n    \\\"value\\\": null,\\n    \\\"quotes\\\": []\\n  },\\n  \\\"quote_entity\\\": {\\n    \\\"status\\\": \\\"stated\\\",\\n    \\\"value\\\": \\\"SYN-Pacific Span Freight\\\",\\n    \\\"quotes\\\": [\\\"Quoted by：SYN-Pacific Span Freight\\\"]\\n  }\\n}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":817,\"completion_tokens\":1168,\"total_tokens\":1985,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":817},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "d375b6ba-c50e-434e-a546-ec86a1c0809e",
+  "run_key": "pilota|extract|ds_flash|T-dev-004|extract|C4|r1",
+  "seed": 20261010,
+  "stage": "extract",
+  "started_at": "2026-10-10T13:43:11.617477Z",
+  "task_id": "T-dev-004",
+  "temperature": 0,
+  "text": "{\n  \"mode\": {\n    \"status\": \"stated\",\n    \"value\": \"air\",\n    \"quotes\": [\"运输方式 | Air\"]\n  },\n  \"rate_tiers\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\"min_kg\": 0, \"price\": 40.6, \"currency\": \"CNY\"},\n      {\"min_kg\": 21, \"price\": 39.7, \"currency\": \"CNY\"},\n      {\"min_kg\": 101, \"price\": 38.8, \"currency\": \"CNY\"},\n      {\"min_kg\": 301, \"price\": 37, \"currency\": \"CNY\"}\n    ],\n    \"quotes\": [\n      \"0-20kg | 40.6 CNY per kg\",\n      \"21-100kg | 39.7 CNY per kg\",\n      \"101-300kg | 38.8 CNY per kg\",\n      \"301kg 起 | 37 CNY per kg\"\n    ]\n  },\n  \"min_kg_shipment\": {\n    \"status\": \"conflicting\",\n    \"value\": [100, 45],\n    \"quotes\": [\n      \"Whole lot 最低计费重 | 100kg\",\n      \"备注：Whole lot 45kg 起计\"\n    ]\n  },\n  \"min_kg_carton\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"dim_divisor\": {\n    \"status\": \"stated\",\n    \"value\": 6000,\n    \"quotes\": [\"体积重除数 | 6000\"]\n  },\n  \"rounding_kg\": {\n    \"status\": \"stated\",\n    \"value\": 1,\n    \"quotes\": [\"计费重进位 | 1kg\"]\n  },\n  \"surcharges\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"code\": \"Remote area 地区附加费\",\n        \"basis\": \"per_kg\",\n        \"amount\": 9.5,\n        \"currency\": \"CNY\",\n        \"condition\": \"remote\",\n        \"threshold\": null,\n        \"contingent\": true\n      },\n      {\n        \"code\": \"查验费\",\n        \"basis\": \"per_shpt\",\n        \"amount\": 1002.5,\n        \"currency\": \"CNY\",\n        \"condition\": \"always\",\n        \"threshold\": null,\n        \"contingent\": true\n      },\n      {\n        \"code\": \"Customs filing fee\",\n        \"basis\": \"per_shpt\",\n        \"amount\": 400,\n        \"currency\": \"CNY\",\n        \"condition\": \"always\",\n        \"threshold\": null,\n        \"contingent\": false\n      }\n    ],\n    \"quotes\": [\n      \"Remote area 地区附加费 | 9.5 CNY per kg（Remote area 地址）\",\n      \"查验费 | 1002.5 CNY per shpt，按实际发生收取\",\n      \"Customs filing fee | 400 CNY per shpt\"\n    ]\n  },\n  \"fuel_pct\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"includes\": {\n    \"status\": \"stated\",\n    \"value\": [\"头程运费\", \"目的港清关\", \"关税\"],\n    \"quotes\": [\"报价包含 | 头程运费、目的港清关、关税\"]\n  },\n  \"excludes\": {\n    \"status\": \"stated\",\n    \"value\": [\"查验费\", \"仓储费\", \"MPF\"],\n    \"quotes\": [\"不含费用 | 查验费、仓储费、MPF\"]\n  },\n  \"ddp\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"is_ddp\": true,\n      \"scope\": \"duty\",\n      \"duty_terms\": \"included\",\n      \"cap_cny_per_kg\": null,\n      \"ior\": \"forwarder\"\n    },\n    \"quotes\": [\n      \"税务条款 | DDP 包税，仅含关税\",\n      \"Importer | Forwarder\"\n    ]\n  },\n  \"broker_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"isf_fee_cny\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"transit_days\": {\n    \"status\": \"stated\",\n    \"value\": [7, 10],\n    \"quotes\": [\"Transit | 7-10 days\"]\n  },\n  \"validity\": {\n    \"status\": \"stated\",\n    \"value\": \"2026-10-01 至2026-10-31\",\n    \"quotes\": [\"有效期 | 2026-10-01 至2026-10-31\"]\n  },\n  \"liability\": {\n    \"status\": \"stated\",\n    \"value\": \"按运费 3 倍赔付\",\n    \"quotes\": [\"Claim | 按运费 3 倍赔付\"]\n  },\n  \"claims\": {\n    \"status\": \"missing\",\n    \"value\": null,\n    \"quotes\": []\n  },\n  \"quote_entity\": {\n    \"status\": \"stated\",\n    \"value\": \"SYN-Pacific Span Freight\",\n    \"quotes\": [\"Quoted by：SYN-Pacific Span Freight\"]\n  }\n}",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1168,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 817,
+    "prompt_tokens": 817,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1985
+  },
+  "valid": true
+}
