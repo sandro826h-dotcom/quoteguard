@@ -1,0 +1,145 @@
+models:
+- config_id: ds_pro
+  provider: deepseek
+  model: deepseek-v4-pro
+  tier: strong
+  vision_config_id: ds_flash
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    thinking:
+      type: disabled
+  verified: false
+- config_id: ds_flash
+  provider: deepseek
+  model: deepseek-flash
+  tier: low
+  vision_config_id: ds_flash
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    thinking:
+      type: disabled
+  verified: true
+- config_id: ds_flash_think
+  provider: deepseek
+  model: deepseek-flash
+  tier: low
+  vision_config_id: ds_flash
+  temperature: null
+  max_tokens: 8000
+  extra_payload:
+    thinking:
+      type: enabled
+  verified: true
+- config_id: qwen_max
+  provider: dashscope
+  model: qwen3.8-max-0902
+  tier: strong
+  vision_config_id: qwen_vl
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: true
+- config_id: qwen_plus
+  provider: dashscope
+  model: qwen-plus
+  tier: low
+  vision_config_id: qwen_vl
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: false
+- config_id: qwen_vl
+  provider: dashscope
+  model: qwen3-vl-plus
+  tier: vision
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: false
+- config_id: glm
+  provider: siliconflow
+  model: zai-org/GLM-5.3
+  tier: strong
+  vision_config_id: glm_v
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: false
+- config_id: glm_v
+  provider: siliconflow
+  model: zai-org/GLM-4.5V
+  tier: vision
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: false
+- config_id: kimi
+  provider: siliconflow
+  model: Pro/moonshotai/Kimi-K2.6
+  tier: strong
+  vision_config_id: kimi
+  temperature: null
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+  verified: true
+- config_id: dev_ds
+  provider: siliconflow
+  model: deepseek-ai/DeepSeek-V3.2
+  tier: dev
+  vision_config_id: dev_vl
+  temperature: 0
+  max_tokens: 2000
+  extra_payload: {}
+  verified: false
+- config_id: dev_vl
+  provider: siliconflow
+  model: Qwen/Qwen3-VL-32B-Instruct
+  tier: dev
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload: {}
+  verified: false
+- config_id: glm_t1
+  provider: siliconflow
+  model: zai-org/GLM-5.3
+  tier: dev
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    thinking:
+      type: disabled
+  verified: false
+- config_id: glm_t2
+  provider: siliconflow
+  model: zai-org/GLM-5.3
+  tier: dev
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    chat_template_kwargs:
+      enable_thinking: false
+  verified: false
+- config_id: glm_t3
+  provider: siliconflow
+  model: zai-org/GLM-5.3
+  tier: dev
+  vision_config_id: null
+  temperature: 0
+  max_tokens: 2000
+  extra_payload:
+    enable_thinking: false
+    thinking_budget: 0
+  verified: false

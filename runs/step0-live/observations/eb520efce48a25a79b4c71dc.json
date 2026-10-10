@@ -1,0 +1,82 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 87,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1269,
+        "prompt_tokens": 1269,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 1356
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "kimi",
+  "cost_estimate": {
+    "amount": 0.0105975,
+    "currency": "CNY",
+    "input_tokens": 1269,
+    "output_tokens": 87,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:24:11.954232Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 4371.65,
+  "max_tokens": 600,
+  "max_tokens_override": 600,
+  "method": "vision",
+  "model": {
+    "requested": "Pro/moonshotai/Kimi-K2.6",
+    "returned": "Pro/moonshotai/Kimi-K2.6"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a125c5476c37286d693820942e3c0c\",\"object\":\"chat.completion\",\"created\":1791635048,\"model\":\"Pro/moonshotai/Kimi-K2.6\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"美国专线 运价表\\n\\n| 重量档 | 单价（元/公斤） |\\n|--------|----------------|\\n| 1-45 公斤 | 28.50 |\\n| 46-100 公斤 | 24.00 |\\n| 101 公斤以上 | 21.50 |\\n\\n附加费\\n\\n燃油附加费：运费的 12%\\n\\n偏远地区附加费：150 元/票\\n\\n合成示例\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":1269,\"completion_tokens\":87,\"total_tokens\":1356,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":1269},\"system_fingerprint\":\"\"}",
+  "repeat": 1,
+  "request_id": "01a125c5476c37286d693820942e3c0c",
+  "run_key": "step0|vision|kimi|table|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:24:07.581572Z",
+  "task_id": "table",
+  "temperature": null,
+  "text": "美国专线 运价表\n\n| 重量档 | 单价（元/公斤） |\n|--------|----------------|\n| 1-45 公斤 | 28.50 |\n| 46-100 公斤 | 24.00 |\n| 101 公斤以上 | 21.50 |\n\n附加费\n\n燃油附加费：运费的 12%\n\n偏远地区附加费：150 元/票\n\n合成示例",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 87,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 1269,
+    "prompt_tokens": 1269,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 1356
+  },
+  "valid": true
+}

@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-10T12:25:28.888057Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "{\"error\":{\"message\":\"<400> InternalError.Algo.InvalidParameter: The value of the enable_thinking parameter is restricted to True.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_parameter_error\"},\"id\":\"chatcmpl-9e0c4a65-41c0-923c-a228-fd518bec8688\",\"request_id\":\"9e0c4a65-41c0-923c-a228-fd518bec8688\"}",
+      "classification": "fatal",
+      "error": null,
+      "http_status": 400,
+      "possibly_billed": false,
+      "usage": null
+    }
+  ],
+  "error": "ProviderCallError: dashscope call failed (HTTP 400)",
+  "metadata": {
+    "attempt": 1,
+    "attempts": [
+      {
+        "attempt": 1,
+        "body": "{\"error\":{\"message\":\"<400> InternalError.Algo.InvalidParameter: The value of the enable_thinking parameter is restricted to True.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"invalid_parameter_error\"},\"id\":\"chatcmpl-9e0c4a65-41c0-923c-a228-fd518bec8688\",\"request_id\":\"9e0c4a65-41c0-923c-a228-fd518bec8688\"}",
+        "classification": "fatal",
+        "error": null,
+        "http_status": 400,
+        "possibly_billed": false,
+        "usage": null
+      }
+    ],
+    "classification": "fatal",
+    "error_code": "invalid_parameter_error",
+    "http_status": 400,
+    "model": "glm-5.3",
+    "provider": "dashscope"
+  },
+  "n": 1,
+  "possibly_billed_cost": null,
+  "provider": "dashscope",
+  "run_key": "step0c|think|glm_ds|arith|probe|c0|r1",
+  "stop_reason": null
+}

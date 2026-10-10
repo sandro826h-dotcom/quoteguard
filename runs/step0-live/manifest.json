@@ -1,0 +1,41 @@
+{
+  "batch_id": "step0-live",
+  "budget": {
+    "CNY": 5.0,
+    "USD": 0.5
+  },
+  "completed": 17,
+  "created_at": "2026-10-10T12:23:56.748407Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-10T12:24:11.956954Z",
+  "identity": {
+    "base_urls": {
+      "dashscope": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "deepseek": "https://api.deepseek.com/v1",
+      "siliconflow": "https://api.siliconflow.cn/v1"
+    },
+    "executor_sha256": "849fa527bb54cae808cbef7b859ee74004e4fd64bd4ea1055b261e9e51666718",
+    "llm_sha256": "077b95dca6ced3030b1912c437087c3afe8a84eec9991830828662d14c483100",
+    "mode": "live",
+    "models_sha256": "23ff988dcb8107bd93a20228ff07221194e25d2333857621be2eedba6f686840",
+    "plan_sha256": "e3dca48226fc0704b8258f4a2e7e2d897282e517bd9e4d5d52f1e7786f87d254",
+    "util_sha256": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "kind": "dev",
+  "plan_id": "step0",
+  "runs": [
+    {
+      "finished_at": "2026-10-10T12:24:11.956914Z",
+      "skipped_done": 0,
+      "started_at": "2026-10-10T12:23:56.749242Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "CNY": 0.0277495,
+    "USD": 0.000465
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 17
+}

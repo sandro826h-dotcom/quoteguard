@@ -58,16 +58,19 @@ def test_models_yaml_loads():
                       "dev_ds", "dev_vl"}
     assert m["kimi"].temperature is None and m["ds_pro"].extra_payload == {"thinking": {"type": "disabled"}}
     assert m["glm"].provider == "siliconflow" and m["ds_pro"].vision_config_id == "ds_flash"
-    assert not any(c.verified for c in m.values())
+    assert {c.config_id for c in m.values() if c.verified} == {c.config_id for c in m.values()}
     assert all(c.max_tokens == 2000 for c in m.values() if c.config_id != "ds_flash_think")
-    for cid in ("qwen_max", "qwen_plus", "qwen_vl", "glm", "glm_v", "kimi"):
+    for cid in ("qwen_max", "qwen_plus", "qwen_vl", "glm_v", "kimi"):
         assert m[cid].extra_payload == {"enable_thinking": False}, cid
+    # GLM-5.3 cannot disable thinking (step 0); the minimum budget is used instead.
+    assert m["glm"].extra_payload == {"enable_thinking": False, "thinking_budget": 1}
     for cid in ("ds_pro", "ds_flash"):
         assert m[cid].extra_payload == {"thinking": {"type": "disabled"}}
     t = m["ds_flash_think"]
-    assert (t.model, t.tier, t.temperature, t.max_tokens) == ("deepseek-v4-flash", "low", None, 8000)
+    assert (t.model, t.tier, t.temperature, t.max_tokens) == ("deepseek-flash", "low", None, 8000)
     assert t.extra_payload == {"thinking": {"type": "enabled"}}
-    assert all(c.image_token_bound == 4000 for c in m.values())
+    bounds = {"ds_flash": 1500, "qwen_vl": 2000, "glm_v": 3000, "kimi": 3000}
+    assert all(c.image_token_bound == bounds.get(c.config_id, 4000) for c in m.values())
 
 
 def test_build_messages_text_and_images():

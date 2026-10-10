@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-10T12:25:07.284718Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "{\"code\":20015,\"message\":\"Value error, `thinking_budget` must be greater than 0.\",\"data\":null}",
+      "classification": "fatal",
+      "error": null,
+      "http_status": 400,
+      "possibly_billed": false,
+      "usage": null
+    }
+  ],
+  "error": "ProviderCallError: siliconflow call failed (HTTP 400)",
+  "metadata": {
+    "attempt": 1,
+    "attempts": [
+      {
+        "attempt": 1,
+        "body": "{\"code\":20015,\"message\":\"Value error, `thinking_budget` must be greater than 0.\",\"data\":null}",
+        "classification": "fatal",
+        "error": null,
+        "http_status": 400,
+        "possibly_billed": false,
+        "usage": null
+      }
+    ],
+    "classification": "fatal",
+    "error_code": "20015",
+    "http_status": 400,
+    "model": "zai-org/GLM-5.3",
+    "provider": "siliconflow"
+  },
+  "n": 1,
+  "possibly_billed_cost": null,
+  "provider": "siliconflow",
+  "run_key": "step0b|think|glm_t3|arith|probe|c0|r1",
+  "stop_reason": null
+}

@@ -1,0 +1,83 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 3,
+        "completion_tokens_details": {
+          "reasoning_tokens": 2
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 21,
+        "prompt_tokens": 21,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 24
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "glm_t4",
+  "cost_estimate": {
+    "amount": 0.000252,
+    "currency": "CNY",
+    "input_tokens": 21,
+    "output_tokens": 3,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "step0c",
+  "extra_payload": {
+    "enable_thinking": false,
+    "thinking_budget": 1
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:25:29.073406Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 1964.8,
+  "max_tokens": 64,
+  "max_tokens_override": 64,
+  "method": "think",
+  "model": {
+    "requested": "zai-org/GLM-5.3",
+    "returned": "zai-org/GLM-5.3"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a125c6837038183585b79fb0dd0afa\",\"object\":\"chat.completion\",\"created\":1791635129,\"model\":\"zai-org/GLM-5.3\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"42\",\"reasoning_content\":\"The\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":21,\"completion_tokens\":3,\"total_tokens\":24,\"completion_tokens_details\":{\"reasoning_tokens\":2},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":21},\"system_fingerprint\":\"\"}",
+  "repeat": 1,
+  "request_id": "01a125c6837038183585b79fb0dd0afa",
+  "run_key": "step0c|think|glm_t4|arith|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:25:27.107851Z",
+  "task_id": "arith",
+  "temperature": 0,
+  "text": "42",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 3,
+    "completion_tokens_details": {
+      "reasoning_tokens": 2
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 21,
+    "prompt_tokens": 21,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 24
+  },
+  "valid": true
+}

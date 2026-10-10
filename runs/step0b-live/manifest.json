@@ -1,0 +1,38 @@
+{
+  "batch_id": "step0b-live",
+  "budget": {
+    "CNY": 1.0,
+    "USD": 0.1
+  },
+  "completed": 2,
+  "created_at": "2026-10-10T12:25:02.647478Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-10T12:25:07.287313Z",
+  "identity": {
+    "base_urls": {
+      "siliconflow": "https://api.siliconflow.cn/v1"
+    },
+    "executor_sha256": "849fa527bb54cae808cbef7b859ee74004e4fd64bd4ea1055b261e9e51666718",
+    "llm_sha256": "077b95dca6ced3030b1912c437087c3afe8a84eec9991830828662d14c483100",
+    "mode": "live",
+    "models_sha256": "a00a3e3ed58e43296efa0ff12731a36237265c010d5982cf3bb6c71426435b83",
+    "plan_sha256": "77d4951d579cb8886b90a45afa92689d2ea5c14bf6ccefc4adb29a8d0b93d6ba",
+    "util_sha256": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "kind": "dev",
+  "plan_id": "step0b",
+  "runs": [
+    {
+      "finished_at": "2026-10-10T12:25:07.287266Z",
+      "skipped_done": 0,
+      "started_at": "2026-10-10T12:25:02.647937Z",
+      "status": "incomplete_errors"
+    }
+  ],
+  "spent": {
+    "CNY": 0.002856
+  },
+  "status": "incomplete_errors",
+  "stop": null,
+  "total": 3
+}

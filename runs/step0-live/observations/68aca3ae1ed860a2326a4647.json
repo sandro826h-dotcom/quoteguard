@@ -1,0 +1,84 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 22,
+        "completion_tokens_details": {
+          "reasoning_tokens": 20
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 39,
+        "prompt_tokens": 39,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 61
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "ds_flash_think",
+  "cost_estimate": {
+    "amount": 4.15e-05,
+    "currency": "USD",
+    "input_tokens": 39,
+    "output_tokens": 22,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "thinking": {
+      "type": "enabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:23:59.949565Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 976.76,
+  "max_tokens": 512,
+  "max_tokens_override": 512,
+  "method": "think",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "fb29a7356f19e9d44a07facc8d7573d5c339a4c10b88b88945b2aba73ef8d346",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"a3ac1299-3534-4be8-b4a1-1643ea10971b\",\"object\":\"chat.completion\",\"created\":1791635039,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"42\",\"reasoning_content\":\"We need answer only number. Need comply. 17+25=42. Final only number.\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":39,\"completion_tokens\":22,\"total_tokens\":61,\"prompt_tokens_details\":{\"cached_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":20},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":39},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "a3ac1299-3534-4be8-b4a1-1643ea10971b",
+  "run_key": "step0|think|ds_flash_think|arith|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:23:58.972023Z",
+  "task_id": "arith",
+  "temperature": null,
+  "text": "42",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 22,
+    "completion_tokens_details": {
+      "reasoning_tokens": 20
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 39,
+    "prompt_tokens": 39,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 61
+  },
+  "valid": true
+}

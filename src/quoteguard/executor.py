@@ -9,6 +9,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import fcntl
 import hashlib
 import json
@@ -52,8 +53,13 @@ class ProtocolError(RuntimeError):
     """A formal plan does not match its frozen protocol hash."""
 
 
-def prompt_hash(system: Optional[str], text: str, image_sha256s: list[str]) -> str:
-    return sha256_text(canonical_json({"system": system, "text": text, "images": list(image_sha256s)}))
+def prompt_hash(system: Optional[str], text: str, image_sha256s: list[str],
+                max_tokens: Optional[int] = None) -> str:
+    """Hash of the prompt content; a request-level max_tokens override is part of it when present."""
+    body = {"system": system, "text": text, "images": list(image_sha256s)}
+    if max_tokens is not None:
+        body["max_tokens"] = max_tokens
+    return sha256_text(canonical_json(body))
 
 
 def make_run_key(experiment, method, config_id, task_id, stage, cand_id, repeat) -> str:
@@ -106,7 +112,10 @@ def load_plan(path: str | Path, models: dict[str, ModelConfig]) -> dict:
         if cur not in budget:
             raise PlanError(f"{key}: budget has no entry for currency {cur}")
         shas = [_check_image(path.parent, img, key)[1] for img in r["images"]]
-        if prompt_hash(r["system"], r["text"], shas) != r["prompt_sha256"]:
+        mt = r.get("max_tokens")
+        if mt is not None and (isinstance(mt, bool) or not isinstance(mt, int) or mt <= 0):
+            raise PlanError(f"{key}: max_tokens override must be a positive integer")
+        if prompt_hash(r["system"], r["text"], shas, mt) != r["prompt_sha256"]:
             raise PlanError(f"prompt_sha256 mismatch: {key}")
     return plan
 
@@ -244,6 +253,8 @@ class Executor:
                               [(data, im["mime"]) for (data, _), im in zip(loaded, req["images"])])
 
     def _upper_cost(self, req, cfg: ModelConfig):
+        if req.get("max_tokens") is not None:
+            cfg = dataclasses.replace(cfg, max_tokens=req["max_tokens"])
         rate = self.rates[cfg.config_id]
         in_tok = (len((req["system"] or "").encode("utf-8")) + len(req["text"].encode("utf-8"))) / 2 \
             + cfg.image_token_bound * len(req["images"])
@@ -404,6 +415,8 @@ class Executor:
                 return
             key = req["run_key"]
             cfg = self.models[req["config_id"]]
+            if req.get("max_tokens") is not None:
+                cfg = dataclasses.replace(cfg, max_tokens=req["max_tokens"])
             cur, upper = self._upper_cost(req, cfg)
             with self._lock:
                 over = self._spent.get(cur, 0.0) + self._reserved.get(cur, 0.0) + upper > self.budget[cur]
@@ -458,6 +471,7 @@ class Executor:
                    "repeat": req["repeat"], "config_id": cfg.config_id, "provider": provider,
                    "model": {"requested": cfg.model, "returned": resp.returned_model},
                    "endpoint": resp.endpoint, "temperature": cfg.temperature, "max_tokens": cfg.max_tokens,
+                   "max_tokens_override": req.get("max_tokens"),
                    "extra_payload": cfg.extra_payload, "seed": req["seed"],
                    "prompt_sha256": req["prompt_sha256"], "raw_body": resp.raw_body, "text": resp.text,
                    "valid": resp.valid, "body_redacted": resp.body_redacted,

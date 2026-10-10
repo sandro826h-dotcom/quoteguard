@@ -1,0 +1,23 @@
+{
+  "provider": "deepseek",
+  "http_status": 200,
+  "model_ids": [
+    "deepseek-flash",
+    "deepseek-v4-pro"
+  ],
+  "configs": {
+    "ds_pro": {
+      "model": "deepseek-v4-pro",
+      "listed": true
+    },
+    "ds_flash": {
+      "model": "deepseek-flash",
+      "listed": true
+    },
+    "ds_flash_think": {
+      "model": "deepseek-flash",
+      "listed": true
+    }
+  },
+  "checked_at": "2026-10-10T12:29:57.575911Z"
+}

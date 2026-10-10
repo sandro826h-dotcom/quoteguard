@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 71,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 615,
+        "prompt_tokens": 615,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 686
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 0.0003785,
+    "currency": "USD",
+    "input_tokens": 615,
+    "output_tokens": 71,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:24:02.420440Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 1651.61,
+  "max_tokens": 600,
+  "max_tokens_override": 600,
+  "method": "vision",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"ddfa0cdd-b145-4a7e-91e1-24d9c7fb7ea6\",\"object\":\"chat.completion\",\"created\":1791635041,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"美国专线 运价表\\n重量档 单价（元/公斤）\\n1-45 公斤 28.50\\n46-100 公斤 24.00\\n101 公斤以上 21.50\\n附加费\\n燃油附加费：运费的 12%\\n偏远地区附加费：150 元/票\\n合成示例\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":615,\"completion_tokens\":71,\"total_tokens\":686,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":615},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "ddfa0cdd-b145-4a7e-91e1-24d9c7fb7ea6",
+  "run_key": "step0|vision|ds_flash|table|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:24:00.767615Z",
+  "task_id": "table",
+  "temperature": 0,
+  "text": "美国专线 运价表\n重量档 单价（元/公斤）\n1-45 公斤 28.50\n46-100 公斤 24.00\n101 公斤以上 21.50\n附加费\n燃油附加费：运费的 12%\n偏远地区附加费：150 元/票\n合成示例",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 71,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 615,
+    "prompt_tokens": 615,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 686
+  },
+  "valid": true
+}

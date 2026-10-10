@@ -1,0 +1,54 @@
+{
+ "plan_id": "step0c",
+ "kind": "dev",
+ "budget": {
+  "USD": 0.1,
+  "CNY": 1
+ },
+ "rates": {
+  "glm_ds": {
+   "currency": "CNY",
+   "input": 8.0,
+   "output": 28.0
+  },
+  "glm_t4": {
+   "currency": "CNY",
+   "input": 8.0,
+   "output": 28.0
+  }
+ },
+ "requests": [
+  {
+   "run_key": "step0c|think|glm_ds|arith|probe|c0|r1",
+   "experiment": "step0c",
+   "method": "think",
+   "config_id": "glm_ds",
+   "task_id": "arith",
+   "stage": "probe",
+   "cand_id": "c0",
+   "repeat": 1,
+   "system": null,
+   "text": "只回复数字：17+25=？",
+   "images": [],
+   "seed": 20261010,
+   "max_tokens": 64,
+   "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5"
+  },
+  {
+   "run_key": "step0c|think|glm_t4|arith|probe|c0|r1",
+   "experiment": "step0c",
+   "method": "think",
+   "config_id": "glm_t4",
+   "task_id": "arith",
+   "stage": "probe",
+   "cand_id": "c0",
+   "repeat": 1,
+   "system": null,
+   "text": "只回复数字：17+25=？",
+   "images": [],
+   "seed": 20261010,
+   "max_tokens": 64,
+   "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5"
+  }
+ ]
+}

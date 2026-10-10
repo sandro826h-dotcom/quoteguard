@@ -1,0 +1,353 @@
+{
+  "budget": {
+    "CNY": 5,
+    "USD": 0.5
+  },
+  "kind": "dev",
+  "plan_id": "step0",
+  "rates": {
+    "ds_flash": {
+      "currency": "USD",
+      "input": 0.5,
+      "output": 1.0
+    },
+    "ds_flash_think": {
+      "currency": "USD",
+      "input": 0.5,
+      "output": 1.0
+    },
+    "ds_pro": {
+      "currency": "USD",
+      "input": 2.0,
+      "output": 4.0
+    },
+    "glm": {
+      "currency": "CNY",
+      "input": 8.0,
+      "output": 28.0
+    },
+    "glm_v": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 12.0
+    },
+    "kimi": {
+      "currency": "CNY",
+      "input": 6.5,
+      "output": 27.0
+    },
+    "qwen_max": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_plus": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_vl": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    }
+  },
+  "requests": [
+    {
+      "cand_id": "c0",
+      "config_id": "ds_pro",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|ds_pro|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "ds_flash",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|ds_flash|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "qwen_max",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|qwen_max|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "qwen_plus",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|qwen_plus|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "glm",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|glm|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 1,
+      "run_key": "step0|think|kimi|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "ds_flash_think",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 512,
+      "method": "think",
+      "prompt_sha256": "fb29a7356f19e9d44a07facc8d7573d5c339a4c10b88b88945b2aba73ef8d346",
+      "repeat": 1,
+      "run_key": "step0|think|ds_flash_think|arith|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 2,
+      "run_key": "step0|think|kimi|arith|probe|c0|r2",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 3,
+      "run_key": "step0|think|kimi|arith|probe|c0|r3",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 4,
+      "run_key": "step0|think|kimi|arith|probe|c0|r4",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 5,
+      "run_key": "step0|think|kimi|arith|probe|c0|r5",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "ds_flash",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 2,
+      "run_key": "step0|think|ds_flash|arith|probe|c0|r2",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "qwen_plus",
+      "experiment": "step0",
+      "images": [],
+      "max_tokens": 64,
+      "method": "think",
+      "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+      "repeat": 2,
+      "run_key": "step0|think|qwen_plus|arith|probe|c0|r2",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "arith",
+      "text": "只回复数字：17+25=？"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "qwen_vl",
+      "experiment": "step0",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "step0_assets/probe_table.png",
+          "sha256": "c15386784653874e20ef9b61f53df8b9ecf29c169bdfa9bf8444148d0838848b"
+        }
+      ],
+      "max_tokens": 600,
+      "method": "vision",
+      "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+      "repeat": 1,
+      "run_key": "step0|vision|qwen_vl|table|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "table",
+      "text": "逐行转写图中表格的全部文字"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "glm_v",
+      "experiment": "step0",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "step0_assets/probe_table.png",
+          "sha256": "c15386784653874e20ef9b61f53df8b9ecf29c169bdfa9bf8444148d0838848b"
+        }
+      ],
+      "max_tokens": 600,
+      "method": "vision",
+      "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+      "repeat": 1,
+      "run_key": "step0|vision|glm_v|table|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "table",
+      "text": "逐行转写图中表格的全部文字"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "kimi",
+      "experiment": "step0",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "step0_assets/probe_table.png",
+          "sha256": "c15386784653874e20ef9b61f53df8b9ecf29c169bdfa9bf8444148d0838848b"
+        }
+      ],
+      "max_tokens": 600,
+      "method": "vision",
+      "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+      "repeat": 1,
+      "run_key": "step0|vision|kimi|table|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "table",
+      "text": "逐行转写图中表格的全部文字"
+    },
+    {
+      "cand_id": "c0",
+      "config_id": "ds_flash",
+      "experiment": "step0",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "step0_assets/probe_table.png",
+          "sha256": "c15386784653874e20ef9b61f53df8b9ecf29c169bdfa9bf8444148d0838848b"
+        }
+      ],
+      "max_tokens": 600,
+      "method": "vision",
+      "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+      "repeat": 1,
+      "run_key": "step0|vision|ds_flash|table|probe|c0|r1",
+      "seed": 20261010,
+      "stage": "probe",
+      "system": null,
+      "task_id": "table",
+      "text": "逐行转写图中表格的全部文字"
+    }
+  ]
+}

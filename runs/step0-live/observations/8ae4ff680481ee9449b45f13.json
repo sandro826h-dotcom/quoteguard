@@ -1,0 +1,72 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 19,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 21
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "qwen_plus",
+  "cost_estimate": {
+    "amount": 0.000156,
+    "currency": "CNY",
+    "input_tokens": 19,
+    "output_tokens": 2,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:23:59.442511Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 850.28,
+  "max_tokens": 64,
+  "max_tokens_override": 64,
+  "method": "think",
+  "model": {
+    "requested": "qwen-plus",
+    "returned": "qwen-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+  "provider": "dashscope",
+  "raw_body": "{\"model\":\"qwen-plus\",\"id\":\"chatcmpl-5a99e122-ffbf-9123-99a7-3de958d5c682\",\"choices\":[{\"message\":{\"content\":\"42\",\"role\":\"assistant\"},\"index\":0,\"finish_reason\":\"stop\"}],\"created\":1791635038,\"object\":\"chat.completion\",\"usage\":{\"total_tokens\":21,\"completion_tokens\":2,\"prompt_tokens\":19,\"prompt_tokens_details\":{\"cached_tokens\":0}}}",
+  "repeat": 1,
+  "request_id": "5a99e122-ffbf-9123-99a7-3de958d5c682",
+  "run_key": "step0|think|qwen_plus|arith|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:23:58.591282Z",
+  "task_id": "arith",
+  "temperature": 0,
+  "text": "42",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 2,
+    "prompt_tokens": 19,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 21
+  },
+  "valid": true
+}

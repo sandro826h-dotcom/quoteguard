@@ -46,3 +46,14 @@
 - 参照下限纳入条件修订（2026-10-10，测试集与协议冻结前）：原条件要求 page_date 不早于 2026-07-24。按当日初录的 22 个货代单元，原条件下合格单元为 0 个；参照下限只涉及不包税运价、不含关税，与 07-24 前后的关税制度无关，因此改为 date_status = current。修订后合格单元为 Q01-u1、Q01-u2、Q01-u3（同一发布主体 F01，空派、美西），空派参照下限 4.87 USD/kg（32.79 元/kg）；海运与快递无合格单元，按回退规则不设“需核实”档。该局限需写入报告。
 - 结果：相关测试 48 项通过。
 - 未决（低优先级）：conflicting 字段空值与两候选相同时应报错；QuoteTerms 冲突候选类型检查；seed_id 与 source_id、两个别名字段的交叉校验；date_status 改为由规则函数推出。
+
+## 2026-10-10 第 0 步：接口与模型参数核实
+- 做了什么：用 3 个服务商的 /models 列表核对模型名（快照 runs/step0_models_list/），17 次短调用核实思考开关、Kimi 时延、seed、4 个视觉模型的单图 token 数（runs/step0-live），另用 5 次调用核实 GLM-5.3 的思考参数（runs/step0b-live、runs/step0c-live）。执行器增加请求级 max_tokens 覆盖。经 reviewer 审查。
+- 结果：
+  - 费用：0.000465 美元 + 0.031 元（runs/spend_ledger.jsonl）。
+  - 模型名：qwen3-max 已不在百炼列表，强模型档改用 qwen3.8-max-0902；DeepSeek 低成本模型名为 deepseek-flash；Kimi 为 Pro/moonshotai/Kimi-K2.6。方案第六节已同步。
+  - 思考开关：DeepSeek、千问、Kimi 可关闭；GLM-5.3 在硅基流动与百炼都不能关闭，改用 thinking_budget = 1（极简题上 reasoning_tokens 由 44 降到 2）。
+  - Kimi：5 次中位时延 1.1 秒、无重试，保留。
+  - 视觉：1200×800 图的输入 token 为 DeepSeek-Flash 615、千问 VL 970、GLM-4.5V 1267、Kimi 1269；四家都能正确转写。GLM-4.5V 输出带 <|begin_of_box|> 标记，转写后需清理。
+  - seed：两次输出相同，但题目答案唯一，不能证明 seed 生效；正式实验用 temperature 0 并记录 seed。
+- 未决：has_reasoning_content 按键存在判断，qwen_vl 的空字符串被记为 True，下次改为判断非空（原始记录不改，汇总时按 raw_body 重算）；预试验中统计 GLM 在长任务上的 reasoning_tokens。

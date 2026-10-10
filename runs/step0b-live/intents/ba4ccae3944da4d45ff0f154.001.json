@@ -1,0 +1,8 @@
+{
+  "config_id": "glm_t1",
+  "intent_at": "2026-10-10T12:25:02.649616Z",
+  "n": 1,
+  "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+  "provider": "siliconflow",
+  "run_key": "step0b|think|glm_t1|arith|probe|c0|r1"
+}

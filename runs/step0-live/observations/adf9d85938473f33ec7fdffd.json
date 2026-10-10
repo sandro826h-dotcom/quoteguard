@@ -1,0 +1,82 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 18,
+        "prompt_tokens": 18,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 19
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "kimi",
+  "cost_estimate": {
+    "amount": 0.000144,
+    "currency": "CNY",
+    "input_tokens": 18,
+    "output_tokens": 1,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:24:01.680369Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 1143.53,
+  "max_tokens": 64,
+  "max_tokens_override": 64,
+  "method": "think",
+  "model": {
+    "requested": "Pro/moonshotai/Kimi-K2.6",
+    "returned": "Pro/moonshotai/Kimi-K2.6"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a125c52a62d77af0b4f2312a2c59e3\",\"object\":\"chat.completion\",\"created\":1791635040,\"model\":\"Pro/moonshotai/Kimi-K2.6\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"42\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":18,\"completion_tokens\":1,\"total_tokens\":19,\"completion_tokens_details\":{\"reasoning_tokens\":0},\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":18},\"system_fingerprint\":\"\"}",
+  "repeat": 2,
+  "request_id": "01a125c52a62d77af0b4f2312a2c59e3",
+  "run_key": "step0|think|kimi|arith|probe|c0|r2",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:24:00.536018Z",
+  "task_id": "arith",
+  "temperature": null,
+  "text": "42",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 18,
+    "prompt_tokens": 18,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 19
+  },
+  "valid": true
+}

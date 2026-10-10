@@ -290,8 +290,8 @@ def test_platform_check(monkeypatch, env):
     assert seen["url"] == "https://api.deepseek.com/v1/models"
     assert r["http_status"] == 200 and r["model_ids"] == ["deepseek-v4-pro", "other"]
     assert r["configs"] == {"ds_pro": {"model": "deepseek-v4-pro", "listed": True},
-                            "ds_flash": {"model": "deepseek-v4-flash", "listed": False},
-                            "ds_flash_think": {"model": "deepseek-v4-flash", "listed": False}}
+                            "ds_flash": {"model": "deepseek-flash", "listed": False},
+                            "ds_flash_think": {"model": "deepseek-flash", "listed": False}}
     env.setenv("QG_PROXY_AUTH", "1")
     ex.platform_check("deepseek", load_models())
     assert "Authorization" not in seen["headers"]
@@ -485,15 +485,15 @@ def test_image_token_bound_from_models_yaml(tmp_path):
     plan = write_plan(tmp_path, [req("ds_flash", 0, images=[good])])
     base = Executor(plan, tmp_path / "r1", "mock")
     _, u1 = base._upper_cost(base.plan["requests"][0], base.models["ds_flash"])
+    assert base.models["ds_flash"].image_token_bound == 1500
     alt = tmp_path / "m.yaml"
-    alt.write_text(open(ex.llm.DEFAULT_MODELS_PATH, encoding="utf-8").read().replace(
-        "    model: deepseek-v4-flash\n    tier: low\n    vision_config_id: ds_flash\n    temperature: 0\n",
-        "    model: deepseek-v4-flash\n    tier: low\n    vision_config_id: ds_flash\n    temperature: 0\n    image_token_bound: 14000\n", 1),
-        encoding="utf-8")
+    text = open(ex.llm.DEFAULT_MODELS_PATH, encoding="utf-8").read()
+    assert text.count("image_token_bound: 1500") == 1
+    alt.write_text(text.replace("image_token_bound: 1500", "image_token_bound: 14000"), encoding="utf-8")
     e2 = Executor(plan, tmp_path / "r2", "mock", models_path=alt)
     assert e2.models["ds_flash"].image_token_bound == 14000
     _, u2 = e2._upper_cost(e2.plan["requests"][0], e2.models["ds_flash"])
-    assert u2 - u1 == pytest.approx(10000 * 1.0 / 1e6)
+    assert u2 - u1 == pytest.approx((14000 - 1500) * RATES["ds_flash"]["input"] / 1e6)
 
 
 def test_auth_failed_stops_with_stopped_config(tmp_path, env):
@@ -643,3 +643,23 @@ def test_ledger_and_spend_cli(tmp_path, env, capsys):
     assert ex.spend_summary(out)["entries"] == 6
     assert ex.main(["spend", "--out", str(out)]) == 0
     assert json.loads(capsys.readouterr().out)["totals"]["USD"] == pytest.approx(s["totals"]["USD"])
+
+
+def test_max_tokens_override_in_hash_payload_and_observation(tmp_path, env):
+    r = req("ds_flash", 0)
+    r["max_tokens"] = 64
+    r["prompt_sha256"] = prompt_hash("sys", r["text"], [], 64)
+    assert r["prompt_sha256"] != prompt_hash("sys", r["text"], [])
+    calls = patch_post(env, lambda u, j: FakeResp())
+    e = Executor(write_plan(tmp_path, [r]), tmp_path / "runs", "live")
+    e.run()
+    assert calls[0][1]["max_tokens"] == 64
+    o = json.loads(obs_files(e.dir)[0].read_text())
+    assert o["max_tokens"] == 64 and o["max_tokens_override"] == 64
+    _, upper = e._upper_cost(r, e.models["ds_flash"])
+    assert upper < 0.001
+    bad = dict(r, prompt_sha256=prompt_hash("sys", r["text"], []))  # hash without the override
+    with pytest.raises(PlanError, match="prompt_sha256"):
+        ex.load_plan(write_plan(tmp_path, [bad], name="bad.json"), load_models())
+    with pytest.raises(PlanError, match="max_tokens"):
+        ex.load_plan(write_plan(tmp_path, [dict(r, max_tokens=0)], name="bad2.json"), load_models())

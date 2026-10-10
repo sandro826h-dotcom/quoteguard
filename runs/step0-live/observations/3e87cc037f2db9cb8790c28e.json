@@ -1,0 +1,82 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 118,
+        "completion_tokens_details": {
+          "text_tokens": 118
+        },
+        "prompt_tokens": 970,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "image_tokens": 952,
+          "text_tokens": 18
+        },
+        "total_tokens": 1088
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "qwen_vl",
+  "cost_estimate": {
+    "amount": 0.0086,
+    "currency": "CNY",
+    "input_tokens": 970,
+    "output_tokens": 118,
+    "usage_missing": false
+  },
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:24:05.973454Z",
+  "has_reasoning_content": true,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 5696.3,
+  "max_tokens": 600,
+  "max_tokens_override": 600,
+  "method": "vision",
+  "model": {
+    "requested": "qwen3-vl-plus",
+    "returned": "qwen3-vl-plus"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+  "provider": "dashscope",
+  "raw_body": "{\"choices\":[{\"message\":{\"content\":\"以下为图中表格的逐行文字转写：\\n\\n美国专线 运价表  \\n重量档　　　　　　　　　单价（元/公斤）  \\n1-45 公斤　　　　　　　　28.50  \\n46-100 公斤　　　　　　　24.00  \\n101 公斤以上　　　　　　　21.50  \\n\\n附加费  \\n燃油附加费：运费的 12%  \\n偏远地区附加费：150 元/票  \\n\\n合成示例\",\"reasoning_content\":\"\",\"role\":\"assistant\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":970,\"completion_tokens\":118,\"total_tokens\":1088,\"completion_tokens_details\":{\"text_tokens\":118},\"prompt_tokens_details\":{\"image_tokens\":952,\"text_tokens\":18,\"cached_tokens\":0}},\"created\":1791635046,\"system_fingerprint\":null,\"model\":\"qwen3-vl-plus\",\"id\":\"chatcmpl-b66fd79c-a7e7-97dc-bd96-2d30e6c4554f\"}",
+  "repeat": 1,
+  "request_id": "b66fd79c-a7e7-97dc-bd96-2d30e6c4554f",
+  "run_key": "step0|vision|qwen_vl|table|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:24:00.275152Z",
+  "task_id": "table",
+  "temperature": 0,
+  "text": "以下为图中表格的逐行文字转写：\n\n美国专线 运价表  \n重量档　　　　　　　　　单价（元/公斤）  \n1-45 公斤　　　　　　　　28.50  \n46-100 公斤　　　　　　　24.00  \n101 公斤以上　　　　　　　21.50  \n\n附加费  \n燃油附加费：运费的 12%  \n偏远地区附加费：150 元/票  \n\n合成示例",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 118,
+    "completion_tokens_details": {
+      "text_tokens": 118
+    },
+    "prompt_tokens": 970,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "image_tokens": 952,
+      "text_tokens": 18
+    },
+    "total_tokens": 1088
+  },
+  "valid": true
+}

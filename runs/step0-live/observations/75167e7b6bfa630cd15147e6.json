@@ -1,0 +1,78 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 13,
+        "prompt_tokens": 13,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 14
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "ds_flash",
+  "cost_estimate": {
+    "amount": 7.5e-06,
+    "currency": "USD",
+    "input_tokens": 13,
+    "output_tokens": 1,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.deepseek.com/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:23:58.969012Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 706.91,
+  "max_tokens": 64,
+  "max_tokens_override": 64,
+  "method": "think",
+  "model": {
+    "requested": "deepseek-flash",
+    "returned": "deepseek-flash"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "156facc3b784fe49d6d9287af03fc2e5f3c9a4504d03f8193756f5549056f2e5",
+  "provider": "deepseek",
+  "raw_body": "{\"id\":\"3771ea31-5772-4270-b8da-8b41b90d72a8\",\"object\":\"chat.completion\",\"created\":1791635038,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"42\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":13,\"completion_tokens\":1,\"total_tokens\":14,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":13},\"system_fingerprint\":\"aeb56401ca74e127821c4f9126dcb669\"}",
+  "repeat": 1,
+  "request_id": "3771ea31-5772-4270-b8da-8b41b90d72a8",
+  "run_key": "step0|think|ds_flash|arith|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:23:58.261377Z",
+  "task_id": "arith",
+  "temperature": 0,
+  "text": "42",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 1,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 13,
+    "prompt_tokens": 13,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 14
+  },
+  "valid": true
+}

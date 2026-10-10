@@ -1,0 +1,72 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "usage": {
+        "completion_tokens": 71,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_tokens": 1267,
+        "total_tokens": 1338
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "c0",
+  "config_id": "glm_v",
+  "cost_estimate": {
+    "amount": 0.00592,
+    "currency": "CNY",
+    "input_tokens": 1267,
+    "output_tokens": 71,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "step0",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-10T12:24:07.576785Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 2709.93,
+  "max_tokens": 600,
+  "max_tokens_override": 600,
+  "method": "vision",
+  "model": {
+    "requested": "zai-org/GLM-4.5V",
+    "returned": "zai-org/GLM-4.5V"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "695316571e0fe7d51d3f654dde0a8aa96d8c8f4fbc776669bb44d0ca68a72b20",
+  "provider": "siliconflow",
+  "raw_body": "{\"id\":\"01a125c53e5587f3ffabab97a7e1a7ec\",\"object\":\"chat.completion\",\"created\":1791635046,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\\u003c|begin_of_box|\\u003e美国专线 运价表\\n重量档\\t单价（元/公斤）\\n1-45 公斤\\t28.50\\n46-100 公斤\\t24.00\\n101 公斤以上\\t21.50\\n附加费\\n燃油附加费：运费的 12%\\n偏远地区附加费：150 元/票\\n合成示例\\u003c|end_of_box|\\u003e\"},\"finish_reason\":\"stop\",\"logprobs\":null}],\"usage\":{\"prompt_tokens\":1267,\"completion_tokens\":71,\"total_tokens\":1338,\"completion_tokens_details\":{\"reasoning_tokens\":0}},\"system_fingerprint\":\"\"}",
+  "repeat": 1,
+  "request_id": "01a125c53e5587f3ffabab97a7e1a7ec",
+  "run_key": "step0|vision|glm_v|table|probe|c0|r1",
+  "seed": 20261010,
+  "stage": "probe",
+  "started_at": "2026-10-10T12:24:04.865511Z",
+  "task_id": "table",
+  "temperature": 0,
+  "text": "<|begin_of_box|>美国专线 运价表\n重量档\t单价（元/公斤）\n1-45 公斤\t28.50\n46-100 公斤\t24.00\n101 公斤以上\t21.50\n附加费\n燃油附加费：运费的 12%\n偏远地区附加费：150 元/票\n合成示例<|end_of_box|>",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 71,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1267,
+    "total_tokens": 1338
+  },
+  "valid": true
+}
