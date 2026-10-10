@@ -92,8 +92,8 @@ def test_hand_case(snap, tmp_path):
     # assumed parameters actually used: informal MPF was overridden, so it is reported as an override
     assert a.snapshot_id == "tariff-2026-10-09"
     assert a.assumptions == []
-    assert a.overrides == [{"name": "CNY_per_USD", "original": "7.10", "value": "7.10"},
-                           {"name": "mpf_informal_usd", "original": "2.69", "value": "0"}]
+    assert a.overrides == [{"name": "CNY_per_USD", "original": "6.7330", "value": "7.10"},
+                           {"name": "mpf_informal_usd", "original": "2.77", "value": "0"}]
     assert a.defaulted == ["min_kg_carton", "broker_fee_cny", "isf_fee_cny"]
     assert a.fx_date == "2026-10-09"
 
@@ -113,14 +113,17 @@ def test_min_carton_binds(snap, tmp_path):
 
 
 @slow
-def test_informal_mpf_nonzero_and_assumptions(snap_plain, tmp_path):
-    # value 800 USD, informal entry: MPF 2.69 USD * 7.10 = 19.099 -> 19.10; duty 292 USD
+def test_informal_mpf_nonzero_and_no_assumptions(snap_plain, tmp_path):
+    # official snapshot: fx 6.7330, informal MPF 2.77 USD (automated, not prepared by CBP)
+    # MPF 2.77 * 6.7330 = 18.65041 -> 18.65; duty 292 USD * 6.7330 = 1966.036 -> 1966.04
     s, t = simple("INF")
     a, _ = both(s, t, snap_plain, tmp_path)
-    assert a.line("mpf") == D("19.10")
-    assert a.duty_floor_cny == q(D("292") * D("7.10") + D("2.69") * D("7.10"))
-    assert a.assumptions == ["mpf_informal_usd", "fx:CNY_per_USD"]
+    assert a.line("mpf") == D("18.65")
+    assert a.line("duty") == D("1966.04")
+    assert a.duty_floor_cny == D("1984.69")      # 294.77 * 6.7330 = 1984.686
+    assert a.assumptions == []
     assert a.overrides == []
+    assert a.fx_date == "2026-10-09"
 
 
 @slow
@@ -130,7 +133,7 @@ def test_fx_override_725(tmp_path):
     a, _ = both(s, t, sn, tmp_path)
     assert a.line("duty") == D("2117.00")      # 292 * 7.25
     assert a.total_cny == D("1680.00") + D("150.00") + D("2117.00")
-    assert a.overrides[0] == {"name": "CNY_per_USD", "original": "7.10", "value": "7.25"}
+    assert a.overrides[0] == {"name": "CNY_per_USD", "original": "6.7330", "value": "7.25"}
 
 
 @slow
@@ -167,18 +170,18 @@ def test_ddp_included_usd_formal_mpf_contingent(snap, tmp_path):
     assert a.chargeable_kg == 49
     assert a.line("freight") == q(D("49") * D("6.2") * D("7.10"))
     assert a.line("duty") == 0
-    assert a.line("mpf") == q(D("33.58") * D("7.10"))
+    assert a.line("mpf") == q(D("34.58") * D("7.10"))
     assert a.line("hmf") == 0
     assert a.line("resi") == q(D("2") * 4 * D("7.10"))
     assert a.line("remote") == 0
     assert a.contingent == [("exam", D("300.00"))]
-    assert a.duty_floor_cny == q((D("4000") * D("0.253") + D("33.58")) * D("7.10"))
+    assert a.duty_floor_cny == q((D("4000") * D("0.253") + D("34.58")) * D("7.10"))
     assert a.defaulted == ["min_kg_shipment"]
 
 
 @slow
 def test_sea_hmf_ddp_capped_mpf_max(snap, tmp_path):
-    # value 40*5000 = 200000 USD -> MPF capped at 651.50
+    # value 40*5000 = 200000 USD -> MPF capped at 670.86
     s = Shipment("C3", "sea", [Carton(10, 100, 100, 100, 100)],
                  [Goods("bag", "4202.92.31", 40, 5000)], dest(), 40, "2026-10-09")
     t = QuoteTerms.from_plain(
@@ -193,8 +196,8 @@ def test_sea_hmf_ddp_capped_mpf_max(snap, tmp_path):
     assert a.line("hmf") == D("1775.00")
     duty = D("200000") * D("0.551") * D("7.10")
     assert a.line("duty") == q(duty - 20 * 10000)
-    assert a.line("mpf") == q(D("651.50") * D("7.10"))
-    assert a.duty_floor_cny == q(duty + D("651.50") * D("7.10"))
+    assert a.line("mpf") == q(D("670.86") * D("7.10"))
+    assert a.duty_floor_cny == q(duty + D("670.86") * D("7.10"))
 
 
 @slow
@@ -205,7 +208,7 @@ def test_sea_duty_mpf_included_hmf_stays(snap, tmp_path):
     assert a.line("duty") == 0 and a.line("mpf") == 0
     assert a.line("hmf") == D("1775.00")      # 200000 * 0.00125 * 7.10
     assert a.total_cny == D("10.00") + D("1775.00")
-    assert a.duty_floor_cny == q(D("200000") * D("0.551") * D("7.10") + D("651.50") * D("7.10"))
+    assert a.duty_floor_cny == q(D("200000") * D("0.551") * D("7.10") + D("670.86") * D("7.10"))
 
 
 @slow
@@ -390,7 +393,7 @@ def test_random_consistency(snap, tmp_path):
         seen["contingent"] += bool(a.contingent)
         seen["capped"] += ddp.is_ddp and ddp.duty_terms == "capped"
         seen["included"] += ddp.is_ddp and ddp.duty_terms == "included"
-        seen["mpf_max"] += value * D("0.003464") > D("651.50")
+        seen["mpf_max"] += value * D("0.003464") > D("670.86")
         seen["informal"] += value <= D("2500")
         t_nomin = QuoteTerms.from_dict(t.to_dict())
         t_nomin.min_kg_shipment.value = None

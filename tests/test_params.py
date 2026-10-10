@@ -36,15 +36,42 @@ def test_fees_fx():
     s = load_snapshot(SNAP)
     assert s.fee("mpf_rate") == Decimal("0.003464")
     assert s.fee("formal_entry_threshold_usd") == Decimal("2500")
-    assert s.fx_cny_per_usd() == Decimal("7.10")
+    assert s.fx_cny_per_usd() == Decimal("6.7330")
+    assert s.fee("mpf_min_usd") == Decimal("34.58")
+    assert s.fee("mpf_max_usd") == Decimal("670.86")
+    assert s.fee("mpf_informal_usd") == Decimal("2.77")
     with pytest.raises(KeyError):
         s.fee("nope")
 
 
-def test_assumptions():
-    a = load_snapshot(SNAP).assumptions()
-    assert {"mpf_min_usd", "mpf_max_usd", "mpf_informal_usd", "fx:CNY_per_USD"} <= set(a)
-    assert "mpf_rate" not in a
+def test_no_assumed_parameters():
+    s = load_snapshot(SNAP)
+    assert s.assumptions() == []
+
+
+def test_assumptions_listed_from_modified_snapshot(tmp_path):
+    import json
+    raw = json.loads(SNAP.read_text())
+    raw["fees"]["mpf_min_usd"]["status"] = "assumed"
+    raw["fx"]["CNY_per_USD"]["status"] = "assumed"
+    raw["hts"]["9503.00.00"]["components"][0]["status"] = "assumed"
+    p = tmp_path / "a.json"
+    p.write_text(json.dumps(raw))
+    s = load_snapshot(p)
+    assert s.assumptions() == ["mpf_min_usd", "fx:CNY_per_USD", "hts:9503.00.00:mfn"]
+    assert s.assumed_among(["mpf_rate"], ["6109.10.00"]) == ["fx:CNY_per_USD"]
+
+
+def test_snapshot_provenance():
+    import json
+    raw = json.loads(SNAP.read_text())
+    assert raw["snapshot_id"] == "tariff-2026-10-09" and raw["version"] == "2026-10-10.1"
+    names = {x["name"] for x in raw["sources"]}
+    assert {"FR-2026-07-31_2026-15530_FY2027_user_fees.pdf", "FR-2026-15530_table2.png",
+            "CFETS_central_parity_2026-10-09.html"} <= names
+    ch = raw["changelog"][0]["changes"]
+    assert {c["param"] for c in ch} == {"mpf_min_usd", "mpf_max_usd", "mpf_informal_usd", "fx.CNY_per_USD"}
+    assert all(c["new_status"] == "verified" for c in ch)
 
 
 def test_overrides():
@@ -53,23 +80,20 @@ def test_overrides():
     assert s.fx_cny_per_usd() == Decimal("7.25")
     assert "mpf_informal_usd" not in s.assumptions()
     # original snapshot unaffected
-    assert load_snapshot(SNAP).fee("mpf_informal_usd") == Decimal("2.69")
+    assert load_snapshot(SNAP).fee("mpf_informal_usd") == Decimal("2.77")
     with pytest.raises(KeyError):
         load_snapshot(SNAP, {"bogus": "1"})
 
 
 def test_overrides_listed():
     s = load_snapshot(SNAP, {"mpf_informal_usd": "0", "CNY_per_USD": "7.25"})
-    assert s.overrides() == [{"name": "mpf_informal_usd", "original": "2.69", "value": "0"},
-                             {"name": "CNY_per_USD", "original": "7.10", "value": "7.25"}]
+    assert s.overrides() == [{"name": "mpf_informal_usd", "original": "2.77", "value": "0"},
+                             {"name": "CNY_per_USD", "original": "6.7330", "value": "7.25"}]
     assert load_snapshot(SNAP).overrides() == []
 
 
-def test_assumed_among_and_fx_date():
-    s = load_snapshot(SNAP)
-    assert s.fx_date() == "2026-10-09"
-    assert s.assumed_among(["mpf_rate", "mpf_informal_usd"], ["6109.10.00"]) == ["mpf_informal_usd", "fx:CNY_per_USD"]
-    assert s.assumed_among([], [], with_fx=False) == []
+def test_fx_date():
+    assert load_snapshot(SNAP).fx_date() == "2026-10-09"
 
 
 def test_non_finite_rejected(tmp_path):

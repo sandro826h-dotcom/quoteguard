@@ -144,19 +144,19 @@
       "status": "verified"
     },
     "mpf_min_usd": {
-      "value": "33.58",
-      "cite": "FY2027 values in 91 FR (doc 2026-15530) not yet read; FY2026 value used",
-      "status": "assumed"
+      "value": "34.58",
+      "cite": "19 CFR 24.23(b)(1)(i)(B) minimum MPF; 91 FR 48398 (doc 2026-15530), Table 2, FY2027 user fees effective 2026-10-01",
+      "status": "verified"
     },
     "mpf_max_usd": {
-      "value": "651.50",
-      "cite": "FY2027 values in 91 FR (doc 2026-15530) not yet read; FY2026 value used",
-      "status": "assumed"
+      "value": "670.86",
+      "cite": "19 CFR 24.23(b)(1)(i)(B) maximum MPF; 91 FR 48398 (doc 2026-15530), Table 2, FY2027 user fees effective 2026-10-01",
+      "status": "verified"
     },
     "mpf_informal_usd": {
-      "value": "2.69",
-      "cite": "informal entry MPF; to verify against doc 2026-15530",
-      "status": "assumed"
+      "value": "2.77",
+      "cite": "19 CFR 24.23(b)(2)(i) informal entry, automated and not prepared by CBP personnel (the manual 8.30 and CBP-prepared 12.45 tiers are not used); 91 FR 48398 (doc 2026-15530), Table 2, FY2027 user fees effective 2026-10-01",
+      "status": "verified"
     },
     "formal_entry_threshold_usd": {
       "value": "2500",
@@ -171,10 +171,10 @@
   },
   "fx": {
     "CNY_per_USD": {
-      "value": "7.10",
+      "value": "6.7330",
       "date": "2026-10-09",
-      "cite": "placeholder pending CFETS central parity",
-      "status": "assumed"
+      "cite": "CFETS central parity announcement of 2026-10-09 (PBOC-authorised, China Foreign Exchange Trade System): 1 USD = 6.7330 CNY",
+      "status": "verified"
     }
   },
   "sources": [
@@ -233,6 +233,67 @@
       "retrieved_at": "2026-10-09",
       "sha256": "3ecbd24f93704794cd731cbe2868392b0fdd227b19d22640a8200af25df0de9b",
       "path": null
+    },
+    {
+      "name": "FR-2026-07-31_2026-15530_FY2027_user_fees.pdf",
+      "desc": "91 FR 48398, doc 2026-15530, FY2027 customs user fee adjustments. Downloaded from the official site by a team member; values checked in this session against pdftotext / HTML text.",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-31/pdf/2026-15530.pdf",
+      "retrieved_at": "2026-10-10",
+      "sha256": "126f6dfda8f69b22d3ec46375e37b5b1815bc6f1fef2b47818cc998590a4336d",
+      "path": "data/params/raw/FR-2026-07-31_2026-15530_FY2027_user_fees.pdf"
+    },
+    {
+      "name": "FR-2026-15530_table2.png",
+      "desc": "Page image of Table 2 of the document above. Downloaded from the official site by a team member; values checked in this session against pdftotext / HTML text.",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-31/pdf/2026-15530.pdf",
+      "retrieved_at": "2026-10-10",
+      "sha256": "bc3db8d553c6a8f7de16b267d20b784026f19e23e968f142966fa949815abc75",
+      "path": "data/params/raw/FR-2026-15530_table2.png"
+    },
+    {
+      "name": "CFETS_central_parity_2026-10-09.html",
+      "desc": "CFETS RMB central parity announcement of 2026-10-09. Downloaded from the official site by a team member; values checked in this session against pdftotext / HTML text.",
+      "url": "https://www.chinamoney.org.cn/chinese/ccprnoticecontent/index.html?searchDate=2026-10-09",
+      "retrieved_at": "2026-10-10",
+      "sha256": "1a780a4f73cae8f5dede5a1bfe0684a81258c268c8b047317e9b26ec7ec7055a",
+      "path": "data/params/raw/CFETS_central_parity_2026-10-09.html"
+    }
+  ],
+  "version": "2026-10-10.1",
+  "changelog": [
+    {
+      "version": "2026-10-10.1",
+      "date": "2026-10-10",
+      "changes": [
+        {
+          "param": "mpf_min_usd",
+          "old": "33.58",
+          "old_status": "assumed",
+          "new": "34.58",
+          "new_status": "verified"
+        },
+        {
+          "param": "mpf_max_usd",
+          "old": "651.50",
+          "old_status": "assumed",
+          "new": "670.86",
+          "new_status": "verified"
+        },
+        {
+          "param": "mpf_informal_usd",
+          "old": "2.69",
+          "old_status": "assumed",
+          "new": "2.77",
+          "new_status": "verified"
+        },
+        {
+          "param": "fx.CNY_per_USD",
+          "old": "7.10",
+          "old_status": "assumed",
+          "new": "6.7330",
+          "new_status": "verified"
+        }
+      ]
     }
   ]
 }
