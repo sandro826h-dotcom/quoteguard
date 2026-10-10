@@ -1,0 +1,23 @@
+FWD-88：
+Quoted by：SYN-Ironwood Transit
+1) 走空派 A 渠道
+2) 0-20kg，单价40 CNY per kg
+3) 21-100kg，单价36 CNY per kg
+4) 101-300kg，单价36 CNY per kg
+5) 301kg 起，单价34 CNY per kg
+6) 运输方式为 Air
+7) 到仓价，税金客户另付
+8) Importer (IOR)：Seller
+9) Remote area 地区附加费：6 CNY per kg（Remote area 地址）
+10) Oversize 费：50.5 CNY per ctn（单箱最长边超58cm）
+11) FSC 10%
+12) 报价包含：头程运费、目的港清关
+13) 不含：查验费、仓储费、关税、MPF
+14) Transit 7-10 days
+15) Whole lot 21kg 起计
+16) 体积重除以6000
+17) 计费重按1kg 进位
+18) Customs filing fee 400 CNY per shpt
+19) Claim：按运费 3 倍赔付
+20) 报价有效期2026-10-01 至2026-10-31
+FBA 头程可订, pls confirm

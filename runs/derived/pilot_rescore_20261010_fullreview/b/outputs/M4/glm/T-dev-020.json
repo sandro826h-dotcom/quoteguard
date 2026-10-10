@@ -1,0 +1,191 @@
+{
+  "ask_fields": [
+    "C2.ddp",
+    "C3.broker_fee_cny",
+    "C4.broker_fee_cny"
+  ],
+  "calls": [
+    "pilotb|transcribe|glm_v|T-dev-020|transcribe|C1|r0",
+    "pilotb|extract|glm|T-dev-020|extract|C1|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C2|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C3|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C4|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C2|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C3|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C4|r1"
+  ],
+  "choice": null,
+  "config_id": "glm",
+  "cost": {
+    "CNY": 0.280987,
+    "USD": 0.0
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.137336,
+      "USD": 0.0
+    },
+    "direct_calls": [
+      "pilotb|extract|glm|T-dev-020|extract|C1|r1",
+      "pilotb|extract|glm|T-dev-020|extract|C2|r1",
+      "pilotb|extract|glm|T-dev-020|extract|C3|r1",
+      "pilotb|extract|glm|T-dev-020|extract|C4|r1"
+    ],
+    "review": {
+      "CNY": 0.131399,
+      "USD": 0.0
+    },
+    "review_calls": [
+      "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C2|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C3|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C4|r1"
+    ],
+    "transcription_booking": "full",
+    "transcription_calls": [
+      "pilotb|transcribe|glm_v|T-dev-020|transcribe|C1|r0"
+    ],
+    "transcription_share": {
+      "CNY": 0.012252,
+      "USD": 0.0
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.012252,
+      "USD": 0.0
+    }
+  },
+  "decision": "ask",
+  "diagnostics": {
+    "decide_errors": {
+      "count": 0,
+      "reasons": []
+    },
+    "downgraded": {},
+    "extraction_failures": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "grid_size": 32,
+    "norm_notes": {
+      "C3": [
+        "unmapped surcharge name: 'Customs filing fee'",
+        "surcharge 'Customs filing fee' moved to broker_fee_cny"
+      ]
+    },
+    "review": {
+      "config_id": "kimi",
+      "reviewed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "text_fallback": []
+    },
+    "review_disagreements": {
+      "C2": [
+        "ddp"
+      ],
+      "C3": [
+        "broker_fee_cny"
+      ],
+      "C4": [
+        "broker_fee_cny"
+      ]
+    },
+    "review_errors": {},
+    "review_scope": "all",
+    "triggers": {
+      "C1": [
+        "ddp_risk"
+      ]
+    }
+  },
+  "method": "M4",
+  "parse_error": null,
+  "parse_ok": true,
+  "per_cand": {
+    "C1": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "ddp": 0
+      },
+      "conflicts": [
+        "ddp"
+      ],
+      "cost_cny": "4185.00",
+      "ddp_level": "high",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": []
+    },
+    "C2": {
+      "claim_status": {
+        "0": "irrelevant"
+      },
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "11513.19",
+      "ddp_level": "none",
+      "defaulted": [
+        "ddp"
+      ],
+      "gaps": [
+        "ddp"
+      ],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C3": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "broker_fee_cny": 1
+      },
+      "conflicts": [
+        "broker_fee_cny"
+      ],
+      "cost_cny": "9067.89",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C4": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "broker_fee_cny": 0
+      },
+      "conflicts": [
+        "broker_fee_cny"
+      ],
+      "cost_cny": "8743.89",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": []
+    }
+  },
+  "questions": [
+    "报价2是否包含进口关税和税费？包含哪些税项（关税、MPF、HMF），进口商（IOR）是谁，税金是否有上限？",
+    "报价3是否另收报关（清关）费？金额是多少？",
+    "报价4是否另收报关（清关）费？金额是多少？"
+  ],
+  "raw_text": null,
+  "review_triggers": {
+    "C1": [
+      "ddp_risk"
+    ],
+    "C2": [],
+    "C3": [],
+    "C4": []
+  },
+  "risks": [],
+  "task_id": "T-dev-020"
+}

@@ -131,10 +131,10 @@ def by_layer(env, *layers):
     return [(t, g) for t, g in env["pairs"] if t.layer in layers]
 
 
-def run4(env, task, ex, review=None):
+def run4(env, task, ex, review=None, **kw):
     inp = env["inp"]
     return mp.run_m4(task, ti_of(task), ex, env["snap"], inp["structures"], inp["freight_floor"], env["reg"],
-                     review or {}, inp["value_sets"])
+                     review or {}, inp["value_sets"], **kw)
 
 
 def run3(env, task, ex):
@@ -506,10 +506,21 @@ def test_m4_review_disagreement_creates_conflict_and_ask(env):
     out = run4(env, t, ex, {cid: other})
     assert out["diagnostics"]["review_disagreements"] == {cid: ["dim_divisor"]}
     assert "dim_divisor" in out["per_cand"][cid]["conflicts"]
-    # reviews of quotes that were not triggered are ignored
+    # M4 merges the review of every quote, triggered or not; the M4_trig variant ignores untriggered ones
     quiet = quiet_ids[0]
-    ignored = run4(env, t, ex, {quiet: other})
-    assert ignored["diagnostics"]["review_disagreements"] == {}
+    full = run4(env, t, ex, {quiet: other})
+    assert full["method"] == "M4" and quiet in full["diagnostics"]["review_disagreements"]
+    assert full["diagnostics"]["review"]["reviewed"] == [quiet]
+    ignored = run4(env, t, ex, {quiet: other}, review_scope="triggered")
+    assert ignored["method"] == "M4_trig" and ignored["diagnostics"]["review_disagreements"] == {}
+    assert ignored["diagnostics"]["review"]["reviewed"] == []
+    # the trigger reasons are in the output of both, empty lists for untriggered quotes
+    for o in (full, ignored):
+        assert o["review_triggers"][quiet] == [] and o["review_triggers"][cid] == trig[cid]
+        assert set(o["review_triggers"]) == {q.cand_id for q in t.candidates}
+    # the triggered quote is reviewed under both scopes
+    both = run4(env, t, ex, {cid: other}, review_scope="triggered")
+    assert both["diagnostics"]["review_disagreements"] == {cid: ["dim_divisor"]}
 
 
 def test_m4_review_finding_extra_fee_on_winner_flips_to_ask(env):

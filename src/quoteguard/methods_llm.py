@@ -14,7 +14,7 @@ from . import prompts
 from .executor import make_run_key, prompt_hash
 from .inputs import (BOX_MARKS, FAIL_TEXT, TaskInput, image_ref, param_text, registry_text)
 
-MAX_TOKENS = {"transcribe": 1200, "M0": 4000, "M1": 8000}
+MAX_TOKENS = {"transcribe": 1200, "M0": 4000, "M1": 12000}
 
 DDP_MAP = {"无": "none", "需核实": "verify", "高": "high", "none": "none", "verify": "verify", "high": "high"}
 CLAIM_MAP = {"有证据": "supported", "证据不足": "insufficient", "与宣称矛盾": "contradicted",

@@ -128,7 +128,7 @@ def test_m0_m1_requests_pass_load_plan(env, models, tmp_path):
     hts = env["task"].shipment.goods[0].hts
     r1 = M.m1_request(ti, "qwen_max", "dev1", snapshot=env["snap"], freight_floor=env["inp"]["freight_floor"],
                       hts=hts, registry_snapshot=env["reg"], value_sets=env["inp"]["value_sets"])
-    assert r0["max_tokens"] == 4000 and r1["max_tokens"] == 8000
+    assert r0["max_tokens"] == 4000 and r1["max_tokens"] == 12000
     assert r0["method"] == "M0" and r1["method"] == "M1" and r0["images"] == r1["images"] == []
     for r in (r0, r1):
         assert ti.shipment_text in r["text"] and ti.quotes_text() in r["text"]

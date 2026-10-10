@@ -1,0 +1,207 @@
+{
+  "ask_fields": [
+    "C2.ddp",
+    "C4.broker_fee_cny"
+  ],
+  "calls": [
+    "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0",
+    "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C2|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C3|r1",
+    "pilotb|extract|kimi|T-dev-020|extract|C4|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C1|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C2|r1",
+    "pilotb|extract|glm|T-dev-020|extract|C4|r1"
+  ],
+  "choice": null,
+  "config_id": "kimi",
+  "cost": {
+    "CNY": 0.257192,
+    "USD": 0.0
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.131399,
+      "USD": 0.0
+    },
+    "direct_calls": [
+      "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C2|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C3|r1",
+      "pilotb|extract|kimi|T-dev-020|extract|C4|r1"
+    ],
+    "review": {
+      "CNY": 0.10394400000000001,
+      "USD": 0.0
+    },
+    "review_calls": [
+      "pilotb|extract|glm|T-dev-020|extract|C1|r1",
+      "pilotb|extract|glm|T-dev-020|extract|C2|r1",
+      "pilotb|extract|glm|T-dev-020|extract|C4|r1"
+    ],
+    "transcription_booking": "full",
+    "transcription_calls": [
+      "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0"
+    ],
+    "transcription_share": {
+      "CNY": 0.021849,
+      "USD": 0.0
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.021849,
+      "USD": 0.0
+    }
+  },
+  "decision": "ask",
+  "diagnostics": {
+    "decide_errors": {
+      "count": 0,
+      "reasons": []
+    },
+    "downgraded": {},
+    "extraction_failures": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "grid_size": 16,
+    "norm_notes": {
+      "C1": [
+        "validity: unreadable value"
+      ],
+      "C2": [
+        "validity: unreadable value"
+      ],
+      "C4": [
+        "unknown claim type: '按申报货值赔付，上限 20 美元/kg'"
+      ]
+    },
+    "review": {
+      "config_id": "glm",
+      "reviewed": [
+        "C1",
+        "C2",
+        "C4"
+      ],
+      "text_fallback": []
+    },
+    "review_disagreements": {
+      "C2": [
+        "ddp"
+      ],
+      "C4": [
+        "broker_fee_cny"
+      ]
+    },
+    "review_errors": {},
+    "review_scope": "triggered",
+    "triggers": {
+      "C1": [
+        "conflict",
+        "gap",
+        "ddp_risk"
+      ],
+      "C2": [
+        "gap"
+      ],
+      "C4": [
+        "claim_insufficient"
+      ]
+    }
+  },
+  "method": "M4_trig",
+  "parse_error": null,
+  "parse_ok": true,
+  "per_cand": {
+    "C1": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "ddp": 0
+      },
+      "conflicts": [
+        "ddp"
+      ],
+      "cost_cny": "4185.00",
+      "ddp_level": "high",
+      "defaulted": [],
+      "gaps": [
+        "validity"
+      ],
+      "hidden_fees": []
+    },
+    "C2": {
+      "claim_status": {
+        "0": "irrelevant"
+      },
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "11513.19",
+      "ddp_level": "none",
+      "defaulted": [
+        "ddp"
+      ],
+      "gaps": [
+        "validity",
+        "ddp"
+      ],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C3": {
+      "claim_status": {},
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "9067.89",
+      "ddp_level": "none",
+      "defaulted": [
+        "min_kg_carton",
+        "broker_fee_cny",
+        "isf_fee_cny"
+      ],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C4": {
+      "claim_status": {
+        "0": "insufficient"
+      },
+      "conflict_resolved": {
+        "broker_fee_cny": 1
+      },
+      "conflicts": [
+        "broker_fee_cny"
+      ],
+      "cost_cny": "8743.89",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": []
+    }
+  },
+  "questions": [
+    "报价2是否包含进口关税和税费？包含哪些税项（关税、MPF、HMF），进口商（IOR）是谁，税金是否有上限？",
+    "报价4是否另收报关（清关）费？金额是多少？"
+  ],
+  "raw_text": null,
+  "review_triggers": {
+    "C1": [
+      "conflict",
+      "gap",
+      "ddp_risk"
+    ],
+    "C2": [
+      "gap"
+    ],
+    "C3": [],
+    "C4": [
+      "claim_insufficient"
+    ]
+  },
+  "risks": [],
+  "task_id": "T-dev-020"
+}

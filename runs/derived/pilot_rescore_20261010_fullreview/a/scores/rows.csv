@@ -1,0 +1,21 @@
+task_id,method,config_id,layer,parse_ok,parse_failed,extraction_failures,ask_fields_used,gold_type,decision,decision_correct,false_ask,missed_ask,out_of_feasible,regret_abs,regret_rel,ask_cover,fp_unscored_hidden_fee,tp_hidden_fee,fp_hidden_fee,fn_hidden_fee,tp_conflict,fp_conflict,fn_conflict,tp_gap,fp_gap,fn_gap,tp_ddp_risk,fp_ddp_risk,fn_ddp_risk,tp,fp,fn,claim_n,claim_correct,cost_n,cost_missing,cost_abs_sum,cost_rel_sum,cost_exact,cost_usd,cost_cny,n_calls
+T-dev-004,M0,ds_flash,conflict,1,0,0,"[""C1.broker_fee_cny"", ""C2.fuel_pct"", ""C3.broker_fee_cny"", ""C4.min_kg_shipment""]",ask,ask,1,0,0,,,,1.0,3,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,0,3,3,0.0,0.0,0,0.0031285,0.0,2
+T-dev-010,M0,ds_flash,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,2,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,4,4,0.0,0.0,0,0.003305,0.0,1
+T-dev-004,M0,qwen_plus,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,0,3,3,0.0,0.0,0,0.0,0.134576,2
+T-dev-010,M0,qwen_plus,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,3,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,4,4,0.0,0.0,0,0.0,0.119596,1
+T-dev-004,M2,ds_flash,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,6,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,0,3,0,0.0,0.0,3,0.00671,0.0,5
+T-dev-010,M2,ds_flash,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,5,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,4,0,0.0,0.0,4,0.005995499999999999,0.0,4
+T-dev-004,M2,qwen_plus,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,5,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,0,3,0,111.25,0.0362995060004307,2,0.0,0.196968,5
+T-dev-010,M2,qwen_plus,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,4,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,4,0,300.0,0.01978539923677512,2,0.0,0.175208,4
+T-dev-004,M3,ds_flash,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,6,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,2,3,0,0.0,0.0,3,0.00671,0.0,5
+T-dev-010,M3,ds_flash,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,5,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,4,0,0.0,0.0,4,0.005995499999999999,0.0,4
+T-dev-004,M3,qwen_plus,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,5,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,1,3,0,111.25,0.0362995060004307,2,0.0,0.196968,5
+T-dev-010,M3,qwen_plus,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,4,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,4,0,300.0,0.01978539923677512,2,0.0,0.175208,4
+T-dev-004,M4,ds_flash,conflict,1,0,0,"[""C4.min_kg_shipment""]",ask,ask,1,0,0,,,,1.0,5,0,0,0,2,1,0,0,0,0,0,0,0,2,1,0,2,2,3,0,400.0,0.13051507775435758,2,0.00671,0.182232,9
+T-dev-010,M4,ds_flash,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,4,1,0,1,0,3,0,0,0,0,0,0,0,1,3,1,0,0,4,0,300.0,0.01978539923677512,2,0.005995499999999999,0.175208,8
+T-dev-004,M4,qwen_plus,conflict,1,0,0,"[""C4.min_kg_shipment""]",ask,ask,1,0,0,,,,1.0,5,0,0,0,2,1,0,0,0,0,0,0,0,2,1,0,2,1,3,0,400.0,0.13051507775435758,2,0.0061525,0.196968,9
+T-dev-010,M4,qwen_plus,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,4,1,0,1,0,3,0,0,0,0,0,0,0,1,3,1,0,0,4,0,300.0,0.01978539923677512,2,0.005995499999999999,0.175208,8
+T-dev-004,M4_TRIG,ds_flash,conflict,1,0,0,"[""C4.min_kg_shipment""]",ask,ask,1,0,0,,,,1.0,5,0,0,0,2,1,0,0,0,0,0,0,0,2,1,0,2,2,3,0,400.0,0.13051507775435758,2,0.00671,0.087648,7
+T-dev-010,M4_TRIG,ds_flash,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,5,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,4,0,0.0,0.0,4,0.005995499999999999,0.0,4
+T-dev-004,M4_TRIG,qwen_plus,conflict,1,0,0,[],ask,choose,0,0,1,,,,0.0,5,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,2,1,3,0,111.25,0.0362995060004307,2,0.0,0.196968,5
+T-dev-010,M4_TRIG,qwen_plus,implicit,1,0,0,[],choose,choose,1,0,0,0,0.0,0.0,,4,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,4,0,300.0,0.01978539923677512,2,0.0,0.175208,4

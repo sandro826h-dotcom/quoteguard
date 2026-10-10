@@ -1,0 +1,202 @@
+{
+  "ask_fields": [
+    "C4.min_kg_shipment"
+  ],
+  "calls": [
+    "pilota|transcribe|ds_flash|T-dev-004|transcribe|C1|r0",
+    "pilota|extract|ds_flash|T-dev-004|extract|C1|r1",
+    "pilota|extract|ds_flash|T-dev-004|extract|C2|r1",
+    "pilota|extract|ds_flash|T-dev-004|extract|C3|r1",
+    "pilota|extract|ds_flash|T-dev-004|extract|C4|r1",
+    "pilota|extract|qwen_plus|T-dev-004|extract|C1|r1",
+    "pilota|extract|qwen_plus|T-dev-004|extract|C2|r1",
+    "pilota|extract|qwen_plus|T-dev-004|extract|C3|r1",
+    "pilota|extract|qwen_plus|T-dev-004|extract|C4|r1"
+  ],
+  "choice": null,
+  "config_id": "ds_flash",
+  "cost": {
+    "CNY": 0.182232,
+    "USD": 0.00671
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.0,
+      "USD": 0.0061525
+    },
+    "direct_calls": [
+      "pilota|extract|ds_flash|T-dev-004|extract|C1|r1",
+      "pilota|extract|ds_flash|T-dev-004|extract|C2|r1",
+      "pilota|extract|ds_flash|T-dev-004|extract|C3|r1",
+      "pilota|extract|ds_flash|T-dev-004|extract|C4|r1"
+    ],
+    "review": {
+      "CNY": 0.182232,
+      "USD": 0.0
+    },
+    "review_calls": [
+      "pilota|extract|qwen_plus|T-dev-004|extract|C1|r1",
+      "pilota|extract|qwen_plus|T-dev-004|extract|C2|r1",
+      "pilota|extract|qwen_plus|T-dev-004|extract|C3|r1",
+      "pilota|extract|qwen_plus|T-dev-004|extract|C4|r1"
+    ],
+    "transcription_booking": "full",
+    "transcription_calls": [
+      "pilota|transcribe|ds_flash|T-dev-004|transcribe|C1|r0"
+    ],
+    "transcription_share": {
+      "CNY": 0.0,
+      "USD": 0.0005575
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.0,
+      "USD": 0.0005575
+    }
+  },
+  "decision": "ask",
+  "diagnostics": {
+    "decide_errors": {
+      "count": 0,
+      "reasons": []
+    },
+    "downgraded": {},
+    "extraction_failures": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "grid_size": 8,
+    "norm_notes": {
+      "C1": [
+        "unmapped surcharge name: '燃油附加费'",
+        "unmapped surcharge name: '清关费'",
+        "surcharge '燃油附加费' merged into fuel_pct",
+        "surcharge '清关费' merged into broker_fee_cny"
+      ],
+      "C2": [
+        "unmapped surcharge name: 'FSC'",
+        "unmapped surcharge name: 'Customs filing fee'",
+        "surcharge 'FSC' merged into fuel_pct",
+        "surcharge 'Customs filing fee' moved to broker_fee_cny"
+      ],
+      "C4": [
+        "unmapped surcharge name: 'Customs filing fee'",
+        "surcharge 'Customs filing fee' moved to broker_fee_cny"
+      ]
+    },
+    "review": {
+      "config_id": "qwen_plus",
+      "reviewed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "text_fallback": []
+    },
+    "review_disagreements": {
+      "C1": [
+        "min_kg_carton",
+        "broker_fee_cny"
+      ]
+    },
+    "review_errors": {},
+    "review_scope": "all",
+    "triggers": {
+      "C1": [
+        "conflict"
+      ],
+      "C4": [
+        "conflict"
+      ]
+    }
+  },
+  "method": "M4",
+  "parse_error": null,
+  "parse_ok": true,
+  "per_cand": {
+    "C1": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "broker_fee_cny": 1,
+        "min_kg_carton": 0,
+        "min_kg_shipment": 0
+      },
+      "conflicts": [
+        "min_kg_shipment",
+        "min_kg_carton",
+        "broker_fee_cny"
+      ],
+      "cost_cny": "2664.78",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C2": {
+      "claim_status": {
+        "0": "irrelevant"
+      },
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "3262.53",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct",
+        "broker_fee_cny"
+      ]
+    },
+    "C3": {
+      "claim_status": {
+        "0": "irrelevant"
+      },
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "3004.53",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C4": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "min_kg_shipment": 1
+      },
+      "conflicts": [
+        "min_kg_shipment"
+      ],
+      "cost_cny": "2800.65",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "broker_fee_cny"
+      ]
+    }
+  },
+  "questions": [
+    "报价4整票有没有最低计费重？如果有，是多少公斤？"
+  ],
+  "raw_text": null,
+  "review_triggers": {
+    "C1": [
+      "conflict"
+    ],
+    "C2": [],
+    "C3": [],
+    "C4": [
+      "conflict"
+    ]
+  },
+  "risks": [],
+  "task_id": "T-dev-004"
+}

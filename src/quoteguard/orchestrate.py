@@ -31,7 +31,9 @@ from .taskgen import DEFAULT_DATA_DIR, DEFAULT_SNAPSHOT_PATH, load_inputs, model
 from .util import atomic_json, canonical_json, sha256_file
 
 METHODS = ("M0", "M1", "M2", "M3", "M4")
-PIPELINE = ("M2", "M3", "M4")
+PIPELINE = ("M2", "M3", "M4", "M4_trig")
+VARIANTS = ("M4_trig",)     # derived offline from the observations of M4; no requests of their own
+ASSEMBLE_METHODS = METHODS + VARIANTS
 DEFAULT_SEED = 20261010
 EXTRACT_REPEAT = 1
 TRANSCRIBE_REPEAT = 0
@@ -78,14 +80,14 @@ class Context:
 
 def _check_methods(configs, methods, models):
     for m in methods:
-        if m not in METHODS:
+        if m not in ASSEMBLE_METHODS:
             raise OrchestrationError(f"unknown method {m}")
     for c in configs:
         if c not in models:
             raise OrchestrationError(f"unknown config {c}")
         if models[c].vision_config_id is None:
             raise OrchestrationError(f"config {c} has no vision_config_id")
-    if "M4" in methods:
+    if "M4" in methods or "M4_trig" in methods:
         for c in configs:
             partner = mp.review_partner(c)
             if partner not in configs:
@@ -238,14 +240,14 @@ def _cost_dict(c: dict) -> dict:
     return out
 
 
-def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=METHODS, experiment: str,
+def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_METHODS, experiment: str,
              models=None, data_dir=DEFAULT_DATA_DIR, snapshot_path=DEFAULT_SNAPSHOT_PATH,
              seed: Optional[int] = DEFAULT_SEED) -> dict:
     """Write <out>/outputs/<method>/<config>/<task>.json for every (method, config, task).
 
     gold_dir is accepted for a uniform CLI and is not read: outputs are built from observations only.
     Cost of an output = its own calls + the full cost of the image transcription of its task + for M4 the
-    partner extractions it used. Configurations sharing a vision config each book the full transcription,
+    partner extractions it used (M4: all candidates; M4_trig: the triggered ones). Configurations sharing a vision config each book the full transcription,
     and M2 to M4 of one configuration each book the same extraction; the breakdown is in
     output["cost_breakdown"]. assemble_manifest.json holds the actual total spend of the loaded
     observations, in which a shared call counts once.
@@ -352,7 +354,8 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=METHODS, 
                     kw = {}
                     kw["review_texts"] = {q.cand_id: ti_p.quote_text(q) for q in ti_p.quotes}
                     res = mp.run_m4(t, ti, ext, ctx.snapshot, None, ctx.freight_floor, reg, pext,
-                                    ctx.value_sets, config_id=c, calls=ekeys, review_config_id=partner, **kw)
+                                    ctx.value_sets, config_id=c, calls=ekeys, review_config_id=partner,
+                                    review_scope="all" if m == "M4" else "triggered", **kw)
                     used = [pkeys[cid] for cid in res["diagnostics"]["review"]["reviewed"] if cid in pkeys]
                     review = {"cost": collect_cost(obs, used), "calls": used}
                 finish(res, m, c, t, None, direct, review, extra)
@@ -465,7 +468,7 @@ def main(argv=None) -> int:
     a_.add_argument("--gold", required=True)
     a_.add_argument("--batches", required=True)
     a_.add_argument("--configs", required=True)
-    a_.add_argument("--methods", default=",".join(METHODS))
+    a_.add_argument("--methods", default=",".join(ASSEMBLE_METHODS))
     a_.add_argument("--experiment", required=True)
     a_.add_argument("--out", required=True)
     common(a_)

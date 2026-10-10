@@ -1,0 +1,71 @@
+{
+ "A": {
+  "M4": {
+   "outputs": 4,
+   "decisions_correct": 4,
+   "conflict_detected": 4,
+   "conflict_missed": 0,
+   "gap_detected": 0,
+   "gap_missed": 0,
+   "false_positives_conflict_gap_ddp": 8,
+   "gold_risk_candidates": 12,
+   "gold_risk_not_reviewed": 0,
+   "gold_risk_not_reviewed_ids": [],
+   "outputs_with_unreviewed_candidates": []
+  },
+  "M4_trig": {
+   "outputs": 4,
+   "decisions_correct": 3,
+   "conflict_detected": 2,
+   "conflict_missed": 2,
+   "gap_detected": 0,
+   "gap_missed": 0,
+   "false_positives_conflict_gap_ddp": 1,
+   "gold_risk_candidates": 12,
+   "gold_risk_not_reviewed": 10,
+   "gold_risk_not_reviewed_ids": [
+    "ds_flash.T-dev-004.C2",
+    "ds_flash.T-dev-004.C3",
+    "ds_flash.T-dev-010.C1",
+    "ds_flash.T-dev-010.C4",
+    "qwen_plus.T-dev-004.C1",
+    "qwen_plus.T-dev-004.C2",
+    "qwen_plus.T-dev-004.C3",
+    "qwen_plus.T-dev-004.C4",
+    "qwen_plus.T-dev-010.C1",
+    "qwen_plus.T-dev-010.C4"
+   ],
+   "outputs_with_unreviewed_candidates": []
+  }
+ },
+ "B": {
+  "M4": {
+   "outputs": 2,
+   "decisions_correct": 2,
+   "conflict_detected": 0,
+   "conflict_missed": 0,
+   "gap_detected": 2,
+   "gap_missed": 0,
+   "false_positives_conflict_gap_ddp": 8,
+   "gold_risk_candidates": 4,
+   "gold_risk_not_reviewed": 0,
+   "gold_risk_not_reviewed_ids": [],
+   "outputs_with_unreviewed_candidates": []
+  },
+  "M4_trig": {
+   "outputs": 2,
+   "decisions_correct": 1,
+   "conflict_detected": 0,
+   "conflict_missed": 0,
+   "gap_detected": 1,
+   "gap_missed": 1,
+   "false_positives_conflict_gap_ddp": 5,
+   "gold_risk_candidates": 4,
+   "gold_risk_not_reviewed": 1,
+   "gold_risk_not_reviewed_ids": [
+    "glm.T-dev-020.C2"
+   ],
+   "outputs_with_unreviewed_candidates": []
+  }
+ }
+}

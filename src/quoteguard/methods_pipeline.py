@@ -1054,11 +1054,14 @@ def _decide_m4(task, terms_by_cand, snapshot, freight_floor, value_sets, order):
 
 
 def run_m4(task, task_input, extractions, snapshot, structures, freight_floor, registry_snapshot,
-           review_extractions, value_sets, *, config_id="", calls=(), review_config_id=None, review_texts=None) -> dict:
-    """M4: source check, conflict and gap lists, review merge for triggered quotes, choose/ask on the value grid.
+           review_extractions, value_sets, *, config_id="", calls=(), review_config_id=None, review_texts=None,
+           review_scope="all") -> dict:
+    """M4: source check, conflict and gap lists, review merge, choose/ask on the value grid.
 
-    review_extractions maps cand_id to the partner's extraction (same forms as extractions); only entries of
-    triggered quotes are used. review_texts maps cand_id to the quote text the reviewer extracted from (its own
+    review_scope "all" (M4): every candidate with a partner extraction is merged. "triggered" (variant M4_trig,
+    output method "M4_trig"): only candidates with a review trigger are merged. The trigger reasons of every
+    candidate are computed in both cases and written to out["review_triggers"].
+    review_extractions maps cand_id to the partner's extraction (same forms as extractions). review_texts maps cand_id to the quote text the reviewer extracted from (its own
     transcript for image quotes); the reviewer's source check runs against it, falling back to the reviewed
     configuration's text when absent (recorded in diagnostics["review"]["text_fallback"]). In the formal flow they are the partner configuration's own M2 extractions
     (no separate review request); review_config_id names that configuration (default: the partner of
@@ -1073,7 +1076,7 @@ def run_m4(task, task_input, extractions, snapshot, structures, freight_floor, r
     review_extractions = review_extractions or {}
     for q in task_input.quotes:
         cid = q.cand_id
-        if cid not in trig or cid not in review_extractions:
+        if cid not in review_extractions or (review_scope == "triggered" and cid not in trig):
             continue
         t2, err = _as_terms(review_extractions[cid], mode, snapshot.fx_cny_per_usd())
         if err:
@@ -1092,7 +1095,8 @@ def run_m4(task, task_input, extractions, snapshot, structures, freight_floor, r
     if merged_diff:
         info = _assess(task, terms, snapshot, freight_floor, registry_snapshot, True)
 
-    out = _new_output(task_input, "M4", config_id, calls)
+    out = _new_output(task_input, "M4" if review_scope == "all" else "M4_trig", config_id, calls)
+    out["review_triggers"] = {q.cand_id: list(trig.get(q.cand_id, [])) for q in task_input.quotes}
     _parse_status(out, collected)
     _fill_per_cand(out, terms, info, mode, True, True)
     typ, choice, ask, dg = _decide_m4(task, terms, snapshot, freight_floor, value_sets, order)
@@ -1100,6 +1104,7 @@ def run_m4(task, task_input, extractions, snapshot, structures, freight_floor, r
     out["questions"] = make_questions(ask, task_input) if typ == "ask" else []
     out["diagnostics"].update({"downgraded": {c: d for c, d in down.items() if d}, "triggers": trig,
                                "review_disagreements": merged_diff, "review_errors": review_errors, **dg})
+    out["diagnostics"]["review_scope"] = review_scope
     if review_config_id is None and config_id in REVIEW_PARTNER:
         review_config_id = REVIEW_PARTNER[config_id]
     out["diagnostics"].setdefault("decide_errors", {"count": 0, "reasons": []})

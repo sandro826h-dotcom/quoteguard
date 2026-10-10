@@ -1,0 +1,177 @@
+{
+  "ask_fields": [],
+  "calls": [
+    "pilota|extract|ds_flash|T-dev-010|extract|C1|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C2|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C3|r1",
+    "pilota|extract|ds_flash|T-dev-010|extract|C4|r1",
+    "pilota|extract|qwen_plus|T-dev-010|extract|C1|r1",
+    "pilota|extract|qwen_plus|T-dev-010|extract|C2|r1",
+    "pilota|extract|qwen_plus|T-dev-010|extract|C3|r1",
+    "pilota|extract|qwen_plus|T-dev-010|extract|C4|r1"
+  ],
+  "choice": "C2",
+  "config_id": "ds_flash",
+  "cost": {
+    "CNY": 0.175208,
+    "USD": 0.005995499999999999
+  },
+  "cost_breakdown": {
+    "direct": {
+      "CNY": 0.0,
+      "USD": 0.005995499999999999
+    },
+    "direct_calls": [
+      "pilota|extract|ds_flash|T-dev-010|extract|C1|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C2|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C3|r1",
+      "pilota|extract|ds_flash|T-dev-010|extract|C4|r1"
+    ],
+    "review": {
+      "CNY": 0.175208,
+      "USD": 0.0
+    },
+    "review_calls": [
+      "pilota|extract|qwen_plus|T-dev-010|extract|C1|r1",
+      "pilota|extract|qwen_plus|T-dev-010|extract|C2|r1",
+      "pilota|extract|qwen_plus|T-dev-010|extract|C3|r1",
+      "pilota|extract|qwen_plus|T-dev-010|extract|C4|r1"
+    ],
+    "transcription_booking": "full",
+    "transcription_calls": [],
+    "transcription_share": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "transcription_shared_by": 1,
+    "transcription_total": {
+      "CNY": 0.0,
+      "USD": 0.0
+    }
+  },
+  "decision": "choose",
+  "diagnostics": {
+    "decide_errors": {
+      "count": 0,
+      "reasons": []
+    },
+    "downgraded": {},
+    "extraction_failures": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "grid_size": 4,
+    "norm_notes": {
+      "C1": [
+        "unmapped surcharge name: 'FSC'",
+        "surcharge 'FSC' merged into fuel_pct"
+      ],
+      "C2": [
+        "unmapped surcharge name: '燃油附加费'",
+        "surcharge '燃油附加费' merged into fuel_pct"
+      ],
+      "C4": [
+        "unmapped surcharge name: 'Customs filing fee'",
+        "surcharge 'Customs filing fee' moved to broker_fee_cny"
+      ]
+    },
+    "review": {
+      "config_id": "qwen_plus",
+      "reviewed": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "text_fallback": []
+    },
+    "review_disagreements": {
+      "C3": [
+        "broker_fee_cny"
+      ],
+      "C4": [
+        "min_kg_carton",
+        "broker_fee_cny"
+      ]
+    },
+    "review_errors": {},
+    "review_scope": "all",
+    "triggers": {}
+  },
+  "method": "M4",
+  "parse_error": null,
+  "parse_ok": true,
+  "per_cand": {
+    "C1": {
+      "claim_status": {},
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "17816.95",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct",
+        "surcharges"
+      ]
+    },
+    "C2": {
+      "claim_status": {},
+      "conflict_resolved": {},
+      "conflicts": [],
+      "cost_cny": "16583.95",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "fuel_pct"
+      ]
+    },
+    "C3": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "broker_fee_cny": 1
+      },
+      "conflicts": [
+        "broker_fee_cny"
+      ],
+      "cost_cny": "15994.45",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "surcharges"
+      ]
+    },
+    "C4": {
+      "claim_status": {},
+      "conflict_resolved": {
+        "broker_fee_cny": 1,
+        "min_kg_carton": 0
+      },
+      "conflicts": [
+        "min_kg_carton",
+        "broker_fee_cny"
+      ],
+      "cost_cny": "14143.50",
+      "ddp_level": "none",
+      "defaulted": [],
+      "gaps": [],
+      "hidden_fees": [
+        "surcharges"
+      ]
+    }
+  },
+  "questions": [],
+  "raw_text": null,
+  "review_triggers": {
+    "C1": [],
+    "C2": [],
+    "C3": [],
+    "C4": []
+  },
+  "risks": [],
+  "task_id": "T-dev-010"
+}

@@ -22,7 +22,7 @@ from . import decide as _decide
 from . import stats as _stats
 
 LEXICON_VERSION = "1.1"
-PIPELINE_METHODS = ("M2", "M3", "M4")
+PIPELINE_METHODS = ("M2", "M3", "M4", "M4_TRIG")  # variants are scored like M4 but never enter the primary endpoints
 CATEGORIES = ("hidden_fee", "conflict", "gap", "ddp_risk")
 RECALL_ONLY = ("hidden_fee",)
 DDP_POSITIVE = ("verify", "high")

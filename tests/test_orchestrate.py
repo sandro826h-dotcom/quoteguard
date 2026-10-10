@@ -235,3 +235,84 @@ def test_cli_plan_run_assemble_score(split, tmp_path, capsys):
                       "--tasks", str(split["tasks"]), "--B", "10"]) == 0
     assert (out / "scores" / "rows.csv").exists()
     assert orch.main(["run", "--plan", pa, "--mode", "live", "--out", str(tmp_path / "runs")]) == 2
+
+
+class ExtractMock(ex.MockClient):
+    """Mock whose extraction answers parse (one stated clause), so that M4 can merge the partner's extraction."""
+
+    def complete(self, config, messages, seed=None):
+        r = super().complete(config, messages, seed)
+        if "请从下面这份货代报价中抽取条款" in json.dumps(messages, ensure_ascii=False):
+            r.text = json.dumps({"mode": {"status": "stated", "value": "express", "quotes": []}})
+        return r
+
+
+def full_flow_parsing(split, tmp_path, configs, methods):
+    a = plans(split, tmp_path, configs, methods)["A"]
+    ba = run(a, tmp_path, "a")
+    b = plans(split, tmp_path, configs, methods, [ba])["B"]
+    bb = orch.run_stage(b, "mock", tmp_path / "runs", batch_id="b", client_factory=lambda p: ExtractMock())
+    res = orch.assemble(split["tasks"], split["gold"], [ba, bb], configs, tmp_path, methods=methods,
+                        experiment="t1")
+    return ba, bb, res
+
+
+def test_m4_reviews_all_candidates_and_m4_trig_only_triggered(split, tmp_path):
+    configs = ["ds_flash", "qwen_plus"]
+    ba, bb, res = full_flow_parsing(split, tmp_path, configs, orch.ASSEMBLE_METHODS)
+    assert res["n_outputs"] == 6 * 2 * 2 and res["missing_observations"] == []
+    obs = obs_of(ba, bb)
+    tot = 0
+    for c, partner in (("ds_flash", "qwen_plus"), ("qwen_plus", "ds_flash")):
+        for tid in split["ids"]:
+            rd = lambda m: json.loads((tmp_path / "outputs" / m / c / f"{tid}.json").read_text())
+            m4, tr = rd("M4"), rd("M4_trig")
+            assert tr["method"] == "M4_trig" and m4["method"] == "M4"
+            cands = list(m4["per_cand"])
+            # M4 books the partner extraction of every candidate, M4_trig only of the triggered ones
+            assert len(m4["cost_breakdown"]["review_calls"]) == len(cands)
+            assert m4["diagnostics"]["review"]["reviewed"] == cands
+            trig = {k: v for k, v in m4["review_triggers"].items() if v}
+            assert tr["review_triggers"] == m4["review_triggers"]
+            assert tr["diagnostics"]["review"]["reviewed"] == [k for k in cands if k in trig]
+            assert len(tr["cost_breakdown"]["review_calls"]) == len(trig)
+            assert set(tr["cost_breakdown"]["review_calls"]) <= set(m4["cost_breakdown"]["review_calls"])
+            assert tr["cost_breakdown"]["direct_calls"] == m4["cost_breakdown"]["direct_calls"]
+            assert tr["cost"]["USD"] <= m4["cost"]["USD"] + 1e-12 and tr["cost"]["CNY"] <= m4["cost"]["CNY"] + 1e-12
+            for k in m4["cost_breakdown"]["review_calls"]:
+                assert obs[k]["config_id"] == partner
+            tot += len(cands)
+    assert tot > 0
+
+
+def test_full_review_adds_no_requests_to_the_plan(split, tmp_path):
+    configs = ["ds_flash", "qwen_plus"]
+    a = plans(split, tmp_path, configs, orch.METHODS)["A"]
+    ba = run(a, tmp_path, "a")
+    reqs = {}
+    for name, methods in (("full", orch.ASSEMBLE_METHODS), ("pipeline_no_m4", ("M0", "M1", "M2", "M3"))):
+        sub = tmp_path / name
+        b = orch.build_stage_plans(split["tasks"], configs, methods, "t1", "dev", BUDGET, RATES, sub,
+                                   transcription_batches=[ba])["B"]
+        reqs[name] = sorted(r["run_key"] for r in plan_requests(b))
+    # M4 (with or without the variant) needs exactly the requests M2 and M3 already need
+    assert reqs["full"] == reqs["pipeline_no_m4"]
+
+
+def test_primary_endpoints_ignore_m4_trig_outputs(split, tmp_path):
+    from quoteguard import metrics
+    configs = ["ds_flash", "qwen_plus"]
+    full_flow_parsing(split, tmp_path, configs, orch.ASSEMBLE_METHODS)
+    sc = orch.score_all(tmp_path / "outputs", split["gold"], split["tasks"], tmp_path / "scores", B=20)
+    rows = sc["rows"]
+    trig = [r for r in rows if r["method"] == "M4_TRIG"]
+    assert len(trig) == 4 and all(r["decision_correct"] is not None for r in trig)
+    base = [r for r in rows if r["method"] != "M4_TRIG"]
+    for fn in (metrics.endpoint1, metrics.endpoint2):
+        a = fn(rows, configs=tuple(configs), sims=200)
+        b = fn(base, configs=tuple(configs), sims=200)
+        assert a == b
+    pairs = (("ds_flash", "ds_flash"), ("qwen_plus", "qwen_plus"))
+    assert metrics.endpoint3(rows, pairs=pairs, B=50) == metrics.endpoint3(base, pairs=pairs, B=50)
+    agg = {(a["method"], a["config_id"]) for a in sc["aggregate_overall"]}
+    assert ("M4_TRIG", "ds_flash") in agg
