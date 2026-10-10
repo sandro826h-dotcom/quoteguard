@@ -209,6 +209,7 @@ _ZERO_WORDS = tuple(dict.fromkeys(GENERIC_ZERO + _DEV_ZERO_VALUES))
 _ZERO_CLAUSE_KEYS = {"fuel_pct": ("燃油", "fsc"), "broker_fee_cny": ("清关", "customs"),
                      "isf_fee_cny": ("isf",), "min_kg_shipment": ("最低",), "min_kg_carton": ("最低",)}
 _NEGATED_ZERO = ("不免", "未免")
+_ZERO_CLAUSE_EXCLUDE = {"min_kg_shipment": ("单箱", "每箱")}       # a per-carton minimum is not the shipment minimum
 _CLAUSE_SPLIT = re.compile(r"[，；、。\n]")
 
 
@@ -260,7 +261,7 @@ def _bool(v) -> Optional[bool]:
 GENERIC_UNITS_TERMS = ("duty", "carton", "公斤", "rmb")
 SCOPE_ALL_WORDS = ("hmf", "全部", "全包", "全税", "全额", "all")
 SCOPE_DUTY_WORDS = ("关税", "tariff", "duty")
-CURRENCY_USD_WORDS = ("usd", "美元", "us$", "$", "美金")
+CURRENCY_USD_WORDS = ("usd", "美元", "$", "美金")
 CURRENCY_CNY_WORDS = ("cny", "rmb", "人民币", "元", "¥", "￥")
 # dev-lexicon wordings of the importer and the jurisdictions, plus fixed generic ones
 IOR_WORDS = {**{lx["ior_w"][c]: c for lx in _dev_lexicons() for c in lx["ior_w"]}, "客户": "seller"}
@@ -412,7 +413,7 @@ def _zero_by_quotes(name: str, quotes) -> bool:
             k = _key(c)
             if not any(w in k for w in keys) or not any(w in k for w in ZERO_QUOTE_WORDS):
                 continue
-            if any(w in k for w in _NEGATED_ZERO):
+            if any(w in k for w in _NEGATED_ZERO + _ZERO_CLAUSE_EXCLUDE.get(name, ())):
                 continue
             if any(Decimal(n) != 0 for n in re.findall(r"\d+(?:\.\d+)?", k.replace(",", ""))):
                 continue
@@ -582,7 +583,7 @@ def _field(name: str, raw, entity, notes) -> Field:
 
 
 _FEE_ROUTES = (("fuel_pct", ("燃油", "fsc")),
-               ("broker_fee_cny", ("进口清关", "清关", "customs filing", "customs clearance", "customs broker")),
+               ("broker_fee_cny", ("清关", "customs filing", "customs clearance", "customs broker")),
                ("isf_fee_cny", ("isf",)))
 _NOT_A_FEE_TERM = ("延误", "仓储", "storage", "demurrage", "detention", "delay")
 

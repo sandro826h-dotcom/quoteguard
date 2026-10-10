@@ -803,6 +803,7 @@ def _normalisation_words():
     words += list(mp.CURRENCY_USD_WORDS) + list(mp.CURRENCY_CNY_WORDS)
     words += [w for _b, ws in mp._BASIS_WORDS for w in ws]
     words += list(mp.IOR_WORDS) + list(mp.JURISDICTION_WORDS)
+    words += [w for _t, ws in mp._FEE_ROUTES for w in ws] + list(mp._NOT_A_FEE_TERM)
     return [w.casefold() for w in words if w.casefold() not in mp.GENERIC_UNITS_TERMS]
 
 
@@ -938,3 +939,8 @@ def test_mapping_words_drop_template_colloquialisms():
     c = mp._claims([{"type": "FMC", "entity": "E", "jurisdiction": "美国"}], None, [])[0]
     assert c.jurisdiction == "US"
     assert mp._currency("RMB 5") == "CNY" and mp._basis("/公斤") == "per_kg" and mp._scope("duty") == "duty"
+
+
+def test_carton_minimum_clause_does_not_zero_the_shipment_minimum():
+    assert not mp._zero_by_quotes("min_kg_shipment", ["单箱不设最低计费重"])
+    assert mp._zero_by_quotes("min_kg_shipment", ["整票不设最低计费重"])
