@@ -579,14 +579,15 @@ def test_structure_items_carry_source_fields(inp):
     for it in items:
         assert it["source_status"] in tg.ALLOWED_SOURCE_STATUS and "source_seed_ids" in it
     air = {c["id"]: c for c in st["modes"]["air"]["channels"]}
-    assert air["AIR-A"]["source_status"] == "calibrated" and air["AIR-A"]["source_seed_ids"] == ["Q01-u2"]
-    assert air["AIR-B"]["source_seed_ids"] == ["Q01-u3"]
+    assert air["AIR-A"]["source_status"] == "calibrated" and air["AIR-A"]["source_seed_ids"] == ["Q01-u1"]
+    assert air["AIR-B"]["source_seed_ids"] == ["Q01-u1"]
     assert {c["source_status"] for c in st["modes"]["sea"]["channels"]} == {"estimated"}
     assert "Q05-u2" in " ".join(c["source_note"] for c in st["modes"]["sea"]["channels"])
-    assert air["AIR-A"]["raw_usd_per_kg"]["12-20"] == 5.80 and air["AIR-B"]["raw_usd_per_kg"]["301-500"] == 4.87
+    assert air["AIR-A"]["raw_usd_per_kg"]["12-20"] == 5.80 and air["AIR-B"]["raw_usd_per_kg"]["301-500"] == 5.08
     assert "美西" in air["AIR-A"]["raw_note"]
     ff = inp["freight_floor"]["air"]
-    assert ff["west"]["source_seed_ids"] == ff["national"]["source_seed_ids"] == ["Q01-u1", "Q01-u2", "Q01-u3"]
+    assert ff["west"]["source_seed_ids"] == ff["national"]["source_seed_ids"] == ["Q01-u1"]
+    assert ff["central"]["source_seed_ids"] == ["Q01-u2"] and ff["east"]["source_seed_ids"] == ["Q01-u3"]
 
 
 def test_air_non_ddp_tiers_not_below_reference(inp, dev):
@@ -672,3 +673,9 @@ def test_verify_detects_mismatch(inp, snap, tmp_path, monkeypatch):
     monkeypatch.setattr(tg, "landed_cost_xlsx", fake)
     with pytest.raises(tg.VerificationError):
         tg.verify_with_xlsx(tasks[:1], golds[:1], tmp_path, snap)
+
+
+def test_dev_v3_inputs_match_dev_manifest():
+    """The archived configuration reproduces the yaml hashes recorded when the dev set was generated."""
+    man = json.load(open(ROOT / "data" / "tasks" / "dev" / "manifest.json", encoding="utf-8"))
+    assert tg.load_inputs(ROOT / "data" / "taskgen" / "dev_v3")["yaml_sha256"] == man["yaml_sha256"]

@@ -22,7 +22,7 @@ SNAP = ROOT / "data" / "params" / "tariff_snapshot_2026-10-09.json"
 
 @pytest.fixture(scope="module")
 def env():
-    inp = load_inputs()
+    inp = load_inputs(ROOT / "data" / "taskgen" / "dev_v3")      # the configuration the dev set was generated with
     pairs = []
     for f in sorted(glob.glob(str(ROOT / "data" / "tasks" / "dev" / "tasks" / "*.json"))):
         t = Task.from_dict(json.load(open(f, encoding="utf-8")))

@@ -154,7 +154,7 @@ def test_param_text(snap, inp):
     assert p["snapshot_date"] == "2026-10-09" and p["fx"] == "6.733"
     assert p["mfn"] == "16.5%" and p["s301"] == "7.5%" and p["s301_2026"] == "12.5%"
     assert p["duty_rate"] == "36.5%"
-    assert "空运" in p["freight_floor_text"] and "32.79" in p["freight_floor_text"]
+    assert "空运" in p["freight_floor_text"] and "西部 34.2 元/kg" in p["freight_floor_text"] and "东部 37.1 元/kg" in p["freight_floor_text"]
     assert "快递：无参照值" in p["freight_floor_text"]
     assert set(p) == set(prompts.placeholders(prompts.M1)) - {"shipment_text", "registry_text", "quotes_text"}
     vs = p["value_sets_text"]

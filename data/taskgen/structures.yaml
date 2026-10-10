@@ -137,19 +137,19 @@ modes:
         broker_fee_cny: [0, 150, 400]
         isf_fee_cny: [0]
         tiers:
-          - {min_kg: 0, price: [37, 40]}
-          - {min_kg: 21, price: [36, 38]}
+          - {min_kg: 0, price: [38, 40]}
+          - {min_kg: 21, price: [36.5, 38]}
           - {min_kg: 101, price: [35, 37]}
-          - {min_kg: 301, price: [34, 36]}
+          - {min_kg: 301, price: [34.2, 36]}
         surcharges:
           - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
           - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
           - {code: INSP, basis: per_shpt, amount: [800, 1500], currency: CNY, condition: always, contingent: true, prob: 0.5}
         source_status: calibrated
-        source_seed_ids: [Q01-u2]
-        source_note: "档价取自 Q01-u2 标准空派美西不包税价（USD/kg 按 6.7330 换算）；计泡、附加费、时效为合成假设"
+        source_seed_ids: [Q01-u1]
+        source_note: "档价取自 Q01-u1 标准空派美西不包税价（USD/kg 按 6.7330 换算）；计泡、附加费、时效为合成假设"
         other_fields_source_status: synthetic_assumption
-        raw_usd_per_kg:     # Q01-u2 标准空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD，取值范围按换算值上下取整留余量
+        raw_usd_per_kg:     # Q01-u1 标准空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD，取值范围按换算值上下取整留余量
           {12-20: 5.80, 21-70: 5.51, 71-100: 5.43, 101-300: 5.29, 301-500: 5.08}
         raw_note: "美西单元，档价范围用于全部目的区域"
       - id: AIR-B
@@ -164,19 +164,19 @@ modes:
         isf_fee_cny: [0]
         tiers:
           - {min_kg: 0, price: [36, 38]}
-          - {min_kg: 21, price: [34, 36]}
-          - {min_kg: 101, price: [33.5, 35]}
-          - {min_kg: 301, price: [32.8, 34]}
+          - {min_kg: 21, price: [34.6, 36]}
+          - {min_kg: 101, price: [34.3, 35.2]}
+          - {min_kg: 301, price: [34.2, 34.8]}
         surcharges:
           - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
           - {code: OVW, basis: per_ctn, amount: [60, 120], currency: CNY, condition: ctn_kg_gt, threshold: 22, prob: 0.8}
         source_status: calibrated
-        source_seed_ids: [Q01-u3]
-        source_note: "档价取自 Q01-u3 经济空派美西不包税价（USD/kg 按 6.7330 换算）；计泡、附加费、时效为合成假设"
+        source_seed_ids: [Q01-u1]
+        source_note: "低价空派：档价设在 Q01-u1 美西不包税价下沿至空运参照下限 34.20 元/kg 之间；计泡、附加费、时效为合成假设"
         other_fields_source_status: synthetic_assumption
-        raw_usd_per_kg:     # Q01-u3 经济空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD
-          {12-20: 5.43, 21-70: 5.14, 71-100: 5.14, 101-300: 5.07, 301-500: 4.87}
-        raw_note: "美西单元，档价范围用于全部目的区域；最低档 4.87 美元/kg 换算 32.79 元/kg 即参照下限"
+        raw_usd_per_kg:     # Q01-u1 标准空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD
+          {12-20: 5.80, 21-70: 5.51, 71-100: 5.43, 101-300: 5.29, 301-500: 5.08}
+        raw_note: "Q01 同表经济空派行不属于选定单元（规范第一节按出现顺序取前 3 个），不再引用；最低档不低于参照下限 34.20 元/kg"
   sea:        # 仅海派（按 kg 计价）
     deadline_days: [29, 36]
     channels:
@@ -199,8 +199,8 @@ modes:
           - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
           - {code: INSP, basis: per_shpt, amount: [800, 1500], currency: CNY, condition: always, contingent: true, prob: 0.5}
         source_status: estimated
-        source_seed_ids: [Q05-u2, Q05-u3, Q17-u1]
-        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u2、Q05-u3 的区间价（12–17 元/kg 一带）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
+        source_seed_ids: [Q05-u1, Q05-u2, Q05-u3, Q17-u1]
+        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u1、Q05-u2、Q05-u3 的 CLX 区间价（美西 12–15、美中 14–17、美东 16–19 元/kg）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
       - id: SEA-B
         name: "海派 B"
         transit_days: [[28, 35], [32, 40]]
@@ -219,5 +219,5 @@ modes:
           - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
           - {code: OVW, basis: per_ctn, amount: [60, 120], currency: CNY, condition: ctn_kg_gt, threshold: 22, prob: 0.8}
         source_status: estimated
-        source_seed_ids: [Q05-u2, Q05-u3, Q17-u1]
-        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u2、Q05-u3 的区间价（12–17 元/kg 一带）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
+        source_seed_ids: [Q05-u1, Q05-u2, Q05-u3, Q17-u1]
+        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u1、Q05-u2、Q05-u3 的 CLX 区间价（美西 12–15、美中 14–17、美东 16–19 元/kg）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
