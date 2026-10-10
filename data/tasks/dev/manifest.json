@@ -1,7 +1,7 @@
 {
   "environment": {
-    "git_clean": false,
-    "git_commit": "5317150955d65579ce13898a68e2c326d71eca69",
+    "git_clean": true,
+    "git_commit": "cce96c6a7f53ea7cd4752a3680803d416fc60ad8",
     "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)",
     "python": "3.13.16",
     "pyyaml": "6.0.1"
@@ -60,7 +60,7 @@
       "T-dev-024.json": "753afcbdd9592d42ad97bc507b50ad8974574b6481018906b6b1047795ada462"
     }
   },
-  "generator_code_sha256": "95a86c526a5e722111ec7e19e29e84bba8f333573d81e9c0fcfd5e4a6ae4a8e1",
+  "generator_code_sha256": "ac228bef9dbe56b86895abac64491e45eb02351830962f83fdc5791e744c7d64",
   "generator_files_sha256": {
     "calc_py.py": "4aaf83f332ba129d20f3cdedd927b7c123cdde8e8732d6c1634828c98916b7bb",
     "calc_xlsx.py": "98a75b0169398a1effbd55ed945b7333599d6b81ef188b535b39f1fa28f3c8eb",
@@ -69,7 +69,7 @@
     "params.py": "baeb8f80a18e89f634253d9f25a4573da3f006598387e0db29b88cc154f48770",
     "render.py": "de07f871793d3548e36d2d9a2c45a032b90484355235665cc9f561be8e69e462",
     "schema.py": "89ff019d15463653497c037b4523690e3e0f191b51e974d4144507f50c9dad8b",
-    "taskgen.py": "b1a5478220315c02960314edcdf3258ae7f0de99e6a48c622220f93fa3f98e3a",
+    "taskgen.py": "4837965631272b4515fd5bbd51c4ce5c6d79417ae8d852123346a59f1c00b607",
     "util.py": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
   },
   "generator_version": "taskgen-0.1",
