@@ -196,6 +196,8 @@ def parse_extraction(text) -> dict:
 
 
 # ---------------------------------------------------------------- value converters
+ZEROABLE = ("min_kg_shipment", "min_kg_carton", "fuel_pct", "broker_fee_cny", "isf_fee_cny")
+ZERO_QUOTE_WORDS = ("不设", "不收", "免收", "免费", "没有", "无要求", "不限", "无最低", "免除", "waive")
 _ZERO_WORDS = ("无", "不收", "免收", "免费", "没有", "不设", "不限", "无要求", "none", "no", "free", "nil")
 
 
@@ -350,7 +352,18 @@ def _basis(v) -> Optional[str]:
     return None
 
 
-def _surcharges(v, notes: list):
+_CONT_MARKERS = tuple({lx["cont"].strip(" ，,") for pool in LEX.values() for lx in pool.values()}) + (
+    "实际发生", "发生时", "if incurred", "as incurred", "contingent")
+
+
+def _contingent_evidence(name: str, quotes) -> bool:
+    """The quote that carries this fee names it as charged only when incurred."""
+    k = _key(name)
+    own = [q for q in quotes if k and k in _key(q)] or list(quotes)
+    return any(m.casefold() in _key(q) for q in own for m in _CONT_MARKERS)
+
+
+def _surcharges(v, notes: list, quotes=()):
     if not isinstance(v, list):
         return None
     out = []
@@ -379,9 +392,10 @@ def _surcharges(v, notes: list):
         if cond.startswith("ctn_") and (thr is None or basis != "per_ctn"):
             notes.append(f"surcharge {name!r}: condition {cond} without usable threshold, read as always")
             cond, thr = "always", None
-        contingent = _bool(s.get("contingent"))
-        if contingent is None:
-            contingent = code == "INSP"
+        # The model flag alone is not trusted (models mark every conditional fee as contingent): a fee is
+        # contingent when its quote says it is charged only when incurred, or it is the inspection fee.
+        flag = _bool(s.get("contingent"))
+        contingent = _contingent_evidence(name, quotes) or (code == "INSP" and flag is not False)
         out.append(Surcharge(code or name or UNKNOWN_CLAIM, basis, amount, currency, cond,
                              thr if cond.startswith("ctn_") else None, contingent))
     return out
@@ -431,7 +445,7 @@ def _claims(v, entity: Optional[str], notes: list):
     return out
 
 
-def _convert(name: str, v, entity, notes):
+def _convert(name: str, v, entity, notes, quotes=()):
     """Plain value of one term, or None when it cannot be read."""
     if name == "mode":
         return mode_code(v) if v is not None else None
@@ -444,7 +458,7 @@ def _convert(name: str, v, entity, notes):
     if name == "fuel_pct":
         return _fuel(v)
     if name == "surcharges":
-        return _surcharges(v, notes)
+        return _surcharges(v, notes, quotes)
     if name in ("includes", "excludes"):
         return _strlist(v)
     if name == "ddp":
@@ -454,6 +468,8 @@ def _convert(name: str, v, entity, notes):
     if name == "validity":
         return _validity(v)
     if name == "liability":
+        if isinstance(v, (dict, list)):
+            return json.dumps(v, ensure_ascii=False, sort_keys=True)
         return str(v).strip() if v not in (None, "") else None
     if name == "claims":
         return _claims(v, entity, notes)
@@ -479,6 +495,9 @@ def _field(name: str, raw, entity, notes) -> Field:
     status, value, quotes = _entry(raw)
     if status not in ("stated", "implied", "missing", "conflicting"):
         status = "stated" if value is not None else "missing"
+    if status != "missing" and value is None and name in ZEROABLE and any(
+            w in q for q in quotes for w in ZERO_QUOTE_WORDS):
+        value = 0      # "stated" with no value and a quote saying the fee or minimum does not apply
     if status == "missing" or value is None:
         return Field(None, "missing", [])
     spans = [Span("extraction", "text", q) for q in quotes]
@@ -489,13 +508,15 @@ def _field(name: str, raw, entity, notes) -> Field:
             if name in _LIST_VALUED and not all(isinstance(x, (list, dict)) or name in ("includes", "excludes")
                                                 for x in value):
                 raise ValueError("conflicting list-valued term without two lists")
-            vals = [_convert(name, x, entity, notes) for x in value]
+            if name in ZEROABLE and any(w in q for q in quotes for w in ZERO_QUOTE_WORDS):
+                value = [0 if x is None else x for x in value]     # a null side that the quote reads as "none"
+            vals = [_convert(name, x, entity, notes, quotes) for x in value]
             if any(x is None for x in vals):
                 raise ValueError("unreadable conflicting value")
             for x in vals:
                 _check_term_value(name, x)
             return Field(vals, "conflicting", spans)
-        val = _convert(name, value, entity, notes)
+        val = _convert(name, value, entity, notes, quotes)
         if val is None:
             raise ValueError("unreadable value")
         _check_term_value(name, val)
@@ -503,6 +524,42 @@ def _field(name: str, raw, entity, notes) -> Field:
     except ValueError as e:
         notes.append(f"{name}: {e}")
         return Field(None, "missing", [])
+
+
+_FEE_ROUTES = (("fuel_pct", ("燃油", "fsc", "fuel")),
+               ("broker_fee_cny", ("报关", "清关", "customs filing", "customs clearance", "customs broker", "broker",
+                                 "clearance")),
+               ("isf_fee_cny", ("isf",)))
+
+
+def _reroute_fees(fields: dict, notes: list) -> None:
+    """Fuel, customs filing and ISF fees that the model listed among the surcharges go to their own terms.
+
+    Left in the surcharge list they would be charged twice next to the dedicated term. An entry whose term
+    is already stated is dropped; one that cannot be moved (other basis or currency) stays.
+    """
+    f = fields["surcharges"]
+    if f.status not in ("stated", "implied"):
+        return
+    keep = []
+    for sc in f.value:
+        route = None
+        if surcharge_code(sc.code) is None:
+            k = _key(sc.code)
+            route = next((t for t, words in _FEE_ROUTES if any(w in k for w in words)), None)
+        movable = ((route == "fuel_pct" and sc.basis == "pct_freight")
+                   or (route in ("broker_fee_cny", "isf_fee_cny") and sc.basis == "per_shpt"
+                       and sc.currency == "CNY" and sc.condition == "always"))
+        if not movable:
+            keep.append(sc)
+            continue
+        target = fields[route]
+        if target.status == "missing":
+            fields[route] = Field(sc.amount, "stated", list(f.spans))
+            notes.append(f"surcharge {sc.code!r} moved to {route}")
+        else:
+            notes.append(f"surcharge {sc.code!r} dropped: {route} is already given")
+    fields["surcharges"] = Field(keep, f.status, f.spans)
 
 
 def normalize(parsed: dict, mode_hint: Optional[str] = None) -> QuoteTerms:
@@ -518,6 +575,7 @@ def normalize(parsed: dict, mode_hint: Optional[str] = None) -> QuoteTerms:
     _, ent_val, _ = _entry(parsed.get("quote_entity"))
     entity = str(ent_val).strip() if isinstance(ent_val, str) and ent_val.strip() else None
     fields = {n: _field(n, parsed.get(n), entity, notes) for n in TERM_NAMES}
+    _reroute_fees(fields, notes)
     if fields["mode"].status == "missing" and mode_hint in MODES:
         fields["mode"] = Field(mode_hint, "implied", [])
     terms = QuoteTerms(**fields)
