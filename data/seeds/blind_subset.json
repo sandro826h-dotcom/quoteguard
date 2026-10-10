@@ -2,7 +2,7 @@
   "status": "draft_pending_selection_review_do_not_run_models",
   "random_seed": 20261010,
   "algorithm": "sorted strata + Python Random(MT19937) per-stratum shuffle; quotas 4 carrier PDF, 2 forwarder PDF, 9 forwarder web; caps checked during greedy selection",
-  "units_sha256": "6b5f9fe60660a097400b0688c9908ba00a6c64564010b9fc1c259041f503cc9a",
+  "units_sha256": "311280ad61e549165163dea6475ce62b20aa9c0762b0d607c51789d3b049a842",
   "selected_ids": [
     "Q08-u1",
     "Q08-u2",
