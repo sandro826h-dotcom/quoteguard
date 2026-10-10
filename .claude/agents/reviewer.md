@@ -2,7 +2,7 @@
 name: reviewer
 description: 独立审查。工作块完成后、冻结实验协议前、正式付费实验前、提交材料定稿前，用它以评委视角做独立检查。Use proactively at these checkpoints. 只读，不改文件。
 model: opus
-effort: high
+effort: medium
 tools: Read, Grep, Glob, Bash
 color: purple
 ---
