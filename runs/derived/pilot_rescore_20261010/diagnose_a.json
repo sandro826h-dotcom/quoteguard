@@ -1,0 +1,566 @@
+{
+ "differences": [
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "min_kg_carton",
+   "class": "review_disagree",
+   "stage": "C",
+   "cost_relevant": true,
+   "expected": "stated:0",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "conflicting['0', '22']",
+   "review_extracted": "stated:22",
+   "review_ok": false
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "broker_fee_cny",
+   "class": "review_disagree",
+   "stage": "C",
+   "cost_relevant": true,
+   "expected": "stated:400",
+   "extracted": "stated:400",
+   "after_locate": "stated:400",
+   "final": "conflicting['400', '0']",
+   "review_extracted": "missing",
+   "review_ok": false
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "min_kg_shipment",
+   "class": "model_conflict",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "conflicting['0', '45']",
+   "extracted": "implied:45",
+   "after_locate": "implied:45",
+   "final": "implied:45",
+   "review_extracted": "conflicting['0', '45']",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "min_kg_carton",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "stated:0",
+   "extracted": "stated:22",
+   "after_locate": "stated:22",
+   "final": "stated:22",
+   "review_extracted": "missing",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "broker_fee_cny",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "stated:400",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:400",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "field": "liability",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:按运费 3 倍赔付",
+   "extracted": "stated:3倍运费",
+   "after_locate": "stated:3倍运费",
+   "final": "stated:3倍运费",
+   "review_extracted": "stated:按运费3倍赔付",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C2",
+   "field": "liability",
+   "class": "model_missed",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:按申报货值赔付，上限 20 美元/kg",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:按申报货值赔付，上限 20 美元/kg",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C2",
+   "field": "claims",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:[{'type': 'NVOCC', 'entity': 'SYN-Orchid Global Trade', 'reg_no': None, 'jurisdiction': None}]",
+   "extracted": "stated:[{'type': 'UNKNOWN', 'entity': '申报货值', 'reg_no': None, 'jurisdiction': None}]",
+   "after_locate": "stated:[{'type': 'UNKNOWN', 'entity': '申报货值', 'reg_no': None, 'jurisdiction': None}]",
+   "final": "stated:[{'type': 'UNKNOWN', 'entity': '申报货值', 'reg_no': None, 'jurisdiction': None}]",
+   "review_extracted": "stated:[{'type': 'NVOCC', 'entity': 'SYN-Orchid Global Trade', 'reg_no': None, 'jurisdiction': None}]",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C3",
+   "field": "claims",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:[{'type': 'NVOCC', 'entity': 'SYN-Bluewater Cargo', 'reg_no': None, 'jurisdiction': None}]",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:[{'type': 'NVOCC', 'entity': 'SYN-Bluewater Cargo', 'reg_no': None, 'jurisdiction': None}]",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C4",
+   "field": "min_kg_shipment",
+   "class": "model_conflict",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "conflicting['100', '45']",
+   "extracted": "stated:100",
+   "after_locate": "stated:100",
+   "final": "stated:100",
+   "review_extracted": "conflicting['100', '45']",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C4",
+   "field": "liability",
+   "class": "model_missed",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:按运费 3 倍赔付",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:按运费 3 倍赔付",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C4",
+   "field": "claims",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:[]",
+   "extracted": "stated:[{'type': 'UNKNOWN', 'entity': 'Forwarder', 'reg_no': None, 'jurisdiction': None}]",
+   "after_locate": "stated:[{'type': 'UNKNOWN', 'entity': 'Forwarder', 'reg_no': None, 'jurisdiction': None}]",
+   "final": "stated:[{'type': 'UNKNOWN', 'entity': 'Forwarder', 'reg_no': None, 'jurisdiction': None}]",
+   "review_extracted": "missing",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C2",
+   "field": "liability",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:按申报货值赔付，上限 20 美元/kg",
+   "extracted": "stated:{\"basis\": \"declared_value\", \"cap_per_kg_usd\": 20}",
+   "after_locate": "stated:{\"basis\": \"declared_value\", \"cap_per_kg_usd\": 20}",
+   "final": "stated:{\"basis\": \"declared_value\", \"cap_per_kg_usd\": 20}",
+   "review_extracted": "stated:按申报货值赔付，上限 20 美元/kg",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C3",
+   "field": "broker_fee_cny",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "stated:150",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:150",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C3",
+   "field": "liability",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": false,
+   "expected": "stated:按运费 3 倍赔付",
+   "extracted": "stated:3倍运费",
+   "after_locate": "stated:3倍运费",
+   "final": "stated:3倍运费",
+   "review_extracted": "stated:按运费 3 倍赔付",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C4",
+   "field": "min_kg_carton",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "stated:0",
+   "extracted": "stated:22",
+   "after_locate": "stated:22",
+   "final": "stated:22",
+   "review_extracted": "missing",
+   "review_ok": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C4",
+   "field": "broker_fee_cny",
+   "class": "model_value",
+   "stage": "A",
+   "cost_relevant": true,
+   "expected": "stated:150",
+   "extracted": "missing",
+   "after_locate": "missing",
+   "final": "missing",
+   "review_extracted": "stated:150",
+   "review_ok": true
+  }
+ ],
+ "false_positives": [
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "kind": "conflict",
+   "field": "min_kg_carton",
+   "source": "review_disagree: first correct, reviewer wrong",
+   "first": "missing",
+   "after_locate": "missing",
+   "review": "stated:22",
+   "expected": "stated:0"
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "kind": "conflict",
+   "field": "broker_fee_cny",
+   "source": "review_disagree: first correct, reviewer wrong",
+   "first": "stated:400",
+   "after_locate": "stated:400",
+   "review": "missing",
+   "expected": "stated:400"
+  }
+ ],
+ "cost": [
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "gold": "3064.78",
+   "m2_cost": "3064.78",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {
+    "min_kg_shipment": "0.00"
+   },
+   "defaulted": [
+    "min_kg_carton",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C2",
+   "gold": "3262.53",
+   "m2_cost": "3262.53",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C3",
+   "gold": "3004.53",
+   "m2_cost": "3004.53",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "cand": "C4",
+   "gold": "4388.65",
+   "m2_cost": "2800.65",
+   "abs_err": "1588.00",
+   "impact_of_fixing_field": {
+    "min_kg_shipment": "1588.00"
+   },
+   "defaulted": [
+    "min_kg_carton",
+    "fuel_pct",
+    "isf_fee_cny"
+   ],
+   "determined": false
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C1",
+   "gold": "3064.78",
+   "m2_cost": "2953.53",
+   "abs_err": "111.25",
+   "impact_of_fixing_field": {
+    "min_kg_carton": "-288.75",
+    "broker_fee_cny": "400.00"
+   },
+   "defaulted": [
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C2",
+   "gold": "3262.53",
+   "m2_cost": "3262.53",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C3",
+   "gold": "3004.53",
+   "m2_cost": "3004.53",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "cand": "C4",
+   "gold": "4388.65",
+   "m2_cost": "4388.65",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "fuel_pct",
+    "isf_fee_cny"
+   ],
+   "determined": false
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-010",
+   "cand": "C1",
+   "gold": "17816.95",
+   "m2_cost": "17816.95",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-010",
+   "cand": "C2",
+   "gold": "16583.95",
+   "m2_cost": "16583.95",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-010",
+   "cand": "C3",
+   "gold": "16144.45",
+   "m2_cost": "16144.45",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-010",
+   "cand": "C4",
+   "gold": "14293.50",
+   "m2_cost": "14293.50",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C1",
+   "gold": "17816.95",
+   "m2_cost": "17816.95",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C2",
+   "gold": "16583.95",
+   "m2_cost": "16583.95",
+   "abs_err": "0.00",
+   "impact_of_fixing_field": {},
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C3",
+   "gold": "16144.45",
+   "m2_cost": "15994.45",
+   "abs_err": "150.00",
+   "impact_of_fixing_field": {
+    "broker_fee_cny": "150.00"
+   },
+   "defaulted": [
+    "min_kg_carton",
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "cand": "C4",
+   "gold": "14293.50",
+   "m2_cost": "14143.50",
+   "abs_err": "150.00",
+   "impact_of_fixing_field": {
+    "min_kg_carton": "0.00",
+    "broker_fee_cny": "150.00"
+   },
+   "defaulted": [
+    "broker_fee_cny",
+    "isf_fee_cny"
+   ],
+   "determined": true
+  }
+ ],
+ "decisions": [
+  {
+   "config": "ds_flash",
+   "task": "T-dev-004",
+   "gold": "ask:['C4.min_kg_shipment']",
+   "M2": "C4",
+   "M4": "ask:['C4.min_kg_shipment']",
+   "M4_correct": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-004",
+   "gold": "ask:['C4.min_kg_shipment']",
+   "M2": "C3",
+   "M4": "choose:C3",
+   "M4_correct": false
+  },
+  {
+   "config": "ds_flash",
+   "task": "T-dev-010",
+   "gold": "choose:C2",
+   "M2": "C2",
+   "M4": "choose:C2",
+   "M4_correct": true
+  },
+  {
+   "config": "qwen_plus",
+   "task": "T-dev-010",
+   "gold": "choose:C2",
+   "M2": "C2",
+   "M4": "choose:C2",
+   "M4_correct": true
+  }
+ ]
+}

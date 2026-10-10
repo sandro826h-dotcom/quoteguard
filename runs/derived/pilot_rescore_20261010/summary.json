@@ -1,0 +1,1004 @@
+{
+ "data_dir": "data/taskgen/dev_v3",
+ "groups": {
+  "A": {
+   "observations": 26,
+   "batches": [
+    "pilota-A-live",
+    "pilota-B-live",
+    "pilota-B-retry-live"
+   ],
+   "calls": {
+    "ds_flash|M0": {
+     "calls": 2,
+     "parse_ok": 2,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      4000
+     ],
+     "output_tokens": {
+      "n": 2,
+      "median": 2178.5,
+      "max": 2493
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 2
+     }
+    },
+    "ds_flash|M1": {
+     "calls": 2,
+     "parse_ok": 2,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      8000
+     ],
+     "output_tokens": {
+      "n": 2,
+      "median": 3949.5,
+      "max": 5342
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 2
+     },
+     "m1_vs_8000": {
+      "max_over_limit": 0.66775,
+      "n_ge_95pct_of_8000": 0
+     }
+    },
+    "ds_flash|extract": {
+     "calls": 8,
+     "parse_ok": 8,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      2500
+     ],
+     "output_tokens": {
+      "n": 8,
+      "median": 1148.5,
+      "max": 1212
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 8
+     }
+    },
+    "ds_flash|transcribe": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      1200
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 220,
+      "max": 220
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    },
+    "qwen_plus|M0": {
+     "calls": 2,
+     "parse_ok": 2,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      4000
+     ],
+     "output_tokens": {
+      "n": 2,
+      "median": 2814.5,
+      "max": 2828
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 2
+     }
+    },
+    "qwen_plus|M1": {
+     "calls": 2,
+     "parse_ok": 2,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      8000
+     ],
+     "output_tokens": {
+      "n": 2,
+      "median": 6573.5,
+      "max": 6803
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 2
+     },
+     "m1_vs_8000": {
+      "max_over_limit": 0.850375,
+      "n_ge_95pct_of_8000": 0
+     }
+    },
+    "qwen_plus|extract": {
+     "calls": 8,
+     "parse_ok": 8,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      2500
+     ],
+     "output_tokens": {
+      "n": 8,
+      "median": 1047.5,
+      "max": 1151
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 8
+     }
+    },
+    "qwen_vl|transcribe": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      1200
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 260,
+      "max": 260
+     },
+     "reasoning_tokens": {
+      "n": 0,
+      "median": null,
+      "max": null
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    }
+   },
+   "pipeline": {
+    "ds_flash": {
+     "locate_downgraded_fields": 0,
+     "stated_fields_before_locate": 110,
+     "locate_downgrade_rate": 0.0,
+     "locate_downgraded_by_field": {},
+     "norm_notes_by_type": {
+      "surcharge '*' merged into broker_fee_cny": 1,
+      "surcharge '*' merged into fuel_pct": 4,
+      "surcharge '*' moved to broker_fee_cny": 3,
+      "unmapped surcharge name: '*'": 8
+     },
+     "review": {
+      "cands": 8,
+      "triggered": 2,
+      "gold_risk": 6,
+      "gold_risk_untriggered": 4,
+      "gold_risk_untriggered_ids": [
+       "T-dev-004.C2",
+       "T-dev-004.C3",
+       "T-dev-010.C1",
+       "T-dev-010.C4"
+      ],
+      "triggered_rate": 0.25
+     }
+    },
+    "qwen_plus": {
+     "locate_downgraded_fields": 0,
+     "stated_fields_before_locate": 107,
+     "locate_downgrade_rate": 0.0,
+     "locate_downgraded_by_field": {},
+     "norm_notes_by_type": {
+      "surcharge '*' merged into fuel_pct": 2,
+      "surcharge '*' moved to broker_fee_cny": 2,
+      "unknown claim type: '*'": 2,
+      "unmapped surcharge name: '*'": 4
+     },
+     "review": {
+      "cands": 8,
+      "triggered": 0,
+      "gold_risk": 6,
+      "gold_risk_untriggered": 6,
+      "gold_risk_untriggered_ids": [
+       "T-dev-004.C1",
+       "T-dev-004.C2",
+       "T-dev-004.C3",
+       "T-dev-004.C4",
+       "T-dev-010.C1",
+       "T-dev-010.C4"
+      ],
+      "triggered_rate": 0.0
+     }
+    }
+   },
+   "unmapped_top20": [
+    {
+     "kind": "unmapped surcharge name",
+     "text": "Customs filing fee",
+     "count": 5
+    },
+    {
+     "kind": "unmapped surcharge name",
+     "text": "FSC",
+     "count": 4
+    },
+    {
+     "kind": "unmapped surcharge name",
+     "text": "燃油附加费",
+     "count": 2
+    },
+    {
+     "kind": "unmapped surcharge name",
+     "text": "清关费",
+     "count": 1
+    },
+    {
+     "kind": "unknown claim type",
+     "text": "申报货值",
+     "count": 1
+    },
+    {
+     "kind": "unknown claim type",
+     "text": "运费 3 倍赔付",
+     "count": 1
+    }
+   ],
+   "score_overall": {
+    "M0|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 7.0,
+     "cost_exact_rate": 0.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0,
+     "precision": null,
+     "recall": 0.0,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 1.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M0|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 7.0,
+     "cost_exact_rate": 0.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.4,
+     "precision": 1.0,
+     "recall": 0.25,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M1|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.5714285714285714,
+     "cost_abs_mean": 176.79857142857142,
+     "micro_f1": 0.16666666666666666,
+     "precision": 0.125,
+     "recall": 0.25,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 1.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M1|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 2.0,
+     "cost_exact_rate": 0.2857142857142857,
+     "cost_abs_mean": 5049.870000000001,
+     "micro_f1": 0.2,
+     "precision": 0.125,
+     "recall": 0.5,
+     "false_ask_rate": 1.0,
+     "correct_ask_rate": 1.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M2|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 1.0,
+     "cost_abs_mean": 0.0,
+     "micro_f1": 0.6666666666666666,
+     "precision": 1.0,
+     "recall": 0.5,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M2|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.5714285714285714,
+     "cost_abs_mean": 58.75,
+     "micro_f1": 0.4,
+     "precision": 1.0,
+     "recall": 0.25,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M3|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 1.0,
+     "cost_abs_mean": 0.0,
+     "micro_f1": 0.6666666666666666,
+     "precision": 1.0,
+     "recall": 0.5,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M3|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.5714285714285714,
+     "cost_abs_mean": 58.75,
+     "micro_f1": 0.4,
+     "precision": 1.0,
+     "recall": 0.25,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.5,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M4|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.8571428571428571,
+     "cost_abs_mean": 57.142857142857146,
+     "micro_f1": 0.8888888888888888,
+     "precision": 0.8,
+     "recall": 1.0,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 1.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M4|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.5714285714285714,
+     "cost_abs_mean": 58.75,
+     "micro_f1": 0.4,
+     "precision": 1.0,
+     "recall": 0.25,
+     "false_ask_rate": 0.0,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": 0.0,
+     "claim_accuracy": 0.5,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    }
+   },
+   "score_file": "runs/derived/pilot_rescore_20261010/a/scores/aggregate_overall.json",
+   "diagnose": {
+    "field_differences": 17,
+    "field_differences_cost_relevant": 9,
+    "by_class": {
+     "review_disagree": 2,
+     "model_conflict": 2,
+     "model_value": 11,
+     "model_missed": 2
+    },
+    "m4_false_positive_triples": 2,
+    "m2_candidates_priced": 16,
+    "m2_candidates_with_cost_error": 4,
+    "m2_candidates_unpriced": 0,
+    "m4_decisions_correct": 3,
+    "m4_decisions": 4,
+    "source_file": "runs/derived/pilot_rescore_20261010/diagnose_a.json"
+   },
+   "diagnose_prior": {
+    "source": "PROJECT_LOG.md (state after 665b5fe)",
+    "field_differences": 18,
+    "m4_false_positive_triples": 3,
+    "m2_candidates_with_cost_error": 4,
+    "before_665b5fe": {
+     "field_differences": 58,
+     "m4_false_positive_triples": 18,
+     "m2_candidates_with_cost_error": 14
+    }
+   },
+   "score_before_first_fix": {
+    "M0|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 7.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0
+    },
+    "M0|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.0,
+     "cost_n": 7.0,
+     "cost_missing": 7.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0
+    },
+    "M1|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 176.79857142857142,
+     "micro_f1": 0.16666666666666666
+    },
+    "M1|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.0,
+     "cost_n": 7.0,
+     "cost_missing": 7.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0
+    },
+    "M2|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 592.9642857142857,
+     "micro_f1": 0.4
+    },
+    "M2|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 357.0357142857143,
+     "micro_f1": 0.4
+    },
+    "M3|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 592.9642857142857,
+     "micro_f1": 0.4
+    },
+    "M3|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 357.0357142857143,
+     "micro_f1": 0.4
+    },
+    "M4|ds_flash": {
+     "n_rows": 2,
+     "decision_correct": 1.0,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 479.07142857142856,
+     "micro_f1": 0.3333333333333333
+    },
+    "M4|qwen_plus": {
+     "n_rows": 2,
+     "decision_correct": 0.5,
+     "cost_n": 7.0,
+     "cost_missing": 0.0,
+     "cost_abs_mean": 357.0357142857143,
+     "micro_f1": 0.18181818181818182
+    }
+   },
+   "score_before_first_fix_source": "runs/derived/pilota/scores/aggregate_overall.json"
+  },
+  "B": {
+   "observations": 14,
+   "batches": [
+    "pilotb-A-live",
+    "pilotb-B-live",
+    "pilotb-B-retry-live"
+   ],
+   "calls": {
+    "glm|M0": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      4000
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 1781,
+      "max": 1781
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 2,
+      "max": 2
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    },
+    "glm|M1": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      8000
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 2697,
+      "max": 2697
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 2,
+      "max": 2
+     },
+     "finish_reasons": {
+      "stop": 1
+     },
+     "m1_vs_8000": {
+      "max_over_limit": 0.337125,
+      "n_ge_95pct_of_8000": 0
+     }
+    },
+    "glm|extract": {
+     "calls": 4,
+     "parse_ok": 4,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      2500
+     ],
+     "output_tokens": {
+      "n": 4,
+      "median": 983.5,
+      "max": 1108
+     },
+     "reasoning_tokens": {
+      "n": 4,
+      "median": 2.0,
+      "max": 2
+     },
+     "finish_reasons": {
+      "stop": 4
+     }
+    },
+    "glm_v|transcribe": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      1200
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 273,
+      "max": 273
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 0,
+      "max": 0
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    },
+    "kimi|M0": {
+     "calls": 1,
+     "parse_ok": 0,
+     "parse_rate": 0.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      4000
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 2107,
+      "max": 2107
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 0,
+      "max": 0
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    },
+    "kimi|M1": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 1,
+     "trunc_rate": 1.0,
+     "max_tokens": [
+      8000
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 7618,
+      "max": 7618
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 0,
+      "max": 0
+     },
+     "finish_reasons": {
+      "stop": 1
+     },
+     "m1_vs_8000": {
+      "max_over_limit": 0.95225,
+      "n_ge_95pct_of_8000": 1
+     }
+    },
+    "kimi|extract": {
+     "calls": 4,
+     "parse_ok": 4,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      2500
+     ],
+     "output_tokens": {
+      "n": 4,
+      "median": 1077.0,
+      "max": 1125
+     },
+     "reasoning_tokens": {
+      "n": 4,
+      "median": 0.0,
+      "max": 0
+     },
+     "finish_reasons": {
+      "stop": 4
+     }
+    },
+    "kimi|transcribe": {
+     "calls": 1,
+     "parse_ok": 1,
+     "parse_rate": 1.0,
+     "truncated": 0,
+     "trunc_rate": 0.0,
+     "max_tokens": [
+      1200
+     ],
+     "output_tokens": {
+      "n": 1,
+      "median": 256,
+      "max": 256
+     },
+     "reasoning_tokens": {
+      "n": 1,
+      "median": 0,
+      "max": 0
+     },
+     "finish_reasons": {
+      "stop": 1
+     }
+    }
+   },
+   "pipeline": {
+    "glm": {
+     "locate_downgraded_fields": 0,
+     "stated_fields_before_locate": 52,
+     "locate_downgrade_rate": 0.0,
+     "locate_downgraded_by_field": {},
+     "norm_notes_by_type": {
+      "surcharge '*' moved to broker_fee_cny": 1,
+      "unmapped surcharge name: '*'": 1
+     },
+     "review": {
+      "cands": 4,
+      "triggered": 1,
+      "gold_risk": 2,
+      "gold_risk_untriggered": 1,
+      "gold_risk_untriggered_ids": [
+       "T-dev-020.C2"
+      ],
+      "triggered_rate": 0.25
+     }
+    },
+    "kimi": {
+     "locate_downgraded_fields": 0,
+     "stated_fields_before_locate": 48,
+     "locate_downgrade_rate": 0.0,
+     "locate_downgraded_by_field": {},
+     "norm_notes_by_type": {
+      "unknown claim type: '*'": 1,
+      "validity: unreadable value": 2
+     },
+     "review": {
+      "cands": 4,
+      "triggered": 3,
+      "gold_risk": 2,
+      "gold_risk_untriggered": 0,
+      "gold_risk_untriggered_ids": [],
+      "triggered_rate": 0.75
+     }
+    }
+   },
+   "unmapped_top20": [
+    {
+     "kind": "unmapped surcharge name",
+     "text": "Customs filing fee",
+     "count": 1
+    },
+    {
+     "kind": "unknown claim type",
+     "text": "按申报货值赔付，上限 20 美元/kg",
+     "count": 1
+    }
+   ],
+   "score_overall": {
+    "M0|glm": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 3.0,
+     "cost_exact_rate": 0.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0,
+     "precision": null,
+     "recall": 0.0,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M0|kimi": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 3.0,
+     "cost_exact_rate": 0.0,
+     "cost_abs_mean": null,
+     "micro_f1": 0.0,
+     "precision": null,
+     "recall": 0.0,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 0.0
+    },
+    "M1|glm": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 0.29333333333333333,
+     "micro_f1": 0.5,
+     "precision": 0.5,
+     "recall": 0.5,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M1|kimi": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 142.76666666666668,
+     "micro_f1": 0.25,
+     "precision": 0.16666666666666666,
+     "recall": 0.5,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M2|glm": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 266.6666666666667,
+     "micro_f1": 0.0,
+     "precision": null,
+     "recall": 0.0,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M2|kimi": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 266.6666666666667,
+     "micro_f1": 0.0,
+     "precision": null,
+     "recall": 0.0,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 0.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M3|glm": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 266.6666666666667,
+     "micro_f1": 0.6666666666666666,
+     "precision": 1.0,
+     "recall": 0.5,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M3|kimi": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 266.6666666666667,
+     "micro_f1": 0.6666666666666666,
+     "precision": 1.0,
+     "recall": 0.5,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M4|glm": {
+     "n_rows": 1,
+     "decision_correct": 0.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.3333333333333333,
+     "cost_abs_mean": 266.6666666666667,
+     "micro_f1": 0.5,
+     "precision": 0.5,
+     "recall": 0.5,
+     "false_ask_rate": null,
+     "correct_ask_rate": 0.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    },
+    "M4|kimi": {
+     "n_rows": 1,
+     "decision_correct": 1.0,
+     "cost_n": 3.0,
+     "cost_missing": 0.0,
+     "cost_exact_rate": 0.0,
+     "cost_abs_mean": 400.0,
+     "micro_f1": 0.5,
+     "precision": 0.3333333333333333,
+     "recall": 1.0,
+     "false_ask_rate": null,
+     "correct_ask_rate": 1.0,
+     "regret_abs_mean": null,
+     "claim_accuracy": 1.0,
+     "extraction_failures": 0.0,
+     "parse_ok": 1.0
+    }
+   },
+   "score_file": "runs/derived/pilot_rescore_20261010/b/scores/aggregate_overall.json"
+  }
+ }
+}

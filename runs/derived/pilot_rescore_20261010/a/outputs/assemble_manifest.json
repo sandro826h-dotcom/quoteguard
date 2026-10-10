@@ -1,0 +1,10 @@
+{
+  "actual_spend": {
+    "CNY": 1.164796,
+    "USD": 0.0294535
+  },
+  "dir": "runs/derived/pilot_rescore_20261010/a/outputs",
+  "missing_observations": [],
+  "n_observations": 26,
+  "n_outputs": 20
+}

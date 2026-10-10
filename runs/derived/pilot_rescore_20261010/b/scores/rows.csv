@@ -1,0 +1,11 @@
+task_id,method,config_id,layer,parse_ok,parse_failed,extraction_failures,ask_fields_used,gold_type,decision,decision_correct,false_ask,missed_ask,out_of_feasible,regret_abs,regret_rel,ask_cover,fp_unscored_hidden_fee,tp_hidden_fee,fp_hidden_fee,fn_hidden_fee,tp_conflict,fp_conflict,fn_conflict,tp_gap,fp_gap,fn_gap,tp_ddp_risk,fp_ddp_risk,fn_ddp_risk,tp,fp,fn,claim_n,claim_correct,cost_n,cost_missing,cost_abs_sum,cost_rel_sum,cost_exact,cost_usd,cost_cny,n_calls
+T-dev-020,M0,glm,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,2,1,0,3,3,0.0,0.0,0,0.0,0.074056,2
+T-dev-020,M0,kimi,insufficient,0,1,0,[],ask,,0,0,0,,,,0.0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,2,1,0,3,3,0.0,0.0,0,0.0,0.08789,2
+T-dev-020,M1,glm,insufficient,1,0,0,"[""C1.ddp"", ""C3.fuel_pct"", ""C4.fuel_pct""]",ask,ask,0,0,0,,,,0.0,1,0,0,0,0,0,0,0,1,1,1,0,0,1,1,1,1,0,3,0,0.88,9.459243175974095e-05,1,0.0,0.111752,2
+T-dev-020,M1,kimi,insufficient,1,0,0,"[""C1.ddp"", ""C4.fuel_pct""]",ask,ask,0,0,0,,,,0.0,0,0,0,0,0,1,0,0,4,1,1,0,0,1,5,1,1,0,3,0,428.3,0.04603856650306483,1,0.0,0.2460015,2
+T-dev-020,M2,glm,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,3,0,0,0,0,0,0,0,0,1,0,0,1,0,0,2,1,0,3,0,800.0,0.13098606144699687,1,0.0,0.14958800000000003,5
+T-dev-020,M2,kimi,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,3,0,0,0,0,0,0,0,0,1,0,0,1,0,0,2,1,0,3,0,800.0,0.12948906487766104,1,0.0,0.153248,5
+T-dev-020,M3,glm,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,3,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,1,1,3,0,800.0,0.13098606144699687,1,0.0,0.14958800000000003,5
+T-dev-020,M3,kimi,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,3,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,1,1,3,0,800.0,0.12948906487766104,1,0.0,0.153248,5
+T-dev-020,M4,glm,insufficient,1,0,0,[],ask,choose,0,0,1,,,,0.0,3,0,0,0,0,1,0,0,0,1,1,0,0,1,1,1,1,1,3,0,800.0,0.13098606144699687,1,0.0,0.18405350000000004,6
+T-dev-020,M4,kimi,insufficient,1,0,0,"[""C2.ddp"", ""C4.broker_fee_cny""]",ask,ask,1,0,0,,,,1.0,2,0,0,0,0,2,0,1,2,0,1,0,0,2,4,0,1,1,3,0,1200.0,0.17323412305312028,0,0.0,0.257192,8
