@@ -1,0 +1,39 @@
+# 每类可能缺失或冲突的条款的有限取值集合。数值单位与 QuoteTerms 一致。
+version: 2
+# sources：每项取值集合的来源说明；全部为合成取值，未用真实单元校准。
+sources:
+  dim_divisor: "合成取值：方案第四节所述两种计泡口径 5000 与 6000"
+  fuel_pct: "合成取值：0、10%、20%"
+  broker_fee_cny: "合成取值"
+  isf_fee_cny: "合成取值"
+  min_kg_shipment: "合成取值"
+  ddp: "合成取值：不包税与三种包税范围的组合"
+  surcharge_amounts: "合成取值：各附加费金额的低高两值"
+  eligible_fields: "信息不足层可缺失的条款，依据 docs/plan/任务生成规格.md 第四节“标准答案与生成约束的补充规则”"
+  conflict_fields: "冲突层可作用的条款，可涉及任何费用条款"
+dim_divisor: [5000, 6000]
+fuel_pct: [0, 0.1, 0.2]
+broker_fee_cny: [0, 150, 400]
+isf_fee_cny: [0, 200]
+min_kg_shipment: [0, 45, 100]
+ddp:
+  - {id: none,     is_ddp: false, scope: duty,     duty_terms: actual,   ior: seller}
+  - {id: all,      is_ddp: true,  scope: all,      duty_terms: included, ior: forwarder}
+  - {id: duty_mpf, is_ddp: true,  scope: duty_mpf, duty_terms: included, ior: forwarder}
+  - {id: duty,     is_ddp: true,  scope: duty,     duty_terms: included, ior: forwarder}
+# 附加费金额的低高两值（币种与费用结构中该附加费的币种一致）
+surcharge_amounts:
+  RES: {low: 4.0, high: 7.0}
+  REM: {low: 6, high: 12}
+  OVS: {low: 40, high: 80}
+  OVW: {low: 60, high: 120}
+# 信息不足层可缺失的条款（依据规格，generate 逐项校验）
+eligible_fields:
+  express: [dim_divisor, min_kg_shipment, ddp, fuel_pct]
+  air:     [dim_divisor, min_kg_shipment, ddp]
+  sea:     [dim_divisor, min_kg_shipment, ddp, isf_fee_cny]
+# 冲突层可作用的条款
+conflict_fields:
+  express: [dim_divisor, fuel_pct, ddp, broker_fee_cny, min_kg_shipment, surcharges]
+  air:     [dim_divisor, fuel_pct, ddp, broker_fee_cny, min_kg_shipment, surcharges]
+  sea:     [dim_divisor, ddp, broker_fee_cny, isf_fee_cny, min_kg_shipment, surcharges]

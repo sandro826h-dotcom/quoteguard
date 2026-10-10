@@ -1,0 +1,23 @@
+# 不包税运价参照下限（元/kg），结构 {mode: {dest_zone | national: {value_cny_per_kg, status, source_seed_ids}}}。
+# 规则见 docs/plan/真实报价集_口径与标注规范.md 第十二节：mode+zone 有值用之，否则用该 mode 的 national，
+# 该 mode 完全没有值（value 为 null）时门控不设 verify 档。
+# status: calibrated（真实单元）| no_qualifying_units（无合格单元）| pending_calibration（占位，test 集拒绝生成）
+version: 3
+# air：Q01-u1、Q01-u2、Q01-u3 均为合格单元，取最低档价最小者（Q01-u3，4.87 美元/kg）；来源编号统一列出三者
+express:
+  east:     {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  central:  {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  west:     {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  national: {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+air:
+  east: null
+  central: null
+  west:     {value_cny_per_kg: "32.79", original: {amount: "4.87", currency: USD, fx_cny_per_usd: "6.7330"},
+             status: calibrated, source_seed_ids: [Q01-u1, Q01-u2, Q01-u3]}
+  national: {value_cny_per_kg: "32.79", original: {amount: "4.87", currency: USD, fx_cny_per_usd: "6.7330"},
+             status: calibrated, source_seed_ids: [Q01-u1, Q01-u2, Q01-u3]}
+sea:
+  east:     {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  central:  {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  west:     {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}
+  national: {value_cny_per_kg: null, status: no_qualifying_units, source_seed_ids: []}

@@ -1,0 +1,223 @@
+# 费用结构库。每项带 source_status（calibrated | estimated | synthetic_assumption | no_qualifying_units；
+# pending_calibration 会使 test 集拒绝生成）、source_seed_ids、source_note。
+# 海运渠道只写海派（按 kg 计价）。不含海卡、整柜或按 CBM 计价的结构。
+version: 2
+source_meta:    # 无逐项 source 的段落
+  destinations: {source_status: synthetic_assumption, source_seed_ids: [], source_note: "公开仓库代码，邮编为代表性取值"}
+  private_destinations: {source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成私人地址"}
+  claims: {source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成资质宣称场景与比例"}
+ship_date: {from: "2026-10-12", to: "2026-10-31"}
+n_candidates: [4, 6]
+mode_weights: {express: 2, air: 2, sea: 4}
+private_address_prob: 0.15
+modality_weights: {text: 4, table: 3, image: 3}
+lang_mix_prob: 0.4
+ddp_prob: 0.4
+# 包税单价 = ratio * 税费下限 + factor * 同档不包税单价
+ddp_floor_ratio: [0.3, 0.6, 0.8, 1.0, 1.15]
+ddp_markup_factor: [0.6, 1.0]
+liability_options: ["按运费 3 倍赔付", "按申报货值赔付，上限 20 美元/kg", "丢失按运费赔付，破损不赔"]
+wording_pools:
+  dev:
+    ddp: [dev-ddp-1, dev-ddp-2, dev-ddp-3, dev-ddp-4]
+    claim: [dev-claim-1, dev-claim-2, dev-claim-3, dev-claim-4]
+  test:
+    ddp: [test-ddp-1, test-ddp-2, test-ddp-3, test-ddp-4]
+    claim: [test-claim-1, test-claim-2, test-claim-3, test-claim-4]
+commodities:
+  - {key: tee, desc: "棉制 T 恤", hts: "6109.10.00", unit_value_usd: [3.0, 9.0], unit_kg: 0.25,
+     units_per_ctn: [60, 120], carton_cm: [[60, 40, 40], [55, 40, 35]], cartons: [3, 12], source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成取值范围"}
+  - {key: case, desc: "塑料手机壳", hts: "3926.90.99", unit_value_usd: [0.8, 2.5], unit_kg: 0.05,
+     units_per_ctn: [300, 500], carton_cm: [[50, 40, 30], [55, 40, 35]], cartons: [3, 12], source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成取值范围"}
+  - {key: bag, desc: "化纤旅行袋", hts: "4202.92.31", unit_value_usd: [6.0, 15.0], unit_kg: 0.6,
+     units_per_ctn: [24, 40], carton_cm: [[60, 45, 40], [65, 45, 45]], cartons: [3, 12], source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成取值范围"}
+  - {key: toy, desc: "玩具", hts: "9503.00.00", unit_value_usd: [2.0, 8.0], unit_kg: 0.4,
+     units_per_ctn: [30, 50], carton_cm: [[60, 50, 45], [58, 48, 42]], cartons: [3, 12], source_status: synthetic_assumption, source_seed_ids: [], source_note: "合成取值范围"}
+destinations:   # 公开 FBA 仓库代码与代表性邮编；后四项为非 FBA 私人地址
+  - {fba_code: ONT8, zip: "92551", addr_type: commercial, remote: false}
+  - {fba_code: LAX9, zip: "92408", addr_type: commercial, remote: false}
+  - {fba_code: PHX3, zip: "85323", addr_type: commercial, remote: false}
+  - {fba_code: SEA8, zip: "98032", addr_type: commercial, remote: false}
+  - {fba_code: DFW7, zip: "76052", addr_type: commercial, remote: false}
+  - {fba_code: MDW2, zip: "60436", addr_type: commercial, remote: false}
+  - {fba_code: IND9, zip: "46075", addr_type: commercial, remote: false}
+  - {fba_code: CMH1, zip: "43062", addr_type: commercial, remote: false}
+  - {fba_code: ATL6, zip: "30213", addr_type: commercial, remote: false}
+  - {fba_code: JFK8, zip: "10314", addr_type: commercial, remote: false}
+  - {fba_code: EWR4, zip: "08691", addr_type: commercial, remote: false}
+private_destinations:
+  - {fba_code: NONFBA-CA, zip: "93501", addr_type: residential, remote: false}
+  - {fba_code: NONFBA-TX, zip: "79101", addr_type: residential, remote: false}
+  - {fba_code: NONFBA-AK, zip: "99501", addr_type: residential, remote: true}
+  - {fba_code: NONFBA-MT, zip: "59001", addr_type: residential, remote: true}
+claims:
+  fmc_types: [FMC_OTI, NVOCC]
+  # 空运与快递渠道援引的海运类资质一律为 irrelevant，故这两种方式少出现宣称，使四种 gold 状态大致均衡
+  prob_by_mode: {express: 0.1, air: 0.1, sea: 0.9}
+  scenario_weights: {registered: 3, unregistered: 2, unregistered_mot: 1, revoked: 1.5, type_mismatch: 1.5, aeo: 0.75, entity_mismatch: 0.75}
+modes:
+  express:
+    deadline_days: [6, 8]
+    channels:
+      - id: EXP-A
+        name: "快递专线 A"
+        transit_days: [[3, 5], [4, 6]]
+        dim_divisor: [5000]
+        rounding_kg: 0.5
+        min_kg_shipment: [0, 45]
+        min_kg_carton: [0]
+        fuel_pct: [0.1, 0.2]
+        broker_fee_cny: [0]
+        isf_fee_cny: [0]
+        tiers:
+          - {min_kg: 0,   price: [44, 52]}
+          - {min_kg: 21,  price: [40, 48]}
+          - {min_kg: 45,  price: [36, 44]}
+          - {min_kg: 100, price: [32, 40]}
+        surcharges:
+          - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
+          - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
+          - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
+          - {code: INSP, basis: per_shpt, amount: [800, 1500], currency: CNY, condition: always, contingent: true, prob: 0.5}
+        source_status: synthetic_assumption
+        source_seed_ids: []
+        source_note: "未用真实单元校准"
+      - id: EXP-B
+        name: "快递专线 B"
+        transit_days: [[4, 7], [5, 8]]
+        dim_divisor: [5000, 6000]
+        rounding_kg: 0.5
+        min_kg_shipment: [0, 21]
+        min_kg_carton: [0]
+        fuel_pct: [0, 0.1]
+        broker_fee_cny: [0, 150]
+        isf_fee_cny: [0]
+        tiers:
+          - {min_kg: 0,   price: [40, 48]}
+          - {min_kg: 45,  price: [34, 42]}
+          - {min_kg: 100, price: [30, 38]}
+        surcharges:
+          - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
+          - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
+          - {code: OVW, basis: per_ctn, amount: [60, 120], currency: CNY, condition: ctn_kg_gt, threshold: 22, prob: 0.8}
+        source_status: synthetic_assumption
+        source_seed_ids: []
+        source_note: "未用真实单元校准"
+      - id: EXP-C
+        name: "快递经济线"
+        transit_days: [[5, 8], [6, 9]]
+        dim_divisor: [6000]
+        rounding_kg: 1
+        min_kg_shipment: [0, 45]
+        min_kg_carton: [0]
+        fuel_pct: [0, 0.1]
+        broker_fee_cny: [0, 150]
+        isf_fee_cny: [0]
+        tiers:
+          - {min_kg: 0,   price: [36, 44]}
+          - {min_kg: 45,  price: [31, 39]}
+          - {min_kg: 100, price: [27, 35]}
+        surcharges:
+          - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
+          - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
+        source_status: synthetic_assumption
+        source_seed_ids: []
+        source_note: "未用真实单元校准"
+  air:
+    deadline_days: [9, 12]
+    channels:
+      - id: AIR-A
+        name: "空派 A"
+        transit_days: [[6, 9], [7, 10]]
+        dim_divisor: [6000]
+        rounding_kg: 1
+        min_kg_shipment: [12, 21]
+        min_kg_carton: [0]
+        fuel_pct: [0, 0.1, 0.2]
+        broker_fee_cny: [0, 150, 400]
+        isf_fee_cny: [0]
+        tiers:
+          - {min_kg: 0, price: [37, 40]}
+          - {min_kg: 21, price: [36, 38]}
+          - {min_kg: 101, price: [35, 37]}
+          - {min_kg: 301, price: [34, 36]}
+        surcharges:
+          - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
+          - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
+          - {code: INSP, basis: per_shpt, amount: [800, 1500], currency: CNY, condition: always, contingent: true, prob: 0.5}
+        source_status: calibrated
+        source_seed_ids: [Q01-u2]
+        source_note: "档价取自 Q01-u2 标准空派美西不包税价（USD/kg 按 6.7330 换算）；计泡、附加费、时效为合成假设"
+        other_fields_source_status: synthetic_assumption
+        raw_usd_per_kg:     # Q01-u2 标准空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD，取值范围按换算值上下取整留余量
+          {12-20: 5.80, 21-70: 5.51, 71-100: 5.43, 101-300: 5.29, 301-500: 5.08}
+        raw_note: "美西单元，档价范围用于全部目的区域"
+      - id: AIR-B
+        name: "空派 B"
+        transit_days: [[8, 12], [9, 13]]
+        dim_divisor: [5000, 6000]
+        rounding_kg: 0.5
+        min_kg_shipment: [45, 100]
+        min_kg_carton: [0]
+        fuel_pct: [0, 0.1]
+        broker_fee_cny: [150, 400]
+        isf_fee_cny: [0]
+        tiers:
+          - {min_kg: 0, price: [36, 38]}
+          - {min_kg: 21, price: [34, 36]}
+          - {min_kg: 101, price: [33.5, 35]}
+          - {min_kg: 301, price: [32.8, 34]}
+        surcharges:
+          - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
+          - {code: OVW, basis: per_ctn, amount: [60, 120], currency: CNY, condition: ctn_kg_gt, threshold: 22, prob: 0.8}
+        source_status: calibrated
+        source_seed_ids: [Q01-u3]
+        source_note: "档价取自 Q01-u3 经济空派美西不包税价（USD/kg 按 6.7330 换算）；计泡、附加费、时效为合成假设"
+        other_fields_source_status: synthetic_assumption
+        raw_usd_per_kg:     # Q01-u3 经济空派美西不包税原价（美元/kg），换算 6.7330 CNY/USD
+          {12-20: 5.43, 21-70: 5.14, 71-100: 5.14, 101-300: 5.07, 301-500: 4.87}
+        raw_note: "美西单元，档价范围用于全部目的区域；最低档 4.87 美元/kg 换算 32.79 元/kg 即参照下限"
+  sea:        # 仅海派（按 kg 计价）
+    deadline_days: [29, 36]
+    channels:
+      - id: SEA-A
+        name: "海派 A"
+        transit_days: [[24, 30], [26, 32]]
+        dim_divisor: [6000]
+        rounding_kg: 1
+        min_kg_shipment: [100]
+        min_kg_carton: [0]
+        fuel_pct: [0]
+        broker_fee_cny: [150, 400]
+        isf_fee_cny: [0, 200]
+        tiers:
+          - {min_kg: 0, price: [11, 13]}
+          - {min_kg: 200, price: [10, 12]}
+          - {min_kg: 500, price: [9, 11]}
+        surcharges:
+          - {code: REM, basis: per_kg, amount: [6, 12], currency: CNY, condition: remote, prob: 1.0}
+          - {code: OVS, basis: per_ctn, amount: [40, 80], currency: CNY, condition: ctn_longest_side_gt, threshold: 58, prob: 0.8}
+          - {code: INSP, basis: per_shpt, amount: [800, 1500], currency: CNY, condition: always, contingent: true, prob: 0.5}
+        source_status: estimated
+        source_seed_ids: [Q05-u2, Q05-u3, Q17-u1]
+        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u2、Q05-u3 的区间价（12–17 元/kg 一带）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
+      - id: SEA-B
+        name: "海派 B"
+        transit_days: [[28, 35], [32, 40]]
+        dim_divisor: [5000, 6000]
+        rounding_kg: 1
+        min_kg_shipment: [0, 100]
+        min_kg_carton: [0]
+        fuel_pct: [0]
+        broker_fee_cny: [0, 150]
+        isf_fee_cny: [0, 200]
+        tiers:
+          - {min_kg: 0, price: [8, 10]}
+          - {min_kg: 200, price: [7, 9]}
+          - {min_kg: 500, price: [6.5, 8]}
+        surcharges:
+          - {code: RES, basis: per_ctn, amount: [4.0, 7.0], currency: USD, condition: residential, prob: 1.0}
+          - {code: OVW, basis: per_ctn, amount: [60, 120], currency: CNY, condition: ctn_kg_gt, threshold: 22, prob: 0.8}
+        source_status: estimated
+        source_seed_ids: [Q05-u2, Q05-u3, Q17-u1]
+        source_note: "包税海派价格下沿人工估计，非不包税原价。依据 Q05-u2、Q05-u3 的区间价（12–17 元/kg 一带）与 Q17-u1（美西 21kg+ 档 17.5 元/kg）的价格下沿；SEA-A 为快船，SEA-B 为普船"
