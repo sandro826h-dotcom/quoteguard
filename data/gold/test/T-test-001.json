@@ -1,0 +1,435 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "5784.94",
+      "sha256": "4ab78f80c5cba2507bb6efaa6a355e434af24f5b6a4a45820d2a1d24c7fe07bf",
+      "xlsx_total_cny": "5784.94"
+    },
+    "C2": {
+      "py_total_cny": "5766.50",
+      "sha256": "488cb00683804d5ad325221d2a6b4cd24f23a7849ec35b0d95030920ac55b8cc",
+      "xlsx_total_cny": "5766.50"
+    },
+    "C3": {
+      "py_total_cny": "5952.44",
+      "sha256": "3202a70c68c21649320e49769d4359aa7f42dd8f6280af085d122eefd818add8",
+      "xlsx_total_cny": "5952.44"
+    },
+    "C4": {
+      "py_total_cny": "5534.94",
+      "sha256": "075d3f54a75897019b41e151600dec915b30216e5ccd582b7b7020ff452a9945",
+      "xlsx_total_cny": "5534.94"
+    }
+  },
+  "decision": {
+    "ask_fields": [],
+    "choice": "C4",
+    "opt_cost_cny": "5534.94",
+    "oracle_choice": "C4",
+    "oracle_cost_cny": "5534.94",
+    "type": "choose",
+    "verification": {
+      "attempt": 1,
+      "grid": [
+        {
+          "assign": {},
+          "best_cny": "5534.94",
+          "choice": "C4",
+          "n_feasible": 3,
+          "second_cny": "5766.50"
+        }
+      ],
+      "grid_size": 1,
+      "min_feasible": 3,
+      "min_margin": "0.04183604519651522871069966431"
+    }
+  },
+  "followup_gap_ids": [],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "115",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C1",
+          "claim": {
+            "entity": "SYN-Highmast Ocean Agency",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C1-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Highmast Ocean Agency",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1008",
+                "name": "SYN-Highmast Ocean Agency",
+                "oti_type": "OFF",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "5784.94",
+        "5784.94"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1150.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "370.00"
+        ],
+        [
+          "duty",
+          "4225.41"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "20.88"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "2.57",
+      "total_cny": "5784.94",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "115",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Tidal Reach Logistics",
+            "jurisdiction": "CN",
+            "reg_no": null,
+            "type": "MOT_NVOCC"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "cn"
+            ],
+            "hit_jurisdictions": [
+              "CN"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Tidal Reach Logistics",
+            "records": [
+              {
+                "cert_type": "mot_nvocc_filing",
+                "db": "cn",
+                "is_synthetic": true,
+                "name": "SYN-Tidal Reach Logistics",
+                "reg_no": "SYN-MOT-1002",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "5766.50",
+        "5766.50"
+      ],
+      "ddp_floor_cny_per_kg": "37.08643478260869565217391304",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "50.14347826086956521739130435",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "5416.50"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "2.56",
+      "total_cny": "5766.50",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "115",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C3",
+          "claim": {
+            "entity": "SYN-Copperfield Logistics",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C3-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Copperfield Logistics",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "5952.44",
+        "5952.44"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1035.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "452.50"
+        ],
+        [
+          "duty",
+          "4225.41"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "20.88"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "2.64",
+      "total_cny": "5952.44",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "115",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Amber Delta Cargo",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "AEO_CN"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Amber Delta Cargo",
+            "reason": "Chinese customs certification does not evidence US clearance capability",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "5534.94",
+        "5534.94"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "920.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "duty",
+          "4225.41"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "20.88"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "2.45",
+      "total_cny": "5534.94",
+      "true_values": {}
+    }
+  },
+  "task_id": "T-test-001"
+}

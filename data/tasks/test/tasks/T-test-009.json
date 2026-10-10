@@ -1,0 +1,1201 @@
+{
+  "candidates": [
+    {
+      "base_seed_ids": [],
+      "cand_id": "C1",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C1",
+        "claim_wording_id": "test-claim-3",
+        "conflicts": {
+          "dim_divisor": [
+            "5000",
+            "6000"
+          ]
+        },
+        "ddp_wording_id": "test-ddp-4",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-45",
+        "lang_mix": false,
+        "modality": "text",
+        "pool": "test",
+        "quote_entity": "SYN-Granite Coast Freight",
+        "template_id": "test-text-2",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 A"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "included",
+              "ior": "forwarder",
+              "is_ddp": true,
+              "scope": "all"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "conflicting",
+            "value": [
+              "5000",
+              "6000"
+            ]
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.2"
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关",
+              "关税",
+              "MPF"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "按申报货值赔付，上限 20 美元/kg"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "20",
+                "min_kg": "0",
+                "price": "70.6",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "21",
+                "price": "70.6",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "64.0",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "60.2",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "6.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "9.5",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              },
+              {
+                "amount": "42.0",
+                "basis": "per_ctn",
+                "code": "OVS",
+                "condition": "ctn_longest_side_gt",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": "58"
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              4,
+              6
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C1",
+      "task_id": "T-test-009"
+    },
+    {
+      "base_seed_ids": [],
+      "cand_id": "C2",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C2",
+        "claim_wording_id": "test-claim-3",
+        "conflicts": {},
+        "ddp_wording_id": "test-ddp-4",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-99",
+        "lang_mix": false,
+        "modality": "table",
+        "pool": "test",
+        "quote_entity": "SYN-Tidal Reach Logistics",
+        "template_id": "test-table-3",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 A"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "actual",
+              "ior": "seller",
+              "is_ddp": false,
+              "scope": "duty"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "stated",
+            "value": "5000"
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费",
+              "关税",
+              "MPF"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.1"
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "按运费 3 倍赔付"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "20",
+                "min_kg": "0",
+                "price": "45.0",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "21",
+                "price": "45.0",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "38.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "32.0",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "5.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "6.0",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              },
+              {
+                "amount": "1286.5",
+                "basis": "per_shpt",
+                "code": "INSP",
+                "condition": "always",
+                "contingent": true,
+                "currency": "CNY",
+                "threshold": null
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              4,
+              6
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C2",
+      "task_id": "T-test-009"
+    },
+    {
+      "base_seed_ids": [],
+      "cand_id": "C3",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C3",
+        "claim_wording_id": "test-claim-4",
+        "conflicts": {},
+        "ddp_wording_id": "test-ddp-3",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-84",
+        "lang_mix": true,
+        "modality": "text",
+        "pool": "test",
+        "quote_entity": "SYN-Marlin Supply Chain",
+        "template_id": "test-text-3",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 A"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "included",
+              "ior": "forwarder",
+              "is_ddp": true,
+              "scope": "all"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "stated",
+            "value": "5000"
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.2"
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关",
+              "关税",
+              "MPF"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "丢失按运费赔付，破损不赔"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "20",
+                "min_kg": "0",
+                "price": "42.3",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "21",
+                "price": "41.7",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "35.1",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "34.2",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "6.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "9.5",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              },
+              {
+                "amount": "75.0",
+                "basis": "per_ctn",
+                "code": "OVS",
+                "condition": "ctn_longest_side_gt",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": "58"
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              3,
+              5
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C3",
+      "task_id": "T-test-009"
+    },
+    {
+      "base_seed_ids": [],
+      "cand_id": "C4",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C4",
+        "claim_wording_id": "test-claim-3",
+        "conflicts": {},
+        "ddp_wording_id": "test-ddp-2",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-86",
+        "lang_mix": true,
+        "modality": "table",
+        "pool": "test",
+        "quote_entity": "SYN-Sable Transit",
+        "template_id": "test-table-2",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 A"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "actual",
+              "ior": "seller",
+              "is_ddp": false,
+              "scope": "duty"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "stated",
+            "value": "5000"
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费",
+              "关税",
+              "MPF"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.1"
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "按运费 3 倍赔付"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "20",
+                "min_kg": "0",
+                "price": "46.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "21",
+                "price": "41.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "41.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "35.5",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "6.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "6.0",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              },
+              {
+                "amount": "45.0",
+                "basis": "per_ctn",
+                "code": "OVS",
+                "condition": "ctn_longest_side_gt",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": "58"
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              3,
+              5
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C4",
+      "task_id": "T-test-009"
+    },
+    {
+      "base_seed_ids": [],
+      "cand_id": "C5",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C5",
+        "claim_wording_id": "test-claim-4",
+        "conflicts": {},
+        "ddp_wording_id": "test-ddp-3",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-21",
+        "lang_mix": false,
+        "modality": "image",
+        "pool": "test",
+        "quote_entity": "SYN-Windrose Route",
+        "template_id": "test-image-1",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 A"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "included",
+              "ior": "forwarder",
+              "is_ddp": true,
+              "scope": "all"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "stated",
+            "value": "5000"
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.2"
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关",
+              "关税",
+              "MPF"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "按申报货值赔付，上限 20 美元/kg"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "45"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "20",
+                "min_kg": "0",
+                "price": "70.3",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "21",
+                "price": "62.2",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "60.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "57.5",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "6.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "9.0",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              3,
+              5
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C5",
+      "task_id": "T-test-009"
+    },
+    {
+      "base_seed_ids": [],
+      "cand_id": "C6",
+      "files": [],
+      "is_synthetic": true,
+      "presentation": {
+        "cand_id": "C6",
+        "claim_wording_id": "test-claim-4",
+        "conflicts": {
+          "fuel_pct": [
+            "0.2",
+            "0.1"
+          ]
+        },
+        "ddp_wording_id": "test-ddp-2",
+        "fee_location": {
+          "broker_fee_cny": "body",
+          "fuel_pct": "body",
+          "isf_fee_cny": "body",
+          "surcharges": "body"
+        },
+        "forwarder_alias": "FWD-60",
+        "lang_mix": false,
+        "modality": "table",
+        "pool": "test",
+        "quote_entity": "SYN-Pearlgate Cross-border",
+        "template_id": "test-table-3",
+        "terms": {
+          "broker_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "150"
+          },
+          "channel": {
+            "spans": [],
+            "status": "stated",
+            "value": "快递专线 B"
+          },
+          "claims": {
+            "spans": [],
+            "status": "stated",
+            "value": []
+          },
+          "ddp": {
+            "spans": [],
+            "status": "stated",
+            "value": {
+              "cap_cny_per_kg": null,
+              "duty_terms": "actual",
+              "ior": "seller",
+              "is_ddp": false,
+              "scope": "duty"
+            }
+          },
+          "dim_divisor": {
+            "spans": [],
+            "status": "stated",
+            "value": "5000"
+          },
+          "excludes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "查验费",
+              "仓储费",
+              "关税",
+              "MPF"
+            ]
+          },
+          "fuel_pct": {
+            "spans": [],
+            "status": "conflicting",
+            "value": [
+              "0.2",
+              "0.1"
+            ]
+          },
+          "includes": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "头程运费",
+              "目的港清关"
+            ]
+          },
+          "isf_fee_cny": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "liability": {
+            "spans": [],
+            "status": "stated",
+            "value": "按运费 3 倍赔付"
+          },
+          "min_kg_carton": {
+            "spans": [],
+            "status": "stated",
+            "value": "0"
+          },
+          "min_kg_shipment": {
+            "spans": [],
+            "status": "stated",
+            "value": "21"
+          },
+          "mode": {
+            "spans": [],
+            "status": "stated",
+            "value": "express"
+          },
+          "rate_tiers": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "currency": "CNY",
+                "max_kg": "44",
+                "min_kg": "0",
+                "price": "41.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": "99",
+                "min_kg": "45",
+                "price": "41.5",
+                "unit": "per_kg"
+              },
+              {
+                "currency": "CNY",
+                "max_kg": null,
+                "min_kg": "100",
+                "price": "36.5",
+                "unit": "per_kg"
+              }
+            ]
+          },
+          "rounding_kg": {
+            "spans": [],
+            "status": "stated",
+            "value": "0.5"
+          },
+          "surcharges": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              {
+                "amount": "6.5",
+                "basis": "per_ctn",
+                "code": "RES",
+                "condition": "residential",
+                "contingent": false,
+                "currency": "USD",
+                "threshold": null
+              },
+              {
+                "amount": "9.0",
+                "basis": "per_kg",
+                "code": "REM",
+                "condition": "remote",
+                "contingent": false,
+                "currency": "CNY",
+                "threshold": null
+              }
+            ]
+          },
+          "transit_days": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              5,
+              8
+            ]
+          },
+          "validity": {
+            "spans": [],
+            "status": "stated",
+            "value": [
+              "2026-10-01",
+              "2026-10-31"
+            ]
+          }
+        }
+      },
+      "quote_id": "Q-T-test-009-C6",
+      "task_id": "T-test-009"
+    }
+  ],
+  "decision_rule_id": "DR-2026-10-10",
+  "generator_version": "taskgen-0.1",
+  "layer": "conflict",
+  "param_snapshot_id": "tariff-2026-10-09",
+  "rng_seed": 3251904025,
+  "shipment": {
+    "cartons": [
+      {
+        "height_cm": "45",
+        "kg": "22.2",
+        "length_cm": "65",
+        "n": 10,
+        "width_cm": "45"
+      }
+    ],
+    "deadline_days": 7,
+    "dest": {
+      "addr_type": "commercial",
+      "fba_code": "ONT8",
+      "remote": false,
+      "zip": "92551"
+    },
+    "goods": [
+      {
+        "desc": "化纤旅行袋",
+        "hts": "4202.92.31",
+        "qty": 370,
+        "unit_value_usd": "8.5"
+      }
+    ],
+    "mode": "express",
+    "ship_date": "2026-10-17",
+    "shipment_id": "T-test-009"
+  },
+  "split": "test",
+  "task_id": "T-test-009"
+}

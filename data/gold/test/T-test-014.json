@@ -1,0 +1,669 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "4019.73",
+      "sha256": "36c94d0b6f231d2bc92a01502a2c5e6e2b9200c25530436bcec417af94500b11",
+      "xlsx_total_cny": "4019.73"
+    },
+    "C2": {
+      "py_total_cny": "4740.73",
+      "sha256": "4e8ac5eef6df17cb02bf00b2bb0bcc4cbbf65ad97d26f4f78572ad892b779ac8",
+      "xlsx_total_cny": "4740.73"
+    },
+    "C3": {
+      "py_total_cny": "3394.24",
+      "sha256": "c3a041a5b18c0d830da73f6689aabb3aac48c37dc1d8971919c76ab28f15cd0e",
+      "xlsx_total_cny": "3394.24"
+    },
+    "C4": {
+      "py_total_cny": "4248.73",
+      "sha256": "c37f8b6969e42e2b4d686eddd920619ce7bb6bb8559539664903441d1e3797a1",
+      "xlsx_total_cny": "4248.73"
+    },
+    "C5": {
+      "py_total_cny": "4435.73",
+      "sha256": "a57aecfc0bc283e74f721fe2810c15dbdc1c230771488dcc2997dbf2c5ae61f0",
+      "xlsx_total_cny": "4435.73"
+    }
+  },
+  "decision": {
+    "ask_fields": [
+      "C3.ddp"
+    ],
+    "choice": null,
+    "opt_cost_cny": null,
+    "oracle_choice": "C3",
+    "oracle_cost_cny": "3394.24",
+    "type": "ask",
+    "verification": {
+      "attempt": 20,
+      "grid": [
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"actual\",\"ior\":\"seller\",\"is_ddp\":false,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "0"
+          },
+          "best_cny": "4740.73",
+          "choice": "C2",
+          "n_feasible": 2,
+          "second_cny": "6403.23"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"actual\",\"ior\":\"seller\",\"is_ddp\":false,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "45"
+          },
+          "best_cny": "4740.73",
+          "choice": "C2",
+          "n_feasible": 2,
+          "second_cny": "6403.23"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"actual\",\"ior\":\"seller\",\"is_ddp\":false,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "100"
+          },
+          "best_cny": "4740.73",
+          "choice": "C2",
+          "n_feasible": 2,
+          "second_cny": "6403.23"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}",
+            "C5.min_kg_shipment": "0"
+          },
+          "best_cny": "3384.00",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}",
+            "C5.min_kg_shipment": "45"
+          },
+          "best_cny": "3384.00",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}",
+            "C5.min_kg_shipment": "100"
+          },
+          "best_cny": "3384.00",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty_mpf\"}",
+            "C5.min_kg_shipment": "0"
+          },
+          "best_cny": "3394.24",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty_mpf\"}",
+            "C5.min_kg_shipment": "45"
+          },
+          "best_cny": "3394.24",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty_mpf\"}",
+            "C5.min_kg_shipment": "100"
+          },
+          "best_cny": "3394.24",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "0"
+          },
+          "best_cny": "3412.89",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "45"
+          },
+          "best_cny": "3412.89",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        },
+        {
+          "assign": {
+            "C3.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty\"}",
+            "C5.min_kg_shipment": "100"
+          },
+          "best_cny": "3412.89",
+          "choice": "C3",
+          "n_feasible": 2,
+          "second_cny": "4740.73"
+        }
+      ],
+      "grid_size": 12,
+      "min_feasible": 2,
+      "min_margin": "0.3506843882693171726717193344"
+    }
+  },
+  "followup_gap_ids": [
+    "C3.ddp"
+  ],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "78",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C1",
+          "claim": {
+            "entity": "SYN-Oakline Forwarding",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C1-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Sable Transit",
+            "reason": "certified entity differs from the quoting entity",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4019.73",
+        "4019.73"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "780.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "220.50"
+        ],
+        [
+          "duty",
+          "2990.34"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "10.24"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "12.88",
+      "total_cny": "4019.73",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Oakline Forwarding",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Juniper Global Trade",
+            "reason": "certified entity differs from the quoting entity",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4740.73",
+        "4740.73"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1200.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "121.50"
+        ],
+        [
+          "duty",
+          "2990.34"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "10.24"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "15.19",
+      "total_cny": "4740.73",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C3",
+          "claim": {
+            "entity": "SYN-Oakline Forwarding",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C3-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Oakline Forwarding",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1004",
+                "name": "SYN-Oakline Forwarding",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1382.50"
+        ]
+      ],
+      "cost_range_cny": [
+        "3384.00",
+        "6403.23"
+      ],
+      "ddp_floor_cny_per_kg": "30.1923",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "33.84",
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 4,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2640.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "144.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "10.24"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [
+        "C3.ddp"
+      ],
+      "per_unit_cny": "10.88",
+      "total_cny": "3394.24",
+      "true_values": {
+        "ddp": {
+          "cap_cny_per_kg": null,
+          "duty_terms": "included",
+          "ior": "forwarder",
+          "is_ddp": true,
+          "scope": "duty_mpf"
+        }
+      }
+    },
+    "C4": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Silverfin Shipping",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Silverfin Shipping",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1005",
+                "name": "SYN-Silverfin Shipping",
+                "oti_type": "NVOCC",
+                "status": "revoked"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4248.73",
+        "4248.73"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "800.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "229.50"
+        ],
+        [
+          "duty",
+          "2990.34"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "10.24"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "13.62",
+      "total_cny": "4248.73",
+      "true_values": {}
+    },
+    "C5": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C5",
+          "claim": {
+            "entity": "SYN-Amber Delta Cargo",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "AEO_CN"
+          },
+          "claim_id": "C5-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Amber Delta Cargo",
+            "reason": "Chinese customs certification does not evidence US clearance capability",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4226.73",
+        "4435.73"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 3,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "950.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "316.50"
+        ],
+        [
+          "duty",
+          "2990.34"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "10.24"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [
+        "C5.min_kg_shipment"
+      ],
+      "per_unit_cny": "14.22",
+      "total_cny": "4435.73",
+      "true_values": {
+        "min_kg_shipment": "100"
+      }
+    }
+  },
+  "task_id": "T-test-014"
+}

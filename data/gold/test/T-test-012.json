@@ -1,0 +1,696 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "4865.27",
+      "sha256": "73da7c0d6d6b5873ec7e4183d4b3387121d45cb5e045f06c0235532fc475f3ce",
+      "xlsx_total_cny": "4865.27"
+    },
+    "C2": {
+      "py_total_cny": "5276.77",
+      "sha256": "a5391c2da6600b53654a7268bc9f1a7fe88136a985ed2132f7942d86dcad8151",
+      "xlsx_total_cny": "5276.77"
+    },
+    "C3": {
+      "py_total_cny": "4611.70",
+      "sha256": "366769ce3b14347a4bd127f5076a4830a4ce2d917e701f413adf9e8c7fbd3750",
+      "xlsx_total_cny": "4611.70"
+    },
+    "C4": {
+      "py_total_cny": "4073.27",
+      "sha256": "32ab5f744aec614a0ec0d8a8916762c24bcb53221cb013b808bbddd0f6b928b9",
+      "xlsx_total_cny": "4073.27"
+    },
+    "C5": {
+      "py_total_cny": "4206.26",
+      "sha256": "4ed8027fe45870048940df3f07a6a8179fa0e156da2d417416e32cf00a7a24a3",
+      "xlsx_total_cny": "4206.26"
+    },
+    "C6": {
+      "py_total_cny": "3446.27",
+      "sha256": "3a26961dbf2b2fec60d08ad6c020a246ce9e05f6b3f711e49659c2e3fc22702b",
+      "xlsx_total_cny": "3446.27"
+    }
+  },
+  "decision": {
+    "ask_fields": [],
+    "choice": "C5",
+    "opt_cost_cny": "4206.26",
+    "oracle_choice": "C5",
+    "oracle_cost_cny": "4206.26",
+    "type": "choose",
+    "verification": {
+      "attempt": 0,
+      "grid": [
+        {
+          "assign": {
+            "C4.broker_fee_cny": "150",
+            "C5.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty_mpf\"}"
+          },
+          "best_cny": "4206.26",
+          "choice": "C5",
+          "n_feasible": 4,
+          "second_cny": "4611.70"
+        },
+        {
+          "assign": {
+            "C4.broker_fee_cny": "150",
+            "C5.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}"
+          },
+          "best_cny": "4192.60",
+          "choice": "C5",
+          "n_feasible": 4,
+          "second_cny": "4611.70"
+        },
+        {
+          "assign": {
+            "C4.broker_fee_cny": "400",
+            "C5.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"duty_mpf\"}"
+          },
+          "best_cny": "4206.26",
+          "choice": "C5",
+          "n_feasible": 4,
+          "second_cny": "4611.70"
+        },
+        {
+          "assign": {
+            "C4.broker_fee_cny": "400",
+            "C5.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}"
+          },
+          "best_cny": "4192.60",
+          "choice": "C5",
+          "n_feasible": 4,
+          "second_cny": "4611.70"
+        }
+      ],
+      "grid_size": 4,
+      "min_feasible": 4,
+      "min_margin": "0.09638966682991541179099722794"
+    }
+  },
+  "followup_gap_ids": [],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "253",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C1",
+          "claim": {
+            "entity": "SYN-Ashgrove Forwarders",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C1-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Ashgrove Forwarders",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1007",
+                "name": "SYN-Ashgrove Forwarders",
+                "oti_type": "OFF",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1466.50"
+        ]
+      ],
+      "cost_range_cny": [
+        "4865.27",
+        "4865.27"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2530.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "786.50"
+        ],
+        [
+          "duty",
+          "1366.46"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.66"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "12.29",
+      "total_cny": "4865.27",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "253",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Juniper Global Trade",
+            "jurisdiction": "CN",
+            "reg_no": null,
+            "type": "MOT_NVOCC"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Juniper Global Trade",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1439.00"
+        ]
+      ],
+      "cost_range_cny": [
+        "5276.77",
+        "5276.77"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2656.50"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "621.50"
+        ],
+        [
+          "duty",
+          "1366.46"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.66"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "13.33",
+      "total_cny": "5276.77",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "253",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C3",
+          "claim": {
+            "entity": "SYN-Granite Coast Freight",
+            "jurisdiction": "US",
+            "reg_no": "SYN-FMC-1003",
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C3-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Granite Coast Freight",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1003",
+                "name": "SYN-Granite Coast Freight",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1397.00"
+        ]
+      ],
+      "cost_range_cny": [
+        "4611.70",
+        "4611.70"
+      ],
+      "ddp_floor_cny_per_kg": "5.528735177865612648221343874",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "18.22806324110671936758893281",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "3390.20"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "621.50"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "11.65",
+      "total_cny": "4611.70",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "297",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Amber Delta Cargo",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "AEO_CN"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Amber Delta Cargo",
+            "reason": "Chinese customs certification does not evidence US clearance capability",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [
+        "C4.broker_fee_cny"
+      ],
+      "contingent": [],
+      "cost_range_cny": [
+        "4073.27",
+        "4323.27"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 2,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2524.50"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "0.00"
+        ],
+        [
+          "duty",
+          "1366.46"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.66"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "10.29",
+      "total_cny": "4073.27",
+      "true_values": {
+        "broker_fee_cny": "150"
+      }
+    },
+    "C5": {
+      "chargeable_kg": "253",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C5",
+          "claim": {
+            "entity": "SYN-Westmark Express",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C5-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Westmark Express",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-1006",
+                "name": "SYN-Westmark Express",
+                "oti_type": "NVOCC",
+                "status": "revoked"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [
+        "C5.ddp"
+      ],
+      "contingent": [],
+      "cost_range_cny": [
+        "4192.60",
+        "4206.26"
+      ],
+      "ddp_floor_cny_per_kg": "5.528735177865612648221343874",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "16.57154150197628458498023715",
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 2,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "3592.60"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "13.66"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "10.62",
+      "total_cny": "4206.26",
+      "true_values": {
+        "ddp": {
+          "cap_cny_per_kg": null,
+          "duty_terms": "included",
+          "ior": "forwarder",
+          "is_ddp": true,
+          "scope": "duty_mpf"
+        }
+      }
+    },
+    "C6": {
+      "chargeable_kg": "253",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C6",
+          "claim": {
+            "entity": "SYN-Marlin Supply Chain",
+            "jurisdiction": "CN",
+            "reg_no": null,
+            "type": "MOT_NVOCC"
+          },
+          "claim_id": "C6-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Marlin Supply Chain",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-test"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "3446.27",
+        "3446.27"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1897.50"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "duty",
+          "1366.46"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.66"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "8.70",
+      "total_cny": "3446.27",
+      "true_values": {}
+    }
+  },
+  "task_id": "T-test-012"
+}
