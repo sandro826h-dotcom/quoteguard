@@ -327,14 +327,18 @@ def _extraction_failures(output: Mapping) -> int:
 def score_task(output: Mapping, gold: Mapping) -> dict:
     """Score one MethodOutput dict against one gold dict. Returns a flat row (see keys below)."""
     method = str(output.get("method")).upper() if output.get("method") is not None else None
-    parse_ok = bool(output.get("parse_ok", True))
+    # a final call failure of any call the output depends on (assemble writes failed_calls) is a parse failure for
+    # every method alike: decision error, no risk items, continuous metrics missing
+    call_failed = bool(output.get("failed_calls"))
+    parse_ok = bool(output.get("parse_ok", True)) and not call_failed
     # pipeline methods are scored whenever they produced a decision; M0 / M1 need a parsed answer
-    usable = (parse_ok or method in PIPELINE_METHODS) and output.get("decision") is not None
+    usable = ((parse_ok or method in PIPELINE_METHODS) and output.get("decision") is not None
+              and not call_failed)
     gdec = gold["decision"]
     gtype = gdec["type"]
     decision = output.get("decision") if usable else None
     choice = output.get("choice")
-    ask = _norm_ask(output.get("ask_fields"))
+    ask = _norm_ask(output.get("ask_fields")) if usable else set()
     if decision == "ask" and method in ("M0", "M1"):
         valid = {a for a in ask if re.fullmatch(r"C\d+\.(%s)" % "|".join(ASK_FIELD_NAMES), a)}
         ask = valid or set(map_ask_fields(output))
@@ -371,6 +375,8 @@ def score_task(output: Mapping, gold: Mapping) -> dict:
         "layer": output.get("layer", gold.get("layer")),
         "parse_ok": int(parse_ok),
         "parse_failed": int((not parse_ok) or _extraction_failures(output) > 0),
+        "call_failed": int(call_failed),
+        "n_failed_calls": len(output.get("failed_calls") or []),
         "extraction_failures": _extraction_failures(output),
         "ask_fields_used": sorted(ask),
         "gold_type": gtype,
@@ -382,6 +388,7 @@ def score_task(output: Mapping, gold: Mapping) -> dict:
         "regret_abs": reg_abs,
         "regret_rel": reg_rel,
         "ask_cover": ask_cover,
+        "regret_missing": int(gtype == "choose" and out_feasible is None),
     }
     tp = fp = fn = 0
     for cat in CATEGORIES:
@@ -457,6 +464,9 @@ def metric_values(rows: Sequence[Mapping]) -> dict:
         "decision_correct": _mean(rows, "decision_correct"),
         "parse_ok": _mean(rows, "parse_ok"),
         "parse_failure_rate": _mean(rows, "parse_failed"),
+        "call_failed_n": _sum(rows, "call_failed"),
+        "call_failed_rate": _mean(rows, "call_failed"),
+        "regret_missing": _sum(rows, "regret_missing"),
         "extraction_failures": _sum(rows, "extraction_failures"),
         "micro_f1": f1_from_counts(tp, fp, fn),
         "precision": _ratio(tp, tp + fp), "recall": _ratio(tp, tp + fn),

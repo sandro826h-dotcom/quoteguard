@@ -473,3 +473,86 @@ def test_end_to_end_real_output_formats():
     assert res["E2"]["f1_M4"] > res["E2"]["f1_M0"]
     assert set(res["conclusion"]) == {"E1", "E2", "E3"}
     assert M.aggregate(rows, ci=False)
+
+
+# ---------------------------------------------------------------- final call failures
+FAIL_METHODS = ("M0", "M1", "M2", "M3", "M4", "M4_trig")
+
+
+def failed_row(method, g, calls=("k1",)):
+    out = perfect(g, method)
+    out["failed_calls"] = list(calls)
+    return M.score_task(out, g)
+
+
+def test_failed_calls_score_alike_for_every_method():
+    g = find(lambda g: g["decision"]["type"] == "choose" and any(pc["determined"] for pc in g["per_cand"].values()))
+    rows = {m: failed_row(m, g) for m in FAIL_METHODS}
+    n_gold = len(M.gold_triples(g))
+    for m, r in rows.items():
+        assert r["decision"] is None and r["decision_correct"] == 0
+        assert r["call_failed"] == 1 and r["n_failed_calls"] == 1
+        assert r["parse_ok"] == 0 and r["parse_failed"] == 1
+        assert r["tp"] == 0 and r["fp"] == 0 and r["fn"] == n_gold
+        assert r["regret_abs"] is None and r["out_of_feasible"] is None and r["regret_missing"] == 1
+        assert r["cost_n"] > 0 and r["cost_missing"] == r["cost_n"] and r["cost_abs_sum"] == 0
+        assert r["claim_correct"] == 0
+    base = {k: v for k, v in rows["M0"].items() if k != "method"}
+    for m in FAIL_METHODS:
+        assert {k: v for k, v in rows[m].items() if k != "method"} == base   # M0 and M4 follow one rule
+
+
+def test_failed_calls_ask_gold_is_decision_error():
+    g = find(lambda g: g["decision"]["type"] == "ask")
+    for m in ("M0", "M4"):
+        r = failed_row(m, g)
+        assert r["decision_correct"] == 0 and r["decision"] is None and r["ask_fields_used"] == []
+        assert r["ask_cover"] == 0.0
+
+
+def test_no_failed_calls_leaves_scoring_unchanged():
+    g = find(lambda g: g["decision"]["type"] == "choose")
+    for out in (perfect(g, "M4"), dict(perfect(g, "M4"), failed_calls=[])):
+        r = M.score_task(out, g)
+        assert r["call_failed"] == 0 and r["decision_correct"] == 1 and r["fn"] == 0
+
+
+def test_failed_calls_are_counted_apart_from_cost_means():
+    g = find(lambda g: g["decision"]["type"] == "choose" and any(pc["determined"] for pc in g["per_cand"].values()))
+    ok = M.score_task(perfect(g, "M4"), g)
+    bad = failed_row("M4", g)
+    ok["layer"] = bad["layer"] = "implicit"
+    t = M.metric_values([ok, bad])
+    assert t["call_failed_n"] == 1 and t["call_failed_rate"] == 0.5
+    assert t["cost_missing"] == ok["cost_n"] and t["cost_n"] == 2 * ok["cost_n"]
+    assert t["cost_abs_mean"] == 0.0                  # mean over the answered candidates only, no zero fill
+    assert t["regret_missing"] == 1 and t["regret_abs_mean"] == 0.0
+    assert t["decision_correct"] == 0.5 and t["parse_ok"] == 0.5
+
+
+def _random_rows(n_tasks=40, seed=3):
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    layers = ("implicit", "conflict", "insufficient", "explicit")
+    rows = []
+    for i in range(n_tasks):
+        for method, p in (("M0", 0.55), ("M4", 0.65)):
+            for cfg in M.MAIN_CONFIGS:
+                rows.append({"task_id": f"T{i:02d}", "method": method, "config_id": cfg, "layer": layers[i % 4],
+                             "decision_correct": int(rng.random() < p), "gold_type": "choose", "parse_ok": 1,
+                             "tp": int(rng.integers(0, 4)), "fp": int(rng.integers(0, 3)),
+                             "fn": int(rng.integers(0, 3)), "regret_abs": float(rng.random())})
+    return rows
+
+
+def test_seed_controls_permutation_and_bootstrap():
+    rows = _random_rows()
+    kw = dict(sims=500, B=300)
+    a, a2, b = (M.primary_endpoints(rows, seed=s, **kw) for s in (1, 1, 2))
+    assert a == a2
+    assert a["E1"]["method"] == "monte_carlo" and a["E2"]["method"] == "monte_carlo"
+    assert a["p_raw"]["E1"] != b["p_raw"]["E1"]
+    assert a["p_raw"]["E2"] != b["p_raw"]["E2"]
+    assert a["E3"]["lower"] != b["E3"]["lower"]
+    t1, t1b, t2 = (M.aggregate(rows, B=200, seed=s) for s in (1, 1, 2))
+    assert t1 == t1b and t1 != t2

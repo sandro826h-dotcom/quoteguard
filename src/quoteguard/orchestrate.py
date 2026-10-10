@@ -95,15 +95,42 @@ def _check_methods(configs, methods, models):
 
 
 # ---------------------------------------------------------------- observations
-def load_observations(batch_dirs: Iterable) -> dict:
-    """{run_key: observation} from the batch directories; a repeated run_key is an error."""
-    out = {}
+def read_observations(batch_dirs: Iterable) -> list:
+    """Every observation of the batch directories, in listing order. A batch listed twice is an error."""
+    seen, out = set(), []
     for d in batch_dirs:
+        r = Path(d).resolve()
+        if r in seen:
+            raise OrchestrationError(f"batch {d} is listed twice: its run_keys would appear in more than one observation")
+        seen.add(r)
         for f in sorted((Path(d) / "observations").glob("*.json")):
-            o = json.loads(f.read_text(encoding="utf-8"))
-            if o["run_key"] in out:
-                raise OrchestrationError(f"run_key {o['run_key']} appears in more than one observation")
-            out[o["run_key"]] = o
+            out.append(json.loads(f.read_text(encoding="utf-8")))
+    return out
+
+
+def obs_usable(o: dict) -> bool:
+    """A returned, non-empty answer (transport level; whether it parses is judged later)."""
+    return not call_failed(o, transcript=o.get("stage") == "transcribe")
+
+
+def load_observations(batch_dirs: Iterable) -> dict:
+    """{run_key: observation} from the batch directories.
+
+    A run_key may appear in several batches (an original batch and its retry batches). Selection rule:
+    the earliest usable observation (by finished_at, then started_at; a tie goes to the batch listed first);
+    when none is usable, the earliest observation of any kind, so that the failure stays visible.
+    """
+    groups: dict = {}
+    for n, o in enumerate(read_observations(batch_dirs)):
+        groups.setdefault(o["run_key"], []).append((n, o))
+
+    def order(item):
+        n, o = item
+        return (o.get("finished_at") or o.get("started_at") or "", n)
+    out = {}
+    for k, items in groups.items():
+        good = [it for it in items if obs_usable(it[1])]
+        out[k] = min(good or items, key=order)[1]
     return out
 
 
@@ -120,6 +147,25 @@ def _add(a: dict, b: dict, scale: float = 1.0) -> dict:
     for k, v in b.items():
         out[k] = out.get(k, 0.0) + v * scale
     return out
+
+
+def call_failed(o: Optional[dict], transcript: bool = False, extract: bool = False) -> bool:
+    """True when a call ended without a usable answer: no observation, an invalid one, or empty text
+    (for transcripts: empty after the box marks are removed, as in apply_transcriptions). With extract, a
+    response holding no extraction JSON object at all also counts; a field that fails to parse does not."""
+    if o is None or not o.get("valid", True):
+        return True
+    text = o.get("text") or ""
+    if transcript:
+        return not ml.clean_transcript(text)
+    if not text.strip():
+        return True
+    if extract:
+        try:
+            mp.parse_extraction(text)
+        except ValueError:
+            return True
+    return False
 
 
 def _find(obs: dict, req: dict) -> Optional[dict]:
@@ -144,7 +190,8 @@ def _write_plan(path: Path, plan: dict, models: dict, overwrite: bool) -> Path:
 def build_stage_plans(tasks_dir, configs, methods, experiment, kind, budget, rates, outdir, *,
                       transcription_batches=None, models=None, data_dir=DEFAULT_DATA_DIR,
                       snapshot_path=DEFAULT_SNAPSHOT_PATH, seed: Optional[int] = DEFAULT_SEED,
-                      protocol_sha256: Optional[str] = None, overwrite: bool = False) -> dict:
+                      protocol_sha256: Optional[str] = None, overwrite: bool = False,
+                      tag: Optional[str] = None) -> dict:
     """Write the frozen plan of stage A (always) and stage B (when transcription_batches are given).
 
     Returns {"A": plan path, "B": plan path or None}. Inputs are frozen under <outdir>/inputs, renders under
@@ -155,8 +202,10 @@ def build_stage_plans(tasks_dir, configs, methods, experiment, kind, budget, rat
     _check_methods(configs, methods, ctx.models)
     out = Path(outdir)
 
+    pid = f"{experiment}-{tag}" if tag else experiment    # run_keys use the experiment only
+
     def plan_doc(stage, reqs):
-        doc = {"plan_id": f"{experiment}-{stage}", "kind": kind, "budget": budget, "rates": rates,
+        doc = {"plan_id": f"{pid}-{stage}", "kind": kind, "budget": budget, "rates": rates,
                "requests": ml.dedupe_requests(reqs)}
         if protocol_sha256:
             doc["protocol_sha256"] = protocol_sha256
@@ -173,7 +222,7 @@ def build_stage_plans(tasks_dir, configs, methods, experiment, kind, budget, rat
             reqs_a += ml.transcription_requests(ti, c, ctx.models, experiment=experiment,
                                                 repeat=TRANSCRIBE_REPEAT, seed=seed)
     atomic_json(out / "inputs" / "manifest.json", frozen)
-    paths = {"A": _write_plan(out / "plans" / f"{experiment}-A.json", plan_doc("A", reqs_a), ctx.models,
+    paths = {"A": _write_plan(out / "plans" / f"{pid}-A.json", plan_doc("A", reqs_a), ctx.models,
                               overwrite), "B": None}
     if transcription_batches:
         obs = list(load_observations(transcription_batches).values())
@@ -191,7 +240,7 @@ def build_stage_plans(tasks_dir, configs, methods, experiment, kind, budget, rat
                         value_sets=ctx.value_sets, seed=seed))
                 if any(m in methods for m in PIPELINE):
                     reqs_b += mp.extraction_requests(ti, c, experiment, repeat=EXTRACT_REPEAT, seed=seed)
-        paths["B"] = _write_plan(out / "plans" / f"{experiment}-B.json", plan_doc("B", reqs_b), ctx.models,
+        paths["B"] = _write_plan(out / "plans" / f"{pid}-B.json", plan_doc("B", reqs_b), ctx.models,
                                  overwrite)
     return paths
 
@@ -258,6 +307,7 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
     ctx = Context(tasks_dir, out, models, data_dir, snapshot_path)
     _check_methods(configs, methods, ctx.models)
     obs = load_observations(batch_dirs)
+    all_obs = read_observations(batch_dirs)   # spend counts every paid observation, retries included
     obs_list = list(obs.values())
     sharers: dict = {}
     for c in configs:
@@ -265,8 +315,11 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
         sharers[v] = sharers.get(v, 0) + 1
     missing, n_out = [], 0
 
-    def finish(o, method, config, task, ti_calls, direct, review, breakdown_extra=None):
+    def finish(o, method, config, task, failed, direct, review, breakdown_extra=None):
         trans = breakdown_extra["trans"]
+        # every call the output depends on that failed finally or is missing; scoring treats the output as a
+        # parse failure (decision error, no risk items, continuous metrics missing)
+        o["failed_calls"] = sorted(set(failed) | set(trans["failed"]) | set((review.get("trans") or {}).get("failed", [])))
         share = dict(trans["total"])   # every configuration books the full transcription cost
         rt = review.get("trans") or {"cost": {}, "calls": []}
         total = _add(_add(_add(_add({}, direct["cost"]), review["cost"]), rt["cost"]), share)
@@ -283,16 +336,18 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
         p = out / "outputs" / method / config / f"{task.task_id}.json"
         atomic_json(p, _jsonable(o))
 
-    def collect(reqs):
-        cost, calls = {}, []
+    def collect(reqs, transcript=False):
+        cost, calls, failed = {}, [], []
         for r in reqs:
             o = _find(obs, r)
             if o is None:
                 missing.append(r["run_key"])
-                continue
-            cost = _add(cost, _obs_cost(o))
-            calls.append(r["run_key"])
-        return {"cost": cost, "calls": calls}
+            else:
+                cost = _add(cost, _obs_cost(o))
+                calls.append(r["run_key"])
+            if call_failed(o, transcript):
+                failed.append(r["run_key"])
+        return {"cost": cost, "calls": calls, "failed": failed}
 
     for t in ctx.tasks:
         _, ti0 = ctx.prepare(t)
@@ -303,8 +358,9 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
             ti = ti_by_cfg[c]
             treqs = ml.transcription_requests(ti0, c, ctx.models, experiment=experiment,
                                               repeat=TRANSCRIBE_REPEAT, seed=seed)
-            tr = collect(treqs)
-            trans = {"calls": tr["calls"], "total": tr["cost"], "shared_by": sharers[ctx.models[c].vision_config_id]}
+            tr = collect(treqs, True)
+            trans = {"calls": tr["calls"], "total": tr["cost"], "failed": tr["failed"],
+                     "shared_by": sharers[ctx.models[c].vision_config_id]}
             none = {"cost": {}, "calls": []}
             extra = {"trans": trans}
             for m in methods:
@@ -314,6 +370,7 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
                                          freight_floor=ctx.freight_floor, hts=hts, registry_snapshot=reg,
                                          value_sets=ctx.value_sets, seed=seed))
                     o = _find(obs, req)
+                    failed = [req["run_key"]] if call_failed(o) else []
                     if o is None:
                         missing.append(req["run_key"])
                         res = ml.to_method_output(None, ti, m, c, [])
@@ -323,18 +380,21 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
                         res = ml.to_method_output(ml.parse_final_json(o["text"], "choice"), ti, m, c,
                                                   [req["run_key"]], o["text"])
                         direct = {"cost": _obs_cost(o), "calls": [req["run_key"]]}
-                    finish(res, m, c, t, None, direct, none, extra)
+                    finish(res, m, c, t, failed, direct, none, extra)
                     n_out += 1
                     continue
                 ereqs = mp.extraction_requests(ti, c, experiment, repeat=EXTRACT_REPEAT, seed=seed)
-                ext, ekeys = {}, []
+                ext, ekeys, failed = {}, [], []
                 for r in ereqs:
                     o = _find(obs, r)
                     if o is None:
                         missing.append(r["run_key"])
                     else:
-                        ext[r["cand_id"]] = o["text"]
                         ekeys.append(r["run_key"])
+                    if call_failed(o, extract=True):
+                        failed.append(r["run_key"])
+                    else:
+                        ext[r["cand_id"]] = o["text"]
                 direct = {"cost": collect_cost(obs, ekeys), "calls": ekeys}
                 review = none
                 if m == "M2":
@@ -345,20 +405,28 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
                 else:
                     partner = mp.review_partner(c)
                     ti_p = ti_by_cfg[partner]
-                    pext, pkeys = {}, {}
+                    pext, pkeys, pbad = {}, {}, {}
                     for r in mp.extraction_requests(ti_p, partner, experiment, repeat=EXTRACT_REPEAT, seed=seed):
                         o = _find(obs, r)
                         if o is None:
                             missing.append(r["run_key"])
                         else:
-                            pext[r["cand_id"]] = o["text"]
                             pkeys[r["cand_id"]] = r["run_key"]
+                        if call_failed(o, extract=True):
+                            pbad[r["cand_id"]] = r["run_key"]
+                        else:
+                            pext[r["cand_id"]] = o["text"]
                     kw = {}
                     kw["review_texts"] = {q.cand_id: ti_p.quote_text(q) for q in ti_p.quotes}
                     res = mp.run_m4(t, ti, ext, ctx.snapshot, None, ctx.freight_floor, reg, pext,
                                     ctx.value_sets, config_id=c, calls=ekeys, review_config_id=partner,
                                     review_scope="all" if m == "M4" else "triggered", **kw)
                     used = [pkeys[cid] for cid in res["diagnostics"]["review"]["reviewed"] if cid in pkeys]
+                    # the merge needs the partner's extraction and transcript of every candidate it applies to:
+                    # all candidates for M4, the triggered ones for M4_trig
+                    need = ([q.cand_id for q in ti.quotes] if m == "M4"
+                            else sorted(res["diagnostics"].get("triggers") or {}))
+                    failed = failed + [pbad[cid] for cid in need if cid in pbad]
                     # the reviewer's own transcription of the reviewed image quotes; keys shared with this
                     # configuration's transcription (same vision model) are already booked there
                     own = set(trans["calls"])
@@ -366,15 +434,20 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
                                                                   repeat=TRANSCRIBE_REPEAT, seed=seed)
                              if r["cand_id"] in res["diagnostics"]["review"]["reviewed"]
                              and r["run_key"] not in own]
-                    review = {"cost": collect_cost(obs, used), "calls": used, "trans": collect(preqs)}
-                finish(res, m, c, t, None, direct, review, extra)
+                    review = {"cost": collect_cost(obs, used), "calls": used, "trans": collect(preqs, True)}
+                    # failed partner transcripts of needed candidates count even when their keys are booked elsewhere
+                    review["trans"]["failed"] = [
+                        r["run_key"] for r in ml.transcription_requests(
+                            ti0, partner, ctx.models, experiment=experiment, repeat=TRANSCRIBE_REPEAT, seed=seed)
+                        if r["cand_id"] in need and call_failed(obs.get(r["run_key"]), True)]
+                finish(res, m, c, t, failed, direct, review, extra)
                 n_out += 1
     missing = sorted(set(missing))
     spend = {}
-    for o in obs.values():
+    for o in all_obs:
         spend = _add(spend, _obs_cost(o))
     summary = {"dir": str(out / "outputs"), "n_outputs": n_out, "missing_observations": missing,
-               "actual_spend": _cost_dict(spend), "n_observations": len(obs)}
+               "actual_spend": _cost_dict(spend), "n_observations": len(all_obs)}
     atomic_json(out / "outputs" / "assemble_manifest.json", summary)
     return summary
 
@@ -462,6 +535,7 @@ def main(argv=None) -> int:
     p.add_argument("--out", required=True)
     p.add_argument("--transcriptions", default=None, help="comma-separated stage A batch directories")
     p.add_argument("--protocol-sha256", default=None)
+    p.add_argument("--tag", default=None, help="plan name suffix (e.g. the provider); run_keys are unchanged")
     common(p)
     r = sub.add_parser("run")
     r.add_argument("--plan", required=True)
@@ -487,7 +561,10 @@ def main(argv=None) -> int:
     s.add_argument("--tasks", required=True)
     s.add_argument("--out", default=None)
     s.add_argument("--endpoints", action="store_true")
-    s.add_argument("--B", type=int, default=2000)
+    s.add_argument("--B", type=int, default=None,
+                   help="bootstrap draws for every bootstrap (default: 2000 for interval tables, 9999 for E3)")
+    s.add_argument("--sims", type=int, default=99999, help="permutation draws of the E1 / E2 tests")
+    s.add_argument("--seed", type=int, default=0, help="seed of all permutation tests and bootstraps")
     a = ap.parse_args(argv)
     try:
         if a.cmd == "plan":
@@ -496,7 +573,7 @@ def main(argv=None) -> int:
                 a.tasks, _split(a.configs), _split(a.methods), a.experiment, a.kind, ex.parse_budget(a.budget),
                 rates, a.out, transcription_batches=_split(a.transcriptions) if a.transcriptions else None,
                 models=load_models(a.models), data_dir=a.data_dir, snapshot_path=a.snapshot, seed=a.seed,
-                protocol_sha256=a.protocol_sha256)
+                protocol_sha256=a.protocol_sha256, tag=a.tag)
             print(json.dumps({k: str(v) if v else None for k, v in paths.items()}))
         elif a.cmd == "run":
             d = run_stage(a.plan, a.mode, a.out, confirm_budget=a.confirm_budget, models_path=a.models,
@@ -511,7 +588,8 @@ def main(argv=None) -> int:
                            data_dir=a.data_dir, snapshot_path=a.snapshot, seed=a.seed)
             print(json.dumps({"n_outputs": res["n_outputs"], "missing": len(res["missing_observations"])}))
         else:
-            res = score_all(a.outputs, a.gold, a.tasks, a.out, endpoints=a.endpoints, B=a.B)
+            kw = {} if a.B is None else {"B": a.B, "endpoint_B": a.B}
+            res = score_all(a.outputs, a.gold, a.tasks, a.out, endpoints=a.endpoints, sims=a.sims, seed=a.seed, **kw)
             print(json.dumps({"rows": len(res["rows"])}))
     except (OrchestrationError, ex.PlanError, FileExistsError, ValueError) as e:
         print(f"error: {e}", file=sys.stderr)
