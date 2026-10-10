@@ -60,3 +60,13 @@ def test_verify_tolerates_moved_spaces():
     t = QuoteTerms(dim_divisor=Field(D(6000), "stated", [Span("e", "text", "体积重 除以6000")]))
     out, down = verify_terms(t, "体积重除以 6000")
     assert down == [] and out.dim_divisor.status == "stated"
+
+
+def test_verify_space_between_digits_is_not_dropped():
+    assert not verify("12 30", "1230 kg")
+    assert not verify("1230", "12 30 kg")
+    assert not verify("A B", "AB")
+    # spaces next to Chinese text may differ
+    assert verify("整票21kg 起计", "整票 21kg起计")
+    assert verify("最低 21 kg", "最低21 kg")
+    assert verify("12 30", "共 12  30 件")

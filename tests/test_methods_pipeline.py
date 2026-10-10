@@ -199,27 +199,26 @@ def test_normalize_roundtrips_every_dev_candidate(env):
                 assert (a[n]["status"], a[n]["value"]) == (b[n]["status"], b[n]["value"]), (t.task_id, c.cand_id, n)
 
 
-def test_normalize_lexicon_covers_both_pools():
+def test_normalize_lexicon_covers_dev_pool():
     seen = 0
-    for pool in LEX.values():
-        for lx in pool.values():
-            for code, text in lx["names"].items():
-                assert mp.surcharge_code(text) == code, text
-                assert mp.surcharge_code(f"  {text.upper()} ") == code
-                seen += 1
-            for code, text in lx["types"].items():
-                assert mp.claim_type_code(text) == code, text
-                seen += 1
-            for code, text in lx["mode"].items():
-                assert mp.mode_code(text) == code, text
-                seen += 1
-    assert seen == 4 * (5 + 4 + 3)
+    for lx in LEX["dev"].values():
+        for code, text in lx["names"].items():
+            assert mp.surcharge_code(text) == code, text
+            assert mp.surcharge_code(f"  {text.upper()} ") == code
+            seen += 1
+        for code, text in lx["types"].items():
+            assert mp.claim_type_code(text) == code, text
+            seen += 1
+        for code, text in lx["mode"].items():
+            assert mp.mode_code(text) == code, text
+            seen += 1
+    assert seen == 2 * (5 + 4 + 3)
     # normalize applies the mapping to whole extractions
     raw = {"surcharges": {"status": "stated", "quotes": [], "value": [
-        {"code": "私宅投递费", "basis": "per_ctn", "amount": 6, "currency": "USD", "condition": "residential"},
+        {"code": "住宅派送费", "basis": "per_ctn", "amount": 6, "currency": "USD", "condition": "residential"},
         {"code": "Remote area 地区附加费", "basis": "per_kg", "amount": "8", "currency": "RMB", "condition": "remote"}]},
         "claims": {"status": "stated", "quotes": [], "value": [
-            {"type": "FMC OTI 登记的承运人", "entity": "SYN-A", "reg_no": None, "jurisdiction": "美方"}]}}
+            {"type": "美国 FMC 备案无船承运人", "entity": "SYN-A", "reg_no": None, "jurisdiction": "美国"}]}}
     t = mp.normalize(raw)
     assert [s.code for s in t.plain("surcharges")] == ["RES", "REM"]
     assert t.plain("surcharges")[1].currency == "CNY"
@@ -672,12 +671,12 @@ def test_contingent_flag_needs_evidence_in_the_quote():
     raw = {"surcharges": {"status": "stated", "value": [
         _sc("Remote area 地区附加费", "per_kg", 10, condition="remote", contingent=True),
         _sc("Oversize 费", "per_ctn", 61.5, condition="ctn_longest_side_gt", threshold=58, contingent=True),
-        _sc("海关抽检费", "per_shpt", 800, contingent=False),
+        _sc("查验费", "per_shpt", 800, contingent=False),
         _sc("旺季费", "per_kg", 1, contingent=True)],
         "quotes": ["Remote area 地区附加费：10 CNY per kg（Remote area 地址）", "Oversize 费：61.5 CNY per ctn",
-                   "旺季费 1 元/kg，仅在发生时收取"]}}
+                   "旺季费 1 元/kg，按实际发生收取"]}}
     got = {s.code: s.contingent for s in mp.normalize(raw).plain("surcharges")}
-    assert got == {"REM": False, "OVS": False, "INSP": True, "旺季费": True}
+    assert got == {"REM": False, "OVS": False, "INSP": False, "旺季费": True}
     # the code default for the inspection fee holds without quotes; an explicit false from the model is kept off
     assert mp.normalize({"surcharges": {"status": "stated", "value": [_sc("查验费", "per_shpt", 800)]}}
                         ).plain("surcharges")[0].contingent is True
@@ -756,3 +755,186 @@ def test_zero_wording_in_quotes_reads_null_as_zero():
 def test_liability_object_becomes_text():
     t = mp.normalize({"liability": {"status": "stated", "value": {"basis": "declared_value", "cap": 20}}})
     assert t.liability.status == "stated" and "declared_value" in t.liability.value
+
+
+# ---------------------------------------------------------------- review fixes: lexicon, clauses, rerouting
+def _grams(text):
+    """Test-pool fragments: CJK/alphanumeric runs cut into 2..4 character pieces, Latin words of 3+ letters."""
+    import re
+    t = re.sub(r"\{[^}]*\}", " ", text).casefold()
+    out = set()
+    for run in re.findall(r"[\u4e00-\u9fff]+|[0-9a-z]+", t):
+        if re.fullmatch(r"[a-z]+", run):
+            if len(run) >= 3:
+                out.add(run)
+            continue
+        for n in (2, 3, 4):
+            out.update(run[i:i + n] for i in range(len(run) - n + 1))
+    return out
+
+
+def _strings(obj):
+    if isinstance(obj, str):
+        yield obj
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from _strings(v)
+    elif isinstance(obj, (list, tuple)):
+        for v in obj:
+            yield from _strings(v)
+
+
+def _test_only_fragments():
+    dev = " \n ".join(x.casefold() for lx in LEX["dev"].values() for x in _strings(lx))
+    test = set()
+    for lx in LEX["test"].values():
+        for x in _strings(lx):
+            test |= _grams(x)
+    return {g for g in test if g not in dev}
+
+
+def _normalisation_words():
+    words = list(mp.ZERO_QUOTE_WORDS) + list(mp._ZERO_WORDS) + list(mp._CONT_MARKERS)
+    words += list(mp.SURCHARGE_NAMES) + list(mp.CLAIM_TYPES) + list(mp.MODE_WORDS)
+    words += [w for _c, ws in mp.SURCHARGE_KEYWORDS for w in ws]
+    words += [w for _c, ws in mp.CLAIM_KEYWORDS for w in ws] + [w for _c, ws in mp.MODE_KEYWORDS for w in ws]
+    words += [w for ws in mp._ZERO_CLAUSE_KEYS.values() for w in ws]
+    words += list(mp.SCOPE_ALL_WORDS) + list(mp.SCOPE_DUTY_WORDS) + ["mpf"]
+    words += list(mp.CURRENCY_USD_WORDS) + list(mp.CURRENCY_CNY_WORDS)
+    words += [w for _b, ws in mp._BASIS_WORDS for w in ws]
+    words += list(mp.IOR_WORDS) + list(mp.JURISDICTION_WORDS)
+    return [w.casefold() for w in words if w.casefold() not in mp.GENERIC_UNITS_TERMS]
+
+
+def test_normalisation_words_hold_no_test_pool_fragment():
+    only = _test_only_fragments()
+    # the fragment finder catches the words the review listed
+    for leaked in ("免收", "免费", "没有", "无要求", "不限", "无最低", "私宅", "边远", "抽检", "outlying", "home",
+                   "发生时", "交通运"):
+        assert leaked in only, leaked
+    import re
+
+    def hit(w, g):
+        return g in re.findall(r"[a-z]+", w) if g.isascii() and g.isalpha() else g in w
+    bad = [(w, g) for w in _normalisation_words() for g in only if hit(w, g)]
+    assert bad == []
+    # and the lookups themselves do not read test-pool wordings
+    assert mp.surcharge_code("私宅投递费") is None and mp.surcharge_code("边远地区派送费") is None
+    assert mp.surcharge_code("海关抽检费") is None and mp.surcharge_code("Outlying zone") is None
+    assert mp.claim_type_code("中国交通运输部备案的货运承运人") == mp.UNKNOWN_CLAIM
+    assert mp.mode_code("空派") is None
+
+
+def test_contingent_only_from_clause_naming_the_fee():
+    quote = "住宅派送费 30 元/票，查验费按实际发生收取"
+    raw = {"surcharges": {"status": "stated", "quotes": [quote], "value": [
+        _sc("住宅派送费", "per_shpt", 30, condition="residential"),
+        _sc("查验费", "per_shpt", 800, contingent=False)]}}
+    got = {s.code: s.contingent for s in mp.normalize(raw).plain("surcharges")}
+    assert got == {"RES": False, "INSP": True}
+    # no fallback to the other quotes when the fee is not named in any of them
+    raw["surcharges"]["quotes"] = ["查验费按实际发生收取"]
+    assert mp.normalize(raw).plain("surcharges")[0].contingent is False
+    # the dev wording puts the marker in its own clause after the fee
+    raw["surcharges"]["quotes"] = ["住宅派送费：30元/票（送住宅地址），按实际发生收取"]
+    assert mp.normalize(raw).plain("surcharges")[0].contingent is True
+
+
+def _zero_raw(name, quote, value=None):
+    return {name: {"status": "stated", "value": value, "quotes": [quote]}}
+
+
+def test_zero_reading_needs_same_clause_term_and_no_number():
+    t = mp.normalize(_zero_raw("broker_fee_cny", "报关费见附表，不收查验费"))
+    assert t.broker_fee_cny.status == "missing"
+    t = mp.normalize(_zero_raw("fuel_pct", "燃油费随油价浮动，没有固定值"))
+    assert t.fuel_pct.status == "missing"
+    t = mp.normalize(_zero_raw("isf_fee_cny", "ISF 费用不免除"))
+    assert t.isf_fee_cny.status == "missing"
+    t = mp.normalize(_zero_raw("fuel_pct", "燃油附加费不收，其余另计 20 元"))
+    assert t.fuel_pct.value == D(0)
+    t = mp.normalize(_zero_raw("fuel_pct", "燃油附加费不收 20 元"))
+    assert t.fuel_pct.status == "missing"
+    t = mp.normalize(_zero_raw("broker_fee_cny", "进口清关费不收"))
+    assert t.broker_fee_cny.value == D(0)
+    t = mp.normalize(_zero_raw("isf_fee_cny", "不收ISF申报费"))
+    assert t.isf_fee_cny.value == D(0)
+    t = mp.normalize(_zero_raw("min_kg_shipment", "单票不设最低计费重"))
+    assert t.min_kg_shipment.value == D(0)
+    # a term keyword in another clause does not count
+    t = mp.normalize(_zero_raw("min_kg_shipment", "最低计费重见附表，不设上限"))
+    assert t.min_kg_shipment.status == "missing"
+
+
+def _fee_raw(entries, **given):
+    raw = {"surcharges": {"status": "stated", "quotes": [], "value": entries}}
+    raw.update(given)
+    return raw
+
+
+def test_reroute_conflict_keeps_both_values():
+    raw = _fee_raw([_sc("燃油附加费", "pct_freight", 25, currency=None)],
+                   fuel_pct={"status": "stated", "value": 0.2, "quotes": ["燃油 20%"]})
+    t = mp.normalize(raw)
+    assert t.fuel_pct.status == "conflicting" and t.fuel_pct.value == [D("0.2"), D("0.25")]
+    assert t.plain("surcharges") == []
+    # same value in another unit (25 % vs 0.25): merged
+    raw = _fee_raw([_sc("燃油附加费", "pct_freight", 25, currency=None)],
+                   fuel_pct={"status": "stated", "value": "25%", "quotes": []})
+    t = mp.normalize(raw)
+    assert t.fuel_pct.status == "stated" and t.fuel_pct.value == D("0.25") and t.plain("surcharges") == []
+    # the given zero is a value too
+    t = mp.normalize(_fee_raw([_sc("ISF 申报费", "per_shpt", 200)],
+                              isf_fee_cny={"status": "stated", "value": 0, "quotes": []}))
+    assert t.isf_fee_cny.value == [D(0), D(200)]
+
+
+def test_reroute_keywords_and_usd():
+    # export filing, bare broker/clearance words and delay storage are not the import clearance fee
+    ents = [_sc("报关费", "per_shpt", 100), _sc("Broker fee", "per_shpt", 90), _sc("Clearance", "per_shpt", 80),
+            _sc("清关延误仓储费", "per_shpt", 70)]
+    t = mp.normalize(_fee_raw(ents))
+    assert len(t.plain("surcharges")) == 4 and t.broker_fee_cny.status == "missing"
+    # USD filing fee converted at the snapshot rate
+    t = mp.normalize(_fee_raw([_sc("清关费", "per_shpt", 10, currency="USD")]), fx=D("7.2"))
+    assert t.broker_fee_cny.value == D("72.0") and t.plain("surcharges") == []
+    # without a rate it stays a surcharge, with a note
+    t = mp.normalize(_fee_raw([_sc("清关费", "per_shpt", 10, currency="USD")]))
+    assert len(t.plain("surcharges")) == 1 and any("cannot be moved" in n for n in t.norm_notes)
+
+
+def test_reroute_conflicting_surcharges_processed_per_list():
+    raw = {"surcharges": {"status": "conflicting", "quotes": [], "value": [
+        [_sc("REM", "per_kg", 7, condition="remote"), _sc("Customs filing fee", "per_shpt", 150)],
+        [_sc("REM", "per_kg", 8, condition="remote"), _sc("Customs filing fee", "per_shpt", 150)]]}}
+    t = mp.normalize(raw)
+    assert t.surcharges.status == "conflicting"
+    assert [[s.amount for s in lst] for lst in t.surcharges.value] == [[D(7)], [D(8)]]
+    assert t.broker_fee_cny.value == D(150) and t.broker_fee_cny.status == "stated"
+    # lists that become equal collapse
+    raw["surcharges"]["value"][1][0] = _sc("REM", "per_kg", 7, condition="remote")
+    raw["surcharges"]["value"][1][1] = _sc("Customs filing fee", "per_shpt", 160)
+    t = mp.normalize(raw)
+    assert t.surcharges.status == "stated" and t.broker_fee_cny.value == [D(150), D(160)]
+    assert t.broker_fee_cny.status == "conflicting"
+
+
+def test_reroute_spans_only_quotes_naming_the_fee():
+    raw = _fee_raw([_sc("Customs filing fee", "per_shpt", 150), _sc("REM", "per_kg", 7, condition="remote")])
+    raw["surcharges"]["quotes"] = ["Customs filing fee：150 CNY per shpt", "REM：7 CNY per kg"]
+    t = mp.normalize(raw)
+    assert [sp.quote for sp in t.broker_fee_cny.spans] == ["Customs filing fee：150 CNY per shpt"]
+    assert [sp.quote for sp in t.surcharges.spans] == ["Customs filing fee：150 CNY per shpt", "REM：7 CNY per kg"]
+
+
+def test_mapping_words_drop_template_colloquialisms():
+    assert mp._scope("覆盖范围：关税及全部杂税") == "all"       # via 全部
+    assert mp._scope("杂税") is None
+    assert mp._ddp({"is_ddp": True, "scope": "杂税"}) is None
+    assert mp._ddp({"is_ddp": False, "ior": "发货人"}).ior == "unspecified"
+    assert mp._ddp({"is_ddp": False, "ior": "卖家"}).ior == "seller"
+    c = mp._claims([{"type": "FMC", "entity": "E", "jurisdiction": "美方"}], None, [])[0]
+    assert c.jurisdiction is None
+    c = mp._claims([{"type": "FMC", "entity": "E", "jurisdiction": "美国"}], None, [])[0]
+    assert c.jurisdiction == "US"
+    assert mp._currency("RMB 5") == "CNY" and mp._basis("/公斤") == "per_kg" and mp._scope("duty") == "duty"

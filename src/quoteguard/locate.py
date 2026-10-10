@@ -7,6 +7,7 @@ missing: the extraction cannot point at the place where the term is written.
 from __future__ import annotations
 
 import copy
+import re
 
 from .schema import _TERM_CODECS, Field, QuoteTerms
 
@@ -15,19 +16,26 @@ def _squash(s: str) -> str:
     return " ".join(str(s).split())
 
 
+_CJK = r"\u3000-\u303f\u3400-\u9fff\uff00-\uffef"
+_CJK_BEFORE = re.compile(rf" (?=[{_CJK}])")
+_CJK_AFTER = re.compile(rf"(?<=[{_CJK}]) ")
+
+
 def _bare(s: str) -> str:
-    return "".join(str(s).split())
+    """Whitespace runs folded to one space, then dropped where they touch a CJK character; spaces between
+    digits or letters stay ("12 30" does not become "1230")."""
+    return _CJK_AFTER.sub("", _CJK_BEFORE.sub("", _squash(s)))
 
 
 def _found(q: str, haystack: str, bare_haystack: str) -> bool:
-    """Whitespace-normalised substring, or substring once all whitespace is removed (models add or drop
+    """Whitespace-normalised substring, or substring once spaces next to Chinese characters are removed (models add or drop
     spaces between Chinese and Latin text)."""
     return bool(q) and (q in haystack or _bare(q) in bare_haystack)
 
 
 def verify(quote: str, source_text: str) -> bool:
     """True when the fragment occurs in the source text after whitespace normalisation; a fragment that
-    differs from the text only in where spaces sit also counts."""
+    differs from the text only in where spaces next to Chinese characters sit also counts."""
     q = _squash(quote or "")
     src = source_text or ""
     return _found(q, _squash(src), _bare(src))

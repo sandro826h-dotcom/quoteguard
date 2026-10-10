@@ -50,30 +50,43 @@ def _key(s) -> str:
     return " ".join(str(s or "").split()).casefold()
 
 
+# 通用词表，2026-10-10 事先写定，与模板池无关。
+# 下面所有归一化词表由 LEX["dev"] 与这份通用词表构成；LEX["test"] 的措辞不得进入任何归一化词表。
+GENERIC_ZERO = ("不收", "不收取", "不另收", "不设", "为0", "为零")
+GENERIC_CONTINGENT = ("按实际发生", "实报实销", "如产生", "如发生")
+GENERIC_SURCHARGE = {"RES": ("住宅", "residential"), "REM": ("偏远", "remote"),
+                     "OVS": ("超长", "oversize"), "OVW": ("超重", "overweight"),
+                     "INSP": ("查验",)}
+GENERIC_FUEL = ("燃油",)
+GENERIC_CLAIM = ("fmc", "nvocc", "aeo")
+
+
+def _dev_lexicons():
+    return list(LEX["dev"].values())
+
+
 def _build_lexicon():
     names, types, modes = {}, {}, {}
-    for pool in LEX.values():
-        for lx in pool.values():
-            for code, text in lx["names"].items():
-                names[_key(text)] = code
-            for code, text in lx["types"].items():
-                types[_key(text)] = code
-            for code, text in lx["mode"].items():
-                modes[_key(text)] = code
+    for lx in _dev_lexicons():
+        for code, text in lx["names"].items():
+            names[_key(text)] = code
+        for code, text in lx["types"].items():
+            types[_key(text)] = code
+        for code, text in lx["mode"].items():
+            modes[_key(text)] = code
     return names, types, modes
 
 
 SURCHARGE_NAMES, CLAIM_TYPES, MODE_WORDS = _build_lexicon()
-SURCHARGE_KEYWORDS = (
-    ("RES", ("住宅", "私宅", "residential", "home deliver", "home site")),
-    ("REM", ("偏远", "边远", "remote", "outlying")),
-    ("OVS", ("尺寸", "oversize", "over-size")),
-    ("OVW", ("超重", "重量超限", "overweight", "over-weight")),
-    ("INSP", ("查验", "抽检", "inspection")),
-)
+SURCHARGE_KEYWORDS = tuple((code, words) for code, words in GENERIC_SURCHARGE.items())
 CODE_DEFAULTS = {"RES": ("residential", "per_ctn"), "REM": ("remote", "per_kg"),
                  "OVS": ("ctn_longest_side_gt", "per_ctn"), "OVW": ("ctn_kg_gt", "per_ctn"),
                  "INSP": ("always", "per_shpt")}
+# (marker, type) in the order tested; the markers are the generic abbreviations plus dev wordings
+CLAIM_KEYWORDS = (("MOT_NVOCC", ("交通部",)), ("AEO_CN", ("aeo", "高级认证")), ("FMC_OTI", ("fmc",)),
+                  ("NVOCC", ("nvocc", "无船承运")))
+MODE_KEYWORDS = (("express", ("快递", "courier", "express")), ("air", ("空运", "air")),
+                 ("sea", ("海运", "sea", "ocean")))
 UNKNOWN_CLAIM = "UNKNOWN"
 
 
@@ -99,14 +112,9 @@ def claim_type_code(text) -> str:
         return k.upper()
     if k in CLAIM_TYPES:
         return CLAIM_TYPES[k]
-    if "aeo" in k or "高级认证" in k:
-        return "AEO_CN"
-    if "交通" in k or "mot" in k.split():
-        return "MOT_NVOCC"
-    if "fmc" in k or "oti" in k.split():
-        return "FMC_OTI"
-    if "nvo" in k or "无船承运" in k:
-        return "NVOCC"
+    for code, words in CLAIM_KEYWORDS:
+        if any(w in k for w in words):
+            return code
     return UNKNOWN_CLAIM
 
 
@@ -116,12 +124,9 @@ def mode_code(text) -> Optional[str]:
         return k
     if k in MODE_WORDS:
         return MODE_WORDS[k]
-    if any(w in k for w in ("快递", "courier", "express")):
-        return "express"
-    if any(w in k for w in ("空运", "空派", "空", "air")):
-        return "air"
-    if any(w in k for w in ("海运", "海派", "海", "sea", "ocean")):
-        return "sea"
+    for code, words in MODE_KEYWORDS:
+        if any(w in k for w in words):
+            return code
     return None
 
 
@@ -197,8 +202,14 @@ def parse_extraction(text) -> dict:
 
 # ---------------------------------------------------------------- value converters
 ZEROABLE = ("min_kg_shipment", "min_kg_carton", "fuel_pct", "broker_fee_cny", "isf_fee_cny")
-ZERO_QUOTE_WORDS = ("不设", "不收", "免收", "免费", "没有", "无要求", "不限", "无最低", "免除", "waive")
-_ZERO_WORDS = ("无", "不收", "免收", "免费", "没有", "不设", "不限", "无要求", "none", "no", "free", "nil")
+# zero wordings: the generic list plus the zero values of the dev lexicon tables
+_DEV_ZERO_VALUES = tuple(sorted({lx["L"][n + "0"][1] for lx in _dev_lexicons() for n in ZEROABLE if n + "0" in lx["L"]}))
+ZERO_QUOTE_WORDS = tuple(dict.fromkeys(GENERIC_ZERO + tuple(w for w in _DEV_ZERO_VALUES if len(w) > 1)))
+_ZERO_WORDS = tuple(dict.fromkeys(GENERIC_ZERO + _DEV_ZERO_VALUES))
+_ZERO_CLAUSE_KEYS = {"fuel_pct": ("燃油", "fsc"), "broker_fee_cny": ("清关", "customs"),
+                     "isf_fee_cny": ("isf",), "min_kg_shipment": ("最低",), "min_kg_carton": ("最低",)}
+_NEGATED_ZERO = ("不免", "未免")
+_CLAUSE_SPLIT = re.compile(r"[，；、。\n]")
 
 
 def _num(v) -> Optional[Decimal]:
@@ -245,6 +256,18 @@ def _bool(v) -> Optional[bool]:
     return None
 
 
+# 通用词表，2026-10-10 事先写定，与模板池无关：标准术语与单位
+GENERIC_UNITS_TERMS = ("duty", "carton", "公斤", "rmb")
+SCOPE_ALL_WORDS = ("hmf", "全部", "全包", "全税", "全额", "all")
+SCOPE_DUTY_WORDS = ("关税", "tariff", "duty")
+CURRENCY_USD_WORDS = ("usd", "美元", "us$", "$", "美金")
+CURRENCY_CNY_WORDS = ("cny", "rmb", "人民币", "元", "¥", "￥")
+# dev-lexicon wordings of the importer and the jurisdictions, plus fixed generic ones
+IOR_WORDS = {**{lx["ior_w"][c]: c for lx in _dev_lexicons() for c in lx["ior_w"]}, "客户": "seller"}
+JURISDICTION_WORDS = {**{w: c for lx in _dev_lexicons() for c, w in lx["juris"].items()},
+                      "中国": "CN"}
+
+
 def _scope(v) -> Optional[str]:
     """DDP scope from the enum or a wording; None when it maps to nothing."""
     k = _key(v).replace(" ", "").replace("＋", "+")
@@ -252,11 +275,11 @@ def _scope(v) -> Optional[str]:
         return k
     if not k:
         return None
-    if any(w in k for w in ("hmf", "全部", "全包", "全税", "杂税", "全额", "all")):
+    if any(w in k for w in SCOPE_ALL_WORDS):
         return "all"
     if "mpf" in k:
         return "duty_mpf"
-    if any(w in k for w in ("关税", "duty", "tariff")):
+    if any(w in k for w in SCOPE_DUTY_WORDS):
         return "duty"
     return None
 
@@ -265,9 +288,9 @@ def _currency(v, default: Optional[str] = "CNY") -> Optional[str]:
     k = _key(v)
     if k.upper() in CURRENCIES:
         return k.upper()
-    if any(w in k for w in ("usd", "美元", "us$", "$", "美金")):
+    if any(w in k for w in CURRENCY_USD_WORDS):
         return "USD"
-    if any(w in k for w in ("cny", "rmb", "人民币", "元", "¥", "￥")):
+    if any(w in k for w in CURRENCY_CNY_WORDS):
         return "CNY"
     return default
 
@@ -352,15 +375,49 @@ def _basis(v) -> Optional[str]:
     return None
 
 
-_CONT_MARKERS = tuple({lx["cont"].strip(" ，,") for pool in LEX.values() for lx in pool.values()}) + (
-    "实际发生", "发生时", "if incurred", "as incurred", "contingent")
+_CONT_MARKERS = tuple(dict.fromkeys(
+    tuple(lx["cont"].strip(" ，,") for lx in _dev_lexicons()) + GENERIC_CONTINGENT))
+
+
+def _clauses(quote: str) -> list:
+    """Clauses of a quote (split at ，；、。 and line breaks). A clause that begins with a contingency marker
+    continues the previous clause ("fee 30 元，按实际发生收取")."""
+    out = []
+    for c in _CLAUSE_SPLIT.split(quote or ""):
+        if not c.strip():
+            continue
+        if out and any(_key(c).startswith(m.casefold()) for m in _CONT_MARKERS):
+            out[-1] += "，" + c
+        else:
+            out.append(c)
+    return out
 
 
 def _contingent_evidence(name: str, quotes) -> bool:
-    """The quote that carries this fee names it as charged only when incurred."""
+    """A clause that names this fee carries a contingency marker (charged only when incurred)."""
     k = _key(name)
-    own = [q for q in quotes if k and k in _key(q)] or list(quotes)
-    return any(m.casefold() in _key(q) for q in own for m in _CONT_MARKERS)
+    if not k:
+        return False
+    return any(m.casefold() in _key(c) for q in quotes for c in _clauses(q) if k in _key(c)
+               for m in _CONT_MARKERS)
+
+
+def _zero_by_quotes(name: str, quotes) -> bool:
+    """A single clause names the term, states a zero wording and no non-zero number."""
+    keys = _ZERO_CLAUSE_KEYS.get(name)
+    if not keys:
+        return False
+    for q in quotes:
+        for c in _CLAUSE_SPLIT.split(q):
+            k = _key(c)
+            if not any(w in k for w in keys) or not any(w in k for w in ZERO_QUOTE_WORDS):
+                continue
+            if any(w in k for w in _NEGATED_ZERO):
+                continue
+            if any(Decimal(n) != 0 for n in re.findall(r"\d+(?:\.\d+)?", k.replace(",", ""))):
+                continue
+            return True
+    return False
 
 
 def _surcharges(v, notes: list, quotes=()):
@@ -408,7 +465,7 @@ def _ddp(v):
     if is_ddp is None:
         return None
     ior = _key(v.get("ior"))
-    ior = ior if ior in IOR else {"货代": "forwarder", "卖家": "seller", "发货人": "seller", "客户": "seller"}.get(
+    ior = ior if ior in IOR else IOR_WORDS.get(
         ior, "unspecified")
     if not is_ddp:
         return DDP(False, "duty", "actual", None, ior)
@@ -438,8 +495,7 @@ def _claims(v, entity: Optional[str], notes: list):
             notes.append(f"unknown claim type: {text!r}")
         ent = str(c.get("entity") or "").strip() or entity or "未注明"
         jur = _key(c.get("jurisdiction")).upper()
-        jur = jur if jur in ("US", "CN") else {"美国": "US", "美方": "US", "中国": "CN", "国内": "CN",
-                                              "中国内地": "CN"}.get(str(c.get("jurisdiction") or "").strip())
+        jur = jur if jur in ("US", "CN") else JURISDICTION_WORDS.get(str(c.get("jurisdiction") or "").strip())
         reg = c.get("reg_no")
         out.append(Claim(code, ent, str(reg).strip() if reg not in (None, "", "null") else None, jur))
     return out
@@ -495,8 +551,7 @@ def _field(name: str, raw, entity, notes) -> Field:
     status, value, quotes = _entry(raw)
     if status not in ("stated", "implied", "missing", "conflicting"):
         status = "stated" if value is not None else "missing"
-    if status != "missing" and value is None and name in ZEROABLE and any(
-            w in q for q in quotes for w in ZERO_QUOTE_WORDS):
+    if status != "missing" and value is None and name in ZEROABLE and _zero_by_quotes(name, quotes):
         value = 0      # "stated" with no value and a quote saying the fee or minimum does not apply
     if status == "missing" or value is None:
         return Field(None, "missing", [])
@@ -508,7 +563,7 @@ def _field(name: str, raw, entity, notes) -> Field:
             if name in _LIST_VALUED and not all(isinstance(x, (list, dict)) or name in ("includes", "excludes")
                                                 for x in value):
                 raise ValueError("conflicting list-valued term without two lists")
-            if name in ZEROABLE and any(w in q for q in quotes for w in ZERO_QUOTE_WORDS):
+            if name in ZEROABLE and _zero_by_quotes(name, quotes):
                 value = [0 if x is None else x for x in value]     # a null side that the quote reads as "none"
             vals = [_convert(name, x, entity, notes, quotes) for x in value]
             if any(x is None for x in vals):
@@ -526,56 +581,106 @@ def _field(name: str, raw, entity, notes) -> Field:
         return Field(None, "missing", [])
 
 
-_FEE_ROUTES = (("fuel_pct", ("燃油", "fsc", "fuel")),
-               ("broker_fee_cny", ("报关", "清关", "customs filing", "customs clearance", "customs broker", "broker",
-                                 "clearance")),
+_FEE_ROUTES = (("fuel_pct", ("燃油", "fsc")),
+               ("broker_fee_cny", ("进口清关", "清关", "customs filing", "customs clearance", "customs broker")),
                ("isf_fee_cny", ("isf",)))
+_NOT_A_FEE_TERM = ("延误", "仓储", "storage", "demurrage", "detention", "delay")
 
 
-def _reroute_fees(fields: dict, notes: list) -> None:
+def _route_of(name):
+    k = _key(name)
+    if any(w in k for w in _NOT_A_FEE_TERM):
+        return None
+    return next((t for t, words in _FEE_ROUTES if any(w in k for w in words)), None)
+
+
+def _target_values(f: Field) -> list:
+    if f.status == "missing":
+        return []
+    return list(f.value) if f.status == "conflicting" else [f.value]
+
+
+def _reroute_fees(fields: dict, notes: list, fx=None) -> None:
     """Fuel, customs filing and ISF fees that the model listed among the surcharges go to their own terms.
 
-    Left in the surcharge list they would be charged twice next to the dedicated term. An entry whose term
-    is already stated is dropped; one that cannot be moved (other basis or currency) stays.
+    Left in the surcharge list they would be charged twice next to the dedicated term. The entry leaves the
+    list when it can be moved (fuel: percentage of freight; filing and ISF: per shipment, always, CNY or USD
+    converted at the snapshot rate fx). When the term is already given with the same value the entry is
+    merged into it; with another value the term becomes conflicting [given, moved]. An entry that cannot be
+    moved stays a surcharge and is noted. A conflicting surcharge term is processed list by list.
     """
     f = fields["surcharges"]
-    if f.status not in ("stated", "implied"):
+    if f.status not in ("stated", "implied", "conflicting"):
         return
-    keep = []
-    for sc in f.value:
-        route = None
-        if surcharge_code(sc.code) is None:
-            k = _key(sc.code)
-            route = next((t for t, words in _FEE_ROUTES if any(w in k for w in words)), None)
-        movable = ((route == "fuel_pct" and sc.basis == "pct_freight")
-                   or (route in ("broker_fee_cny", "isf_fee_cny") and sc.basis == "per_shpt"
-                       and sc.currency == "CNY" and sc.condition == "always"))
-        if not movable:
-            keep.append(sc)
-            continue
+    lists = [list(x) for x in f.value] if f.status == "conflicting" else [list(f.value)]
+    moves = {}          # route -> [(list index, entry, amount)]
+    for li, lst in enumerate(lists):
+        for sc in lst:
+            route = _route_of(sc.code) if surcharge_code(sc.code) is None else None
+            if route is None:
+                continue
+            amount = None
+            if route == "fuel_pct":
+                amount = sc.amount if sc.basis == "pct_freight" else None
+            elif sc.basis == "per_shpt" and sc.condition == "always":
+                if sc.currency == "CNY":
+                    amount = sc.amount
+                elif sc.currency == "USD" and fx is not None:
+                    amount = sc.amount * fx
+            if amount is None:
+                notes.append(f"surcharge {sc.code!r} looks like {route} but cannot be moved; kept as surcharge")
+                continue
+            moves.setdefault(route, []).append((li, sc, amount))
+    removed = set()          # (list index, id of entry)
+    for route, items in moves.items():
         target = fields[route]
-        if target.status == "missing":
-            fields[route] = Field(sc.amount, "stated", list(f.spans))
-            notes.append(f"surcharge {sc.code!r} moved to {route}")
+        have = _target_values(target)
+        vals = list(have)
+        for _li, _sc, amount in items:
+            if amount not in vals:
+                vals.append(amount)
+        if len(vals) > 2:
+            notes.append(f"{route}: more than two distinct values, entries kept as surcharges")
+            continue
+        quotes = []
+        for _li, sc, _a in items:
+            kn = _key(sc.code)
+            quotes += [sp for sp in f.spans if kn and kn in _key(sp.quote)]
+        spans = list(target.spans) + [sp for sp in quotes if all(sp.quote != t.quote for t in target.spans)]
+        if len(vals) == 1:
+            fields[route] = Field(vals[0], target.status if have else "stated", spans)
         else:
-            notes.append(f"surcharge {sc.code!r} dropped: {route} is already given")
-    fields["surcharges"] = Field(keep, f.status, f.spans)
+            fields[route] = Field(vals, "conflicting", spans)
+        for li, sc, _a in items:
+            removed.add((li, id(sc)))
+            how = "moved to" if not have else "merged into" if len(vals) == len(have) else "conflicts with"
+            notes.append(f"surcharge {sc.code!r} {how} {route}")
+    if not removed:
+        return
+    kept = [[sc for sc in lst if (li, id(sc)) not in removed] for li, lst in enumerate(lists)]
+    if f.status == "conflicting":
+        if _canon_value("surcharges", kept[0]) == _canon_value("surcharges", kept[1]):
+            fields["surcharges"] = Field(kept[0], "stated", f.spans)
+        else:
+            fields["surcharges"] = Field(kept, "conflicting", f.spans)
+    else:
+        fields["surcharges"] = Field(kept[0], f.status, f.spans)
 
 
-def normalize(parsed: dict, mode_hint: Optional[str] = None) -> QuoteTerms:
+def normalize(parsed: dict, mode_hint: Optional[str] = None, fx=None) -> QuoteTerms:
     """QuoteTerms from a parsed extraction.
 
     Status is kept as given; numbers become Decimal; a fuel_pct above 1 is read as a percentage; surcharge
     names and claim wordings map to the internal codes (unmapped surcharges keep their basis and amount,
     unmapped claims get the type UNKNOWN); a term that cannot be read becomes missing. A missing mode is
-    filled from mode_hint as implied. The result carries quote_entity and norm_notes as plain attributes.
+    filled from mode_hint as implied. fx (CNY per USD) lets a USD filing or ISF fee listed among the surcharges move to its own term. The result carries quote_entity and norm_notes as plain attributes.
     """
     parsed = parsed if isinstance(parsed, dict) else {}
     notes: list = []
     _, ent_val, _ = _entry(parsed.get("quote_entity"))
     entity = str(ent_val).strip() if isinstance(ent_val, str) and ent_val.strip() else None
     fields = {n: _field(n, parsed.get(n), entity, notes) for n in TERM_NAMES}
-    _reroute_fees(fields, notes)
+    _reroute_fees(fields, notes, fx)
     if fields["mode"].status == "missing" and mode_hint in MODES:
         fields["mode"] = Field(mode_hint, "implied", [])
     terms = QuoteTerms(**fields)
@@ -584,7 +689,7 @@ def normalize(parsed: dict, mode_hint: Optional[str] = None) -> QuoteTerms:
     return terms
 
 
-def _as_terms(x, mode_hint):
+def _as_terms(x, mode_hint, fx=None):
     """(QuoteTerms, error or None) from response text, parsed dict or QuoteTerms."""
     if isinstance(x, QuoteTerms):
         return copy.deepcopy(x), None
@@ -592,7 +697,7 @@ def _as_terms(x, mode_hint):
         parsed = parse_extraction(x) if isinstance(x, str) else x
         if not isinstance(parsed, dict):
             raise ValueError("extraction is not an object")
-        return normalize(parsed, mode_hint), None
+        return normalize(parsed, mode_hint, fx), None
     except ValueError as e:
         return normalize({}, mode_hint), str(e)
 
@@ -735,12 +840,12 @@ def _gaps(terms: QuoteTerms, mode: str) -> list:
     return [n for n in required_fields(mode) if getattr(terms, n).status == "missing"]
 
 
-def _collect(task_input, extractions, mode):
+def _collect(task_input, extractions, mode, fx=None):
     """{cand_id: (QuoteTerms, error)} for every quote of the task."""
     out = {}
     for q in task_input.quotes:
         if q.cand_id in extractions:
-            out[q.cand_id] = _as_terms(extractions[q.cand_id], mode)
+            out[q.cand_id] = _as_terms(extractions[q.cand_id], mode, fx)
         else:
             out[q.cand_id] = (normalize({}, mode), "no extraction")
     return out
@@ -786,7 +891,7 @@ def _reasons(terms, info, mode) -> list:
 
 def _stage_one(task, task_input, extractions, snapshot, freight_floor, registry):
     mode = task.shipment.mode
-    collected = _collect(task_input, extractions, mode)
+    collected = _collect(task_input, extractions, mode, snapshot.fx_cny_per_usd())
     terms, down = {}, {}
     for q in task_input.quotes:
         t, _err = collected[q.cand_id]
@@ -847,7 +952,7 @@ def _parse_status(out, collected):
 
 def _run_ladder(task, task_input, extractions, snapshot, gates, freight_floor, registry, method, config_id, calls):
     mode = task.shipment.mode
-    collected = _collect(task_input, extractions, mode)
+    collected = _collect(task_input, extractions, mode, snapshot.fx_cny_per_usd())
     terms = {cid: t for cid, (t, _e) in collected.items()}
     info = _assess(task, terms, snapshot, freight_floor, registry, gates)
     out = _new_output(task_input, method, config_id, calls)
@@ -969,7 +1074,7 @@ def run_m4(task, task_input, extractions, snapshot, structures, freight_floor, r
         cid = q.cand_id
         if cid not in trig or cid not in review_extractions:
             continue
-        t2, err = _as_terms(review_extractions[cid], mode)
+        t2, err = _as_terms(review_extractions[cid], mode, snapshot.fx_cny_per_usd())
         if err:
             review_errors[cid] = err
             continue
