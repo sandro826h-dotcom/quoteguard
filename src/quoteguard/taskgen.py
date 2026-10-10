@@ -183,8 +183,9 @@ def _run(cmd) -> Optional[str]:
 
 
 def environment_info() -> dict:
-    """Git commit, whether the working tree is clean, and tool versions (None when unavailable)."""
-    status = _run(["git", "status", "--porcelain"])
+    """Git commit, whether the generator's code and inputs are unchanged from that commit, and tool
+    versions (None when unavailable). Output directories (data/tasks, data/gold) are not checked."""
+    status = _run(["git", "status", "--porcelain", "--", "src", "configs", "data/taskgen", "data/params"])
     return {"git_commit": _run(["git", "rev-parse", "HEAD"]),
             "git_clean": None if status is None else status == "",
             "python": platform.python_version(), "pyyaml": yaml.__version__,
