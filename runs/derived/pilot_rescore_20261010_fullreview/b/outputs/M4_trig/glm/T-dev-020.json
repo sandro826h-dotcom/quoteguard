@@ -6,12 +6,13 @@
     "pilotb|extract|glm|T-dev-020|extract|C2|r1",
     "pilotb|extract|glm|T-dev-020|extract|C3|r1",
     "pilotb|extract|glm|T-dev-020|extract|C4|r1",
-    "pilotb|extract|kimi|T-dev-020|extract|C1|r1"
+    "pilotb|extract|kimi|T-dev-020|extract|C1|r1",
+    "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0"
   ],
   "choice": "C4",
   "config_id": "glm",
   "cost": {
-    "CNY": 0.18405350000000004,
+    "CNY": 0.20590250000000004,
     "USD": 0.0
   },
   "cost_breakdown": {
@@ -31,6 +32,13 @@
     },
     "review_calls": [
       "pilotb|extract|kimi|T-dev-020|extract|C1|r1"
+    ],
+    "review_transcription": {
+      "CNY": 0.021849,
+      "USD": 0.0
+    },
+    "review_transcription_calls": [
+      "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0"
     ],
     "transcription_booking": "full",
     "transcription_calls": [

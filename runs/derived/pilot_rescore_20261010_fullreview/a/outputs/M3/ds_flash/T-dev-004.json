@@ -29,6 +29,11 @@
       "USD": 0.0
     },
     "review_calls": [],
+    "review_transcription": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "review_transcription_calls": [],
     "transcription_booking": "full",
     "transcription_calls": [
       "pilota|transcribe|ds_flash|T-dev-004|transcribe|C1|r0"

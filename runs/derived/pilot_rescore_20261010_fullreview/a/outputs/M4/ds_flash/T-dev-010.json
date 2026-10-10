@@ -37,6 +37,11 @@
       "pilota|extract|qwen_plus|T-dev-010|extract|C3|r1",
       "pilota|extract|qwen_plus|T-dev-010|extract|C4|r1"
     ],
+    "review_transcription": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "review_transcription_calls": [],
     "transcription_booking": "full",
     "transcription_calls": [],
     "transcription_share": {

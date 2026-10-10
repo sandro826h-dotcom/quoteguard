@@ -32,7 +32,7 @@ from .util import atomic_json, canonical_json, sha256_file
 
 METHODS = ("M0", "M1", "M2", "M3", "M4")
 PIPELINE = ("M2", "M3", "M4", "M4_trig")
-VARIANTS = ("M4_trig",)     # derived offline from the observations of M4; no requests of their own
+VARIANTS = metrics.VARIANT_METHODS     # derived offline from the observations of M4; no requests of their own
 ASSEMBLE_METHODS = METHODS + VARIANTS
 DEFAULT_SEED = 20261010
 EXTRACT_REPEAT = 1
@@ -268,8 +268,9 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
     def finish(o, method, config, task, ti_calls, direct, review, breakdown_extra=None):
         trans = breakdown_extra["trans"]
         share = dict(trans["total"])   # every configuration books the full transcription cost
-        total = _add(_add(_add({}, direct["cost"]), review["cost"]), share)
-        o["calls"] = list(trans["calls"]) + list(direct["calls"]) + list(review["calls"])
+        rt = review.get("trans") or {"cost": {}, "calls": []}
+        total = _add(_add(_add(_add({}, direct["cost"]), review["cost"]), rt["cost"]), share)
+        o["calls"] = list(trans["calls"]) + list(direct["calls"]) + list(review["calls"]) + list(rt["calls"])
         o["cost"] = _cost_dict(total)
         o["config_id"] = config
         o["cost_breakdown"] = {
@@ -277,7 +278,8 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
             "transcription_total": _cost_dict(trans["total"]), "transcription_shared_by": trans["shared_by"],
             "transcription_share": _cost_dict(share), "transcription_booking": "full",
             "direct_calls": direct["calls"],
-            "review_calls": review["calls"], "transcription_calls": trans["calls"]}
+            "review_calls": review["calls"], "review_transcription": _cost_dict(rt["cost"]),
+            "review_transcription_calls": rt["calls"], "transcription_calls": trans["calls"]}
         p = out / "outputs" / method / config / f"{task.task_id}.json"
         atomic_json(p, _jsonable(o))
 
@@ -357,7 +359,14 @@ def assemble(tasks_dir, gold_dir, batch_dirs, configs, out, *, methods=ASSEMBLE_
                                     ctx.value_sets, config_id=c, calls=ekeys, review_config_id=partner,
                                     review_scope="all" if m == "M4" else "triggered", **kw)
                     used = [pkeys[cid] for cid in res["diagnostics"]["review"]["reviewed"] if cid in pkeys]
-                    review = {"cost": collect_cost(obs, used), "calls": used}
+                    # the reviewer's own transcription of the reviewed image quotes; keys shared with this
+                    # configuration's transcription (same vision model) are already booked there
+                    own = set(trans["calls"])
+                    preqs = [r for r in ml.transcription_requests(ti0, partner, ctx.models, experiment=experiment,
+                                                                  repeat=TRANSCRIBE_REPEAT, seed=seed)
+                             if r["cand_id"] in res["diagnostics"]["review"]["reviewed"]
+                             and r["run_key"] not in own]
+                    review = {"cost": collect_cost(obs, used), "calls": used, "trans": collect(preqs)}
                 finish(res, m, c, t, None, direct, review, extra)
                 n_out += 1
     missing = sorted(set(missing))

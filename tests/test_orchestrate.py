@@ -316,3 +316,46 @@ def test_primary_endpoints_ignore_m4_trig_outputs(split, tmp_path):
     assert metrics.endpoint3(rows, pairs=pairs, B=50) == metrics.endpoint3(base, pairs=pairs, B=50)
     agg = {(a["method"], a["config_id"]) for a in sc["aggregate_overall"]}
     assert ("M4_TRIG", "ds_flash") in agg
+
+
+def test_reviewer_transcription_cost_is_booked_for_reviewed_image_quotes(split, tmp_path):
+    configs = ["ds_flash", "qwen_plus"]
+    ba, bb, res = full_flow_parsing(split, tmp_path, configs, orch.ASSEMBLE_METHODS)
+    obs = obs_of(ba, bb)
+    tid = split["image_task"]
+    models = load_models()
+    for c, partner in (("ds_flash", "qwen_plus"), ("qwen_plus", "ds_flash")):
+        pvis = models[partner].vision_config_id
+        assert pvis != models[c].vision_config_id
+        rd = lambda m: json.loads((tmp_path / "outputs" / m / c / f"{tid}.json").read_text())
+        m4, tr = rd("M4"), rd("M4_trig")
+        cb = m4["cost_breakdown"]
+        assert cb["review_transcription_calls"]
+        assert all(obs[k]["config_id"] == pvis and obs[k]["stage"] == "transcribe" for k in cb["review_transcription_calls"])
+        assert set(cb["review_transcription_calls"]).isdisjoint(cb["transcription_calls"])
+        exp = total(cb["transcription_calls"] + cb["direct_calls"] + cb["review_calls"]
+                    + cb["review_transcription_calls"], obs)
+        for cur in ("USD", "CNY"):
+            assert m4["cost"][cur] == pytest.approx(exp.get(cur, 0.0))
+        assert set(tr["cost_breakdown"]["review_transcription_calls"]) <= set(cb["review_transcription_calls"])
+        assert set(m4["calls"]) >= set(cb["review_transcription_calls"])
+        # tasks without image quotes have no reviewer transcription
+        other = [t for t in split["ids"] if t != tid][0]
+        o = json.loads((tmp_path / "outputs" / "M4" / c / f"{other}.json").read_text())
+        assert o["cost_breakdown"]["review_transcription_calls"] == []
+
+
+def test_variant_names_are_recognised_by_metrics_and_stay_out_of_primary_endpoints(split, tmp_path):
+    from quoteguard import metrics
+    assert orch.VARIANTS == metrics.VARIANT_METHODS
+    configs = ["ds_flash", "qwen_plus"]
+    full_flow_parsing(split, tmp_path, configs, orch.ASSEMBLE_METHODS)
+    for v in metrics.VARIANT_METHODS:
+        assert v.upper() in metrics.PIPELINE_METHODS
+        assert (tmp_path / "outputs" / v).is_dir()
+    sc = orch.score_all(tmp_path / "outputs", split["gold"], split["tasks"], tmp_path / "scores", B=20)
+    names = {r["method"] for r in sc["rows"]}
+    assert {v.upper() for v in metrics.VARIANT_METHODS} <= names
+    assert all(metrics._index(sc["rows"], v.upper()) for v in metrics.VARIANT_METHODS)
+    assert set(metrics._index(sc["rows"], "M4")) .isdisjoint({}) and all(
+        r["method"] == "M4" for r in metrics._index(sc["rows"], "M4").values())

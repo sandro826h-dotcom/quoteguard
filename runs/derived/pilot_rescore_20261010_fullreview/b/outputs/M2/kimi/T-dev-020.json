@@ -29,6 +29,11 @@
       "USD": 0.0
     },
     "review_calls": [],
+    "review_transcription": {
+      "CNY": 0.0,
+      "USD": 0.0
+    },
+    "review_transcription_calls": [],
     "transcription_booking": "full",
     "transcription_calls": [
       "pilotb|transcribe|kimi|T-dev-020|transcribe|C1|r0"

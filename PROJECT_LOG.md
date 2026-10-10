@@ -130,3 +130,17 @@
 ### 未决
 - 盲标包内的 Q02 是补遮前版本，交给标注人前由用户替换为仓库新版 data/seeds/anonymous/Q02.txt。
 - 下一步从交接记录第 2 步继续：用 dev_v3 配置与修复后的管线重新组装并评分全部预试验观测。
+
+## 2026-10-10 预试验重算、复核范围与 M1 上限决定
+### 已完成
+- 第 2 步（离线重算，无模型调用）：用修复后的管线与 dev_v3 配置重新组装、评分两组预试验 40 条观测（runs/derived/pilot_rescore_20261010，scripts/rescore_pilot.py）。抽取 24/24 解析成功；M0/M1 8 次中 1 次失败（Kimi M0 把选项写成货代代号）；无 finish_reason=length，Kimi M1 用到 7618/8000；GLM reasoning_tokens 按 raw_body 重算约 2；出处降级 0；组 A 字段差异 18→17、M4 误报 3→2、M2 核价有误差的候选 4→4。金标签含风险的 14 个报价中 11 个因首次抽取漏抽未触发复核（qwen-plus 6/6）。
+- 第 3 步决定（已写入 AIC_最终方案.md 第四节第 5 条、E3，方法实现规格.md 第五节）：
+  - M4 对全部报价做跨模型复核。复核复用复核方已有抽取，不增加请求；成本计入复核抽取与图片报价的复核方转写费用。旧的触发式复核作为离线变体 M4_trig（E3 对照，不进主终点）。
+  - M1 输出上限 12000，提示词不变。
+- 代码（fdfe84b 及后续补丁）：run_m4 的 review_scope、输出 review_triggers；assemble 离线生成 M4_trig；metrics.VARIANT_METHODS；成本单列 review_transcription。reviewer 审查通过（无严重问题），一般意见已修。全量 620 项测试通过。
+- dev 预试验对照（runs/derived/pilot_rescore_20261010_fullreview，6 份 M4 输出，只检查流程）：决策正确 M4 6/6、M4_trig 4/6；有风险未复核 0/16 对 11/16；三类误报 16 对 6。
+
+### 未决
+- 全部复核使误报增多；不在预试验上调参，正式结果按第七节“M4 风险标记精确率 < 0.7”规则处理。
+- M1 提示词哈希含 max_tokens，预试验 M1 观测不能按新上限重组装，M1 在正式实验按新上限运行。
+- 下一步：第 4 步写冻结协议 docs/protocol/。

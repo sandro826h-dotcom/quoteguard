@@ -11,12 +11,13 @@
     "pilota|extract|qwen_plus|T-dev-004|extract|C1|r1",
     "pilota|extract|qwen_plus|T-dev-004|extract|C2|r1",
     "pilota|extract|qwen_plus|T-dev-004|extract|C3|r1",
-    "pilota|extract|qwen_plus|T-dev-004|extract|C4|r1"
+    "pilota|extract|qwen_plus|T-dev-004|extract|C4|r1",
+    "pilota|transcribe|qwen_vl|T-dev-004|transcribe|C1|r0"
   ],
   "choice": null,
   "config_id": "ds_flash",
   "cost": {
-    "CNY": 0.182232,
+    "CNY": 0.196968,
     "USD": 0.00671
   },
   "cost_breakdown": {
@@ -39,6 +40,13 @@
       "pilota|extract|qwen_plus|T-dev-004|extract|C2|r1",
       "pilota|extract|qwen_plus|T-dev-004|extract|C3|r1",
       "pilota|extract|qwen_plus|T-dev-004|extract|C4|r1"
+    ],
+    "review_transcription": {
+      "CNY": 0.014736,
+      "USD": 0.0
+    },
+    "review_transcription_calls": [
+      "pilota|transcribe|qwen_vl|T-dev-004|transcribe|C1|r0"
     ],
     "transcription_booking": "full",
     "transcription_calls": [
