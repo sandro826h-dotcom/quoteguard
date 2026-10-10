@@ -22,6 +22,8 @@ FILES = [
     "docs/plan/真实报价集_口径与标注规范.md",
     "src/quoteguard/prompts.py",
     "configs/models.yaml",
+    "configs/rates.json",
+    "docs/protocol/预算估算.md",
     "data/taskgen/structures.yaml",
     "data/taskgen/value_sets.yaml",
     "data/taskgen/registry_synthetic.yaml",
@@ -29,6 +31,7 @@ FILES = [
     "data/params/tariff_snapshot_2026-10-09.json",
     "data/seeds/units.json",
     "data/seeds/blind_subset.json",
+    "data/seeds/unit_assets.json",
 ]
 ROW = re.compile(r"^\| `([^`]+)` \| `([0-9a-f]{64})` \|$")
 
@@ -47,6 +50,8 @@ def src_tree_hash() -> str:
 
 def current() -> dict:
     out = {f: sha256(ROOT / f) for f in FILES}
+    for p in sorted((ROOT / "data" / "seeds" / "anonymous").iterdir()):
+        out[p.relative_to(ROOT).as_posix()] = sha256(p)
     out["src/quoteguard/*.py"] = src_tree_hash()
     return out
 
@@ -63,8 +68,11 @@ def main() -> int:
         for f in diff:
             print(f"changed: {f}")
         return 1 if diff else 0
+    if RECORD.exists():
+        print(f"{RECORD} exists; the frozen record is never rewritten", file=sys.stderr)
+        return 1
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
-    dirty = subprocess.run(["git", "status", "--porcelain", "--", *FILES, "src"], cwd=ROOT,
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", *FILES, "src", "data/seeds"], cwd=ROOT,
                            capture_output=True, text=True).stdout.strip()
     if dirty:
         print("uncommitted changes in frozen files:\n" + dirty, file=sys.stderr)
