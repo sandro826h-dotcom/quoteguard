@@ -480,21 +480,26 @@ class RenderSpec:
         t = self.terms
         inc, exc, ddp = t.includes, t.excludes, t.ddp
         known = ddp.status in ("stated", "implied") and isinstance(ddp.value, DDP)
+        # HMF exists for sea shipments only; air and express quotes never list it
+        mode = t.mode.value if t.mode.status in ("stated", "implied") else None
+        universe = set(TAXES) if mode not in ("air", "express") else set(TAXES) - {"HMF"}
         for nm, f in (("includes", inc), ("excludes", exc)):
             if f.status not in ("stated", "implied") or f.value is None:
                 continue
             tx = _tax_set(f.value)
+            if tx - universe:
+                raise ValueError(f"{nm} lists {sorted(tx - universe)} for a {mode} quote")
             if not known:
                 if tx:
                     raise ValueError(f"{nm} lists taxes {sorted(tx)} but ddp is missing or conflicting")
                 continue
             d = ddp.value
-            want = _SCOPE_TAXES[d.scope] if d.is_ddp else set()
+            want = (_SCOPE_TAXES[d.scope] & universe) if d.is_ddp else set()
             if nm == "includes" and tx != want:
                 raise ValueError(f"includes taxes {sorted(tx)} do not match ddp.scope (expected {sorted(want)})")
             if nm == "excludes":
-                if not d.is_ddp and tx != set(TAXES):
-                    raise ValueError("excludes must list 关税, MPF and HMF when the quote is not DDP")
+                if not d.is_ddp and tx != universe:
+                    raise ValueError(f"excludes must list {sorted(universe)} when the quote is not DDP")
                 if d.is_ddp and tx & want:
                     raise ValueError("excludes lists a tax that ddp.scope includes")
 

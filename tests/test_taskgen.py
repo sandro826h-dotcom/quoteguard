@@ -229,6 +229,23 @@ def test_registry_pools_disjoint_and_model_snapshot_clean(inp):
         tg._validate_registry(bad)
 
 
+def test_registry_values_are_strings(inp):
+    reg = inp["registry"]
+    for pool in ("dev", "test"):
+        for r in reg[pool]["fmc"]:
+            assert isinstance(r["oti_type"], str) and r["oti_type"] in ("NVOCC", "OFF")
+            assert isinstance(r["status"], str)
+        for r in reg[pool]["cn"]:
+            assert r["cert_type"] in ("mot_nvocc_filing", "aeo_advanced") and isinstance(r["status"], str)
+    assert any(r["oti_type"] == "OFF" for r in reg["dev"]["fmc"])
+    bad = copy.deepcopy(reg)
+    bad["dev"]["fmc"][6]["oti_type"] = False          # what an unquoted OFF becomes
+    with pytest.raises(ValueError):
+        tg._validate_registry(bad)
+    import yaml as _y
+    assert _y.safe_load("a: OFF") == {"a": False}
+
+
 def test_unregistered_mot_scenario_is_insufficient(inp):
     reg = tg.model_registry_snapshot(inp["registry"], "dev")
     ent = inp["registry"]["generator_aux"]["dev"]["unregistered_entities"][0]
@@ -247,17 +264,24 @@ def test_included_excluded_taxes_follow_scope(dev, inp):
         inc, exc = tg._quote_lists(ddp)
         assert [t for t in tg.TAXES if t in " ".join(inc)] == inc_t
         assert [t for t in tg.TAXES if t in " ".join(exc)] == exc_t
+    for mode in ("air", "express"):          # HMF belongs to sea quotes only
+        assert tg._quote_lists(DDP(True, "all", "included"), mode) == (["头程运费", "目的港清关", "关税", "MPF"], ["查验费", "仓储费"])
+        assert tg._quote_lists(DDP(False, "duty", "actual"), mode)[1] == ["查验费", "仓储费", "关税", "MPF"]
     n_stated = n_gap = 0
     for t, g in zip(*dev):
         for c in t.candidates:
             terms = QuoteTerms.from_dict(c.presentation["terms"])
+            if t.shipment.mode != "sea":
+                for f in ("includes", "excludes"):
+                    assert "HMF" not in " ".join(getattr(terms, f).value or [])
             tax_text = lambda f: [x for x in tg.TAXES if x in " ".join(getattr(terms, f).value or [])]
             if terms.ddp.status == "stated":
                 n_stated += 1
                 d = terms.ddp.value
-                want = tg.SCOPE_TAXES[d.scope] if d.is_ddp else set()
+                universe = set(tg.TAXES) if t.shipment.mode == "sea" else set(tg.TAXES) - {"HMF"}
+                want = (tg.SCOPE_TAXES[d.scope] & universe) if d.is_ddp else set()
                 assert set(tax_text("includes")) == want
-                assert set(tax_text("excludes")) == set(tg.TAXES) - want
+                assert set(tax_text("excludes")) == universe - want
             else:
                 n_gap += 1
                 assert tax_text("includes") == [] and tax_text("excludes") == []
@@ -334,7 +358,7 @@ def test_render_check_runs_on_gap_candidates(dev, monkeypatch):
     monkeypatch.setattr(T, "MAX_ATTEMPTS", 300)
     stats = {}
     with pytest.raises(RuntimeError):
-        T._make_raw("conflict", (False, "forbid"), 123, ctx, "dev", tg.DEFAULT_TEMPLATE_POOL, stats)
+        T._make_raw("conflict", (False, "forbid", 1), 123, ctx, "dev", tg.DEFAULT_TEMPLATE_POOL, stats)
     assert stats["conflict"]["render_check_failures"] > 0
     assert stats["conflict"]["attempts"] == 300
 
@@ -348,18 +372,45 @@ def test_ddp_quota_in_gap_layers(dev, inp, snap):
             n_ddp_dec = sum(any(f.endswith(".ddp") for f in g.followup_gap_ids) for _, g in dec)
             assert n_ddp_dec <= 0.4 * len(dec)
             has_ddp_gap = lambda t: any(c.presentation["terms"]["ddp"]["status"] != "stated" for c in t.candidates)
-            assert sum(has_ddp_gap(t) for t, _ in non) == tg.layer_plan(len(items)).count((False, "require"))
-            assert n_ddp_dec == tg.layer_plan(len(items)).count((True, "require"))
+            assert sum(has_ddp_gap(t) for t, _ in non) == sum(1 for x in tg.layer_plan(len(items)) if x[:2] == (False, "require"))
+            assert n_ddp_dec == sum(1 for x in tg.layer_plan(len(items)) if x[:2] == (True, "require"))
     check(list(zip(*dev)))
     tasks, golds = tg.generate(6, "dev", 20261010, **gen_kw(inp, snap))
     check(list(zip(tasks, golds)))
 
 
 def test_layer_plan_quotas():
-    assert [tg.layer_plan(n).count((True, "require")) for n in (6, 12)] == [1, 3]
-    assert [tg.layer_plan(n).count((False, "require")) for n in (6, 12)] == [1, 2]
+    plan = lambda n, d, pol: sum(1 for x in tg.layer_plan(n) if x[:2] == (d, pol))
+    assert [plan(n, True, "require") for n in (6, 12)] == [1, 3]
+    assert [plan(n, False, "require") for n in (6, 12)] == [1, 2]
     for n in (1, 2, 3, 6, 12):
         assert len(tg.layer_plan(n)) == n
+
+
+def gap_count(g):
+    return sum(len(c["conflict_ids"]) + len(c["missing_ids"]) for c in g.per_cand.values())
+
+
+def test_gap_count_distribution_equal_for_decisive_and_not(inp, snap):
+    from collections import Counter
+    tasks, golds = tg.generate(12, "dev", 5, **gen_kw(inp, snap))
+    for layer in ("conflict", "insufficient"):
+        dec, non = Counter(), Counter()
+        for t, g in zip(tasks, golds):
+            if t.layer == layer:
+                (dec if g.decision["type"] == "ask" else non)[gap_count(g)] += 1
+        assert set(dec) | set(non) <= {1, 2}
+        assert dict(dec) == {1: 4, 2: 4} and dict(non) == {1: 2, 2: 2}
+    for n in (1, 2, 3, 6, 12):
+        plan = tg.layer_plan(n)
+        assert all(x[2] in (1, 2) for x in plan)
+    assert [x[2] for x in tg.layer_plan(6) if x[0]] == [1, 2, 1, 2]
+
+
+def test_gap_count_in_dev_set(dev):
+    for layer in ("conflict", "insufficient"):
+        counts = [(g.decision["type"], gap_count(g)) for _, g in by_layer(dev, layer)]
+        assert sorted(counts) == [("ask", 1), ("ask", 1), ("ask", 2), ("ask", 2), ("choose", 1), ("choose", 2)]
 
 
 def test_hidden_fees_have_positive_amount(dev):

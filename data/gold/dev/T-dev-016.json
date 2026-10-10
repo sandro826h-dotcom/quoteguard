@@ -1,0 +1,622 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "15692.52",
+      "sha256": "a9ad98198e31d2f6828f66d51278ec40b19d21f8fcc399c15d00db86daef5cf4",
+      "xlsx_total_cny": "15692.52"
+    },
+    "C2": {
+      "py_total_cny": "11133.07",
+      "sha256": "e76965d6f8308a631bf7899eaed8e4dc8fced573416b68271037850252c2cc89",
+      "xlsx_total_cny": "11133.07"
+    },
+    "C3": {
+      "py_total_cny": "13881.54",
+      "sha256": "6b4384051441d860484e0cf726f4b05659f623ff5d0fb1284981a34beb879ed2",
+      "xlsx_total_cny": "13881.54"
+    },
+    "C4": {
+      "py_total_cny": "12927.20",
+      "sha256": "9a1a159e0f0c1ed42da864685bb5d6783a99c7725edaeceebb86d7176c901859",
+      "xlsx_total_cny": "12927.20"
+    },
+    "C5": {
+      "py_total_cny": "13652.81",
+      "sha256": "b5cf0116bc42e609b156b0b07b2a0f49bf02d24553164ade00b378e8f3dfc484",
+      "xlsx_total_cny": "13652.81"
+    },
+    "C6": {
+      "py_total_cny": "15481.02",
+      "sha256": "39cdffa3e9af7747f8b452f3f03e5596cbca55bc59d35c6da936ea43ec01ba7f",
+      "xlsx_total_cny": "15481.02"
+    }
+  },
+  "decision": {
+    "ask_fields": [],
+    "choice": "C4",
+    "opt_cost_cny": "12927.20",
+    "oracle_choice": "C4",
+    "oracle_cost_cny": "12927.20",
+    "type": "choose",
+    "verification": {
+      "attempt": 4,
+      "grid": [
+        {
+          "assign": {},
+          "best_cny": "12927.20",
+          "choice": "C4",
+          "n_feasible": 4,
+          "second_cny": "13881.54"
+        }
+      ],
+      "grid_size": 1,
+      "min_feasible": 4,
+      "min_margin": "0.07382418466489262949439940590"
+    }
+  },
+  "followup_gap_ids": [],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "168",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "15692.52",
+        "15692.52"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2184.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "1848.00"
+        ],
+        [
+          "duty",
+          "10803.18"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "24.51"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "56.04",
+      "total_cny": "15692.52",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "168",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Lumen Cross-border",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Lumen Cross-border",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "11133.07",
+        "11133.07"
+      ],
+      "ddp_floor_cny_per_kg": "65.83642857142857142857142857",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "66.12238095238095238095238095",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [
+        "C2.isf_fee_cny"
+      ],
+      "lines": [
+        [
+          "freight",
+          "9878.40"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "235.66"
+        ],
+        [
+          "OVW",
+          "794.50"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "24.51"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "39.76",
+      "total_cny": "11133.07",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "168",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C3",
+          "claim": {
+            "entity": "SYN-Pacific Span Freight",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C3-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Pacific Span Freight",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0003",
+                "name": "SYN-Pacific Span Freight",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "13881.54",
+        "13881.54"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1596.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "188.52"
+        ],
+        [
+          "OVW",
+          "836.50"
+        ],
+        [
+          "duty",
+          "10803.18"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "24.51"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "49.58",
+      "total_cny": "13881.54",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "168",
+      "claim_statuses": [
+        "irrelevant"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Harbor Lane Logistics",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "irrelevant",
+          "snapshot": {
+            "databases": [],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Ironwood Transit",
+            "reason": "certified entity differs from the quoting entity",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "12927.20",
+        "12927.20"
+      ],
+      "ddp_floor_cny_per_kg": "65.83642857142857142857142857",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "76.94761904761904761904761905",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [
+        "C4.surcharges"
+      ],
+      "lines": [
+        [
+          "freight",
+          "10483.20"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "1680.00"
+        ],
+        [
+          "OVS",
+          "364.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "46.17",
+      "total_cny": "12927.20",
+      "true_values": {}
+    },
+    "C5": {
+      "chargeable_kg": "168",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C5",
+          "claim": {
+            "entity": "SYN-Jade River Cargo",
+            "jurisdiction": "CN",
+            "reg_no": null,
+            "type": "MOT_NVOCC"
+          },
+          "claim_id": "C5-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "cn"
+            ],
+            "hit_jurisdictions": [
+              "CN"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Jade River Cargo",
+            "records": [
+              {
+                "cert_type": "mot_nvocc_filing",
+                "db": "cn",
+                "is_synthetic": true,
+                "name": "SYN-Jade River Cargo",
+                "reg_no": "SYN-MOT-0003",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "13652.81",
+        "13652.81"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1596.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "282.79"
+        ],
+        [
+          "OVW",
+          "563.50"
+        ],
+        [
+          "duty",
+          "10803.18"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "24.51"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "48.76",
+      "total_cny": "13652.81",
+      "true_values": {}
+    },
+    "C6": {
+      "chargeable_kg": "168",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C6",
+          "claim": {
+            "entity": "SYN-Redwood Forwarders",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C6-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Redwood Forwarders",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0007",
+                "name": "SYN-Redwood Forwarders",
+                "oti_type": "OFF",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "15481.02",
+        "15481.02"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2100.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "1596.00"
+        ],
+        [
+          "OVS",
+          "374.50"
+        ],
+        [
+          "duty",
+          "10803.18"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "24.51"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "55.29",
+      "total_cny": "15481.02",
+      "true_values": {}
+    }
+  },
+  "task_id": "T-dev-016"
+}

@@ -1,0 +1,408 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "22193.28",
+      "sha256": "233bdf2adeef6c9fa3b2cb613b47175af83126f4797f972e3eaec62e23f1995f",
+      "xlsx_total_cny": "22193.28"
+    },
+    "C2": {
+      "py_total_cny": "21266.13",
+      "sha256": "fe0399a05a731d2c99ff85fd560b6fef752d66d730c5e8f4ddcf44626eb5ef59",
+      "xlsx_total_cny": "21266.13"
+    },
+    "C3": {
+      "py_total_cny": "20135.28",
+      "sha256": "3238b1bd2e17fc845d09b0954093f8d22a63e0bdfc084bd0ba92e7e523ae77e9",
+      "xlsx_total_cny": "20135.28"
+    },
+    "C4": {
+      "py_total_cny": "13649.67",
+      "sha256": "ccb52b0d5428daab16820336ae3a4858c8d6ad4f0aa66cef0c9d94447623b01a",
+      "xlsx_total_cny": "13649.67"
+    },
+    "C5": {
+      "py_total_cny": "9877.92",
+      "sha256": "54f17f426161dc087c6f3a7d855511f6aa31d3cd86be270f6222d40a67b13696",
+      "xlsx_total_cny": "9877.92"
+    }
+  },
+  "decision": {
+    "ask_fields": [],
+    "choice": "C4",
+    "opt_cost_cny": "13649.67",
+    "oracle_choice": "C4",
+    "oracle_cost_cny": "13649.67",
+    "type": "choose",
+    "verification": {
+      "attempt": 2,
+      "grid": [
+        {
+          "assign": {},
+          "best_cny": "13649.67",
+          "choice": "C4",
+          "n_feasible": 4,
+          "second_cny": "20135.28"
+        }
+      ],
+      "grid_size": 1,
+      "min_feasible": 4,
+      "min_margin": "0.4751477508247452136205490682"
+    }
+  },
+  "followup_gap_ids": [],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "207.0",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "22193.28",
+        "22193.28"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "7659.00"
+        ],
+        [
+          "fuel",
+          "765.90"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "769.50"
+        ],
+        [
+          "duty",
+          "12616.05"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "26.80",
+      "total_cny": "22193.28",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "207.0",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "21266.13",
+        "21266.13"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "6727.50"
+        ],
+        [
+          "fuel",
+          "672.75"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "1017.00"
+        ],
+        [
+          "duty",
+          "12616.05"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "25.68",
+      "total_cny": "21266.13",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "207",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "20135.28",
+        "20135.28"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "6624.00"
+        ],
+        [
+          "fuel",
+          "662.40"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "duty",
+          "12616.05"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "24.32",
+      "total_cny": "20135.28",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "207.0",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "13649.67",
+        "13649.67"
+      ],
+      "ddp_floor_cny_per_kg": "62.07188405797101449275362319",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "65.94043478260869565217391304",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "11819.70"
+        ],
+        [
+          "fuel",
+          "1181.97"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "648.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "16.49",
+      "total_cny": "13649.67",
+      "true_values": {}
+    },
+    "C5": {
+      "chargeable_kg": "207.0",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "9877.92",
+        "9877.92"
+      ],
+      "ddp_floor_cny_per_kg": "62.07188405797101449275362319",
+      "ddp_floor_source": "none",
+      "ddp_level": "high",
+      "ddp_levels": [
+        "high"
+      ],
+      "ddp_quote_cny_per_kg": "46.59463768115942028985507246",
+      "determined": true,
+      "docs_to_request": [
+        "进口商主体（IOR）名称",
+        "CBP 7501 报关单",
+        "申报价值发票"
+      ],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "8631.90"
+        ],
+        [
+          "fuel",
+          "863.19"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "232.83"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "11.93",
+      "total_cny": "9877.92",
+      "true_values": {}
+    }
+  },
+  "task_id": "T-dev-001"
+}

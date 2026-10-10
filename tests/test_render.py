@@ -20,7 +20,7 @@ def terms_air_plain():
         surcharges=[Surcharge("REM", "per_kg", "3.2", "CNY", "remote"),
                     Surcharge("RES", "per_ctn", "25", "CNY", "residential", contingent=True),
                     Surcharge("OVS", "per_ctn", "60", "CNY", "ctn_longest_side_gt", "120")],
-        fuel_pct=Decimal("0.12"), includes=["头程运费", "目的仓派送"], excludes=["关税", "MPF", "HMF", "仓储费"],
+        fuel_pct=Decimal("0.12"), includes=["头程运费", "目的仓派送"], excludes=["关税", "MPF", "仓储费"],
         ddp=DDP(False, "duty", None), broker_fee_cny=Decimal("150"), transit_days=[6, 9],
         validity=["2026-10-12", "2026-10-31"], liability="按申报价值赔付，最高3倍运费")
 
@@ -28,7 +28,7 @@ def terms_air_plain():
 def terms_air_claims():
     t = terms_air_plain()
     t.ddp = Field(DDP(True, "all", "included", None, "forwarder"), "stated", [])
-    t.includes = Field(["头程运费", "关税", "MPF", "HMF"], "stated", [])
+    t.includes = Field(["头程运费", "关税", "MPF"], "stated", [])
     t.excludes = Field(["仓储费"], "stated", [])
     t.claims = Field([Claim("FMC_OTI", "SYN-Harbor Lane Logistics", "SYN-FMC-0001", "US"),
                       Claim("AEO_CN", "SYN-Harbor Lane Logistics", None, "CN"),
@@ -339,16 +339,17 @@ def _spec_from_candidate(cand, **over):
     spec = R.RenderSpec.from_dict(cand.presentation, **over)
     t = spec.terms
     d = t.ddp.value if t.ddp.status == "stated" else None
-    want = R._SCOPE_TAXES[d.scope] if d is not None and d.is_ddp else set()
+    universe = [tx for tx in R.TAXES if tx != "HMF" or t.mode.value == "sea"]
+    want = (R._SCOPE_TAXES[d.scope] & set(universe)) if d is not None and d.is_ddp else set()
     for nm in ("includes", "excludes"):
         f = getattr(t, nm)
         if f.status != "stated" or not f.value:
             continue
         keep = [x for x in f.value if not any(tx in x for tx in R.TAXES)]
         if nm == "includes":
-            keep += [tx for tx in R.TAXES if tx in want]
+            keep += [tx for tx in universe if tx in want]
         elif d is not None and not d.is_ddp:
-            keep += list(R.TAXES)
+            keep += universe
         setattr(t, nm, Field(keep, "stated", []))
     return spec
 
@@ -464,8 +465,9 @@ def test_quote_entity_written_in_every_template(tid, tmp_path):
 
 
 def test_tax_items_follow_ddp_scope(tmp_path):
-    def spec(ddp, inc, exc):
+    def spec(ddp, inc, exc, mode="sea"):
         sp = make_spec("dev-text-1", "air_plain")
+        sp.terms.mode = Field(mode, "stated", [])
         sp.terms.ddp = ddp
         sp.terms.includes = Field(inc, "stated", [])
         sp.terms.excludes = Field(exc, "stated", [])
@@ -491,11 +493,36 @@ def test_tax_items_follow_ddp_scope(tmp_path):
     with pytest.raises(ValueError):
         R.render(sp, tmp_path)
     sp = make_spec("dev-text-1", "ddp_conflict")
-    sp.terms.excludes = Field(["仓储费", "HMF"], "stated", [])
+    sp.terms.excludes = Field(["仓储费", "MPF"], "stated", [])
     with pytest.raises(ValueError):
         R.render(sp, tmp_path)
     sp = spec(Field(None, "missing", []), ["头程运费"], ["仓储费"])
     R.render(sp, tmp_path)
+
+
+@pytest.mark.parametrize("mode", ["air", "express"])
+def test_hmf_only_in_sea_quotes(mode, tmp_path):
+    def spec(ddp, inc, exc):
+        sp = make_spec("dev-text-1", "air_plain")
+        sp.terms.mode = Field(mode, "stated", [])
+        sp.terms.ddp = Field(ddp, "stated", [])
+        sp.terms.includes = Field(inc, "stated", [])
+        sp.terms.excludes = Field(exc, "stated", [])
+        return sp
+
+    R.render(spec(DDP(True, "all", "included"), ["关税", "MPF"], ["仓储费"]), tmp_path)      # all = duty and MPF
+    R.render(spec(DDP(True, "duty", "included"), ["关税"], ["MPF"]), tmp_path)
+    R.render(spec(DDP(False, "duty", None), [], ["关税", "MPF"]), tmp_path)                  # no HMF to exclude
+    for sp in (spec(DDP(True, "all", "included"), ["关税", "MPF", "HMF"], []),
+               spec(DDP(True, "duty", "included"), ["关税"], ["MPF", "HMF"]),
+               spec(DDP(False, "duty", None), [], ["关税", "MPF", "HMF"]),
+               spec(DDP(True, "all", "included"), ["关税"], [])):
+        with pytest.raises(ValueError):
+            R.render(sp, tmp_path)
+    sp = spec(DDP(True, "all", "included"), ["关税", "MPF"], ["仓储费"])
+    sp.terms.mode = Field("sea", "stated", [])          # the same lists are one tax short for a sea quote
+    with pytest.raises(ValueError):
+        R.render(sp, tmp_path)
 
 
 def test_conflict_validation(tmp_path):
@@ -549,6 +576,8 @@ def test_zero_values(tmp_path):
     def spec(tid, mode, **zero):
         sp = make_spec(tid, "air_plain")
         sp.terms.mode = Field(mode, "stated", [])
+        if mode == "sea":
+            sp.terms.excludes = Field(["关税", "MPF", "HMF", "仓储费"], "stated", [])
         sp.terms.fuel_pct = Field(Decimal(0), "stated", [])
         sp.terms.isf_fee_cny = Field(Decimal(0), "stated", [])
         sp.terms.broker_fee_cny = Field(Decimal(0), "stated", [])
@@ -656,7 +685,7 @@ def test_long_quote_splits_into_second_image(tmp_path):
     sp.terms.surcharges = Field([Surcharge(c, "per_kg", "3.2", "CNY", "always")
                                  for c in ("RES", "REM", "OVS", "OVW", "INSP")], "stated", [])
     sp.fee_location = {"surcharges": "annex"}
-    sp.terms.includes = Field(["头程运费", "关税", "MPF", "HMF"], "stated", [])
+    sp.terms.includes = Field(["头程运费", "关税", "MPF"], "stated", [])
     sp.terms.liability = Field("按申报价值赔付，" * 60, "stated", [])
     res = R.render(sp, tmp_path)
     assert res.meta["pages"] >= 2 and res.meta["font_px"] == R.MIN_FONT_PX

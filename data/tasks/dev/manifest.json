@@ -1,0 +1,122 @@
+{
+  "environment": {
+    "git_clean": false,
+    "git_commit": "5317150955d65579ce13898a68e2c326d71eca69",
+    "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)",
+    "python": "3.13.16",
+    "pyyaml": "6.0.1"
+  },
+  "files": {
+    "gold": {
+      "T-dev-001.json": "b0338fb99686d43c9207849318fbdf2eb10bf59c99ff229ff4b1c754b6caadbc",
+      "T-dev-002.json": "612eb691df02c655d8eb125b7b51dd90222fa7c3a2e63d75a018cb1b2274dfb2",
+      "T-dev-003.json": "ad3212536f4f78d4706826f8f4fc2259ad885c3b51daff172ac6bd30b4550542",
+      "T-dev-004.json": "3b267c775973b7334fc75373a263828a719b9183c55ab43e97dbf217d10db5e1",
+      "T-dev-005.json": "8bed86fce9a325452b1bcfa162cdb8aa445b996a75737b6072fd5f0e7ced4e0d",
+      "T-dev-006.json": "378d5c2e48c0a09dafeb5d04f8bd3fa345330b0c529548d905f37224352e5117",
+      "T-dev-007.json": "177af658144ec1a9210bef4c9539cff5e167738d72f88b1b2c28728a43620fc3",
+      "T-dev-008.json": "c49d430cef75c722ea3e704b380171898f9d8238e85a7808b89ca28d805cebf1",
+      "T-dev-009.json": "6333dcf50be88f3acdacfd05d18847d82e18aa40ab11418e6709a20295166257",
+      "T-dev-010.json": "70b1a6db52d997bcc949a0cc8040858c86a16997307afc7083bd8b53c8180db6",
+      "T-dev-011.json": "760dbc2111b4cd4c3ea74cfe0ad9bb27ad68d913acae2e8a88ad3e34ba5b839d",
+      "T-dev-012.json": "44959782320c337f1db653bee6ec9fb2f45f50a671d9de5fa2a90c44de037b50",
+      "T-dev-013.json": "925b2c4347e9e2a3a0a51e796d4e5c8b41e03b4c2f5de5c789ae73c95169f677",
+      "T-dev-014.json": "0b9638007f6dce946ba7f98f426b8bc1415fb71be8e6754b1243ad84d0b50356",
+      "T-dev-015.json": "8d61e49c457ed3a44311bda246045cdcb57231016f760a19e417101d6bdfe6fc",
+      "T-dev-016.json": "333fd234deac6d3378692e0162280ba2c74b0d4a32824efe8a9c4826a8aa30e4",
+      "T-dev-017.json": "712bfda07257cbf50cfd3359fdbc70353fc4fe5323817547b46bdc69539d1ccb",
+      "T-dev-018.json": "591237f578c539e5ea04822124080897482d3f7c99962e97c95e0f5e374bb7b0",
+      "T-dev-019.json": "e0ffeb5167e52b15001f666b2588daf2147b44b00752bb27ed48a431a994ae99",
+      "T-dev-020.json": "e637dc314519f4f5f4e211e2e73e6e11c8725816957be8d1aede1ffbe6a35e87",
+      "T-dev-021.json": "22468f280d271716f3966d978bfb96823cb181fc99da1440a31c3e8b65933c3e",
+      "T-dev-022.json": "83c3caf75976f149bfd4b0ec9aacb7f5f3de00771dd562421bddb56d8350026c",
+      "T-dev-023.json": "e3d2be90103ba26c4ab308364e1a54cd2f248c2d4dc3f4780bb79a47d2a184e5",
+      "T-dev-024.json": "56c29b56adb8d53f1123cfd97ec4e1fc11e5f6c40f2771a070fb79db19e22643"
+    },
+    "tasks": {
+      "T-dev-001.json": "cb30167f1f9ff7f77aa22c674f80856b6c52939057f6c41955bb61f5c63c563b",
+      "T-dev-002.json": "d1a31a3a0e9ee084d8b58a193b2c40723d52773144aaa5fbeb3ecc9f5c304583",
+      "T-dev-003.json": "67f48d387c6ac55fed43c9ffca1bfd91f9a268f98362415841aa2c6d69afc89d",
+      "T-dev-004.json": "fab348d1619189f6f00c4cd95d22ee6267a8745ef9de3cf2b24be016b86d0ad1",
+      "T-dev-005.json": "9e1b87b9b8e9f012e42daa2bbce32d27785958995061a960131e660b98ecb290",
+      "T-dev-006.json": "cfad29343a0f669da271dc4bf618a483a0cc7c76259e4a079fddaeceafdf8fd4",
+      "T-dev-007.json": "3d5342569dd161de16b608ea354b8418d8e54d72f66eee9bb6b821896d1b4206",
+      "T-dev-008.json": "dec076355255563cbc73ade23ee9860bf4dc5774812029d5704901232ef1e554",
+      "T-dev-009.json": "e7a412a42ac8b965290a6089a2c0dbd46f8c9a28545f1a97ee7a81360a0342aa",
+      "T-dev-010.json": "20352b5007a7265b982588a9598ad9d7b9ce98b7ee1fadb997893bfee9eaeb54",
+      "T-dev-011.json": "e0d5e7892a70aa3d4b83d80919404032aa7f350e2fb6212e6f846fb59366804c",
+      "T-dev-012.json": "c39e590e37da5d75e3daec100d84f44f690c0e14556a55f559b5ba2483b05acb",
+      "T-dev-013.json": "fcd006d9636ae7f067d08415ecdcebc1f61e71c8952f5ff85e0c1a269526c718",
+      "T-dev-014.json": "471aedb3c98eeac748a97f8b7c80894dc1cc8882afb2ada2556f48b8907cd90a",
+      "T-dev-015.json": "28dec9ceced851e4b53f3f28f294a0e793a1d5626e55babe711dd54b713b5722",
+      "T-dev-016.json": "efa34498b88036730717d30d8c26ba33ac5a296c6871353785c49d6581f37d14",
+      "T-dev-017.json": "12b26f1c1842351b9099a6108558a554953d213110f04fc57ba5c09b2919e0e8",
+      "T-dev-018.json": "71aecf8d8a767189eeca53fb58bb3cdef51d60c32243d245c7b398546d594934",
+      "T-dev-019.json": "ee878b817c8495c91f588a1a326cee4dad416d1950731e5627e3f2b393c81e8d",
+      "T-dev-020.json": "af78f477fad24ea4facde8389ab578ee64dc8c4683013916cd1fa22c22f9d2fe",
+      "T-dev-021.json": "fcd708ef5b49a78e29424f3ba225669d4eac80cbd559a1cabd4ad7134449c1e5",
+      "T-dev-022.json": "f04773942611ade85b0df79715f3ec1a08c5cca6f449f4b02eb5b3f0b614e0c2",
+      "T-dev-023.json": "b9d4c09cdde892aa9299f9cc74a652672ef41ac722f7695014c1c25de6a039c4",
+      "T-dev-024.json": "753afcbdd9592d42ad97bc507b50ad8974574b6481018906b6b1047795ada462"
+    }
+  },
+  "generator_code_sha256": "95a86c526a5e722111ec7e19e29e84bba8f333573d81e9c0fcfd5e4a6ae4a8e1",
+  "generator_files_sha256": {
+    "calc_py.py": "4aaf83f332ba129d20f3cdedd927b7c123cdde8e8732d6c1634828c98916b7bb",
+    "calc_xlsx.py": "98a75b0169398a1effbd55ed945b7333599d6b81ef188b535b39f1fa28f3c8eb",
+    "decide.py": "f1362520932e003d7be7e6b8f6a2ea6e2db7a746fbec313baf2e412a9a6d4da4",
+    "gate.py": "f155eda6df2f613432ce293a2a42ce2caf6f644dd258bb4ddd47487e0769c7e8",
+    "params.py": "baeb8f80a18e89f634253d9f25a4573da3f006598387e0db29b88cc154f48770",
+    "render.py": "de07f871793d3548e36d2d9a2c45a032b90484355235665cc9f561be8e69e462",
+    "schema.py": "89ff019d15463653497c037b4523690e3e0f191b51e974d4144507f50c9dad8b",
+    "taskgen.py": "b1a5478220315c02960314edcdf3258ae7f0de99e6a48c622220f93fa3f98e3a",
+    "util.py": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "generator_version": "taskgen-0.1",
+  "gold_dir": "../../gold/dev",
+  "layer_stats": {
+    "conflict": {
+      "attempts": 277,
+      "render_check_failures": 0,
+      "swallowed_exceptions": 0,
+      "tasks": 6
+    },
+    "explicit": {
+      "attempts": 11,
+      "render_check_failures": 0,
+      "swallowed_exceptions": 0,
+      "tasks": 6
+    },
+    "implicit": {
+      "attempts": 152,
+      "render_check_failures": 0,
+      "swallowed_exceptions": 0,
+      "tasks": 6
+    },
+    "insufficient": {
+      "attempts": 46,
+      "render_check_failures": 0,
+      "swallowed_exceptions": 0,
+      "tasks": 6
+    }
+  },
+  "max_attempts_per_task": 2000,
+  "model_registry_snapshot_sha256": "af2396cca5b26d4fa48184f6d627bfbc5eb73beb39d301791b79abbc8774ae17",
+  "n_per_layer": 6,
+  "n_tasks": 24,
+  "pending_calibration_count": 0,
+  "pending_calibration_examples": [],
+  "seed": 20261010,
+  "snapshot_id": "tariff-2026-10-09",
+  "snapshot_sha256": "30a7269dd0462a1d02ca438c7611ab3c455ddaf13d247deb0b8d6ea81ddad1a2",
+  "snapshot_version": "2026-10-10.1",
+  "split": "dev",
+  "template_pool_sha256": "6f074799a134ceacb6cb3e8f2e3c3415a25cc4cd8257434939d1b8876da48a97",
+  "xlsx_verified": true,
+  "yaml_sha256": {
+    "freight_floor.yaml": "a0b5d02b99acf3cf8f6bdadc456dba3b637500f775b4a854cdeea158bb208013",
+    "registry_synthetic.yaml": "512bb4a2194399a3367f965b06fdbee5637147bf521617cb13ab91c5d4f59d77",
+    "structures.yaml": "b4601a3ed160e461d2a5e6efe09656215c617768aa725ca1c39441c56d73afd3",
+    "value_sets.yaml": "d97d9d069279eebb8151eaffd49fea5e025c26a669d78af7a2eb66bf060c4616"
+  }
+}

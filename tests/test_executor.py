@@ -609,21 +609,22 @@ def test_multi_provider_budget_reservation(tmp_path):
 
 def test_inflight_record_of_other_provider_saved_on_stop(tmp_path):
     plan = write_plan(tmp_path, [req("qwen_plus", 0), req("dev_ds", 1), req("dev_ds", 2)])
-    signaled = threading.Event()
-    log = []
+    other_started = threading.Event()
+    log, holder = [], []
 
     def factory(provider):
         if provider == "dashscope":
             def fn(cfg, n):
-                signaled.set()
+                assert other_started.wait(5)  # the other provider's call is in flight
                 raise BatchStop("quota_exhausted", "dashscope")
         else:
             def fn(cfg, n):
-                signaled.wait(2)
-                time.sleep(0.3)
+                other_started.set()
+                assert holder[0]._stop.wait(5)  # return only after the batch stop is signalled
                 return ok_resp()
         return ScriptClient(fn, log)
     e = Executor(plan, tmp_path / "runs", "mock", client_factory=factory)
+    holder.append(e)
     m = e.run()
     assert m["status"] == "stopped_quota"
     assert log.count("dev_ds") == 1 and len(obs_files(e.dir)) == 1  # in-flight saved, no new call

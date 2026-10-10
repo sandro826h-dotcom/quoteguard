@@ -1,0 +1,701 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "2290.20",
+      "sha256": "182ab8fe074653222b62fa445abb25fd6febe73c27d024eddf24d42728d2d3ec",
+      "xlsx_total_cny": "2290.20"
+    },
+    "C2": {
+      "py_total_cny": "3883.00",
+      "sha256": "5195f76679f4874dc05677f8c6c0ec7d340af59390dd5e289531860c23d628b1",
+      "xlsx_total_cny": "3883.00"
+    },
+    "C3": {
+      "py_total_cny": "4403.93",
+      "sha256": "731943b8e116251ba24781e6325fde23b50002be2e7519f4f1842b292595db9b",
+      "xlsx_total_cny": "4403.93"
+    },
+    "C4": {
+      "py_total_cny": "3795.93",
+      "sha256": "0a6ebb89e7a194f3a7dc8429fc5dab234a279bce631d2158f74b343360601ab8",
+      "xlsx_total_cny": "3795.93"
+    },
+    "C5": {
+      "py_total_cny": "3724.93",
+      "sha256": "1935ea5c68aa20e5010fcdd7f7d426454f46c0d031ed9573d37338b5d03ec1aa",
+      "xlsx_total_cny": "3724.93"
+    },
+    "C6": {
+      "py_total_cny": "4510.00",
+      "sha256": "1a9df364ef4022c1ed39d6328cd5e26467cff273afed1621cb54c62555f29b97",
+      "xlsx_total_cny": "4510.00"
+    }
+  },
+  "decision": {
+    "ask_fields": [
+      "C6.min_kg_shipment"
+    ],
+    "choice": null,
+    "opt_cost_cny": null,
+    "oracle_choice": "C2",
+    "oracle_cost_cny": "3883.00",
+    "type": "ask",
+    "verification": {
+      "attempt": 54,
+      "grid": [
+        {
+          "assign": {
+            "C1.min_kg_shipment": "100",
+            "C6.min_kg_shipment": "100"
+          },
+          "best_cny": "3883.00",
+          "choice": "C2",
+          "n_feasible": 3,
+          "second_cny": "4403.93"
+        },
+        {
+          "assign": {
+            "C1.min_kg_shipment": "100",
+            "C6.min_kg_shipment": "45"
+          },
+          "best_cny": "3691.10",
+          "choice": "C6",
+          "n_feasible": 3,
+          "second_cny": "3883.00"
+        },
+        {
+          "assign": {
+            "C1.min_kg_shipment": "0",
+            "C6.min_kg_shipment": "100"
+          },
+          "best_cny": "3883.00",
+          "choice": "C2",
+          "n_feasible": 3,
+          "second_cny": "4403.93"
+        },
+        {
+          "assign": {
+            "C1.min_kg_shipment": "0",
+            "C6.min_kg_shipment": "45"
+          },
+          "best_cny": "3691.10",
+          "choice": "C6",
+          "n_feasible": 3,
+          "second_cny": "3883.00"
+        }
+      ],
+      "grid_size": 4,
+      "min_feasible": 3,
+      "min_margin": "0.05198992170355720516919075614"
+    }
+  },
+  "followup_gap_ids": [
+    "C6.min_kg_shipment"
+  ],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "66",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C1",
+          "claim": {
+            "entity": "SYN-Meridian Forwarding",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C1-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Meridian Forwarding",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0004",
+                "name": "SYN-Meridian Forwarding",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [
+        "C1.min_kg_shipment"
+      ],
+      "contingent": [],
+      "cost_range_cny": [
+        "2290.20",
+        "3470.00"
+      ],
+      "ddp_floor_cny_per_kg": "44.66560606060606060606060606",
+      "ddp_floor_source": "none",
+      "ddp_level": "high",
+      "ddp_levels": [
+        "high",
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "34.70",
+      "determined": false,
+      "docs_to_request": [
+        "进口商主体（IOR）名称",
+        "CBP 7501 报关单",
+        "申报价值发票",
+        "ISF 申报确认"
+      ],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 2,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2290.20"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "29.36",
+      "total_cny": "2290.20",
+      "true_values": {
+        "min_kg_shipment": "0"
+      }
+    },
+    "C2": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Tallmast Logistics",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Tallmast Logistics",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "3883.00",
+        "3883.00"
+      ],
+      "ddp_floor_cny_per_kg": "29.4793",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "38.83",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "3130.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "153.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "49.78",
+      "total_cny": "3883.00",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C3",
+          "claim": {
+            "entity": "SYN-Eastlake Logistics",
+            "jurisdiction": "CN",
+            "reg_no": null,
+            "type": "MOT_NVOCC"
+          },
+          "claim_id": "C3-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "cn"
+            ],
+            "hit_jurisdictions": [
+              "CN"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Eastlake Logistics",
+            "records": [
+              {
+                "cert_type": "mot_nvocc_filing",
+                "db": "cn",
+                "is_synthetic": true,
+                "name": "SYN-Eastlake Logistics",
+                "reg_no": "SYN-MOT-0001",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4403.93",
+        "4403.93"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "1150.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "156.00"
+        ],
+        [
+          "duty",
+          "2922.65"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "6.63"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "56.46",
+      "total_cny": "4403.93",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "81",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Cedar Bay Shipping",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Cedar Bay Shipping",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0005",
+                "name": "SYN-Cedar Bay Shipping",
+                "oti_type": "NVOCC",
+                "status": "revoked"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "3795.93",
+        "3795.93"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "648.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "0.00"
+        ],
+        [
+          "duty",
+          "2922.65"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "6.63"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "48.67",
+      "total_cny": "3795.93",
+      "true_values": {}
+    },
+    "C5": {
+      "chargeable_kg": "66",
+      "claim_statuses": [
+        "insufficient"
+      ],
+      "claims": [
+        {
+          "cand_id": "C5",
+          "claim": {
+            "entity": "SYN-Orchid Global Trade",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C5-claim1",
+          "gold_status": "insufficient",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Orchid Global Trade",
+            "records": [],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "3724.93",
+        "3724.93"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "627.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "0.00"
+        ],
+        [
+          "duty",
+          "2922.65"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "6.63"
+        ],
+        [
+          "broker",
+          "150.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "47.76",
+      "total_cny": "3724.93",
+      "true_values": {}
+    },
+    "C6": {
+      "chargeable_kg": "100",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C6",
+          "claim": {
+            "entity": "SYN-Northgate Express",
+            "jurisdiction": "US",
+            "reg_no": null,
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C6-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Northgate Express",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0006",
+                "name": "SYN-Northgate Express",
+                "oti_type": "NVOCC",
+                "status": "revoked"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [
+        "C6.min_kg_shipment"
+      ],
+      "contingent": [],
+      "cost_range_cny": [
+        "3691.10",
+        "4510.00"
+      ],
+      "ddp_floor_cny_per_kg": "29.4793",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "45.10",
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 2,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "4310.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "0.00"
+        ],
+        [
+          "OVW",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "57.82",
+      "total_cny": "4510.00",
+      "true_values": {
+        "min_kg_shipment": "100"
+      }
+    }
+  },
+  "task_id": "T-dev-007"
+}

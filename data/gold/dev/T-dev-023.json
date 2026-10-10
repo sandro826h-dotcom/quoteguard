@@ -1,0 +1,458 @@
+{
+  "calc_hashes": {
+    "C1": {
+      "py_total_cny": "3800.08",
+      "sha256": "540a76d9eb9eb3c1bc05a7ef0318edb4e7d2b3b4afef5d06bfe98162659cddfc",
+      "xlsx_total_cny": "3800.08"
+    },
+    "C2": {
+      "py_total_cny": "4116.48",
+      "sha256": "e3a59ab780f18b110eb922bda392ec4be6438b933a25320d80679bf57e1a007b",
+      "xlsx_total_cny": "4116.48"
+    },
+    "C3": {
+      "py_total_cny": "4175.31",
+      "sha256": "b270e90169be5e20e88c2d5fa9e7c552a3fe9958e80eaafd1dfae4aaf4c64ca1",
+      "xlsx_total_cny": "4175.31"
+    },
+    "C4": {
+      "py_total_cny": "2944.00",
+      "sha256": "0e41806b74bbaf774d28c61145c495cd778f07ce350884253c38c947078c2d08",
+      "xlsx_total_cny": "2944.00"
+    }
+  },
+  "decision": {
+    "ask_fields": [
+      "C4.ddp"
+    ],
+    "choice": null,
+    "opt_cost_cny": null,
+    "oracle_choice": "C4",
+    "oracle_cost_cny": "2944.00",
+    "type": "ask",
+    "verification": {
+      "attempt": 30,
+      "grid": [
+        {
+          "assign": {
+            "C4.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"actual\",\"ior\":\"seller\",\"is_ddp\":false,\"scope\":\"duty\"}"
+          },
+          "best_cny": "3800.08",
+          "choice": "C1",
+          "n_feasible": 3,
+          "second_cny": "4175.31"
+        },
+        {
+          "assign": {
+            "C4.ddp": "{\"cap_cny_per_kg\":null,\"duty_terms\":\"included\",\"ior\":\"forwarder\",\"is_ddp\":true,\"scope\":\"all\"}"
+          },
+          "best_cny": "2944.00",
+          "choice": "C4",
+          "n_feasible": 3,
+          "second_cny": "3800.08"
+        }
+      ],
+      "grid_size": 2,
+      "min_feasible": 3,
+      "min_margin": "0.09874265804930422517420685880"
+    }
+  },
+  "followup_gap_ids": [
+    "C4.ddp"
+  ],
+  "per_cand": {
+    "C1": {
+      "chargeable_kg": "240",
+      "claim_statuses": [
+        "contradicted"
+      ],
+      "claims": [
+        {
+          "cand_id": "C1",
+          "claim": {
+            "entity": "SYN-Summit Ocean Agency",
+            "jurisdiction": null,
+            "reg_no": null,
+            "type": "NVOCC"
+          },
+          "claim_id": "C1-claim1",
+          "gold_status": "contradicted",
+          "snapshot": {
+            "databases": [
+              "fmc",
+              "cn"
+            ],
+            "hit_jurisdictions": [],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Summit Ocean Agency",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0008",
+                "name": "SYN-Summit Ocean Agency",
+                "oti_type": "OFF",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1171.00"
+        ]
+      ],
+      "cost_range_cny": [
+        "3800.08",
+        "3800.08"
+      ],
+      "ddp_floor_cny_per_kg": "5.730458333333333333333333333",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "15.70",
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "3168.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.43"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "9.05",
+      "total_cny": "3800.08",
+      "true_values": {}
+    },
+    "C2": {
+      "chargeable_kg": "288",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C2",
+          "claim": {
+            "entity": "SYN-Meridian Forwarding",
+            "jurisdiction": "US",
+            "reg_no": "SYN-FMC-0004",
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C2-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Meridian Forwarding",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0004",
+                "name": "SYN-Meridian Forwarding",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [],
+      "contingent": [],
+      "cost_range_cny": [
+        "4116.48",
+        "4116.48"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": false,
+      "feasible_values": [
+        false
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2016.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "RES",
+          "525.17"
+        ],
+        [
+          "OVW",
+          "0.00"
+        ],
+        [
+          "duty",
+          "1343.23"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.43"
+        ],
+        [
+          "broker",
+          "0.00"
+        ],
+        [
+          "isf",
+          "200.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "9.80",
+      "total_cny": "4116.48",
+      "true_values": {}
+    },
+    "C3": {
+      "chargeable_kg": "240",
+      "claim_statuses": [],
+      "claims": [],
+      "conflict_ids": [],
+      "contingent": [
+        [
+          "INSP",
+          "1132.00"
+        ]
+      ],
+      "cost_range_cny": [
+        "4175.31",
+        "4175.31"
+      ],
+      "ddp_floor_cny_per_kg": null,
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": null,
+      "determined": true,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 1,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2400.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "OVS",
+          "0.00"
+        ],
+        [
+          "duty",
+          "1343.23"
+        ],
+        [
+          "mpf",
+          "18.65"
+        ],
+        [
+          "hmf",
+          "13.43"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "9.94",
+      "total_cny": "4175.31",
+      "true_values": {}
+    },
+    "C4": {
+      "chargeable_kg": "240",
+      "claim_statuses": [
+        "supported"
+      ],
+      "claims": [
+        {
+          "cand_id": "C4",
+          "claim": {
+            "entity": "SYN-Harbor Lane Logistics",
+            "jurisdiction": "US",
+            "reg_no": "SYN-FMC-0001",
+            "type": "FMC_OTI"
+          },
+          "claim_id": "C4-claim1",
+          "gold_status": "supported",
+          "snapshot": {
+            "databases": [
+              "fmc"
+            ],
+            "hit_jurisdictions": [
+              "US"
+            ],
+            "is_synthetic": true,
+            "quote_entity": "SYN-Harbor Lane Logistics",
+            "records": [
+              {
+                "db": "fmc",
+                "is_synthetic": true,
+                "license_no": "SYN-FMC-0001",
+                "name": "SYN-Harbor Lane Logistics",
+                "oti_type": "NVOCC",
+                "status": "active"
+              }
+            ],
+            "registry_snapshot_id": "syn-registry-2026-10-10-dev"
+          }
+        }
+      ],
+      "conflict_ids": [
+        "C4.ddp"
+      ],
+      "contingent": [],
+      "cost_range_cny": [
+        "2944.00",
+        "4319.31"
+      ],
+      "ddp_floor_cny_per_kg": "5.730458333333333333333333333",
+      "ddp_floor_source": "none",
+      "ddp_level": "none",
+      "ddp_levels": [
+        "none"
+      ],
+      "ddp_quote_cny_per_kg": "12.26666666666666666666666667",
+      "determined": false,
+      "docs_to_request": [],
+      "feasible": true,
+      "feasible_values": [
+        true
+      ],
+      "grid_points": 2,
+      "hidden_fee_ids": [],
+      "lines": [
+        [
+          "freight",
+          "2544.00"
+        ],
+        [
+          "fuel",
+          "0.00"
+        ],
+        [
+          "REM",
+          "0.00"
+        ],
+        [
+          "duty",
+          "0.00"
+        ],
+        [
+          "mpf",
+          "0.00"
+        ],
+        [
+          "hmf",
+          "0.00"
+        ],
+        [
+          "broker",
+          "400.00"
+        ],
+        [
+          "isf",
+          "0.00"
+        ]
+      ],
+      "missing_ids": [],
+      "per_unit_cny": "7.01",
+      "total_cny": "2944.00",
+      "true_values": {
+        "ddp": {
+          "cap_cny_per_kg": null,
+          "duty_terms": "included",
+          "ior": "forwarder",
+          "is_ddp": true,
+          "scope": "all"
+        }
+      }
+    }
+  },
+  "task_id": "T-dev-023"
+}

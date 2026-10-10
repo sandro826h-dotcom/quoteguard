@@ -258,13 +258,15 @@ def _ddp_option(value_sets, oid) -> DDP:
     return DDP.from_dict({k: v for k, v in o.items() if k != "id"})
 
 
-def _quote_lists(ddp: Optional[DDP]):
-    """includes / excludes lists; the taxes follow ddp.scope, and no tax appears when ddp is unknown."""
+def _quote_lists(ddp: Optional[DDP], mode: str = "sea"):
+    """includes / excludes lists; the taxes follow ddp.scope, and no tax appears when ddp is unknown.
+    HMF is listed for sea quotes only."""
     inc, exc = ["头程运费", "目的港清关"], ["查验费", "仓储费"]
+    universe = [t for t in TAXES if t != "HMF" or mode == "sea"]
     if ddp is not None:
         taxes = SCOPE_TAXES[ddp.scope] if ddp.is_ddp else set()
-        inc += [t for t in TAXES if t in taxes]
-        exc += [t for t in TAXES if t not in taxes]
+        inc += [t for t in universe if t in taxes]
+        exc += [t for t in universe if t not in taxes]
     return inc, exc
 
 
@@ -292,7 +294,7 @@ def _build_terms(rng, ship, arch, structures, value_sets, snapshot, ddp_wanted) 
     ddp_id = "none"
     if ddp_wanted:
         ddp_id = rng.choice(["all", "all", "duty_mpf", "duty"])
-    includes, excludes = _quote_lists(_ddp_option(value_sets, ddp_id))
+    includes, excludes = _quote_lists(_ddp_option(value_sets, ddp_id), mode)
     kw = dict(channel=arch["name"], mode=mode, rate_tiers=tiers(prices),
               min_kg_shipment=D(str(rng.choice(arch["min_kg_shipment"]))),
               min_kg_carton=D(str(rng.choice(arch["min_kg_carton"]))),
@@ -335,6 +337,9 @@ def _validate_registry(registry: dict) -> None:
         for r in recs:
             if r.get("is_synthetic") is not True:
                 raise ValueError("registry records must be marked is_synthetic")
+            for k in ("name", "status", "oti_type", "cert_type", "license_no", "reg_no"):
+                if k in r and not isinstance(r[k], str):     # e.g. an unquoted YAML OFF is read as False
+                    raise ValueError(f"registry field {k}={r[k]!r} must be a string ({r['name']!r})")
     reg_names = {pool: {r["name"] for r in registry[pool]["fmc"] + registry[pool]["cn"]} for pool in ("dev", "test")}
     for pool in ("dev", "test"):
         if reg_names[pool] & set(registry["generator_aux"][pool]["unregistered_entities"]):
@@ -484,7 +489,7 @@ def _apply_gap(rng, c: _Cand, name, kind, value_sets):
         # with ddp unknown the included / excluded lists carry no tax item; the true terms follow the true ddp
         inc, exc = _quote_lists(None)
         c.shown.includes, c.shown.excludes = Field(inc, "stated", []), Field(exc, "stated", [])
-        inc, exc = _quote_lists(true)
+        inc, exc = _quote_lists(true, c.terms.plain("mode"))
         c.terms.includes, c.terms.excludes = Field(inc, "stated", []), Field(exc, "stated", [])
 
 
@@ -529,7 +534,7 @@ def _positive_fee_fields(view_true: TaskView, c: _Cand) -> list:
 def _attempt(rng, layer, policy, ctx):
     structures, value_sets, snapshot, freight_floor = (ctx["structures"], ctx["value_sets"], ctx["snapshot"],
                                                        ctx["freight_floor"])
-    want_decisive, ddp_policy = policy
+    want_decisive, ddp_policy, n_gaps = policy
     mode = _weighted(rng, structures["mode_weights"])
     ship = _draw_shipment(rng, structures, mode)
     cands = _draw_candidates(rng, ship, structures, value_sets, snapshot, ctx["reg"], ctx["unreg"])
@@ -562,26 +567,11 @@ def _attempt(rng, layer, policy, ctx):
 
     # conflict / insufficient
     kind = "conflicting" if layer == "conflict" else "missing"
-    allow_ddp = ddp_policy != "forbid"
-    n_gc = min(len(cands), rng.choice([1, 1, 2]))
-    chosen = rng.sample(cands, n_gc)
-    if ddp_policy == "require":
-        c0 = chosen[0]
-        _apply_gap(rng, c0, "ddp", kind, value_sets)
-        todo = [(c0, [])] if kind == "conflicting" else [(c0, rng.sample(
-            [f for f in _eligible(c0, mode, value_sets, kind, False)], rng.choice([0, 1])))]
-        todo += [(c, None) for c in chosen[1:]]
-    else:
-        todo = [(c, None) for c in chosen]
-    for c, fixed in todo:
-        if fixed is None:
-            elig = _eligible(c, mode, value_sets, kind, allow_ddp)
-            nf = 1 if kind == "conflicting" else rng.choice([1, 2])
-            fixed = rng.sample(elig, min(nf, len(elig)))
-            if ddp_policy == "require":
-                fixed = [f for f in fixed if f != "ddp"]
-        for f in fixed:
-            _apply_gap(rng, c, f, kind, value_sets)
+    pairs = _pick_gaps(rng, cands, mode, value_sets, kind, n_gaps, ddp_policy)
+    if pairs is None:
+        return None
+    for c, f in pairs:
+        _apply_gap(rng, c, f, kind, value_sets)
     view = mkview(True)
     d = decide(view)
     if want_decisive and (d.type != "ask" or not d.ask_fields):
@@ -593,6 +583,23 @@ def _attempt(rng, layer, policy, ctx):
     if not _margin_ok(d):
         return None
     return raw_of(d, view)
+
+
+def _pick_gaps(rng, cands, mode, value_sets, kind, n_gaps, ddp_policy):
+    """Exactly n_gaps (candidate, term) pairs. Conflicts: one term per candidate; missing: one or two terms
+    on one or two candidates. ddp: required as the first gap, or forbidden."""
+    pairs = []
+    if ddp_policy == "require":
+        pairs.append((rng.choice(cands), "ddp"))
+    while len(pairs) < n_gaps:
+        c = rng.choice(cands)
+        if kind == "conflicting" and any(x is c for x, _ in pairs):
+            continue
+        elig = [f for f in _eligible(c, mode, value_sets, kind, False) if not any(x is c and g == f for x, g in pairs)]
+        if not elig:
+            return None
+        pairs.append((c, rng.choice(elig)))
+    return pairs
 
 
 def _present(raw: _Raw, rng, split, structures, template_pool) -> None:
@@ -664,15 +671,25 @@ def _make_raw(layer, policy, task_seed, ctx, split, template_pool, stats):
 
 
 def layer_plan(n: int) -> list:
-    """[(want_decisive, ddp_policy)] for one gap layer: decisive first; within each group ddp-decided first."""
+    """[(want_decisive, ddp_policy, n_gaps)] for one gap layer.
+
+    Decisive tasks first; within each group the ddp-decided ones first. Both groups carry the same share of
+    1-gap and 2-gap tasks (alternating 1, 2, 1, 2 ... within the group), and no task has more than 2 gaps."""
     n_dec = n_decisive(n)
     n_non = n - n_dec
     k_d = int(n_dec * DDP_SHARE)
     k_n = int(Decimal(k_d) * n_non / n_dec + Decimal("0.5")) if n_dec else 0
-    return ([(True, "require")] * k_d + [(True, "forbid")] * (n_dec - k_d)
-            + [(False, "require")] * k_n + [(False, "forbid")] * (n_non - k_n))
+    groups = [(True, "require", k_d), (True, "forbid", n_dec - k_d), (False, "require", k_n),
+              (False, "forbid", n_non - k_n)]
+    plan, idx = [], {True: 0, False: 0}
+    for dec, pol, cnt in groups:
+        for _ in range(cnt):
+            plan.append((dec, pol, 1 + idx[dec] % 2))
+            idx[dec] += 1
+    return plan
 
 
+# ---------------------------------------------------------------- finalize: Task and Gold
 def n_decisive(n_per_layer: int) -> int:
     return n_per_layer * 2 // 3 if n_per_layer >= 3 else (n_per_layer + 1) // 2
 
@@ -792,7 +809,7 @@ def generate(n_per_layer, split, seed, snapshot, structures, value_sets, registr
     gap_plan = layer_plan(n_per_layer)
     for layer in LAYER_ORDER:
         for k in range(n_per_layer):
-            policy = gap_plan[k] if layer in ("conflict", "insufficient") else (False, None)
+            policy = gap_plan[k] if layer in ("conflict", "insufficient") else (False, None, 0)
             raws.append(_make_raw(layer, policy, _task_seed(seed, split, layer, k), ctx, split, template_pool, stats))
     order = list(range(len(raws)))
     random.Random(f"{seed}|{split}|order").shuffle(order)

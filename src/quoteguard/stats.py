@@ -221,7 +221,8 @@ def cluster_bootstrap(records: Sequence, cluster_key, stat: Callable[[list], flo
 
 def noninferiority_bootstrap_lower(cluster_records: Mapping[str, Sequence[tuple[int, int]]], B: int = 9999,
                                    alpha: float = 0.05, seed: int = 0) -> dict:
-    """One-sided lower bound of p_new - p_ref from a cluster bootstrap (sensitivity analysis).
+    """One-sided lower bound of p_new - p_ref from a cluster bootstrap (primary non-inferiority analysis;
+    the Tango test is the sensitivity analysis).
 
     cluster_records maps a cluster id (task) to its (new, reference) 0/1 outcome pairs.
     """
