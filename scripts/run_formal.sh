@@ -7,7 +7,7 @@ P="$1"
 H=29a08030798cf637400a338e821f4bb6cc74bde5450817d5fbc51966f3837ac8
 T=data/tasks/test/tasks
 W=runs/formal_inputs
-export PYTHONPATH=src QG_PROXY_AUTH=1
+export PYTHONPATH=src QG_PROXY_AUTH="${QG_PROXY_AUTH-1}"   # 本地运行时设 QG_PROXY_AUTH=0 并提供三家 *_API_KEY
 E=(--experiment formal --kind formal --rates configs/rates.json --protocol-sha256 "$H" --seed 20261010)
 case "$P" in
   deepseek) C=ds_pro,ds_flash; CUR=USD; CAP=12; PREFIXES="deepseek- think-" ;;
