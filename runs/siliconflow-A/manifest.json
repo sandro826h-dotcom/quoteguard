@@ -3,7 +3,10 @@
   "budget": {
     "CNY": 100.0
   },
+  "completed": 120,
   "created_at": "2026-10-11T16:59:42.547807Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-11T18:37:54.921800Z",
   "identity": {
     "base_urls": {
       "siliconflow": "https://api.siliconflow.cn/v1"
@@ -17,7 +20,18 @@
   },
   "kind": "formal",
   "plan_id": "formal-siliconflow-A",
-  "runs": [],
-  "status": "running",
-  "stop": null
+  "runs": [
+    {
+      "finished_at": "2026-10-11T18:37:54.921750Z",
+      "skipped_done": 44,
+      "started_at": "2026-10-11T18:28:07.285648Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "CNY": 1.919274
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 120
 }
