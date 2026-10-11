@@ -1,0 +1,23 @@
+{
+  "batch_id": "deepseek-A",
+  "budget": {
+    "USD": 12.0
+  },
+  "created_at": "2026-10-11T16:59:42.711900Z",
+  "identity": {
+    "base_urls": {
+      "deepseek": "https://api.deepseek.com/v1"
+    },
+    "executor_sha256": "50cc1a5df861bd7a2e3fd962db85677729a08b1da2abbf04386a58e063711c81",
+    "llm_sha256": "11ab74b6e9a624515798f2d24b7c8b217861a034b787a3909c253a12b5a7bb0f",
+    "mode": "live",
+    "models_sha256": "af83895bcb0478cf6e17d17dd0fd7435455a6efebcf982547b7e13b834a67679",
+    "plan_sha256": "e7fd5056a6499e3e04d78222b3fe11979e14dc7788cdb20dca0cb63990928b2d",
+    "util_sha256": "c5e5bbb7d6b7ebea6c743499d6ef2c0a720ebbaf38dfef2a93cf049efb1e48d2"
+  },
+  "kind": "formal",
+  "plan_id": "formal-deepseek-A",
+  "runs": [],
+  "status": "running",
+  "stop": null
+}
