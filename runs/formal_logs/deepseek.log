@@ -38,3 +38,5 @@ error: runs/formal_inputs/plans/formal-deepseek-A.json exists with different con
 {"batch_dir": "runs/deepseek-B", "status": "completed", "completed": 668, "total": 668, "spent": {"USD": 3.953412}}
 [2026-10-11T23:36:23Z] deepseek-B status=completed
 {"retry_requests": 0}
+{"A": "runs/formal_inputs/plans/formal-think-A.json", "B": "runs/formal_inputs/plans/formal-think-B.json"}
+[2026-10-11T23:36:44Z] run think-B plan=runs/formal_inputs/plans/formal-think-B.json budget=USD=8.002

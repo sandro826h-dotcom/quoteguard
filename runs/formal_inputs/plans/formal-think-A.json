@@ -1,0 +1,1377 @@
+{
+  "budget": {
+    "USD": 8.002
+  },
+  "kind": "formal",
+  "plan_id": "formal-think-A",
+  "protocol_sha256": "29a08030798cf637400a338e821f4bb6cc74bde5450817d5fbc51966f3837ac8",
+  "rates": {
+    "ds_flash": {
+      "currency": "USD",
+      "input": 0.5,
+      "output": 1.0
+    },
+    "ds_flash_think": {
+      "currency": "USD",
+      "input": 0.5,
+      "output": 1.0
+    },
+    "ds_pro": {
+      "currency": "USD",
+      "input": 2.0,
+      "output": 4.0
+    },
+    "glm": {
+      "currency": "CNY",
+      "input": 8.0,
+      "output": 28.0
+    },
+    "glm_v": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 12.0
+    },
+    "kimi": {
+      "currency": "CNY",
+      "input": 6.5,
+      "output": 27.0
+    },
+    "qwen_max": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_plus": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    },
+    "qwen_vl": {
+      "currency": "CNY",
+      "input": 4.0,
+      "output": 40.0
+    }
+  },
+  "requests": [
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-001/C1/C1.png",
+          "sha256": "b22a15812191179872882691f6d9583dd379983d4478a3f422f47118a11625a8"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "7f4c460e145acb004ac827ed49ce2eb5ef80968df990f425c0bc5ec769d61cdf",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-001|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-001",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-001/C3/C3.png",
+          "sha256": "d8741b996465a71f164ec95e06d689cd6a09d0a8d0a4ce4eb7996afb3f2ea8e2"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "51e8e407e085d82a711cb20d5cd981058ae75655cee67d6816bd8779fc58b648",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-001|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-001",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-002/C2/C2.png",
+          "sha256": "19832457d9280aea62d3162b154703d400fffa228543fae8b849d96717f9ab61"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "745f7146637095e92e79851c9b723d1f85afc76945659e9f6ec35c0cc226836b",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-002|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-002",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-002/C4/C4.png",
+          "sha256": "549f8b71d1f4e8788575cb493cedfbeba100df649032772dcfde0c0ace3a154a"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "75bde1ee94216a56c41557fc687523ff4fb2754e55ce3f5b87e42faf2fd3dcbd",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-002|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-002",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-003/C2/C2.png",
+          "sha256": "5ce9cb4109c75cc3cf7bb312631e702fb11f061cc6c329a92786f1d3bc568f0d"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "a87cd25a479f285a6e61e985c6f58c777cc488deffd75d9b22d19a538a358084",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-003|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-003",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-003/C3/C3.png",
+          "sha256": "df7d5340e51b7ca7ab222f4be4623903754b612ca6c5f0b261767afbdd4369d1"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "2b560d66abce528709a142eceb844c483b80dc9c0ad25ad003460d31062e54cc",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-003|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-003",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-003/C5/C5.png",
+          "sha256": "b3ae109c520b90d274a44d4ca65c6c39ab22378e34db9d695b189ba10268c5c4"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "d16673380f9bf48e4cdfc0c66251e1c19dff48446d1a43c678a55cf490ed6583",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-003|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-003",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-004/C4/C4.png",
+          "sha256": "fc3be921f2bb6b6930d87e8f47e0641b351710d97a7d1a6f5bd79522c58ee95c"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "8d07609d0d6d525475428d1b688856b94943eeaf333908b22051ddd99c9cac71",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-004|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-004",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-004/C5/C5.png",
+          "sha256": "8580121aa4191eafd1e454e33429958a0447df1d7631b7b6a18a2822df8442df"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "f7bf5e62e884a21f453d1cf2fc5b607e4a4bb7c2b6b3e339a909feb626f4f9bc",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-004|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-004",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-006/C3/C3.png",
+          "sha256": "6ed7a594bc088c80089359defed05e79ae2d41b90e87b906b2e5ed9d7b01cc31"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "3da085e81d36e374f6791b969f5554b526a9ce6da56ec740ae2d6ac70fa261ed",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-006|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-006",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-007/C2/C2.png",
+          "sha256": "792b8a1511ab1445bca53251beae2a6e00936fa7f982ab766317adb4861993d9"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "12b161cdd1f55fcc19a9dd89a77e926b8560df30492029f8805a9ed467748dbe",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-007|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-007",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-007/C3/C3.png",
+          "sha256": "311aa60adcf509249ad9436fc088e7edc2c8baadcbd5f306a83a0ccdbbb7a3bc"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "928514cc4d79e7c5be58cc0685e0c7529f5b3acacf3c2d4ee623d52d8cafd897",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-007|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-007",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-008/C4/C4.png",
+          "sha256": "078d1e1aecdbf2c3f4b66a6dd424aa6d4c538f6bdc25de3b1f1325c3ab8bc156"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "ad923bff5c68990df1d8479dfab0fff1ea31ce2877f60125118718586185d38f",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-008|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-008",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-009/C5/C5.png",
+          "sha256": "a22c68f220a5f0239137735c5eb1ca6b3c5a638775aac0d5a74ae311382408b2"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "d52486f113341b3ca9857ecae38fba1d1e991785482293efe99eccfa6c257c40",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-009|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-009",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-010/C4/C4.png",
+          "sha256": "f2ed398fc880a2ac0ef54703f4575f2d75834ce8928cb7caa6c098fabe963b7b"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "e0a8d7e5dd1099b5234c2ed1e271279ff853994ee37c5bac91f598c70c9c5510",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-010|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-010",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-012/C3/C3.png",
+          "sha256": "885bfdfdb08c0a4c99245af6f2224b9476210a9d6e411474f14e1191deaa850e"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "3680bb8defc053331e26fd6cf27cc31ea4cee5ee3008a54554994cae6bde43cf",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-012|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-012",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-012/C5/C5.png",
+          "sha256": "7e8d45d5b2b21bf2698cbe01c2043514b1fffefbea051697ee1e1c894473c10a"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "94e1aa5875e101364ff956e2ee48b357a5b4635bdb0ee61a64bd953b73aa6bc0",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-012|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-012",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-014/C1/C1.png",
+          "sha256": "6c41f81167ae37f0010177b399da675e8229c487542a20ad56b53e67420ba7ec"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "3b4a9945367c4ca42200b12738a1c636d0422e5b5913ecb9ad12e7139f4722d1",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-014|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-014",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-014/C4/C4.png",
+          "sha256": "df2711bcd7404b4f5ca44635effce21d225305b2c6b14c24cfd0be84cc24ab46"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "80edd906be1103ffd95407dee4a47da35317b43349523954384e8cd9b58134de",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-014|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-014",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-015/C1/C1.png",
+          "sha256": "838db3bac8fec43f48a7ec8518e796832ddad240adcebc50051f4ffa4ecdc86d"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "2b57b763b7fa431fe88d31738b62080aa94af380af15a791cc91b81f29fd7ed4",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-015|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-015",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-016/C4/C4.png",
+          "sha256": "8b06eb28339bea50fe3fd5c6ead7c201db02de9b8737ef764646f3f897388792"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "5f50aec9a4adb7566ef459a26778d4ba7cc1a423fb5df9d29e517f8b3c780b77",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-016|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-016",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-016/C5/C5.png",
+          "sha256": "398376f191d71d456038c744eab5ed648065988b441a3680c53632fee7001894"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "1f3e1b097a6419db1283aecdde6b6cd68fa5270592fca58ce83674e7cc8f1588",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-016|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-016",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C6",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-016/C6/C6.png",
+          "sha256": "a040d5ce3aa7c01a56cdb7c2b5a270f1047d5527b0090244a711e0c44d24cfc9"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "5734ac86b43c0ba195da43bceb43d69e52910b1ef0ffc4f2a21591fb8c7cb65e",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-016|transcribe|C6|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-016",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-019/C1/C1.png",
+          "sha256": "8a7506312165ee798d48ca635193be5928c2f5ef9daf3ada0d316d6c8ac726ea"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "afac93b1d2034ee3581573899b5a599a2cbe047903a74834e5c6acb389214192",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-019|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-019",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-019/C2/C2.png",
+          "sha256": "f1a12f3a92f93b22716a49867101c9f4d380df8d78030a2c2273bc287a0cea86"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "3b900c3599c84ce734edef624b5052dc9cff9e86efbdeb972dbef8be75c3e9fa",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-019|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-019",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-019/C4/C4.png",
+          "sha256": "df4f8e07e0e51f90323e872ed3326ad8b54575e8a0bea07150b1092e9d0fd37b"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "195e494f6214af79b5b01606763cdc5384873ca9267c9e472344077e3be55a72",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-019|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-019",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-020/C1/C1.png",
+          "sha256": "c51f073f64678e51d807c63e0d45fb89e08f9e63185505f8515907d62dfd2ea3"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "35e566d54a38464e9dd8e2adcb28d4ffb9c691e9101b93d4c646b37678dc9ac6",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-020|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-020",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-020/C3/C3.png",
+          "sha256": "94f38409bac40a1e97d65551497aa4cfb70c70e72c0ee03b0464e43df124e786"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "f3561ee7756e6a7414f244f8adc123d07e8a10dc13b90e4162cdc603d0ef737b",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-020|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-020",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-021/C5/C5.png",
+          "sha256": "20dac0ce278a074d38126a3101794e77eeb8ad3d17d2f164f89818b9c8a783bc"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "b2b293713b4edf54a1ecf415497194137268da5d2609a6bab17fcebe77770243",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-021|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-021",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C6",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-021/C6/C6.png",
+          "sha256": "16f96b60efc6aab8bb763eb3c93c63ffca362cf8886e9daaa45a7aa72b401bad"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "34caaea89e9e0721cba3aa4628d027ebbb2e8664689d1a89febb2238850a2a7d",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-021|transcribe|C6|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-021",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-023/C2/C2.png",
+          "sha256": "54d56068dedd042ca24415bb103497c4207cc2b0c66b1e1f3ba44bfabf11e5d5"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "bf8608dfd20635353261b554e793ecdad07228816e78480d17ad76102c6ce1c3",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-023|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-023",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-023/C4/C4.png",
+          "sha256": "fc36c6067e54b3b80a100548f1f7f29e12a453e08bae8bd1846bb297f68b4059"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "0691e4e85d122d6678f63a18666e7a94507cc37212a69e63f242b6396f1478de",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-023|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-023",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-024/C3/C3.png",
+          "sha256": "369548474ed651c49dabea03592968aa79cf6b4d4987faa9f8af896e55cdd4b9"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "5a18e28a73ce12f07a24eb9c55749718d4aeddfff21abddb5d26d54e3d0cfd32",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-024|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-024",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-025/C1/C1.png",
+          "sha256": "a2734f2333b9197a1a86220f057826ee8c353d65952acac72042fe231fca8942"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "9e552b1d5342828d9e40af1a0db14975dff2e88bdb516aca7a3c280a37b2a658",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-025|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-025",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-026/C1/C1.png",
+          "sha256": "981548ee6fc88d97c0aa0f80870d89a430ff01ff188651a61e31dc86c198de52"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "5433a389b4bdf6575c6077fa281edd1ea9a42c79156df513ffab3498606eeeeb",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-026|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-026",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-026/C3/C3.png",
+          "sha256": "bfc674bf27300f7f582bd74220b5a3ba2e6524c03ba3b032f5e7853f62a1a01b"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "e276ef27a24315a04e93923919c9178c1fb0e4d789beaabaa7abdec2f26bfde2",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-026|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-026",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-031/C4/C4.png",
+          "sha256": "a39f83411702df30a3b3f403145a9bc01c3766c5e3d483c269100274d02c4520"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "dc093f7df1d947caf602026dc147d28f0405aeb104a08117da8dfc9497d3d038",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-031|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-031",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-032/C3/C3.png",
+          "sha256": "1bb4a9311e6bbf305f702fe1ece2e45f15cf3fa3cd720375bdb4e3c294750aed"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "da15cae88c718f810e7a16f7e04a9f4812ef687e8c6985cd85ccf79bd72260e3",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-032|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-032",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-032/C4/C4.png",
+          "sha256": "0cd1d116bedfe0ed5b7c4633d0db454bcadaae220540053b6d7455ce1f4451c4"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "7efeb66a065aee92160e121c2160a78e3552834ab3a0791fa1a180b31dc67e54",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-032|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-032",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-033/C2/C2.png",
+          "sha256": "af3dbddc2baa096b13238f4e576ae9f1216d190b3fab547633927ceef05d80b7"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "a9e222e64c3ac74ddba2336f33b7d97992bfd3dfb171aafeba54d0125102af5a",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-033|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-033",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-034/C3/C3.png",
+          "sha256": "09313dabb48a7fb5011a54b1dbc804e79d5a4a0dfa844905bbc792122ab1e794"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "f6250b8bfb468a226e5cc7327defb625a276113c55ca0c10c75d7cf4e37bca81",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-034|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-034",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-034/C4/C4.png",
+          "sha256": "18a333261c099b4a2ef054c23f1ac8e047987d4cce3da371c3be36b2c4721d79"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "a27edccdd88a472f7d9349bb884b9da4d7a5912f11f1fd3db2ce0dcea7b92a06",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-034|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-034",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C6",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-034/C6/C6.png",
+          "sha256": "cc523dc662711291492f353e31fe351f4a9297b79b8607324f20980109362d51"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "b45ee901e1082a205cc89b4764e6c96f2af043d166e838944921a7caf9c85bbc",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-034|transcribe|C6|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-034",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-035/C3/C3.png",
+          "sha256": "c6ab34bb873f530fc474494c2f3cd52aa21f5387ede3c0d1f37118771c521c6e"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "458906cddb88231d4fbff6ca4d274ef49fb2f3f2a1fe0bcdc5fc57412099a96a",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-035|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-035",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-036/C1/C1.png",
+          "sha256": "1bcbd6f6b9a7f9dd9e1f6d1721f099ca3708fcba8e99facbb404e9036b62844c"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "bbb51d3eae22a6583417b19c1adb3f4f24f6bc6078f8b07dfceae1ae9d9073bd",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-036|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-036",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-036/C3/C3.png",
+          "sha256": "1f48de73a8f42a9fee20c9b9b79792d838bc0bfcd1e05c3b6827cc326334a62a"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "5c8434a4843c6deec8a0fe1b4e9dab393d68f5292d9eb5c1318525ddfb628f6b",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-036|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-036",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C5",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-037/C5/C5.png",
+          "sha256": "e6ae8e3ff38546c4d23ff3622c8ff70cdaa74b26444fcb832e2c9e9bfc45f8e9"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "f26b0ee303ecf7f2eba9572bf71f2f867723a93bec0657ff3b669f54a922437f",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-037|transcribe|C5|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-037",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-038/C2/C2.png",
+          "sha256": "92f760a634d925bbdf5d870f1d5445e6ac63b5045f94ab65014fb3b2c745be5c"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "09aaa2819ee75afa384533717273d360dc15dd367b6aeb5ab5228ca416e7ee0b",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-038|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-038",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-039/C2/C2.png",
+          "sha256": "a343db4382c17b08e9dc147558ac665e90893b83871728b078bfdc91f996c541"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "e12843a6dc705f8e89938416ca28b947cc252b9034feb2e7bd882e18511b2749",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-039|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-039",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-040/C2/C2.png",
+          "sha256": "f3d996d38bb16da673be265f986d619bd4ec097979dd2375acc558bc56837b8f"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "418cfb3c983393d56765b6f7800460193be8c1ffa9f42d0b076f6dae49d07c4b",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-040|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-040",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-040/C4/C4.png",
+          "sha256": "8cb7530ce8ad54846a0e39874d694cd09af0de79fed9980ba6627bed2cf9debb"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "b2454033e185d3ee401423812a1f38f82fb0a7860f229f019fcd485cd6b8f30e",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-040|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-040",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-041/C1/C1.png",
+          "sha256": "f74d23d687274f8dcef692e9d9638b8b538fcb7bb69a907e52ad00562431d073"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "c22455caa419e46d323910852a9de10d193e04cdc095482678d42ef0f8731011",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-041|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-041",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-042/C1/C1.png",
+          "sha256": "4a707d3d32ec22b0b3add780fa859a59327b41104946ff108a305de6cfeff68a"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "1f7f42b4be782b2f520c13625c3140ecec0d1f15d280dacf32866e0863966912",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-042|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-042",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C2",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-042/C2/C2.png",
+          "sha256": "670488e3c50ea83f46ed2368eb6e488b978ae43885a9e17cfd83fd918b554229"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "147b3dce2ccda6579347acf32bbf55d1bad31e5485c11d1c636bc617ca2aa71d",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-042|transcribe|C2|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-042",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-042/C4/C4.png",
+          "sha256": "9d827d3f25075fdae6bb394138c9d97a352e2df0a85a07358085cd41f2d3959e"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "02c73410c0a77f033b1f915375bd1bcf0a49e3a3bdaa3a14987ba12cecd72dd9",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-042|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-042",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C1",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-043/C1/C1.png",
+          "sha256": "6dd005733a03bc41e9cfd106e3f1f2a43972e1c7f497805dce497ea87ed0d4c1"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "aec616df7b53c96fc5e1dca97cf63552a25d3eca82e61f6f01fbd71cf2769df2",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-043|transcribe|C1|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-043",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-043/C3/C3.png",
+          "sha256": "20576c41e7bf749d9cf8b896b3abc1e8824a6833cfc2b0b9f1870eb8aa87c246"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "91e44451ab7bd0a7cea0098957a6f5c79d1975682dbd44f16523b9ddba5a71a1",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-043|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-043",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C3",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-046/C3/C3.png",
+          "sha256": "c875c2c879d056e43426b58a92431a4db8bb5d04be26e0d4305ff884e2ec4d34"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "d8175ced17cc65bd40c652a249ed29dfb50e878f93441a93c5e47ca43ecd0fe1",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-046|transcribe|C3|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-046",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-046/C4/C4.png",
+          "sha256": "312e66a5cd9539de9884cedd79c84999220a379d0c75c411237ceacbb69583c0"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "af128fa97c0ee8e01704b670d33b374b8b49ccd7263aecc37f04a9a1431fe47a",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-046|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-046",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    },
+    {
+      "cand_id": "C4",
+      "config_id": "ds_flash",
+      "experiment": "formal",
+      "images": [
+        {
+          "mime": "image/png",
+          "path": "/home/user/quoteguard/runs/formal_inputs/render/T-test-047/C4/C4.png",
+          "sha256": "55fd368577d285bb85101e8b0271e5a5e95c67899cd7ec8821a0267fa227ba5e"
+        }
+      ],
+      "max_tokens": 1200,
+      "method": "transcribe",
+      "prompt_sha256": "56faed0d01b1dc0820ad1be851dd52ddacd23ce7304c479db578d75d0e371744",
+      "repeat": 0,
+      "run_key": "formal|transcribe|ds_flash|T-test-047|transcribe|C4|r0",
+      "seed": 20261010,
+      "stage": "transcribe",
+      "system": null,
+      "task_id": "T-test-047",
+      "text": "请逐字转写这张图片中的全部文字。按从上到下、从左到右的顺序输出，每个表格行占一行，单元格之间用“|”分隔。不要总结，不要补充图片中没有的内容。"
+    }
+  ]
+}
