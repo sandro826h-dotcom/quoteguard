@@ -180,3 +180,20 @@
 - 正式实验预算已批准：总上限 300 元，含代金券，略超可以。千问 key 额度未用完，耗尽时按 CLAUDE.md 停批报告。
 - 盲标子集 15 个单元：两份独立初标已在仓库外完成，由整理原件的队友对照原件逐字段审定全部 270 个字段后导入。协议偏离记录：盲标子集初标由大模型生成（不属于 6 个实验配置），金标签以人工全量审定为准；初标之间的一致率只作内部记录。
 - 其余 13 个非盲标单元按规范第八节由 Claude 初标、新队友复核（下一会话做）。
+
+## 2026-10-12 正式实验启动与会话交接
+### 已完成
+- 新增 scripts/run_formal.sh：按冻结协议附录命令序列运行一家服务商的全部批次（A 转写 → A 补跑 → 生成 B 计划 → B → B 补跑；deepseek 之后接思考组 think-B 及补跑）。上一批次状态不是 completed 时脚本停止；每个新计划的 --budget 为服务商上限（DeepSeek 12 美元、百炼 140 元、硅基流动 100 元）减去账本中该服务商正式批次已记支出（预试验批次不计入）。
+- A 阶段计划：runs/formal_inputs/plans/formal-{deepseek,dashscope,siliconflow}-A.json，请求数 60、60、120。
+- 2026-10-11 16:59Z 三家同时后台启动，均返回有效观测（HTTP 200）。提交时完成数：deepseek-A 15/60，dashscope-A 6/60，siliconflow-A 5/120。
+
+### 命令与路径
+- 启动（会话断开不影响）：`nohup bash scripts/run_formal.sh <P> >> runs/formal_logs/<P>.log 2>&1 &`，P 取 deepseek、dashscope、siliconflow。
+- 日志：runs/formal_logs/<P>.log；批次目录 runs/<P>-A、runs/<P>-A-retry、runs/<P>-B、runs/<P>-B-retry、runs/think-B…；状态看各目录 manifest.json 的 status 与 completed。
+- 续跑：排除停止原因（换百炼 key、硅基流动充值、网络恢复）后重新执行同一启动命令。已完成批次跳过，未完成批次在原目录续跑（沿用原计划上限）。新容器中先确认进程已不在（`pgrep -f run_formal.sh`），避免同一批次并行两份。
+- 容器回收后后台进程终止，未提交的观测随之丢失；新会话先检查 runs/ 下批次目录是否存在，缺失则从头重跑该批次（已入账支出计入预算扣减）。
+
+### 下一步
+1. 检查三家状态，提交 runs/ 下新增观测与日志；停止的批次按协议第七节处理并报告用户。
+2. 全部批次完成后按附录 assemble 与 score。
+3. 13 个非盲标单元初标（Claude）与新队友复核。
