@@ -1,0 +1,1030 @@
+{
+ "spans_total": 159,
+ "span_failures": [],
+ "value_mismatches": [
+  {
+   "seed_id": "Q01-u2",
+   "field": "transit_days",
+   "value": [
+    10,
+    15
+   ],
+   "spans": [
+    "美中（邮编4-7开头） 5.94 5.65 5.58 5.43 5.29 5.29",
+    "(货入货代国内仓至 FBA签收，自然日 )"
+   ],
+   "why": "值与原件一致（美中行参考时效列为 10-15天，位于表格同一行右侧），但两个 span 均不含 10、15；第一个 span 截取了价格行，未含时效列。建议补入“10-15天”片段。"
+  },
+  {
+   "seed_id": "Q02-u3",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": null,
+     "price": "4.76",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    "¥4.76/kg起 · 15-19天提柜",
+    "义乌收货最低档起价（RMB/kg 含税）"
+   ],
+   "why": "min_kg 为 \"0\" 属推算：原文为“¥4.76/kg起”，未列下限数字 0。price 4.76 与 span 一致。"
+  },
+  {
+   "seed_id": "Q03-u3",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": null,
+     "price": "7.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    "KG计费 价格超低7.5元/KG",
+    "以下美国海派收费为RMB人民币一公斤为标准。"
+   ],
+   "why": "min_kg 为 \"0\" 属推算：原文为单一价“价格超低7.5元/KG”，未列下限。price 7.5 与 span 一致。"
+  },
+  {
+   "seed_id": "Q04-u1",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "150",
+     "max_kg": "200"
+    },
+    "…(共5档，中间档上限同为推算)"
+   ],
+   "spans": [
+    "派送区域 150KG+ (RMB/KG) 201KG+ (RMB/KG) 301KG+ (RMB/KG) 501KG+ (RMB/KG) 1001KG+ (RMB/KG) 提取时效",
+    "全美48州 78 70 69 67 66 ★"
+   ],
+   "why": "首档 max_kg \"200\" 属推算：原文表头为“150KG+ 201KG+ …”，spans 中无 200。中间档上限 300、500、1000 同理为由下一档起点推算。首档 price 78、末档 price 66 与 span 一致，末档 min 1001 一致。"
+  },
+  {
+   "seed_id": "Q05-u1",
+   "field": "fuel_pct",
+   "value": "0",
+   "spans": [
+    "燃油/旺季附加费（报价已打包）"
+   ],
+   "why": "值 \"0\" 为推算：原文仅写“燃油/旺季附加费（报价已打包）”，未列数字 0。"
+  },
+  {
+   "seed_id": "Q07-u3",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": "0.5",
+     "price": "505",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "0.5",
+     "max_kg": "1",
+     "price": "670",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1",
+     "max_kg": "1.5",
+     "price": "835",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1.5",
+     "max_kg": "2",
+     "price": "1000",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2",
+     "max_kg": "2.5",
+     "price": "1164",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2.5",
+     "max_kg": "3",
+     "price": "1323",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3",
+     "max_kg": "3.5",
+     "price": "1482",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3.5",
+     "max_kg": "4",
+     "price": "1641",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4",
+     "max_kg": "4.5",
+     "price": "1800",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4.5",
+     "max_kg": "5",
+     "price": "1959",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5",
+     "max_kg": "5.5",
+     "price": "2118",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5.5",
+     "max_kg": "6",
+     "price": "2277",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6",
+     "max_kg": "6.5",
+     "price": "2436",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6.5",
+     "max_kg": "7",
+     "price": "2595",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7",
+     "max_kg": "7.5",
+     "price": "2754",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7.5",
+     "max_kg": "8",
+     "price": "2913",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8",
+     "max_kg": "8.5",
+     "price": "3072",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8.5",
+     "max_kg": "9",
+     "price": "3231",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9",
+     "max_kg": "9.5",
+     "price": "3390",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9.5",
+     "max_kg": "10",
+     "price": "3549",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "10",
+     "max_kg": "11",
+     "price": "3849",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "11",
+     "max_kg": "12",
+     "price": "4149",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "12",
+     "max_kg": "13",
+     "price": "4449",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "13",
+     "max_kg": "14",
+     "price": "4749",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "14",
+     "max_kg": "15",
+     "price": "5049",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "15",
+     "max_kg": "16",
+     "price": "5349",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "16",
+     "max_kg": "17",
+     "price": "5649",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "17",
+     "max_kg": "18",
+     "price": "5949",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "18",
+     "max_kg": "19",
+     "price": "6249",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "19",
+     "max_kg": "20",
+     "price": "6549",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "20",
+     "max_kg": "21",
+     "price": "6755",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "22",
+     "price": "6961",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "22",
+     "max_kg": "23",
+     "price": "7167",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "23",
+     "max_kg": "24",
+     "price": "7373",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "24",
+     "max_kg": "25",
+     "price": "7579",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "25",
+     "max_kg": "26",
+     "price": "7785",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "26",
+     "max_kg": "27",
+     "price": "7991",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "27",
+     "max_kg": "28",
+     "price": "8197",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "28",
+     "max_kg": "29",
+     "price": "8403",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "29",
+     "max_kg": "30",
+     "price": "8609",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "30",
+     "max_kg": "40",
+     "price": "11160",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "40",
+     "max_kg": "50",
+     "price": "13950",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "50",
+     "max_kg": "60",
+     "price": "16740",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "60",
+     "max_kg": "70",
+     "price": "19530",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "30.1",
+     "max_kg": "70",
+     "price": "279",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "70.1",
+     "max_kg": "300",
+     "price": "279",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "300.1",
+     "max_kg": "3000",
+     "price": "311",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    "包裹和2.5kg以上文件",
+    "环球快递出口公布价格",
+    "每公斤单价"
+   ],
+   "why": "价格数字不在 spans 中：两个 span 仅为表头和说明文字（“包裹和2.5kg以上文件”“环球快递出口公布价格”“每公斤单价”），价格数字位于 PDF 表格内。已对 PDF 第25-26页6区列抽查 5 档，全部与 value 一致（见 sampled_tiers）。首档 min_kg \"0\" 为推算（原表行标签自 0.5 起）。末档 300.1 与 3000 为表格原文。"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": "0.5",
+     "price": "619.2",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "0.5",
+     "max_kg": "1",
+     "price": "802.7",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1",
+     "max_kg": "1.5",
+     "price": "1010.7",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1.5",
+     "max_kg": "2",
+     "price": "1201.9",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2",
+     "max_kg": "2.5",
+     "price": "1399.9",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2.5",
+     "max_kg": "3",
+     "price": "1602.6",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3",
+     "max_kg": "3.5",
+     "price": "1799.1",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3.5",
+     "max_kg": "4",
+     "price": "1999.4",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4",
+     "max_kg": "4.5",
+     "price": "2195.9",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4.5",
+     "max_kg": "5",
+     "price": "2393.5",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5",
+     "max_kg": "5.5",
+     "price": "2567.9",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5.5",
+     "max_kg": "6",
+     "price": "2767",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6",
+     "max_kg": "6.5",
+     "price": "2960.7",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6.5",
+     "max_kg": "7",
+     "price": "3155.8",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7",
+     "max_kg": "7.5",
+     "price": "3356.1",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7.5",
+     "max_kg": "8",
+     "price": "3552.6",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8",
+     "max_kg": "8.5",
+     "price": "3747.7",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8.5",
+     "max_kg": "9",
+     "price": "3946.8",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9",
+     "max_kg": "9.5",
+     "price": "4143.1",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9.5",
+     "max_kg": "10",
+     "price": "4338.5",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "10",
+     "max_kg": "10.5",
+     "price": "4434.7",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "10.5",
+     "max_kg": "11",
+     "price": "4611.6",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "11",
+     "max_kg": "11.5",
+     "price": "4783.4",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "11.5",
+     "max_kg": "12",
+     "price": "4960.2",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "12",
+     "max_kg": "12.5",
+     "price": "5138.4",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "12.5",
+     "max_kg": "13",
+     "price": "5314",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "13",
+     "max_kg": "13.5",
+     "price": "5488.4",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "13.5",
+     "max_kg": "14",
+     "price": "5663.9",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "14",
+     "max_kg": "14.5",
+     "price": "5840.8",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "14.5",
+     "max_kg": "15",
+     "price": "6012.5",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "15",
+     "max_kg": "15.5",
+     "price": "6189.5",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "15.5",
+     "max_kg": "16",
+     "price": "6365.1",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "16",
+     "max_kg": "16.5",
+     "price": "6538.2",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "16.5",
+     "max_kg": "17",
+     "price": "6730.6",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "17",
+     "max_kg": "17.5",
+     "price": "6921.8",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "17.5",
+     "max_kg": "18",
+     "price": "7106.6",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "18",
+     "max_kg": "18.5",
+     "price": "7282.2",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "18.5",
+     "max_kg": "19",
+     "price": "7477.5",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "19",
+     "max_kg": "19.5",
+     "price": "7659.4",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "19.5",
+     "max_kg": "20",
+     "price": "7849.3",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "44",
+     "price": "366.9",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "45",
+     "max_kg": "70",
+     "price": "366.9",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "71",
+     "max_kg": "99",
+     "price": "357.7",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "100",
+     "max_kg": "299",
+     "price": "357.7",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "300",
+     "max_kg": null,
+     "price": "321.3",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    "费率以人民币计算并适用于从中国大陆",
+    "适用于重量超过20公斤的货件 (每公斤运费-逆差重量#除外)"
+   ],
+   "why": "价格数字不在 spans 中：两个 span 为说明文字（“费率以人民币计算并适用于从中国大陆”“适用于重量超过20公斤的货件”）。已对 PDF 第18-19页6区列抽查 5 档，全部与 value 一致（见 sampled_tiers）。首档 min_kg \"0\" 为推算；末档 min_kg \"300\" 与 price 321.3 在 spans 中无对应数字，原表为“300 和以上”。"
+  },
+  {
+   "seed_id": "Q16-u2",
+   "field": "surcharges",
+   "value": [
+    {
+     "code": "RES",
+     "basis": "per_ctn",
+     "amount": "25",
+     "currency": "CNY",
+     "condition": "residential",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM",
+     "basis": "per_kg",
+     "amount": "2",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM_SUPER",
+     "basis": "per_ctn",
+     "amount": "120",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "OVW",
+     "basis": "per_ctn",
+     "amount": "320",
+     "currency": "CNY",
+     "condition": "ctn_kg_gt",
+     "threshold": "22",
+     "contingent": false
+    },
+    {
+     "code": "OVS",
+     "basis": "per_ctn",
+     "amount": "210",
+     "currency": "CNY",
+     "condition": "ctn_longest_side_gt",
+     "threshold": "118",
+     "contingent": false
+    }
+   ],
+   "spans": [
+    "非FBA地址 私人地址 25元/件 最低消费150/票",
+    "地址偏远 一般偏远 RMB2/KG， 最低180/票",
+    "超级偏远 120RMB/件",
+    "超重 1、单件实重超22KG；2、实重超40KG起不接 RMB320元/件",
+    "超长 1、最长边超含118CM、或次长超含73CM、属于超长"
+   ],
+   "why": "OVS 的 amount \"210\" 不在该条 span 中。超长条件 span（118CM / 73CM）原文无价格；原文 “RMB210元/件” 出现在另两条条款：“单边超（含）230CM不接 / 周长超325CM不接”和“单边最小尺寸低于5CM的包裹”，与超长条件不对应。疑似价格与条件错配，需复核。"
+  },
+  {
+   "seed_id": "Q17-u1",
+   "field": "rate_tiers",
+   "value": [
+    {
+     "min_kg": "12",
+     "max_kg": "20",
+     "price": "18.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "50",
+     "price": "17.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "51",
+     "max_kg": "70",
+     "price": "16.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "71",
+     "max_kg": "99",
+     "price": "16.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "100",
+     "max_kg": null,
+     "price": "15.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    "渠道 区域 12kg+ 21kg+ 51kg+ 71kg+ 100kg+ 参考时效 货形比重",
+    "美西（8、9） 18.5 17.5 16.5 16.5 15.5 六截三开"
+   ],
+   "why": "中间档及首档上限为推算：原文表头为“12kg+ 21kg+ 51kg+ 71kg+ 100kg+”，spans 中无 20、50、70、99。首档 min 12、price 18.5，末档 min 100、price 15.5 与 span 一致。"
+  }
+ ],
+ "sampled_tiers": [
+  {
+   "seed_id": "Q07-u3",
+   "tier_index": 3,
+   "tier": {
+    "min_kg": "1.5",
+    "max_kg": "2",
+    "price": "1000",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q07.pdf",
+   "pdf_page": 25,
+   "pdf_row_6zone": "2",
+   "pdf_6zone_value": "1000",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q07-u3",
+   "tier_index": 17,
+   "tier": {
+    "min_kg": "8.5",
+    "max_kg": "9",
+    "price": "3231",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q07.pdf",
+   "pdf_page": 25,
+   "pdf_row_6zone": "9",
+   "pdf_6zone_value": "3231",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q07-u3",
+   "tier_index": 21,
+   "tier": {
+    "min_kg": "11",
+    "max_kg": "12",
+    "price": "4149",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q07.pdf",
+   "pdf_page": 25,
+   "pdf_row_6zone": "12",
+   "pdf_6zone_value": "4149",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q07-u3",
+   "tier_index": 22,
+   "tier": {
+    "min_kg": "12",
+    "max_kg": "13",
+    "price": "4449",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q07.pdf",
+   "pdf_page": 25,
+   "pdf_row_6zone": "13",
+   "pdf_6zone_value": "4449",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q07-u3",
+   "tier_index": 31,
+   "tier": {
+    "min_kg": "21",
+    "max_kg": "22",
+    "price": "6961",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q07.pdf",
+   "pdf_page": 26,
+   "pdf_row_6zone": "22",
+   "pdf_6zone_value": "6961",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "tier_index": 0,
+   "tier": {
+    "min_kg": "0",
+    "max_kg": "0.5",
+    "price": "619.2",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q08.pdf",
+   "pdf_page": 18,
+   "pdf_row_6zone": "0.5",
+   "pdf_6zone_value": "619.2",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "tier_index": 2,
+   "tier": {
+    "min_kg": "1",
+    "max_kg": "1.5",
+    "price": "1010.7",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q08.pdf",
+   "pdf_page": 18,
+   "pdf_row_6zone": "1.5",
+   "pdf_6zone_value": "1010.7",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "tier_index": 22,
+   "tier": {
+    "min_kg": "11",
+    "max_kg": "11.5",
+    "price": "4783.4",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q08.pdf",
+   "pdf_page": 18,
+   "pdf_row_6zone": "11.5",
+   "pdf_6zone_value": "4783.4",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "tier_index": 30,
+   "tier": {
+    "min_kg": "15",
+    "max_kg": "15.5",
+    "price": "6189.5",
+    "currency": "CNY",
+    "unit": "per_shpt"
+   },
+   "pdf": "Q08.pdf",
+   "pdf_page": 18,
+   "pdf_row_6zone": "15.5",
+   "pdf_6zone_value": "6189.5",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  },
+  {
+   "seed_id": "Q08-u3",
+   "tier_index": 44,
+   "tier": {
+    "min_kg": "300",
+    "max_kg": null,
+    "price": "321.3",
+    "currency": "CNY",
+    "unit": "per_kg"
+   },
+   "pdf": "Q08.pdf",
+   "pdf_page": 19,
+   "pdf_row_6zone": "300",
+   "pdf_6zone_value": "321.3",
+   "match": true,
+   "note": "6区列，按档上限所在行取值（与 Q07 第25-26页、Q08 第18-19页行标签对应）"
+  }
+ ],
+ "missing_violations": [],
+ "method": {
+  "span_check": "quote 与原件规范化后（空白合并）做子串匹配；txt 用全文，pdf 用 pdftotext -layout，按页（有 page 时只查该页），未命中再用 -raw 试一次（本次 raw 救回 0 条）",
+  "value_check": "stated/implied/conflicting 字段：value 中数字与日期在 spans 文本中做自动查找，未命中项逐条人工核对；rate_tiers 仅核对首末档价格与 min_kg 及抽样档"
+ },
+ "raw_rescued": []
+}

@@ -1,0 +1,279 @@
+{
+ "seed_id": "Q04-u1",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q04-u1",
+  "source_type": "web_page",
+  "source_url": "F03-src-04",
+  "captured_at": "2026-10-10",
+  "page_date": null,
+  "forwarder_alias": "F03",
+  "modality": "text",
+  "channel": "美国空派超大件专线",
+  "raw_sha256": "b4cdae95f25d37a76f2fdd915d4cda0d99e6f901314e93c492805a2ac69ac3f0",
+  "anon_sha256": "f5dcffc64b587a0bce4b18a2e6d14fae0c446d955138ce680830ee9016b8524f",
+  "is_real": true,
+  "source_id": "Q04",
+  "source_class": "forwarder",
+  "publisher_alias": "F03",
+  "price_form": "published_tier",
+  "date_status": "current",
+  "dest_region": "全美48州"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "美国空派超大件专线",
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "美国空派超大件专线 双清包税门到门物流"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "air",
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "美国空派超大件专线 双清包税门到门物流"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "150",
+     "max_kg": "200",
+     "price": "78",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "201",
+     "max_kg": "300",
+     "price": "70",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "301",
+     "max_kg": "500",
+     "price": "69",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "501",
+     "max_kg": "1000",
+     "price": "67",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "1001",
+     "max_kg": null,
+     "price": "66",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "派送区域 150KG+ (RMB/KG) 201KG+ (RMB/KG) 301KG+ (RMB/KG) 501KG+ (RMB/KG) 1001KG+ (RMB/KG) 提取时效"
+    },
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "全美48州 78 70 69 67 66 ★"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "stated",
+   "value": "150",
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "单件不足150KG按150KG计费"
+    }
+   ]
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "计费标准： 材积÷6000，体积重与实际重取大。"
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "BAT",
+     "basis": "per_shpt",
+     "amount": "200",
+     "currency": "CNY",
+     "condition": "always",
+     "threshold": null,
+     "contingent": true
+    },
+    {
+     "code": "FORKLIFT",
+     "basis": "per_ctn",
+     "amount": "950",
+     "currency": "CNY",
+     "condition": "always",
+     "threshold": null,
+     "contingent": true
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "带电产品： 可出带电产品（必须申报并在清单备注“带电”），加收200元/票"
+    },
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "叉车费： 国外收货无卸货平台，需加收950元/件叉车费。"
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "空运费",
+    "报关",
+    "美国清关",
+    "关税",
+    "末端派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "价格包含空运费、报关、美国清关、关税及末端派送。"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": true,
+    "scope": "all",
+    "duty_terms": "included",
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "双清包税DDP，免费Bond清关"
+    },
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "价格包含空运费、报关、美国清关、关税及末端派送。"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "stated",
+   "value": "350",
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "一般贸易报关：350元/票，续页费50元/页"
+    }
+   ]
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "stated",
+   "value": [
+    12,
+    15
+   ],
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "出仓后12-15工作日左右签收"
+    }
+   ]
+  },
+  "validity": {
+   "status": "stated",
+   "value": [
+    null,
+    "2026-12-31"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q04",
+     "kind": "text",
+     "quote": "有效期至 2026年12月31日"
+    }
+   ]
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "rate_tiers": "档位写作“150KG+、201KG+…”，上限按下一档起点减 1 记",
+  "min_kg_carton": "原文“单件不足150KG按150KG计费”",
+  "surcharges": "偏远地址附加费按 UPS/卡车公司账单实报实销，无金额，未记入；品名超 5 个加收 50 元/个，未记入",
+  "broker_fee_cny": "“一般贸易报关”为可选报关方式；价格已含报关，两者不在同一条款，未按冲突记，请复核",
+  "transit_days": "工作日"
+ }
+}

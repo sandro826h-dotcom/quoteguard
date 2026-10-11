@@ -1,0 +1,334 @@
+{
+ "seed_id": "Q17-u1",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q17-u1",
+  "source_type": "web_page",
+  "source_url": "F05-src-17",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-10-09",
+  "forwarder_alias": "F05",
+  "modality": "text",
+  "channel": "美森CLX 正班快递派",
+  "raw_sha256": "b671dc694d61b7981ee0992053b000cc9559a61b421a5d09b7c64bbb1df06750",
+  "anon_sha256": "9e7faaefb1a1ae7b347db27ee52f775fd019327d343294ee738264548c348f80",
+  "is_real": true,
+  "source_id": "Q17",
+  "source_class": "forwarder",
+  "publisher_alias": "F05",
+  "price_form": "published_tier",
+  "date_status": "current",
+  "dest_region": "美西（8、9）"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "美森CLX 正班快递派",
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "美森CLX 正班快递派"
+    }
+   ]
+  },
+  "mode": {
+   "status": "implied",
+   "value": "sea",
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "美森CLX 正班快递派"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "12",
+     "max_kg": "20",
+     "price": "18.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "50",
+     "price": "17.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "51",
+     "max_kg": "70",
+     "price": "16.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "71",
+     "max_kg": "99",
+     "price": "16.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "100",
+     "max_kg": null,
+     "price": "15.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "渠道 区域 12kg+ 21kg+ 51kg+ 71kg+ 100kg+ 参考时效 货形比重"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "美西（8、9） 18.5 17.5 16.5 16.5 15.5 六截三开"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "stated",
+   "value": "12",
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "一票多件单件最低计费重按12KG计费"
+    }
+   ]
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "材质重计算方式:长cm*宽cm*高cm/6000"
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "RES",
+     "basis": "per_ctn",
+     "amount": "30",
+     "currency": "CNY",
+     "condition": "residential",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "NONFBA_COMM",
+     "basis": "per_kg",
+     "amount": "0.5",
+     "currency": "CNY",
+     "condition": "always",
+     "threshold": null,
+     "contingent": true
+    },
+    {
+     "code": "REM",
+     "basis": "per_ctn",
+     "amount": "30",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM_SUPER",
+     "basis": "per_kg",
+     "amount": "3",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "OVW",
+     "basis": "per_ctn",
+     "amount": "200",
+     "currency": "CNY",
+     "condition": "ctn_kg_gt",
+     "threshold": "22.5",
+     "contingent": false
+    },
+    {
+     "code": "OVS",
+     "basis": "per_ctn",
+     "amount": "200",
+     "currency": "CNY",
+     "condition": "ctn_longest_side_gt",
+     "threshold": "120",
+     "contingent": false
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "非亚马逊、沃尔码商业地址+0.5元/KG，私人住宅地址+30元/件，最低消费100元/票。"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "偏远地址+30元/件，超偏远地址+3元/KG。"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "1.单件实重超22.5KG 不超30KG，加收RMB200/件；"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "2.最长边大于120cm 不超150CM，加收RMB200/件；"
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "双清",
+    "到门派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "价格包含： DDP双清含税到门RMB全包价"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "conflicting",
+   "value": [
+    {
+     "is_ddp": true,
+     "scope": "all",
+     "duty_terms": "included",
+     "cap_cny_per_kg": null,
+     "ior": "unspecified"
+    },
+    {
+     "is_ddp": false,
+     "scope": "duty",
+     "duty_terms": "actual",
+     "cap_cny_per_kg": null,
+     "ior": "unspecified"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "价格包含： DDP双清含税到门RMB全包价"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "6.关税实报实销"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "conflicting",
+   "value": [
+    "200",
+    "350"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "1.可接一般贸易报关，报关费200元/单"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "所有美线渠道，一般贸易报关件，报关费350元/单"
+    }
+   ]
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "stated",
+   "value": "运输中未提取或丢失最高 40RMB/KG，不退运费；交 UPS/FEDEX 后丢失按官方标准，最高 100USD/票，不退运费",
+   "spans": [
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "在运输过程中如单号未提取或货物丢失按最高不超过40RMB/KG赔偿，不退运费"
+    },
+    {
+     "doc_id": "Q17",
+     "kind": "text",
+     "quote": "确认丢失按FEDEX/UPS官方赔偿标准(最高不超100USD/票) 不退运费"
+    }
+   ]
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "rate_tiers": "档位写作“12kg+、21kg+、51kg+、71kg+、100kg+”，上限按下一档起点减 1 记",
+  "min_kg_shipment": "原文“单票一件的最低计费21kg；一票多件……单件最低计费重按12KG”，单票最低计费重按件数而定，无法用单一数值表示，记 missing",
+  "ddp": "页首“DDP双清含税到门RMB全包价”与注意事项“6.关税实报实销”冲突，按第七节记 conflicting",
+  "broker_fee_cny": "附加说明“报关费200元/单”与“报关”条款“报关费350元/单”冲突",
+  "surcharges": "非亚马逊、沃尔玛商业地址 +0.5 元/KG，条件不在枚举内，记 contingent；私人住宅最低消费 100 元/票；超尺寸另有围长 266–310CM 条件，同为 RMB200/件",
+  "transit_days": "原文为时效赔付承诺：开船离境后次日起算，超 13 天提取，第 15 天起退 0.5 元/KG/天，最高 5 元/KG；无时效区间",
+  "mode": "页面栏目为“美国海运”，渠道名为美森 CLX 正班船"
+ }
+}

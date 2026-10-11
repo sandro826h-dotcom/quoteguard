@@ -1,0 +1,365 @@
+{
+ "seed_id": "Q01-u2",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q01-u2",
+  "source_type": "pdf",
+  "source_url": "F01-src-01",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-02-04",
+  "forwarder_alias": "F01",
+  "modality": "pdf",
+  "channel": "标准空派",
+  "raw_sha256": "d737b7849496e1446394ee453b66f7f53f4ca86b1d81f44ce0d12f3a5b943bc6",
+  "anon_sha256": "58340ebe7140333138547e109bc5656ced0ca695632cd6f594055af756aa0791",
+  "is_real": true,
+  "source_id": "Q01",
+  "source_class": "forwarder",
+  "publisher_alias": "F01",
+  "price_form": "published_tier",
+  "date_status": "current",
+  "dest_region": "美中（邮编4-7开头）"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "标准空派",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "标准空派 （不包税－USD ，汇率：6.9）（材积/6000）",
+     "page": 1
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "air",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "标准空派 （不包税－USD ，汇率：6.9）（材积/6000）",
+     "page": 1
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "12",
+     "max_kg": "20",
+     "price": "5.94",
+     "currency": "USD",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "70",
+     "price": "5.65",
+     "currency": "USD",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "71",
+     "max_kg": "100",
+     "price": "5.58",
+     "currency": "USD",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "101",
+     "max_kg": "300",
+     "price": "5.43",
+     "currency": "USD",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "301",
+     "max_kg": "500",
+     "price": "5.29",
+     "currency": "USD",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "500",
+     "max_kg": null,
+     "price": "5.29",
+     "currency": "USD",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "标准空派 末端区域 12~20KG 21-70KG 71-100KG 101-300KG 301-500KG 500KG+",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "美中（邮编4-7开头） 5.94 5.65 5.58 5.43 5.29 5.29",
+     "page": 1
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "stated",
+   "value": "12",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "单箱不低于 12KG，单箱计费重低于 12KG 按12KG计费",
+     "page": 1
+    }
+   ]
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "快递派送材积计算方式为长 *宽*高/6000",
+     "page": 1
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "OVW",
+     "basis": "per_ctn",
+     "amount": "245",
+     "currency": "CNY",
+     "condition": "ctn_kg_gt",
+     "threshold": "22",
+     "contingent": false
+    },
+    {
+     "code": "OVS",
+     "basis": "per_ctn",
+     "amount": "170",
+     "currency": "CNY",
+     "condition": "ctn_longest_side_gt",
+     "threshold": "118",
+     "contingent": false
+    },
+    {
+     "code": "REM",
+     "basis": "per_ctn",
+     "amount": "40",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM_SUPER",
+     "basis": "per_ctn",
+     "amount": "60",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "单件实重超过 22KG, 将加收 RMB245/ 箱的附加费",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "或者最长边超过 118CM ，或者第二最长边长度超过 74CM, 将加收 RMB 170/箱的附加费",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "偏远地址附加费 RMB40/ 件，最低RMB180/ 票",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "超偏远地址附加费 RMB60/ 件，最低RMB250/ 票",
+     "page": 1
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "门到门派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "以上为门到门自税价格",
+     "page": 1
+    }
+   ]
+  },
+  "excludes": {
+   "status": "stated",
+   "value": [
+    "关税（自税）"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "以上为门到门自税价格",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "（不包税－USD ，汇率：6.9）",
+     "page": 1
+    }
+   ]
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": false,
+    "scope": "duty",
+    "duty_terms": null,
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "（不包税－USD ，汇率：6.9）",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "以上为门到门自税价格",
+     "page": 1
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "stated",
+   "value": "350",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "自抬头报关代理费 RMB350/ 票(USD 52/shpt)",
+     "page": 1
+    }
+   ]
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "stated",
+   "value": [
+    10,
+    15
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "美中（邮编4-7开头） 5.94 5.65 5.58 5.43 5.29 5.29 10-15天",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "(货入货代国内仓至 FBA签收，自然日 )",
+     "page": 1
+    }
+   ]
+  },
+  "validity": {
+   "status": "stated",
+   "value": [
+    "2026-02-04",
+    null
+   ],
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "有效期 ：2026年02月04日14:00 起生效至下一",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "有效期：2026年02月04日14:00起生效至下一期更新",
+     "page": 2
+    }
+   ]
+  },
+  "liability": {
+   "status": "stated",
+   "value": "UPS/卡车提取前丢失按采购价值赔偿，最高 RMB40/KG，不退运费；提取后丢失每票最高 100USD，不退运费",
+   "spans": [
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "UPS/ 卡车提取前 ：货物若丢失 ，按照采购价值赔偿 （最高不超过 RMB 40/KG) ，不退运费",
+     "page": 1
+    },
+    {
+     "doc_id": "Q01",
+     "kind": "text",
+     "quote": "UPS/卡车提取后 ：货物若丢失 ，赔偿标准为每票货物最高赔偿不超过 100USD ，不退运费",
+     "page": 1
+    }
+   ]
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "rate_tiers_cny_table": "第 3 页另有同一渠道的 CNY 价格表（美中 41.00/39.00/38.50/37.50/36.50/36.50），按汇率 6.9 与 USD 表一致；初标取第 1 页 USD 表",
+  "transit_days": "参考时效 10-15 天，自然日，货入国内仓至 FBA 签收；该行价格与时效在同一行",
+  "broker_fee_cny": "自抬头报关代理费；另有自抬头 BOND 清关操作费 RMB1100/票（使用卖家进口商时）",
+  "surcharges": "偏远最低 RMB180/票、超偏远最低 RMB250/票；超尺寸另有围长条件（260–320CM 收 170/箱，>320CM 收 1750/箱）"
+ }
+}

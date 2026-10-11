@@ -1,0 +1,161 @@
+{
+ "seed_id": "Q03-u3",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q03-u3",
+  "source_type": "web_page",
+  "source_url": "F03-src-03",
+  "captured_at": "2026-10-10",
+  "page_date": null,
+  "forwarder_alias": "F03",
+  "modality": "text",
+  "channel": "美森海卡专线",
+  "raw_sha256": "21943dbc002ce5dc19b843c468af6b6b6fa0a821b20e0be56213038400377116",
+  "anon_sha256": "fce57f130a33d750c0491bbd82d355a44979118b20f0f4aa0e300c333830bbc5",
+  "is_real": true,
+  "source_id": "Q03",
+  "source_class": "forwarder",
+  "publisher_alias": "F03",
+  "price_form": "starting_price",
+  "date_status": "unknown",
+  "dest_region": "美国"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "美森海卡专线",
+   "spans": [
+    {
+     "doc_id": "Q03",
+     "kind": "text",
+     "quote": "美森海卡专线 美森正班船卡车派送，KG计费 价格超低7.5元/KG，除6000不分泡。"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "sea",
+   "spans": [
+    {
+     "doc_id": "Q03",
+     "kind": "text",
+     "quote": "美森海卡专线 美森正班船卡车派送"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": null,
+     "price": "7.5",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q03",
+     "kind": "text",
+     "quote": "KG计费 价格超低7.5元/KG"
+    },
+    {
+     "doc_id": "Q03",
+     "kind": "text",
+     "quote": "以下美国海派收费为RMB人民币一公斤为标准。"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q03",
+     "kind": "text",
+     "quote": "美森海卡专线 美森正班船卡车派送，KG计费 价格超低7.5元/KG，除6000不分泡。"
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "price_form": "starting_price：“价格超低7.5元/KG”按起价记，档位下限无原文，记 0",
+  "ddp": "页面标题写“双清包税报价表”，导航中同组的“普船海卡CBM包税”“美东海卡CBM包税”明写包税，本渠道未写；后文条款（含油、包税、UPS/FedEx 派送）针对海派渠道。无法唯一确定，记 missing",
+  "dim_divisor": "“除6000不分泡”：体积重除数 6000，不分泡",
+  "terms_scope": "页面第 88 行起的计费与赔偿条款写明针对 UPS/FedEx 派送的海派渠道，未用于本海卡单元"
+ }
+}

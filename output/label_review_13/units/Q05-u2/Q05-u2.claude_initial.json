@@ -1,0 +1,261 @@
+{
+ "seed_id": "Q05-u2",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q05-u2",
+  "source_type": "web_page",
+  "source_url": "F04-src-05",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-05-15",
+  "forwarder_alias": "F04",
+  "modality": "text",
+  "channel": "美森快船 CLX",
+  "raw_sha256": "c60f11169752e50ce2d5c90f7e9fb835ba87666f630c6e761f0d4ac449f2c911",
+  "anon_sha256": "b201cae51013bb9d5dd02d5433a3a1a96ee071a2a88d4262815950536f154139",
+  "is_real": true,
+  "source_id": "Q05",
+  "source_class": "forwarder",
+  "publisher_alias": "F04",
+  "price_form": "range",
+  "date_status": "expired",
+  "dest_region": "美中"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "美森快船 CLX",
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "一、美森快船 CLX（美西15–20天，最快最稳）"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "sea",
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "F04美国FBA海运专线（DDP双清包税）"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "101",
+     "max_kg": "500",
+     "price": "14",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "美中：14–17 元/kg"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "101–500kg：标准价（上表）"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "体积重 = 长×宽×高(cm) ÷ 6000（1CBM=167KG）"
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "OVW",
+     "basis": "per_ctn",
+     "amount": "120",
+     "currency": "CNY",
+     "condition": "ctn_kg_gt",
+     "threshold": "22",
+     "contingent": false
+    },
+    {
+     "code": "OVS",
+     "basis": "per_ctn",
+     "amount": "120",
+     "currency": "CNY",
+     "condition": "ctn_longest_side_gt",
+     "threshold": "120",
+     "contingent": false
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "超长超重费：单箱>22kg / 单边>120cm，120元/件"
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "implied",
+   "value": "0",
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "燃油/旺季附加费（报价已打包）"
+    }
+   ]
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "国内提货/入仓",
+    "报关",
+    "港杂",
+    "海运费",
+    "美国清关",
+    "关税",
+    "燃油/旺季附加费",
+    "末端FBA派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "国内提货/入仓+报关+港杂"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "美森/以星/普船海运费"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "美国自营清关 + 关税 + 自有Bond"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "燃油/旺季附加费（报价已打包）"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "末端FBA派送（UPS/卡派双选择）"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "stated",
+   "value": [
+    "超长超重费",
+    "海关查验费（违规申报时）",
+    "亚马逊预约等待费"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "超长超重费：单箱>22kg / 单边>120cm，120元/件"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "海关查验费：正常查验F04承担，违规申报除外"
+    },
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "亚马逊预约等待费：卡派偶发，实报实销"
+    }
+   ]
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": true,
+    "scope": "all",
+    "duty_terms": "included",
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q05",
+     "kind": "text",
+     "quote": "费用包含（DDP双清包税，一口价全包）"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "range_max": "17",
+  "price_form": "range：14–17 元/kg，记下限，上限记 range_max",
+  "rate_tiers": "表列价为 101kg+ 标准价；原文另有“100kg 以下上浮1–2元/kg”“500kg+ / 1CBM+ 再降0.5–1元/kg”，为相对区间，未记为档位",
+  "fuel_pct": "原文写燃油附加费已打包进报价，按 0 记 implied",
+  "ddp": "“美国自营清关 + 关税 + 自有Bond”；进口商身份未写明，ior 记 unspecified",
+  "validity": "原文“2026.5 价格”“2026.5 执行”，无起止日期"
+ }
+}
