@@ -1,0 +1,8 @@
+{
+  "config_id": "ds_flash",
+  "intent_at": "2026-10-11T23:34:30.992612Z",
+  "n": 1,
+  "prompt_sha256": "f77c79914e58799a87d751a126111c727149eedd05313f15242e3aa1d25e4dc7",
+  "provider": "deepseek",
+  "run_key": "formal|extract|ds_flash|T-test-047|extract|C3|r1"
+}
