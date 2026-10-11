@@ -205,3 +205,14 @@
 - 正式批次累计支出（账本）：DeepSeek 0.099 美元，百炼 1.254 元（免费额度折算），硅基流动 1.377 元。
 - siliconflow 的 B 阶段与 deepseek 的思考组由脚本在前序批次完成后自动生成与运行。
 - 下一会话：先 `pgrep -af run_formal.sh` 看进程是否在；提交 runs/ 新增记录；进程不在时用同一启动命令续跑（见上一条交接）。
+
+## 2026-10-12 13 个非盲标单元初标与复核包
+### 已完成
+- 按规范第八节第 1 条由 Claude 初标 13 个单元（Q01-u2、Q02-u3、Q03-u3、Q04-u1、Q05-u1、Q05-u2、Q06-u1、Q06-u2、Q06-u3、Q07-u3、Q08-u3、Q16-u2、Q17-u1），initial_label_model 写“Claude（Anthropic，不属于 6 个实验配置），2026-10-12”。生成脚本 scripts/label_init_13.py、scripts/carrier_units.py（DHL/UPS 6 区价格列由 bulk-data 子代理逐字转写，主会话抽查）。
+- 子代理独立核对：159 条出处全部为匿名件子串；承运商价格抽 10 档全部一致；9 处“值不在片段”中 7 处为备注已写明的推算，2 处补了出处；Q16-u2 超长费 210 经原文核对保持。
+- 复核包：output/label_review_13/units/<seed_id>/（匿名原件、初标 JSON、逐字段复核表 xlsx，黄色列：确认/改正、改正后 status、改正值、原文依据、理由），说明见 units/README.md。
+- 初标中按第七节记为 conflicting 的字段：Q06-u1、Q06-u3 rate_tiers（同页 53–57/37–40、56–62/41–45），Q17-u1 ddp（DDP 含税 vs 关税实报实销）与 broker_fee_cny（200 vs 350）。
+
+### 未决
+- 匿名化：data/seeds/anonymous/Q05.txt、Q06.txt 的联系区仍有一个手机号（136-7000-6560）未替换。两文件在冻结记录与 units.json 中有哈希，未擅自修改；需用户决定补遮方式（改匿名件并更新 anon_sha256、记录协议偏离）。
+- 复核由新队友完成后导入 data/seeds/labels/，再按第八节记录哈希。
