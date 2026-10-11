@@ -1,0 +1,23 @@
+【FWD-15】运价单
+FromSYN-Larkspur Cargo
+· 不负责关税
+· Declarant IOR 为 Consignor
+· 线路：空派 A
+· 运输类型 空派
+· 预计 6 至 9 ddelivery
+· 重量 0 ~ 20 kg → RMB 39/KG
+· 重量 21 ~ 100 kg → RMB 37/KG
+· 重量 101 ~ 300 kg → RMB 36.5/KG
+· 重量 301 kg 以上 → RMB 35/KG
+· 每票 Min chargeable weight 21 kg
+· Fuel surcharge 10 %
+· 加收 Outlying zone 派送费 RMB 10/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 79.5/CARTON 条件：纸箱单边长度大于58cm
+· 材积按长×宽×高÷6000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF
+· 费用已含 头程运费；目的港清关
+· 进口清关服务费 RMB 150/BATCH
+· 货损责任：按运费 3 倍赔付
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

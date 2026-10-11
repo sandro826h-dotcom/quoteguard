@@ -1,0 +1,22 @@
+Re: 报价 / FWD-79
+FromSYN-Larkspur Cargo
+[1] 重量 0 ~ 20 kg → RMB 49/KG
+[2] 重量 21 ~ 44 kg → RMB 43.5/KG
+[3] 重量 45 ~ 99 kg → RMB 39/KG
+[4] 重量 100 kg 以上 → RMB 39/KG
+[5] 预计 4 至 6 ddelivery
+[6] 线路：快递专线 A
+[7] 运输类型 快递专线
+[8] 加收 Home delivery 投递费 US$ 4.5/CARTON 条件：收货地为 Home site
+[9] 加收 Outlying zone 派送费 RMB 12/KG 条件：目的地属 Outlying zone
+[10] 以下费用另计 查验费；仓储费；关税；MPF
+[11] 费用已含 头程运费；目的港清关
+[12] 客户自行申报并缴税
+[13] Declarant IOR 为 Consignor
+[14] 材积按长×宽×高÷5000
+[15] 整票无 Min chargeable weight 要求
+[16] 重量以 0.5 kg 为单位向上取整
+[17] Fuel surcharge 20 %
+[18] 货损责任：丢失按运费赔付，破损不赔
+[19] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

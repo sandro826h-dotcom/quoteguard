@@ -1,0 +1,25 @@
+【FWD-78】运价单
+FromSYN-Marlin Supply Chain
+· 本公司（SYN-Marlin Supply Chain）中国交通运输部备案的货运承运人 / 国内
+· 到仓全包价，进口税费由我方承担（覆盖范围：关税及全部杂税）
+· Declarant IOR 为 Our company
+· 线路：空派 A
+· 运输类型 空派
+· 预计 7 至 10 ddelivery
+· 重量 0 ~ 20 kg → RMB 55.4/KG
+· 重量 21 ~ 100 kg → RMB 54.6/KG
+· 重量 101 ~ 300 kg → RMB 53/KG
+· 重量 301 kg 以上 → RMB 53/KG
+· 每票 Min chargeable weight 21 kg
+· Fuel surcharge 10 %
+· 加收 Outlying zone 派送费 RMB 10.5/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 43/CARTON 条件：纸箱单边长度大于58cm
+· 加收海关抽检费 RMB 1230/BATCH 仅在发生时收取
+· 材积按长×宽×高÷6000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费
+· 费用已含 头程运费；目的港清关；关税；MPF
+· 进口清关服务费 RMB 150/BATCH
+· 货损责任：丢失按运费赔付，破损不赔
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

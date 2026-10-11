@@ -1,0 +1,22 @@
+【FWD-24】运价单
+FromSYN-Amber Delta Cargo
+· Qualification: 中国海关 AEO 高级认证 / SYN-Amber Delta Cargo
+· Delivered at Place, duty excluded
+· Declarant IOR 为 Consignor
+· 线路：海派 B
+· 运输类型 海派
+· 预计 32 至 40 ddelivery
+· 重量 0 ~ 199 kg → RMB 9.5/KG
+· 重量 200 ~ 499 kg → RMB 8/KG
+· 重量 500 kg 以上 → RMB 7.5/KG
+· 加收 Home delivery 投递费 US$ 6.5/CARTON 条件：收货地为 Home site
+· 加收重量超限费 RMB 105.5/CARTON 条件：任一箱重量大于22kg
+· 材积按长×宽×高÷5000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF；HMF
+· 费用已含 头程运费；目的港清关
+· 进口清关服务费 RMB 150/BATCH
+· ISF 录入免费
+· 货损责任：丢失按运费赔付，破损不赔
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

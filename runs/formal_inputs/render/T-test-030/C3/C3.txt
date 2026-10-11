@@ -1,0 +1,24 @@
+Re: 报价 / FWD-82
+FromSYN-Marlin Supply Chain
+[1] 重量 0 ~ 20 kg → RMB 48/KG
+[2] 重量 21 ~ 44 kg → RMB 45/KG
+[3] 重量 45 ~ 99 kg → RMB 38.5/KG
+[4] 重量 100 kg 以上 → RMB 38.5/KG
+[5] 预计 4 至 6 ddelivery
+[6] 线路：快递专线 A
+[7] 运输类型 快递专线
+[8] 以下费用另计 查验费；仓储费；关税；MPF
+[9] 费用已含 头程运费；目的港清关
+[10] Delivered at Place, duty excluded
+[11] Declarant IOR 为 Consignor
+[12] 材积按长×宽×高÷5000
+[13] 每票 Min chargeable weight 45 kg
+[14] 重量以 0.5 kg 为单位向上取整
+[15] Fuel surcharge 10 %
+[16] 货损责任：丢失按运费赔付，破损不赔
+[17] 此价格适用 2026-10-01 到 2026-10-31
+附加费明细
+[1] 加收 Home delivery 投递费 US$ 4/CARTON 条件：收货地为 Home site
+[2] 加收 Outlying zone 派送费 RMB 11.5/KG 条件：目的地属 Outlying zone
+[3] 加收尺寸超限费 RMB 78/CARTON 条件：纸箱单边长度大于58cm
+Pls revert for booking

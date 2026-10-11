@@ -1,0 +1,23 @@
+Re: 报价 / FWD-13
+FromSYN-Copperfield Logistics
+[1] 重量 0 ~ 199 kg → RMB 11.3/KG
+[2] 重量 200 ~ 499 kg → RMB 9.1/KG
+[3] 重量 500 kg 以上 → RMB 9.1/KG
+[4] 预计 28 至 35 ddelivery
+[5] 线路：海派 B
+[6] 运输类型 海派
+[7] 加收 Home delivery 投递费 US$ 5.5/CARTON 条件：收货地为 Home site
+[8] 加收重量超限费 RMB 117/CARTON 条件：任一箱重量大于22kg
+[9] 以下费用另计 查验费；仓储费
+[10] 费用已含 头程运费；目的港清关；关税；MPF；HMF
+[11] 报价已含海关税款（覆盖范围：关税及全部杂税）
+[12] Declarant IOR 为 Our company
+[13] 本公司（SYN-Copperfield Logistics）中国交通运输部备案的货运承运人 / 国内
+[14] 材积按长×宽×高÷5000
+[15] 整票无 Min chargeable weight 要求
+[16] 重量以 1 kg 为单位向上取整
+[17] ISF 录入免费
+[18] 进口清关服务费 RMB 150/BATCH
+[19] 货损责任：按申报货值赔付，上限 20 美元/kg
+[20] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

@@ -1,0 +1,23 @@
+【FWD-14】运价单
+FromSYN-Oakline Forwarding
+· 报价已含海关税款（覆盖范围：关税、MPF）
+· Declarant IOR 为 Our company
+· 线路：快递专线 B
+· 运输类型 快递专线
+· 预计 4 至 7 ddelivery
+· 重量 0 ~ 44 kg → RMB 126.9/KG
+· 重量 45 ~ 99 kg → RMB 117.4/KG
+· 重量 100 kg 以上 → RMB 110.9/KG
+· 每票 Min chargeable weight 21 kg
+· 免收 Fuel surcharge
+· 加收 Home delivery 投递费 US$ 4/CARTON 条件：收货地为 Home site
+· 加收 Outlying zone 派送费 RMB 7/KG 条件：目的地属 Outlying zone
+· 加收重量超限费 RMB 71/CARTON 条件：任一箱重量大于22kg
+· 材积按长×宽×高÷6000
+· 重量以 0.5 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费
+· 费用已含 头程运费；目的港清关；关税；MPF
+· 进口清关服务费 RMB 150/BATCH
+· 货损责任：按申报货值赔付，上限 20 美元/kg
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

@@ -1,0 +1,24 @@
+Re: 报价 / FWD-12
+FromSYN-Ashgrove Forwarders
+[1] 重量 0 ~ 44 kg → RMB 42.5/KG
+[2] 重量 45 ~ 99 kg → RMB 36/KG
+[3] 重量 100 kg 以上 → RMB 35/KG
+[4] 预计 5 至 8 ddelivery
+[5] 线路：快递专线 B
+[6] 运输类型 快递专线
+[7] 加收 Home delivery 投递费 US$ 4.5/CARTON 条件：收货地为 Home site
+[8] 加收 Outlying zone 派送费 RMB 6/KG 条件：目的地属 Outlying zone
+[9] 加收重量超限费 RMB 85/CARTON 条件：任一箱重量大于22kg
+[10] 以下费用另计 查验费；仓储费；关税；MPF
+[11] 费用已含 头程运费；目的港清关
+[12] Delivered at Place, duty excluded
+[13] Declarant IOR 为 Consignor
+[14] 本公司（SYN-Ashgrove Forwarders）NVO 承运人资质
+[15] 材积按长×宽×高÷6000
+[16] 整票无 Min chargeable weight 要求
+[17] 重量以 0.5 kg 为单位向上取整
+[18] 免收 Fuel surcharge
+[19] 进口清关服务费 RMB 150/BATCH
+[20] 货损责任：按运费 3 倍赔付
+[21] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

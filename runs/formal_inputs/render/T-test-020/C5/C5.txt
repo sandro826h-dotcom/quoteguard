@@ -1,0 +1,22 @@
+Re: 报价 / FWD-97
+FromSYN-Juniper Global Trade
+[1] 重量 0 ~ 20 kg → RMB 39.5/KG
+[2] 重量 21 ~ 100 kg → RMB 37/KG
+[3] 重量 101 ~ 300 kg → RMB 37/KG
+[4] 重量 301 kg 以上 → RMB 36/KG
+[5] 预计 7 至 10 ddelivery
+[6] 线路：空派 A
+[7] 运输类型 空派
+[8] 加收 Outlying zone 派送费 RMB 11/KG 条件：目的地属 Outlying zone
+[9] 加收海关抽检费 RMB 1003.5/BATCH 仅在发生时收取
+[10] 以下费用另计 查验费；仓储费；关税；MPF
+[11] 费用已含 头程运费；目的港清关
+[12] 客户自行申报并缴税
+[13] Declarant IOR 为 Consignor
+[14] 材积按长×宽×高÷6000
+[15] 每票 Min chargeable weight 21 kg
+[16] 重量以 1 kg 为单位向上取整
+[17] 进口清关服务费 RMB 150/BATCH
+[18] 货损责任：丢失按运费赔付，破损不赔
+[19] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

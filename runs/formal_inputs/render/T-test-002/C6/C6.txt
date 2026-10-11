@@ -1,0 +1,21 @@
+Re: 报价 / FWD-70
+FromSYN-Larkspur Cargo
+[1] 重量 0 ~ 44 kg → RMB 100.5/KG
+[2] 重量 45 ~ 99 kg → RMB 100.1/KG
+[3] 重量 100 kg 以上 → RMB 95.9/KG
+[4] 预计 5 至 8 ddelivery
+[5] 线路：快递经济线
+[6] 运输类型 快递专线
+[7] 加收 Outlying zone 派送费 RMB 9.5/KG 条件：目的地属 Outlying zone
+[8] 以下费用另计 查验费；仓储费
+[9] 费用已含 头程运费；目的港清关；关税；MPF
+[10] 全包含税，一口价（覆盖范围：关税及全部杂税）
+[11] Declarant IOR 为 Our company
+[12] 材积按长×宽×高÷6000
+[13] 整票无 Min chargeable weight 要求
+[14] 重量以 1 kg 为单位向上取整
+[15] Fuel surcharge 10 %
+[16] 进口清关服务费 RMB 150/BATCH
+[17] 货损责任：丢失按运费赔付，破损不赔
+[18] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

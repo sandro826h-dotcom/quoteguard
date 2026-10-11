@@ -1,0 +1,23 @@
+美国 FMC 持证名单（OTI）
+| 名称 | 许可证号 | 类型 | 状态 |
+|---|---|---|---|
+| SYN-Tidal Reach Logistics | SYN-FMC-1001 | NVOCC（无船承运人） | 有效 |
+| SYN-Larkspur Cargo | SYN-FMC-1002 | NVOCC（无船承运人） | 有效 |
+| SYN-Granite Coast Freight | SYN-FMC-1003 | NVOCC（无船承运人） | 有效 |
+| SYN-Oakline Forwarding | SYN-FMC-1004 | NVOCC（无船承运人） | 有效 |
+| SYN-Silverfin Shipping | SYN-FMC-1005 | NVOCC（无船承运人） | 已吊销 |
+| SYN-Westmark Express | SYN-FMC-1006 | NVOCC（无船承运人） | 已吊销 |
+| SYN-Ashgrove Forwarders | SYN-FMC-1007 | OFF（海运货代，非无船承运人） | 有效 |
+| SYN-Highmast Ocean Agency | SYN-FMC-1008 | OFF（海运货代，非无船承运人） | 有效 |
+
+国内登记（交通运输部无船承运备案、海关企业信用）
+| 名称 | 登记号 | 类别 | 状态 |
+|---|---|---|---|
+| SYN-Lakeshore Logistics | SYN-MOT-1001 | 交通运输部无船承运备案 | 有效 |
+| SYN-Tidal Reach Logistics | SYN-MOT-1002 | 交通运输部无船承运备案 | 有效 |
+| SYN-Amber Delta Cargo | SYN-MOT-1003 | 交通运输部无船承运备案 | 有效 |
+| SYN-Brightwater Freight | SYN-MOT-1004 | 交通运输部无船承运备案 | 已吊销 |
+| SYN-Lakeshore Logistics | SYN-AEO-1001 | 海关高级认证企业 | 有效 |
+| SYN-Amber Delta Cargo | SYN-AEO-1002 | 海关高级认证企业 | 有效 |
+
+名单之外的主体视为未登记。

@@ -1,0 +1,24 @@
+【FWD-90】运价单
+FromSYN-Larkspur Cargo
+· SYN-Larkspur Cargo 具备 FMC OTI 登记的承运人 / 编号 SYN-FMC-1002 / 美方
+· 客户自行申报并缴税
+· Declarant IOR 为 Consignor
+· 线路：海派 A
+· 运输类型 海派
+· 预计 26 至 32 ddelivery
+· 重量 0 ~ 199 kg → RMB 11.5/KG
+· 重量 200 ~ 499 kg → RMB 11/KG
+· 重量 500 kg 以上 → RMB 10.5/KG
+· 每票 Min chargeable weight 100 kg
+· 加收 Outlying zone 派送费 RMB 7.5/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 41/CARTON 条件：纸箱单边长度大于58cm
+· 加收海关抽检费 RMB 1374.5/BATCH 仅在发生时收取
+· 材积按长×宽×高÷6000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF；HMF
+· 费用已含 头程运费；目的港清关
+· ISF 录入费用 RMB 200/BATCH
+· 货损责任：按申报货值赔付，上限 20 美元/kg
+· 此价格适用 2026-10-01 到 2026-10-31
+注：进口清关服务费 RMB 150/BATCH。
+请回复确认订舱 Pls revert for booking

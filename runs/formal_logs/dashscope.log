@@ -1,0 +1,21 @@
+[2026-10-11T16:57:26Z] run dashscope-A plan=runs/formal_inputs/plans/formal-dashscope-A.json budget=CNY=140.0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/quoteguard/src/quoteguard/orchestrate.py", line 601, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/user/quoteguard/src/quoteguard/orchestrate.py", line 579, in main
+    d = run_stage(a.plan, a.mode, a.out, confirm_budget=a.confirm_budget, models_path=a.models,
+                  batch_id=a.batch_id, min_interval_s=a.min_interval, protocol_sha256=a.protocol_sha256)
+  File "/home/user/quoteguard/src/quoteguard/orchestrate.py", line 264, in run_stage
+    e = ex.Executor(plan, out, mode, **executor_kwargs)
+  File "/home/user/quoteguard/src/quoteguard/executor.py", line 201, in __init__
+    check_protocol(self.plan, protocol_sha256, Path(protocol_dir) if protocol_dir else None)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/quoteguard/src/quoteguard/executor.py", line 145, in check_protocol
+    raise ProtocolError("no frozen protocol hash found (argument or docs/protocol/<plan_id>.sha256)")
+quoteguard.executor.ProtocolError: no frozen protocol hash found (argument or docs/protocol/<plan_id>.sha256)
+[2026-10-11T16:57:29Z] dashscope-A status=none
+[2026-10-11T16:57:29Z] A 阶段停止
+[2026-10-11T16:59:40Z] run dashscope-A plan=runs/formal_inputs/plans/formal-dashscope-A.json budget=CNY=140.0

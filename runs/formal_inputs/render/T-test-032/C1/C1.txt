@@ -1,0 +1,20 @@
+【FWD-55】运价单
+FromSYN-Marlin Supply Chain
+· 不负责关税
+· Declarant IOR 为 Consignor
+· 线路：快递经济线
+· 运输类型 快递专线
+· 预计 6 至 9 ddelivery
+· 重量 0 ~ 44 kg → RMB 42/KG
+· 重量 45 ~ 99 kg → RMB 37/KG
+· 重量 100 kg 以上 → RMB 29/KG
+· 每票 Min chargeable weight 45 kg
+· 免收 Fuel surcharge
+· 加收 Outlying zone 派送费 RMB 7/KG 条件：目的地属 Outlying zone
+· 材积按长×宽×高÷6000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF
+· 费用已含 头程运费；目的港清关
+· 货损责任：按运费 3 倍赔付
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

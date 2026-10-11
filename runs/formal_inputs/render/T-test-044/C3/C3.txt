@@ -1,0 +1,20 @@
+【FWD-36】运价单
+FromSYN-Pearlgate Cross-border
+· Delivered at Place, duty excluded
+· Declarant IOR 为 Consignor
+· 线路：空派 A
+· 运输类型 空派
+· 预计 6 至 9 ddelivery
+· 重量 0 ~ 20 kg → RMB 38.5/KG
+· 重量 21 ~ 100 kg → RMB 37/KG
+· 重量 101 ~ 300 kg → RMB 35.5/KG
+· 重量 301 kg 以上 → RMB 35/KG
+· 每票 Min chargeable weight 12 kg
+· 加收 Outlying zone 派送费 RMB 9.5/KG 条件：目的地属 Outlying zone
+· 材积按长×宽×高÷6000
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF
+· 费用已含 头程运费；目的港清关
+· 货损责任：丢失按运费赔付，破损不赔
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

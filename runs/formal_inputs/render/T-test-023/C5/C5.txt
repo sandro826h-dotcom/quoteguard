@@ -1,0 +1,23 @@
+【FWD-53】运价单
+FromSYN-Tidal Reach Logistics
+· 不含进口税费
+· Declarant IOR 为 Consignor
+· 线路：快递专线 A
+· 运输类型 快递专线
+· 预计 4 至 6 ddelivery
+· 重量 0 ~ 20 kg → RMB 51.5/KG
+· 重量 21 ~ 44 kg → RMB 45.5/KG
+· 重量 45 ~ 99 kg → RMB 36.5/KG
+· 重量 100 kg 以上 → RMB 36.5/KG
+· 每票 Min chargeable weight 45 kg
+· Fuel surcharge 10 %
+· 加收 Home delivery 投递费 US$ 4.5/CARTON 条件：收货地为 Home site
+· 加收 Outlying zone 派送费 RMB 8/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 65/CARTON 条件：纸箱单边长度大于58cm
+· 材积按长×宽×高÷5000
+· 重量以 0.5 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF
+· 费用已含 头程运费；目的港清关
+· 货损责任：按申报货值赔付，上限 20 美元/kg
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

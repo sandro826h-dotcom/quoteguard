@@ -1,0 +1,22 @@
+【FWD-91】运价单
+FromSYN-Sable Transit
+· 报价已含海关税款（覆盖范围：关税）
+· Declarant IOR 为 Our company
+· 线路：空派 A
+· 运输类型 空派
+· 预计 6 至 9 ddelivery
+· 重量 0 ~ 20 kg → RMB 32.7/KG
+· 重量 21 ~ 100 kg → RMB 31.2/KG
+· 重量 101 ~ 300 kg → RMB 30.9/KG
+· 重量 301 kg 以上 → RMB 30.1/KG
+· 每票 Min chargeable weight 12 kg
+· 加收 Outlying zone 派送费 RMB 10/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 41/CARTON 条件：纸箱单边长度大于58cm
+· 加收海关抽检费 RMB 1378.5/BATCH 仅在发生时收取
+· 重量以 1 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；MPF
+· 费用已含 头程运费；目的港清关；关税
+· 进口清关服务费 RMB 150/BATCH
+· 货损责任：丢失按运费赔付，破损不赔
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

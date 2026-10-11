@@ -1,0 +1,22 @@
+Re: 报价 / FWD-16
+FromSYN-Granite Coast Freight
+[1] 重量 0 ~ 44 kg → RMB 40.1/KG
+[2] 重量 45 ~ 99 kg → RMB 37.8/KG
+[3] 重量 100 kg 以上 → RMB 33.2/KG
+[4] 预计 5 至 8 ddelivery
+[5] 线路：快递经济线
+[6] 运输类型 快递专线
+[7] 加收 Outlying zone 派送费 RMB 11.5/KG 条件：目的地属 Outlying zone
+[8] 加收尺寸超限费 RMB 76.5/CARTON 条件：纸箱单边长度大于58cm
+[9] 以下费用另计 查验费；仓储费
+[10] 费用已含 头程运费；目的港清关；关税；MPF
+[11] 全包含税，一口价（覆盖范围：关税及全部杂税）
+[12] Declarant IOR 为 Our company
+[13] Qualification: NVO 承运人资质 / SYN-Granite Coast Freight / 编号 SYN-FMC-1003
+[14] 材积按长×宽×高÷6000
+[15] 每票 Min chargeable weight 45 kg
+[16] 重量以 1 kg 为单位向上取整
+[17] Fuel surcharge 10 %
+[18] 货损责任：丢失按运费赔付，破损不赔
+[19] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking

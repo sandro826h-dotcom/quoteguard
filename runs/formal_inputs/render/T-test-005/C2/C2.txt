@@ -1,0 +1,24 @@
+【FWD-83】运价单
+FromSYN-Copperfield Logistics
+· 客户自行申报并缴税
+· Declarant IOR 为 Consignor
+· 线路：快递专线 A
+· 运输类型 快递专线
+· 预计 3 至 5 ddelivery
+· 重量 0 ~ 20 kg → RMB 49.5/KG
+· 重量 21 ~ 44 kg → RMB 48/KG
+· 重量 45 ~ 99 kg → RMB 41.5/KG
+· 重量 100 kg 以上 → RMB 38/KG
+· 整票无 Min chargeable weight 要求
+· Fuel surcharge 20 %
+· 加收 Home delivery 投递费 US$ 5/CARTON 条件：收货地为 Home site
+· 加收 Outlying zone 派送费 RMB 7/KG 条件：目的地属 Outlying zone
+· 加收尺寸超限费 RMB 70.5/CARTON 条件：纸箱单边长度大于58cm
+· 加收海关抽检费 RMB 1084/BATCH 仅在发生时收取
+· 材积按长×宽×高÷5000
+· 重量以 0.5 kg 为单位向上取整
+· 以下费用另计 查验费；仓储费；关税；MPF
+· 费用已含 头程运费；目的港清关
+· 货损责任：按运费 3 倍赔付
+· 此价格适用 2026-10-01 到 2026-10-31
+请回复确认订舱 Pls revert for booking

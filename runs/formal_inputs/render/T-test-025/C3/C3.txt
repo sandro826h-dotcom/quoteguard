@@ -1,0 +1,22 @@
+Re: 报价 / FWD-97
+FromSYN-Tidal Reach Logistics
+[1] 重量 0 ~ 199 kg → RMB 13/KG
+[2] 重量 200 ~ 499 kg → RMB 11.5/KG
+[3] 重量 500 kg 以上 → RMB 10.5/KG
+[4] 预计 24 至 30 ddelivery
+[5] 线路：海派 A
+[6] 运输类型 海派
+[7] 加收 Outlying zone 派送费 RMB 6/KG 条件：目的地属 Outlying zone
+[8] 加收尺寸超限费 RMB 50.5/CARTON 条件：纸箱单边长度大于58cm
+[9] 以下费用另计 查验费；仓储费；关税；MPF；HMF
+[10] 费用已含 头程运费；目的港清关
+[11] 客户自行申报并缴税
+[12] Declarant IOR 为 Consignor
+[13] 材积按长×宽×高÷6000
+[14] 每票 Min chargeable weight 100 kg
+[15] 重量以 1 kg 为单位向上取整
+[16] ISF 录入免费
+[17] 进口清关服务费 RMB 150/BATCH
+[18] 货损责任：按运费 3 倍赔付
+[19] 此价格适用 2026-10-01 到 2026-10-31
+Pls revert for booking
