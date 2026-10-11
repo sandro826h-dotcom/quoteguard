@@ -176,10 +176,12 @@ def _find(obs: dict, req: dict) -> Optional[dict]:
 
 
 # ---------------------------------------------------------------- plans
-def _write_plan(path: Path, plan: dict, models: dict, overwrite: bool) -> Path:
+def _write_plan(path: Path, plan: dict, models: dict, overwrite: bool, ignore_keys=()) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists() and not overwrite:
-        if json.loads(path.read_text(encoding="utf-8")) != json.loads(json.dumps(plan)):
+        old, new = json.loads(path.read_text(encoding="utf-8")), json.loads(json.dumps(plan))
+        if {k: v for k, v in old.items() if k not in ignore_keys} != \
+                {k: v for k, v in new.items() if k not in ignore_keys}:
             raise FileExistsError(f"{path} exists with different content (frozen plans are not overwritten)")
     else:
         atomic_json(path, plan)
@@ -223,7 +225,7 @@ def build_stage_plans(tasks_dir, configs, methods, experiment, kind, budget, rat
                                                 repeat=TRANSCRIBE_REPEAT, seed=seed)
     atomic_json(out / "inputs" / "manifest.json", frozen)
     paths = {"A": _write_plan(out / "plans" / f"{pid}-A.json", plan_doc("A", reqs_a), ctx.models,
-                              overwrite), "B": None}
+                              overwrite, ignore_keys=("budget",) if transcription_batches else ()), "B": None}
     if transcription_batches:
         obs = list(load_observations(transcription_batches).values())
         reqs_b = []

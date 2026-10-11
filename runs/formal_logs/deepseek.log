@@ -19,3 +19,7 @@ quoteguard.executor.ProtocolError: no frozen protocol hash found (argument or do
 [2026-10-11T16:57:29Z] deepseek-A status=none
 [2026-10-11T16:57:29Z] A 阶段停止
 [2026-10-11T16:59:40Z] run deepseek-A plan=runs/formal_inputs/plans/formal-deepseek-A.json budget=USD=12.0
+{"batch_dir": "runs/deepseek-A", "status": "completed", "completed": 60, "total": 60, "spent": {"USD": 0.044553}}
+[2026-10-11T17:02:18Z] deepseek-A status=completed
+{"retry_requests": 0}
+error: runs/formal_inputs/plans/formal-deepseek-A.json exists with different content (frozen plans are not overwritten)

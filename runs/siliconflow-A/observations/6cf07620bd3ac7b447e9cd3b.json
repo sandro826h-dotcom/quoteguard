@@ -1,0 +1,74 @@
+{
+  "attempt": 1,
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "(see raw_body)",
+      "error": null,
+      "http_status": 200,
+      "possibly_billed": false,
+      "stream_complete": true,
+      "usage": {
+        "completion_tokens": 16,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_tokens": 2268,
+        "total_tokens": 2284
+      },
+      "valid": true
+    }
+  ],
+  "body_redacted": false,
+  "cand_id": "C5",
+  "config_id": "glm_v",
+  "cost_estimate": {
+    "amount": 0.009264,
+    "currency": "CNY",
+    "input_tokens": 2268,
+    "output_tokens": 16,
+    "usage_missing": false
+  },
+  "endpoint": "https://api.siliconflow.cn/v1/chat/completions",
+  "experiment": "formal",
+  "extra_payload": {
+    "enable_thinking": false
+  },
+  "finish_reason": "stop",
+  "finished_at": "2026-10-11T17:01:51.934450Z",
+  "has_reasoning_content": false,
+  "http_status": 200,
+  "is_mock": false,
+  "latency_ms": 1964.9,
+  "max_tokens": 1200,
+  "max_tokens_override": 1200,
+  "method": "transcribe",
+  "model": {
+    "requested": "zai-org/GLM-4.5V",
+    "returned": "zai-org/GLM-4.5V"
+  },
+  "possibly_billed_cost": null,
+  "prompt_sha256": "f7bf5e62e884a21f453d1cf2fc5b607e4a4bb7c2b6b3e339a909feb626f4f9bc",
+  "provider": "siliconflow",
+  "raw_body": "data: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":0,\"total_tokens\":2268}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"<|begin_of_box|>\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":1,\"total_tokens\":2269,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"费用\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":2,\"total_tokens\":2270,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"附录\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":3,\"total_tokens\":2271,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\\n\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":4,\"total_tokens\":2272,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"费用\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":5,\"total_tokens\":2273,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"名称\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":6,\"total_tokens\":2274,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"|\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":7,\"total_tokens\":2275,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"标准\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":8,\"total_tokens\":2276,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\\n\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":9,\"total_tokens\":2277,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"燃油\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":10,\"total_tokens\":2278,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"费\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":11,\"total_tokens\":2279,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"率\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":12,\"total_tokens\":2280,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"|\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":13,\"total_tokens\":2281,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"20\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":14,\"total_tokens\":2282,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" %\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":15,\"total_tokens\":2283,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"<|end_of_box|>\",\"role\":\"assistant\"},\"finish_reason\":null}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":16,\"total_tokens\":2284,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"\",\"role\":\"assistant\"},\"finish_reason\":\"stop\"}],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":16,\"total_tokens\":2284,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: {\"id\":\"01a12be9e46aed0d403b1a089ea5725e\",\"object\":\"chat.completion.chunk\",\"created\":1791738111,\"model\":\"zai-org/GLM-4.5V\",\"choices\":[],\"system_fingerprint\":\"\",\"usage\":{\"prompt_tokens\":2268,\"completion_tokens\":16,\"total_tokens\":2284,\"completion_tokens_details\":{\"reasoning_tokens\":0}}}\n\ndata: [DONE]",
+  "repeat": 0,
+  "request_id": "01a12be9e46aed0d403b1a089ea5725e",
+  "run_key": "formal|transcribe|glm_v|T-test-004|transcribe|C5|r0",
+  "seed": 20261010,
+  "stage": "transcribe",
+  "started_at": "2026-10-11T17:01:49.967695Z",
+  "streamed": true,
+  "task_id": "T-test-004",
+  "temperature": 0,
+  "text": "<|begin_of_box|>费用附录\n费用名称|标准\n燃油费率|20 %<|end_of_box|>",
+  "upper_bound_exceeded": false,
+  "usage": {
+    "completion_tokens": 16,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2268,
+    "total_tokens": 2284
+  },
+  "valid": true
+}

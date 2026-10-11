@@ -19,3 +19,6 @@ quoteguard.executor.ProtocolError: no frozen protocol hash found (argument or do
 [2026-10-11T16:57:29Z] dashscope-A status=none
 [2026-10-11T16:57:29Z] A 阶段停止
 [2026-10-11T16:59:40Z] run dashscope-A plan=runs/formal_inputs/plans/formal-dashscope-A.json budget=CNY=140.0
+{"batch_dir": "runs/dashscope-A", "status": "completed", "completed": 60, "total": 60, "spent": {"CNY": 1.154}}
+[2026-10-11T17:05:45Z] dashscope-A status=completed
+{"retry_requests": 0}

@@ -612,3 +612,16 @@ def test_load_observations_takes_earliest_usable_and_rejects_a_batch_listed_twic
     with pytest.raises(orch.OrchestrationError, match="more than one"):
         orch.load_observations([ba, ba])
     assert base["run_key"] == key
+
+
+def test_stage_b_keeps_stage_a_plan_when_only_budget_differs(split, tmp_path):
+    a = plans(split, tmp_path, ["ds_flash"], orch.METHODS[:4])["A"]
+    before = Path(a).read_text()
+    batch = run(a, tmp_path, "a")
+    low = {k: v / 2 for k, v in BUDGET.items()}
+    p = orch.build_stage_plans(split["tasks"], ["ds_flash"], orch.METHODS[:4], "t1", "dev", low, RATES, tmp_path,
+                               transcription_batches=[batch])
+    assert Path(a).read_text() == before
+    assert json.loads(Path(p["B"]).read_text())["budget"] == low
+    with pytest.raises(FileExistsError):    # without transcriptions the stage A plan is still compared in full
+        orch.build_stage_plans(split["tasks"], ["ds_flash"], orch.METHODS[:4], "t1", "dev", low, RATES, tmp_path)
