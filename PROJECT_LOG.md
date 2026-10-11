@@ -197,3 +197,11 @@
 1. 检查三家状态，提交 runs/ 下新增观测与日志；停止的批次按协议第七节处理并报告用户。
 2. 全部批次完成后按附录 assemble 与 score。
 3. 13 个非盲标单元初标（Claude）与新队友复核。
+
+## 2026-10-12 正式实验进展（第二次交接）
+- A 阶段：deepseek-A 60/60、dashscope-A 60/60 完成，无补跑请求；siliconflow-A 首次进程中断于 44/120，同一批次目录续跑中（提交时 85/120）。
+- 修复：orchestrate plan 在生成 B 计划时会重算 A 计划，按协议扣减后的预算与 A 计划原预算不同而报 FileExistsError。改为带 --transcriptions 时 A 计划只差 budget 不报错、不改写（tests/test_orchestrate.py 新增用例，全量 645 项通过）。
+- B 阶段：formal-deepseek-B（budget USD=11.9554）、formal-dashscope-B（CNY=138.846）已生成并运行，各 668 个请求。执行器同一服务商内顺序调用，按预试验约 25 秒/次，每家 B 阶段约 4–5 小时，dashscope 更慢。提交时 deepseek-B 6、dashscope-B 1，观测全部有效（HTTP 200）。
+- 正式批次累计支出（账本）：DeepSeek 0.099 美元，百炼 1.254 元（免费额度折算），硅基流动 1.377 元。
+- siliconflow 的 B 阶段与 deepseek 的思考组由脚本在前序批次完成后自动生成与运行。
+- 下一会话：先 `pgrep -af run_formal.sh` 看进程是否在；提交 runs/ 新增记录；进程不在时用同一启动命令续跑（见上一条交接）。

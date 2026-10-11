@@ -22,3 +22,73 @@ quoteguard.executor.ProtocolError: no frozen protocol hash found (argument or do
 {"batch_dir": "runs/dashscope-A", "status": "completed", "completed": 60, "total": 60, "spent": {"CNY": 1.154}}
 [2026-10-11T17:05:45Z] dashscope-A status=completed
 {"retry_requests": 0}
+[2026-10-11T18:28:05Z] dashscope-A 已完成，跳过
+{"retry_requests": 0}
+error: runs/formal_inputs/plans/formal-dashscope-A.json exists with different content (frozen plans are not overwritten)
++ set -u
++ P=dashscope
++ H=29a08030798cf637400a338e821f4bb6cc74bde5450817d5fbc51966f3837ac8
++ T=data/tasks/test/tasks
++ W=runs/formal_inputs
++ export PYTHONPATH=src QG_PROXY_AUTH=1
++ PYTHONPATH=src
++ QG_PROXY_AUTH=1
++ E=(--experiment formal --kind formal --rates configs/rates.json --protocol-sha256 "$H" --seed 20261010)
++ case "$P" in
++ C=qwen_max,qwen_plus
++ CUR=CNY
++ CAP=140
++ PREFIXES=dashscope-
++ '[' -f runs/formal_inputs/plans/formal-dashscope-A.json ']'
++ stage runs/formal_inputs/plans/formal-dashscope-A.json dashscope-A
++ local plan=runs/formal_inputs/plans/formal-dashscope-A.json bid=dashscope-A
++ run_batch runs/formal_inputs/plans/formal-dashscope-A.json dashscope-A
++ local plan=runs/formal_inputs/plans/formal-dashscope-A.json bid=dashscope-A
+++ status dashscope-A
+++ python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))['\''status'\''])' runs/dashscope-A/manifest.json
++ '[' completed = completed ']'
++ log 'dashscope-A 已完成，跳过'
+++ date -u +%FT%TZ
++ echo '[2026-10-11T18:31:17Z] dashscope-A 已完成，跳过'
+[2026-10-11T18:31:17Z] dashscope-A 已完成，跳过
++ return 0
++ DIRS=runs/dashscope-A
+++ basename runs/formal_inputs/plans/formal-dashscope-A.json .json
++ local rp=runs/formal_inputs/plans/formal-dashscope-A-retry.json
++ '[' '!' -f runs/formal_inputs/plans/formal-dashscope-A-retry.json ']'
+++ status dashscope-A-retry
+++ python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))['\''status'\''])' runs/dashscope-A-retry/manifest.json
+++ echo none
++ '[' none = none ']'
+++ budget
+++ python3 - CNY 140 dashscope-
++ python3 scripts/make_retry_plan.py runs/dashscope-A --out runs/formal_inputs/plans/formal-dashscope-A-retry.json --budget CNY=138.8460
+{"retry_requests": 0}
++ '[' -f runs/formal_inputs/plans/formal-dashscope-A-retry.json ']'
++ A_DIRS=runs/dashscope-A
++ '[' -f runs/formal_inputs/plans/formal-dashscope-B.json ']'
++ plan M0,M1,M2,M3 qwen_max,qwen_plus dashscope runs/dashscope-A
++ tr=()
++ local tr
++ '[' -n runs/dashscope-A ']'
++ tr=(--transcriptions "$4")
+++ budget
+++ python3 - CNY 140 dashscope-
++ python3 -m quoteguard.orchestrate plan --tasks data/tasks/test/tasks --configs qwen_max,qwen_plus --methods M0,M1,M2,M3 --tag dashscope --budget CNY=138.8460 --out runs/formal_inputs --transcriptions runs/dashscope-A --experiment formal --kind formal --rates configs/rates.json --protocol-sha256 29a08030798cf637400a338e821f4bb6cc74bde5450817d5fbc51966f3837ac8 --seed 20261010
+{"A": "runs/formal_inputs/plans/formal-dashscope-A.json", "B": "runs/formal_inputs/plans/formal-dashscope-B.json"}
++ stage runs/formal_inputs/plans/formal-dashscope-B.json dashscope-B
++ local plan=runs/formal_inputs/plans/formal-dashscope-B.json bid=dashscope-B
++ run_batch runs/formal_inputs/plans/formal-dashscope-B.json dashscope-B
++ local plan=runs/formal_inputs/plans/formal-dashscope-B.json bid=dashscope-B
+++ status dashscope-B
+++ python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))['\''status'\''])' runs/dashscope-B/manifest.json
+++ echo none
++ '[' none = completed ']'
++ local b
+++ python3 -c 'import json,sys;print('\'','\''.join(f'\''{k}={v}'\'' for k,v in json.load(open(sys.argv[1]))['\''budget'\''].items()))' runs/formal_inputs/plans/formal-dashscope-B.json
++ b=CNY=138.846
++ log 'run dashscope-B plan=runs/formal_inputs/plans/formal-dashscope-B.json budget=CNY=138.846'
+++ date -u +%FT%TZ
++ echo '[2026-10-11T18:31:38Z] run dashscope-B plan=runs/formal_inputs/plans/formal-dashscope-B.json budget=CNY=138.846'
+[2026-10-11T18:31:38Z] run dashscope-B plan=runs/formal_inputs/plans/formal-dashscope-B.json budget=CNY=138.846
++ python3 -m quoteguard.orchestrate run --plan runs/formal_inputs/plans/formal-dashscope-B.json --mode live --batch-id dashscope-B --confirm-budget CNY=138.846 --protocol-sha256 29a08030798cf637400a338e821f4bb6cc74bde5450817d5fbc51966f3837ac8
