@@ -1,0 +1,8 @@
+{
+  "config_id": "ds_pro",
+  "intent_at": "2026-10-11T22:33:34.357464Z",
+  "n": 1,
+  "prompt_sha256": "ab21e85818396e7dd8ca5b94dc3a17b0e5bf29be9e234b5d4003367197b7667c",
+  "provider": "deepseek",
+  "run_key": "formal|extract|ds_pro|T-test-017|extract|C2|r1"
+}
