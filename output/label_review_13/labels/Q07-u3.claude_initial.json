@@ -1,0 +1,555 @@
+{
+ "seed_id": "Q07-u3",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q07-u3",
+  "source_type": "pdf",
+  "source_url": "https://mydhlplus.dhl.com/content/dam/downloads/cn/zh/rate-guide/service_and_rate_guide_cn_zh_2026.pdf.coredownload.pdf",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-01-01",
+  "forwarder_alias": "C01",
+  "modality": "pdf",
+  "channel": "Express 10:30",
+  "raw_sha256": "9fe1d82e2ea42966343368fd1a0c0d9da31cb39214d6b160fef6d48697df61c1",
+  "anon_sha256": "a114aa696d78a0c7e2cb27c9b388b0fad4ad5c6da0aa66c5e227e34d4a2fe626",
+  "is_real": true,
+  "source_id": "Q07",
+  "source_class": "carrier_published",
+  "publisher_alias": "DHL",
+  "price_form": "published_tier",
+  "date_status": "current",
+  "dest_region": "美国（区域6；服务覆盖以原价卡为准）"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "Express 10:30",
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "Express 10:30 – 保证在标准转运工作日的上午十点半前递送。",
+     "page": 26
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "express",
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "环球快递出口公布价格",
+     "page": 26
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": "0.5",
+     "price": "505",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "0.5",
+     "max_kg": "1",
+     "price": "670",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1",
+     "max_kg": "1.5",
+     "price": "835",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "1.5",
+     "max_kg": "2",
+     "price": "1000",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2",
+     "max_kg": "2.5",
+     "price": "1164",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "2.5",
+     "max_kg": "3",
+     "price": "1323",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3",
+     "max_kg": "3.5",
+     "price": "1482",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "3.5",
+     "max_kg": "4",
+     "price": "1641",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4",
+     "max_kg": "4.5",
+     "price": "1800",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "4.5",
+     "max_kg": "5",
+     "price": "1959",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5",
+     "max_kg": "5.5",
+     "price": "2118",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "5.5",
+     "max_kg": "6",
+     "price": "2277",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6",
+     "max_kg": "6.5",
+     "price": "2436",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "6.5",
+     "max_kg": "7",
+     "price": "2595",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7",
+     "max_kg": "7.5",
+     "price": "2754",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "7.5",
+     "max_kg": "8",
+     "price": "2913",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8",
+     "max_kg": "8.5",
+     "price": "3072",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "8.5",
+     "max_kg": "9",
+     "price": "3231",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9",
+     "max_kg": "9.5",
+     "price": "3390",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "9.5",
+     "max_kg": "10",
+     "price": "3549",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "10",
+     "max_kg": "11",
+     "price": "3849",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "11",
+     "max_kg": "12",
+     "price": "4149",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "12",
+     "max_kg": "13",
+     "price": "4449",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "13",
+     "max_kg": "14",
+     "price": "4749",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "14",
+     "max_kg": "15",
+     "price": "5049",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "15",
+     "max_kg": "16",
+     "price": "5349",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "16",
+     "max_kg": "17",
+     "price": "5649",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "17",
+     "max_kg": "18",
+     "price": "5949",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "18",
+     "max_kg": "19",
+     "price": "6249",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "19",
+     "max_kg": "20",
+     "price": "6549",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "20",
+     "max_kg": "21",
+     "price": "6755",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "22",
+     "price": "6961",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "22",
+     "max_kg": "23",
+     "price": "7167",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "23",
+     "max_kg": "24",
+     "price": "7373",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "24",
+     "max_kg": "25",
+     "price": "7579",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "25",
+     "max_kg": "26",
+     "price": "7785",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "26",
+     "max_kg": "27",
+     "price": "7991",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "27",
+     "max_kg": "28",
+     "price": "8197",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "28",
+     "max_kg": "29",
+     "price": "8403",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "29",
+     "max_kg": "30",
+     "price": "8609",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "30",
+     "max_kg": "40",
+     "price": "11160",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "40",
+     "max_kg": "50",
+     "price": "13950",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "50",
+     "max_kg": "60",
+     "price": "16740",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "60",
+     "max_kg": "70",
+     "price": "19530",
+     "currency": "CNY",
+     "unit": "per_shpt"
+    },
+    {
+     "min_kg": "30.1",
+     "max_kg": "70",
+     "price": "279",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "70.1",
+     "max_kg": "300",
+     "price": "279",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "300.1",
+     "max_kg": "3000",
+     "price": "311",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "包裹和2.5kg以上文件",
+     "page": 25
+    },
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "环球快递出口公布价格",
+     "page": 26
+    },
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "每公斤单价",
+     "page": 26
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "5000",
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "得出的总数除以5,000。",
+     "page": 15
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "stated",
+   "value": "0.5",
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "30公斤内快件计费重量为每0.5公斤累加续重，30公斤以上快件计费方式为每公斤向上取整至整公斤",
+     "page": 26
+    }
+   ]
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "SVC1030",
+     "basis": "per_shpt",
+     "amount": "199",
+     "currency": "CNY",
+     "condition": "always",
+     "threshold": null,
+     "contingent": false
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "服务在环球快递出口价格基础上加收 199元。",
+     "page": 26
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "excludes": {
+   "status": "stated",
+   "value": [
+    "海关关税",
+    "清关相关费用",
+    "增值税",
+    "其他附加费"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "此价格表以人民币计价，不包括海关关税、清关相关费用、增值税及其他附加费。",
+     "page": 26
+    }
+   ]
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": false,
+    "scope": "duty",
+    "duty_terms": null,
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "此价格表以人民币计价，不包括海关关税、清关相关费用、增值税及其他附加费。",
+     "page": 26
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "validity": {
+   "status": "stated",
+   "value": [
+    "2026-01-01",
+    null
+   ],
+   "spans": [
+    {
+     "doc_id": "Q07",
+     "kind": "text",
+     "quote": "生效日期：2026年1月1日",
+     "page": 32
+    }
+   ]
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "rate_tiers": "6 区出口包裹价：0.5–30kg 及 40/50/60/70kg 为整票价（per_shpt，min_kg 记上一档重量），30.1kg 起另有每公斤单价；40–70kg 整票价等于 279 元/kg × 重量。价格列由子代理逐字转写、主会话抽查 19kg 与 30kg 两档",
+  "rounding_kg": "30kg 以内按 0.5kg 累加续重，30kg 以上向上取整至整公斤",
+  "surcharges": "Express 10:30 在环球快递出口价格基础上每票加收 199 元",
+  "fuel_pct": "燃油附加费按月度燃油指数浮动，价格指南未给出具体百分比",
+  "transit_days": "Express 10:30 承诺在标准转运工作日上午十点半前递送，无天数区间",
+  "zone": "美国在 DHL 区域表中为 6 区（第 24 页“美国 6”）"
+ }
+}

@@ -1,0 +1,297 @@
+{
+ "seed_id": "Q16-u2",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q16-u2",
+  "source_type": "web_page",
+  "source_url": "F05-src-16",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-10-09",
+  "forwarder_alias": "F05",
+  "modality": "text",
+  "channel": "CSN 急速达 大陆直飞-普货",
+  "raw_sha256": "9f45b18170a50630fc3b4aa8ba48214cd62b7fb98c194896c6fe83b1df511469",
+  "anon_sha256": "8c7878338bf7df0aecbea5bc3b92d8d8f445a315208ee9aab8ec869ee0fba9e5",
+  "is_real": true,
+  "source_id": "Q16",
+  "source_class": "forwarder",
+  "publisher_alias": "F05",
+  "price_form": "published_tier",
+  "date_status": "current",
+  "dest_region": "(邮编0-6开头)"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "CSN 急速达 大陆直飞-普货",
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "CSN 急速达 大陆直飞-普货"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "air",
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "美国空派限时速达、经济达、空卡超大件"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "12",
+     "max_kg": "20",
+     "price": "65",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "21",
+     "max_kg": "70",
+     "price": "62",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "71",
+     "max_kg": "100",
+     "price": "59",
+     "currency": "CNY",
+     "unit": "per_kg"
+    },
+    {
+     "min_kg": "101",
+     "max_kg": null,
+     "price": "57",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "渠道 区域 12-20KG 21-70KG 71-100KG 101KG+ 目的机场（非固定） 参考时效 重货优惠 CSN"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "(邮编0-6开头) 65 62 59 57 JFK/EWR/MIA"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "stated",
+   "value": "10",
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "单件计费重量不低于10KG,不足10KG按10KG计费"
+    }
+   ]
+  },
+  "dim_divisor": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "stated",
+   "value": [
+    {
+     "code": "RES",
+     "basis": "per_ctn",
+     "amount": "25",
+     "currency": "CNY",
+     "condition": "residential",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM",
+     "basis": "per_kg",
+     "amount": "2",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "REM_SUPER",
+     "basis": "per_ctn",
+     "amount": "120",
+     "currency": "CNY",
+     "condition": "remote",
+     "threshold": null,
+     "contingent": false
+    },
+    {
+     "code": "OVW",
+     "basis": "per_ctn",
+     "amount": "320",
+     "currency": "CNY",
+     "condition": "ctn_kg_gt",
+     "threshold": "22",
+     "contingent": false
+    },
+    {
+     "code": "OVS",
+     "basis": "per_ctn",
+     "amount": "210",
+     "currency": "CNY",
+     "condition": "ctn_longest_side_gt",
+     "threshold": "118",
+     "contingent": false
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "非FBA地址 私人地址 25元/件 最低消费150/票"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "地址偏远 一般偏远 RMB2/KG， 最低180/票"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "超级偏远 120RMB/件"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "超重 1、单件实重超22KG；2、实重超40KG起不接 RMB320元/件"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "超长 1、最长边超含118CM、或次长超含73CM、属于超长"
+    }
+   ]
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "双清",
+    "含税",
+    "到门派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "价格包含： DDP双清含税到门RMB全包价（价格表仅做参考，以最终确认价格为准）"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": true,
+    "scope": "all",
+    "duty_terms": "included",
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "价格包含： DDP双清含税到门RMB全包价"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "implied",
+   "value": [
+    2,
+    4
+   ],
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "LAX/SFO 2-4工作日提取"
+    }
+   ]
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "stated",
+   "value": "交货后至交服务商前丢失按 RMB40/KG 赔偿，最高不超 100 美金/件，不退运费；交服务商后丢失按服务商官方标准，最高不超 100 美金/件，不退运费",
+   "spans": [
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "甲方按RMB40/KG赔偿给乙方，最高不超100美金/件（不退还货物的托运运费"
+    },
+    {
+     "doc_id": "Q16",
+     "kind": "text",
+     "quote": "赔偿金额按服务商官方赔偿标准方案执行，最高赔偿不超100美金每件"
+    }
+   ]
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "transit_days": "参考时效“2-4工作日提取”写在邮编7-9开头那一行，表格合并单元格，0-6 开头行沿用，记 implied；工作日、到提取",
+  "surcharges": "超长另有“短边相加*2+长边≥263CM且<325CM”条件，同为 RMB210/件；私人地址最低 150/票；一般偏远最低 180/票；产品附加费 +7/+4 RMB/kg 针对特定品类，未记入",
+  "dim_divisor": "原文未写体积重除数；“1:100表价-1”等为货形比重优惠",
+  "delay_compensation": "超 5 个工作日未提取补偿 0.5RMB/KG/天，上限 2RMB/KG",
+  "validity": "更新日期 2026-10-09，未写有效期"
+ }
+}

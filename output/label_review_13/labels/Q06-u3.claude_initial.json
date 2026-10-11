@@ -1,0 +1,219 @@
+{
+ "seed_id": "Q06-u3",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q06-u3",
+  "source_type": "web_page",
+  "source_url": "F04-src-06",
+  "captured_at": "2026-10-10",
+  "page_date": "2026-06-10",
+  "forwarder_alias": "F04",
+  "modality": "text",
+  "channel": "普货空派",
+  "raw_sha256": "85724f47d87d592caf6952def48b2677bbcc573a23c3ff290228bc7fec05ded5",
+  "anon_sha256": "b01a66e0c314774d9f05667417fb883e44eadaf48c51c49e3e6d2d7bfb4ff895",
+  "is_real": true,
+  "source_id": "Q06",
+  "source_class": "forwarder",
+  "publisher_alias": "F04",
+  "price_form": "range",
+  "date_status": "expired",
+  "dest_region": "美东"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "普货空派",
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "1）普货空派（21kg+）"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "air",
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "1）普货空派（21kg+）"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "conflicting",
+   "value": [
+    [
+     {
+      "min_kg": "21",
+      "max_kg": null,
+      "price": "56",
+      "currency": "CNY",
+      "unit": "per_kg"
+     }
+    ],
+    [
+     {
+      "min_kg": "21",
+      "max_kg": null,
+      "price": "41",
+      "currency": "CNY",
+      "unit": "per_kg"
+     }
+    ]
+   ],
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "美东：56–62元/kg"
+    },
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "2. 价格（普货，21kg+，DDP双清包税，2026.6）："
+    },
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "美东：41–45元/kg，比美西贵3–5元/kg"
+    },
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "3）价格差异（普货21kg+）"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "min_kg_carton": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "dim_divisor": {
+   "status": "stated",
+   "value": "6000",
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "体积重：长×宽×高÷6000，实重/体积重取大"
+    }
+   ]
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "空运费",
+    "清关",
+    "关税",
+    "派送"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "二、收费标准（DDP全包：空运费+清关+关税+派送）"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "stated",
+   "value": {
+    "is_ddp": true,
+    "scope": "all",
+    "duty_terms": "included",
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "二、收费标准（DDP全包：空运费+清关+关税+派送）"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "stated",
+   "value": [
+    6,
+    8
+   ],
+   "spans": [
+    {
+     "doc_id": "Q06",
+     "kind": "text",
+     "quote": "美东（纽约JFK/亚特兰大ATL）：6–8天签收"
+    }
+   ]
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "range_max": [
+   "62",
+   "45"
+  ],
+  "price_form": "range：56–62 元/kg，记下限",
+  "rate_tiers": "同一页“价格（普货，21kg+）”与“收费标准”写 56–62 元/kg，“三、美西 vs 美东 区别详解 3）价格差异（普货21kg+）”写 41–45 元/kg，按第七节记 conflicting，两个候选的 range_max 依次为 62、45",
+  "transit_days": "直飞标准空派，门到门签收天数",
+  "validity": "原文“2026.6”，无起止日期",
+  "dim_divisor": "另写“分泡30%–50%”，分泡比例为区间，未记入"
+ }
+}

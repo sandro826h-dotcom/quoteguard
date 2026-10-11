@@ -1,0 +1,191 @@
+{
+ "seed_id": "Q02-u3",
+ "annotator": "claude_initial",
+ "annotated_at": "2026-10-12",
+ "minutes_spent": "0",
+ "initial_label_model": "Claude（Anthropic，不属于 6 个实验配置），2026-10-12",
+ "meta": {
+  "seed_id": "Q02-u3",
+  "source_type": "web_page",
+  "source_url": "F02-src-02",
+  "captured_at": "2026-10-10",
+  "page_date": null,
+  "forwarder_alias": "F02",
+  "modality": "text",
+  "channel": "美国(EXX.合德.ZIM)海卡",
+  "raw_sha256": "08a45f82c056065b42da22b715396fc4b42ebd01e121029fd1e40f157ec5e2b2",
+  "anon_sha256": "66a86903f82b50ad1a2d87b6ad30a4ec082f9022dc700309646e08bb0d36e541",
+  "is_real": true,
+  "source_id": "Q02",
+  "source_class": "forwarder",
+  "publisher_alias": "F02",
+  "price_form": "starting_price",
+  "date_status": "unknown",
+  "dest_region": "美西"
+ },
+ "terms": {
+  "channel": {
+   "status": "stated",
+   "value": "美国(EXX.合德.ZIM)海卡",
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "美国(EXX.合德.ZIM)海卡"
+    }
+   ]
+  },
+  "mode": {
+   "status": "stated",
+   "value": "sea",
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "美国(EXX.合德.ZIM)海卡"
+    }
+   ]
+  },
+  "rate_tiers": {
+   "status": "stated",
+   "value": [
+    {
+     "min_kg": "0",
+     "max_kg": null,
+     "price": "4.76",
+     "currency": "CNY",
+     "unit": "per_kg"
+    }
+   ],
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "¥4.76/kg起 · 15-19天提柜"
+    },
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "义乌收货最低档起价（RMB/kg 含税）"
+    }
+   ]
+  },
+  "min_kg_shipment": {
+   "status": "stated",
+   "value": "12",
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "12kg起收"
+    }
+   ]
+  },
+  "min_kg_carton": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "dim_divisor": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "rounding_kg": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "surcharges": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "fuel_pct": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "includes": {
+   "status": "stated",
+   "value": [
+    "含税"
+   ],
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "义乌收货最低档起价（RMB/kg 含税）"
+    }
+   ]
+  },
+  "excludes": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "ddp": {
+   "status": "implied",
+   "value": {
+    "is_ddp": true,
+    "scope": "duty",
+    "duty_terms": "included",
+    "cap_cny_per_kg": null,
+    "ior": "unspecified"
+   },
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "义乌收货最低档起价（RMB/kg 含税）"
+    }
+   ]
+  },
+  "broker_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "isf_fee_cny": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "transit_days": {
+   "status": "stated",
+   "value": [
+    15,
+    19
+   ],
+   "spans": [
+    {
+     "doc_id": "Q02",
+     "kind": "text",
+     "quote": "¥4.76/kg起 · 15-19天提柜"
+    }
+   ]
+  },
+  "validity": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "liability": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  },
+  "claims": {
+   "status": "missing",
+   "value": null,
+   "spans": []
+  }
+ },
+ "notes": {
+  "price_form": "starting_price：记起价 4.76，档位下限无原文，记 0",
+  "min_kg_shipment": "“12kg起收”出现在“美国海运专线”产品卡，该卡涵盖 EXX/合德/ZIM 快船；是否适用于海卡请复核",
+  "ddp": "原文只写“含税”，包税范围未说明，按最小口径 duty 记 implied，请复核",
+  "transit_days": "15-19 天提柜（到港提柜，不是签收）",
+  "validity": "原文“具体以系统最新报价为准”，无有效期"
+ }
+}
