@@ -576,3 +576,5 @@
 {"amount": 0.098984, "at": "2026-10-11T22:30:02.076971Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M0|qwen_max|T-test-004|answer|ALL|r0"}
 {"amount": 0.006028, "at": "2026-10-11T22:30:04.557302Z", "batch_id": "deepseek-B", "currency": "USD", "kind": "observation", "run_key": "formal|extract|ds_pro|T-test-015|extract|C6|r1"}
 {"amount": 0.003133, "at": "2026-10-11T22:30:16.530488Z", "batch_id": "deepseek-B", "currency": "USD", "kind": "observation", "run_key": "formal|M0|ds_flash|T-test-015|answer|ALL|r0"}
+{"amount": 0.0081475, "at": "2026-10-11T22:30:42.975834Z", "batch_id": "deepseek-B", "currency": "USD", "kind": "observation", "run_key": "formal|M1|ds_flash|T-test-015|answer|ALL|r0"}
+{"amount": 0.001617, "at": "2026-10-11T22:30:47.544355Z", "batch_id": "deepseek-B", "currency": "USD", "kind": "observation", "run_key": "formal|extract|ds_flash|T-test-015|extract|C1|r1"}
