@@ -214,7 +214,7 @@
 - 初标中按第七节记为 conflicting 的字段：Q06-u1、Q06-u3 rate_tiers（同页 53–57/37–40、56–62/41–45），Q17-u1 ddp（DDP 含税 vs 关税实报实销）与 broker_fee_cny（200 vs 350）。
 
 ### 未决
-- 匿名化：data/seeds/anonymous/Q05.txt、Q06.txt 的联系区仍有一个手机号（[电话已匿名]）未替换。两文件在冻结记录与 units.json 中有哈希，未擅自修改；需用户决定补遮方式（改匿名件并更新 anon_sha256、记录协议偏离）。
+- 匿名化：data/seeds/anonymous/Q05.txt、Q06.txt 的联系区仍有一个手机号未替换（已于 2026-10-12 补遮，见偏离记录第 2 条）。两文件在冻结记录与 units.json 中有哈希，未擅自修改；需用户决定补遮方式（改匿名件并更新 anon_sha256、记录协议偏离）。
 - 复核由新队友完成后导入 data/seeds/labels/，再按第八节记录哈希。
 
 ## 2026-10-12 方案图与 PPT 大纲
@@ -301,7 +301,7 @@
 
 ## 2026-10-12 协议偏离记录与 Q05、Q06 补遮
 ### 已完成
-- 补遮（5ba79a4）：Q05.txt、Q06.txt 联系区手机号整行替换为“[电话已匿名]”（同 Q02，保留 CRLF），units.json、unit_assets.json 的 anon_sha256、blind_subset.json 的 units_sha256、复核包 output/label_review_13/ 中的副本与 5 个初标 meta 同步更新。盲标名单可重现；13 单元初标中指向 Q05、Q06 的 61 条出处全部匹配；全量 645 项测试通过。PROJECT_LOG 2026-10-12 条目中的明文号码同步替换。
+- 补遮（e5b9356）：Q05.txt、Q06.txt 联系区手机号整行替换为“[电话已匿名]”（同 Q02，保留 CRLF），units.json、unit_assets.json 的 anon_sha256、blind_subset.json 的 units_sha256、复核包 output/label_review_13/ 中的副本与 5 个初标 meta 同步更新。盲标名单可重现；13 单元初标中指向 Q05、Q06 的 61 条出处全部匹配；全量 645 项测试通过。PROJECT_LOG 2026-10-12 条目中的明文号码同步替换。
 - 补遮前确认：正式批次（含待续跑的 siliconflow-B）只读合成测试集与协议哈希字符串，不读 data/seeds/，补遮不影响续跑。
 - docs/protocol/偏离记录.md：9 条。1 盲标初标由大模型生成；2 匿名件补遮（含新旧哈希）；3 方案第五节测试集生成时点文字；4 截止日期更正；5 冻结后代码与脚本改动；6 预算口径；7 进程中断后续跑；8 DeepSeek-Flash 思考组全部失败；9 硅基流动余额不足停批。
 - AIC_最终方案.md 第五节：测试集时点改为“提示词随协议冻结，测试集在协议冻结后生成”；“标注”一项按第 1 条改写。新哈希记在偏离记录第 3 条。
