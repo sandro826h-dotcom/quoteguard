@@ -14,7 +14,7 @@
   "modality": "text",
   "channel": "普货空派",
   "raw_sha256": "85724f47d87d592caf6952def48b2677bbcc573a23c3ff290228bc7fec05ded5",
-  "anon_sha256": "b01a66e0c314774d9f05667417fb883e44eadaf48c51c49e3e6d2d7bfb4ff895",
+  "anon_sha256": "3afa99386611efd905031f06889430b836c9fb7023dff9d411096c27959a261b",
   "is_real": true,
   "source_id": "Q06",
   "source_class": "forwarder",

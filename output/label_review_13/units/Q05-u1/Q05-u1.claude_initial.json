@@ -14,7 +14,7 @@
   "modality": "text",
   "channel": "美森快船 CLX",
   "raw_sha256": "c60f11169752e50ce2d5c90f7e9fb835ba87666f630c6e761f0d4ac449f2c911",
-  "anon_sha256": "b201cae51013bb9d5dd02d5433a3a1a96ee071a2a88d4262815950536f154139",
+  "anon_sha256": "a6f504ef014270f93f567a71580dae977abdcb20f74d8d1652557ba344d7fc98",
   "is_real": true,
   "source_id": "Q05",
   "source_class": "forwarder",
