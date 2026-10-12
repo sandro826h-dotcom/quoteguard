@@ -294,3 +294,7 @@
 - 是否由队员乙对盲标子集按固定种子抽约 20% 字段独立审定，报告与裁决人的一致率和 κ。
 - 待填：IEEPA 判决案名与案号、亚马逊 AGL URL、标注过程文件路径、make_results.py 参数。
 - 报告 4.6 节在 docs/protocol/偏离记录.md 推送后改为引用该文件（由“协议偏离与匿名补遮”线程建立）。
+## 2026-10-12 标签导入工具
+- 做了什么：新增 scripts/import_adjudication.py（盲标子集：人工裁决表 xlsx + 两份初标 JSON → data/seeds/adjudication.json 与 data/seeds/labels/<seed_id>.gold.json）、scripts/import_review13.py（13 个非盲标单元：output/label_review_13/ 已填复核表 + Claude 初标 → 金标签与 data/seeds/review13.json）、共用的 scripts/label_common.py，测试 tests/test_label_import.py（19 项，全部用合成单元、合成匿名件和合成的已填表格，不含真实裁决）。两个脚本都做 schema 校验、出处子串核对（以 units.json 的 anon_sha256 核对匿名件为当前版本）、覆盖检查（每个单元 18 个字段各有一行决定），全部通过才写文件；adjudication.json 记录每份初标的逐字段改正率，review13.json 记录复核改正率，供报告 5.7 节使用。reviewer 审查一轮，7 个问题（改正率受 schema 默认键影响、确认时丢弃已填改正值、空出处片段漏检、黄色列表头不符被静默忽略、元数据与备注合并问题）已修复，复审通过。
+- 结果：全量测试通过（非 slow）。用仓库中 13 个单元的复核表做“全部确认”的临时演练，162 条初标出处与当前匿名件全部一致（测试 test_real_review_pack_spans_match_current_anonymized_files 持续检查；Q05/Q06 补遮后如有片段引用被遮内容，该测试会报出）。
+- 未决：真实人工裁决表与两份初标 JSON 不在仓库中，列布局按表头名称识别。用户拿到文件后先运行 `PYTHONPATH=src python3 scripts/import_adjudication.py --xlsx <裁决表.xlsx> --inspect` 核对列识别，再运行 `... --initial-1 <初标1> --initial-2 <初标2> --check-only`，无问题后去掉 --check-only 写出并提交。13 单元复核表填回 output/label_review_13/units/ 后运行 `PYTHONPATH=src python3 scripts/import_review13.py --reviewer 队员乙 --date <完成日期>`。用时可用 --minutes-json 传入，缺省记 0。
