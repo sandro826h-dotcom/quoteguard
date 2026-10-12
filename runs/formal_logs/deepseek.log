@@ -44,3 +44,6 @@ error: runs/formal_inputs/plans/formal-deepseek-A.json exists with different con
 [2026-10-12T00:30:21Z] think-B status=completed
 {"retry_requests": 48, "plan_id": "formal-think-B-retry", "out": "runs/formal_inputs/plans/formal-think-B-retry.json"}
 [2026-10-12T00:30:25Z] run think-B-retry plan=runs/formal_inputs/plans/formal-think-B-retry.json budget=USD=7.3439
+{"batch_dir": "runs/think-B-retry", "status": "completed", "completed": 48, "total": 48, "spent": {"USD": 0.6580595}}
+[2026-10-12T01:27:17Z] think-B-retry status=completed
+[2026-10-12T01:27:17Z] deepseek 全部批次完成
