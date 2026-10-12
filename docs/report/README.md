@@ -11,11 +11,13 @@
 | 图 3-2 方法阶梯 | `../figures/fig2_method_ladder.png` | docs/figures/ |
 | 图 4-1 评测集构建与数据流程 | `../figures/fig3_dataflow.png` | docs/figures/ |
 | 图 4-2 真实报价集标注流程 | `../figures/fig4_annotation.png` | docs/figures/ |
-| 图 5-1 各层级决策正确率 | `../figures/fig5_e1_accuracy_by_layer.svg` | 结果出来后绘制（灰度） |
-| 图 5-2 风险项检出 | `../figures/fig6_e2_risk.svg` | 结果出来后绘制（灰度） |
+| 图 5-1 各层级决策正确率 | `../../output/results/formal/fig5_e1_accuracy_by_layer.png` | scripts/make_results.py（灰度） |
+| 图 5-2 风险项检出 | `../../output/results/formal/fig6_e2_risk.png` | scripts/make_results.py（灰度） |
 | 图 5-3 演示系统决策护照 | 演示系统截图，路径待定 | demo/ |
 
 ## 填写顺序
+
+正式结果的表与图由一条命令生成：`PYTHONPATH=src python scripts/make_results.py --preset formal`，输出在 `output/results/formal/`（`tables.md` 含表 5-1 至表 5-10，图 5-1、5-2 为 PNG 与 PDF）。评分输出中没有的项，流水线写“评分输出无此项”，报告对应位置保持〔待填〕另行填写：图片转写准确率、反事实任务字段与出处准确率、无依据宣称的采纳率、M0/M1 自由文本映射的人工抽检一致率、表 5-8 真实报价集、5.9 效益分析。
 
 1. 5.1 执行概况：`runs/spend_ledger.jsonl` 与各批次 manifest。
 2. 5.2–5.6：`orchestrate score` 输出（`--seed 20261011 --sims 99999 --B 9999`），按 5.10 节逐条判定事前决策规则，再写简介“效果”、5.9 效益分析与 6.1 总结。
