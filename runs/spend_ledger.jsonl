@@ -2112,3 +2112,11 @@
 {"amount": 0.04794, "at": "2026-10-12T03:52:16.734559Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-037|extract|C2|r1"}
 {"amount": 0.047064, "at": "2026-10-12T03:52:41.460498Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-037|extract|C3|r1"}
 {"amount": 0.044232, "at": "2026-10-12T03:53:04.639520Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-037|extract|C4|r1"}
+{"amount": 0.051248, "at": "2026-10-12T03:53:31.736917Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-037|extract|C5|r1"}
+{"amount": 0.05572, "at": "2026-10-12T03:54:00.847991Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-037|extract|C6|r1"}
+{"amount": 0.131892, "at": "2026-10-12T03:55:00.601584Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M0|qwen_max|T-test-038|answer|ALL|r0"}
+{"amount": 0.169792, "at": "2026-10-12T03:56:06.420411Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M1|qwen_max|T-test-038|answer|ALL|r0"}
+{"amount": 0.062348, "at": "2026-10-12T03:56:28.139209Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-038|extract|C1|r1"}
+{"amount": 0.058108, "at": "2026-10-12T03:56:47.983082Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-038|extract|C2|r1"}
+{"amount": 0.065248, "at": "2026-10-12T03:57:11.465133Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-038|extract|C3|r1"}
+{"amount": 0.06126, "at": "2026-10-12T03:57:33.376770Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-038|extract|C4|r1"}
