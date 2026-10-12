@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-12T03:37:18.460036Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "body": "{\"code\":30001,\"message\":\"Sorry, your account balance is insufficient\",\"data\":null}",
+      "classification": "insufficient_balance",
+      "error": null,
+      "http_status": 402,
+      "possibly_billed": false,
+      "usage": null
+    }
+  ],
+  "error": "siliconflow: insufficient_balance",
+  "metadata": {
+    "batch_stop": "insufficient_balance"
+  },
+  "n": 1,
+  "possibly_billed_cost": null,
+  "provider": "siliconflow",
+  "run_key": "formal|M0|glm|T-test-039|answer|ALL|r0",
+  "stop_reason": "insufficient_balance"
+}
