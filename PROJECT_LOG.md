@@ -347,3 +347,6 @@
 - docs/slides/QuoteGuard_评审.pptx：按 docs/slides/PPT大纲.md 生成，正文 21 页加备用 6 页（B1–B6），16:9，字体 Noto Serif CJK SC，黑灰加一种强调色（深红 8C1D18，与演示系统一致，只用于关键数字、第 4 步与占位符）。插入 docs/figures/ 四张图与 demo/screenshots/ 七张截图（只读）。结果相关位置（第 2、12、15、16–20 页，B5）一律为“〔待正式结果〕”占位，不含任何结果数字；第 16–20 页的两种标题写法与事前决策规则写在备注里。每页讲稿要点在备注中。文档属性作者、单位为空。
 - 生成脚本 docs/slides/src/make_pptx.py；validate.py 通过；LibreOffice 渲染为 PNG 逐页检查，修正了第 4 页大数字换行遮挡、第 5 页时间线标签换行、第 13 页模型表换行、B4 面板留白、B5 列宽。
 - 未决：放映电脑需装 Noto Serif CJK SC，否则 PowerPoint 会替换字体；参赛团队编号待报名后填；第 16–20 页定稿时按结果选标题并换成 docs/report 第五章的图表。按用户要求本块未送 reviewer。
+## 2026-10-12 盲标一致性抽检导入
+- 做了什么：新增 scripts/import_spotcheck.py，读新队友独立填写的盲标字段抽检表（盲标字段抽检表.xlsx，工作表“抽检”，列 编号、单元、原件、渠道/目的区域、字段、字段含义、status、value、币种、原文依据、备注），与 data/seeds/labels/<seed_id>.gold.json 逐项比较，写出 data/seeds/spotcheck.json：status 一致率、value 一致率（全部抽检项）、value 一致率（金标签为 stated/implied 的项）、不一致编号、抽样种子与输入哈希。value 比较按 schema 规范形式（5 与 5.0 相同，省略的默认键按默认值）；币种列补齐价格条目缺的 currency。tests/test_label_import.py 增加 3 项合成示例测试，共 22 项通过。按项目额度安排，这一块未送 reviewer。
+- 未决：金标签写出后（import_adjudication.py），用户在本机运行 `PYTHONPATH=src python3 scripts/import_spotcheck.py --xlsx 盲标字段抽检表.xlsx --seed 20261012 --checker 队员乙 --date <完成日期>`，先加 --check-only 检查。

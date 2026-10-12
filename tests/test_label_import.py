@@ -390,3 +390,79 @@ def test_real_review_pack_spans_match_current_anonymized_files(tmp_path):
         fill(x, {})
     rc = r13.main(["--reviewer", "检查", "--date", "2026-10-12", "--check-only", "--review-dir", str(dst)])
     assert rc == 0
+
+
+# ---------------------------------------------------------------- 盲标一致性抽检
+import import_spotcheck as spot  # noqa: E402
+
+SPOT_HEAD = ["编号", "单元", "原件", "渠道/目的区域", "字段", "字段含义", "status", "value", "币种", "原文依据", "备注"]
+
+
+def spot_xlsx(env, rows):
+    wb = Workbook()
+    wb.active.title = "说明"
+    ws = wb.create_sheet("抽检")
+    ws.append(["盲标字段抽检表（合成测试）"])
+    ws.append(SPOT_HEAD)
+    for r in rows:
+        ws.append([r.get(h) for h in SPOT_HEAD])
+    p = env / "抽检表.xlsx"
+    wb.save(p)
+    return p
+
+
+def spot_args(env, *extra):
+    return ["--xlsx", str(env / "抽检表.xlsx"), "--seed", "20261012", "--checker", "抽检人甲", "--date", "2026-10-13",
+            "--blind", str(env / "blind.json"), "--labels-dir", str(env / "labels"), "--out", str(env / "spot.json"),
+            *extra]
+
+
+def test_spotcheck_rates_status_and_value_separately(env):
+    write_initials(env)
+    make_xlsx(env)
+    assert adj.main(adj_args(env)) == 0          # 合成金标签：min_kg_carton=12，broker_fee_cny 冲突 [300, 350]
+    spot_xlsx(env, [
+        {"编号": "C01", "单元": "S01-u1", "字段": "min_kg_carton", "status": "stated", "value": "12.0"},
+        {"编号": "C02", "单元": "S01-u1", "字段": "broker_fee_cny", "status": "stated", "value": "300"},
+        {"编号": "C03", "单元": "S01-u2", "字段": "rate_tiers", "status": "stated", "币种": "CNY",
+         "value": '[{"min_kg": "0", "max_kg": null, "price": "30"}]'},
+        {"编号": "C04", "单元": "S01-u2", "字段": "fuel_pct", "status": "missing"},
+        {"编号": "C05", "单元": "S01-u2", "字段": "dim_divisor", "status": "implied", "value": "5000"},
+    ])
+    assert spot.main(spot_args(env)) == 0
+    r = json.loads((env / "spot.json").read_text(encoding="utf-8"))
+    s = r["summary"]
+    assert s["status"] == {"agree": 3, "n": 5, "rate": 0.6}       # C02、C05 status 不同
+    assert s["value"] == {"agree": 3, "n": 5, "rate": 0.6}        # C02、C05 value 不同
+    assert s["value_gold_present"] == {"agree": 2, "n": 3, "rate": 0.6667}
+    assert s["disagreements"] == ["C02", "C05"]
+    assert r["sampling"]["seed"] == 20261012 and r["inputs"]["gold_files"]
+
+
+def test_spotcheck_input_errors(env, capsys):
+    write_initials(env)
+    make_xlsx(env)
+    assert adj.main(adj_args(env)) == 0
+    spot_xlsx(env, [
+        {"编号": "C01", "单元": "S01-u1", "字段": "min_kg_carton", "status": "missing", "value": "12"},
+        {"编号": "C01", "单元": "S01-u1", "字段": "mode", "status": "stated", "value": "air"},
+        {"编号": "C03", "单元": "S09-u1", "字段": "mode", "status": "stated", "value": "air"},
+        {"编号": "C04", "单元": "S01-u1", "字段": "单箱最低计费重", "status": "stated", "value": "12"},
+        {"编号": "C05", "单元": "S01-u1", "字段": "mode", "status": None},
+    ])
+    assert spot.main(spot_args(env)) == 1
+    err = capsys.readouterr().err
+    for s in ("value 应留空", "编号重复", "不在盲标名单", "未知条款字段", "status 须为"):
+        assert s in err
+    assert not (env / "spot.json").exists()
+
+
+def test_spotcheck_requires_gold_and_columns(env, capsys):
+    spot_xlsx(env, [{"编号": "C01", "单元": "S01-u1", "字段": "mode", "status": "stated", "value": "air"}])
+    assert spot.main(spot_args(env)) == 1
+    assert "先运行 import_adjudication.py" in capsys.readouterr().err
+    wb = load_workbook(env / "抽检表.xlsx")
+    wb["抽检"].cell(2, 9).value = "货币"
+    wb.save(env / "抽检表.xlsx")
+    assert spot.main(spot_args(env)) == 1
+    assert "找不到列 ['币种']" in capsys.readouterr().err
