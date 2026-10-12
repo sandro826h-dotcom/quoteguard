@@ -352,8 +352,8 @@ def fig_annotation():
     # 盲标子集
     ax.text(2.2, H - 0.2, "盲标子集 15 个（承运商 PDF 4，货代 PDF 2，货代网页 9）", fontsize=7.5 * FS,
             fontweight="bold", va="top")
-    a1 = box(ax, 2.2, 3.15, bw, 0.95, "独立初标 1", "仓库外独立完成\n输入为盲标包", fill=LLM)
-    a2 = box(ax, 2.2, 2.05, bw, 0.95, "独立初标 2", "仓库外独立完成\n输入为同一盲标包", fill=LLM)
+    a1 = box(ax, 2.2, 3.15, bw, 0.95, "模型初标 1", "OpenAI Codex\n隔离上下文 1", fill=LLM)
+    a2 = box(ax, 2.2, 2.05, bw, 0.95, "模型初标 2", "OpenAI Codex\n隔离上下文 2", fill=LLM)
     adj = box(ax, 4.4, 2.05, bw, 2.05, "人工全量审定",
               "裁决人对照原件\n逐字段审定 270 个字段\n分歧按规范第七节\n歧义规则裁决\n逐条记录理由", fill=HUMAN)
 
@@ -377,7 +377,7 @@ def fig_annotation():
 
     ax.text(6.6, 3.45, "独立性约束\n· 标注与裁决不看系统输出与计算器结果\n· 真实单元原文不进入提示词与词表\n"
             "· 初标之间的一致率只作内部记录", fontsize=6.6 * FS, va="bottom", linespacing=1.45)
-    ax.text(6.6, 0.35, "盲标子集的两份初标由大模型生成，\n金标签以人工全量审定为准（偏离记于项目日志）",
+    ax.text(6.6, 0.35, "原规范为两人从头人工标注，实际改为\n模型初标加人工全量审定（偏离记录第 1 条）",
             fontsize=6.4 * FS, color=MUTED, va="bottom", linespacing=1.4)
     legend(ax, 0.25, 0.62, [("大模型", LLM, False)])
     legend(ax, 0.25, 0.32, [("人工", HUMAN, False)])
