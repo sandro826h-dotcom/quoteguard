@@ -214,7 +214,7 @@
 - 初标中按第七节记为 conflicting 的字段：Q06-u1、Q06-u3 rate_tiers（同页 53–57/37–40、56–62/41–45），Q17-u1 ddp（DDP 含税 vs 关税实报实销）与 broker_fee_cny（200 vs 350）。
 
 ### 未决
-- 匿名化：data/seeds/anonymous/Q05.txt、Q06.txt 的联系区仍有一个手机号（136-7000-6560）未替换。两文件在冻结记录与 units.json 中有哈希，未擅自修改；需用户决定补遮方式（改匿名件并更新 anon_sha256、记录协议偏离）。
+- 匿名化：data/seeds/anonymous/Q05.txt、Q06.txt 的联系区仍有一个手机号（[电话已匿名]）未替换。两文件在冻结记录与 units.json 中有哈希，未擅自修改；需用户决定补遮方式（改匿名件并更新 anon_sha256、记录协议偏离）。
 - 复核由新队友完成后导入 data/seeds/labels/，再按第八节记录哈希。
 
 ## 2026-10-12 方案图与 PPT 大纲
@@ -298,3 +298,17 @@
 - 做了什么：新增 scripts/import_adjudication.py（盲标子集：人工裁决表 xlsx + 两份初标 JSON → data/seeds/adjudication.json 与 data/seeds/labels/<seed_id>.gold.json）、scripts/import_review13.py（13 个非盲标单元：output/label_review_13/ 已填复核表 + Claude 初标 → 金标签与 data/seeds/review13.json）、共用的 scripts/label_common.py，测试 tests/test_label_import.py（19 项，全部用合成单元、合成匿名件和合成的已填表格，不含真实裁决）。两个脚本都做 schema 校验、出处子串核对（以 units.json 的 anon_sha256 核对匿名件为当前版本）、覆盖检查（每个单元 18 个字段各有一行决定），全部通过才写文件；adjudication.json 记录每份初标的逐字段改正率，review13.json 记录复核改正率，供报告 5.7 节使用。reviewer 审查一轮，7 个问题（改正率受 schema 默认键影响、确认时丢弃已填改正值、空出处片段漏检、黄色列表头不符被静默忽略、元数据与备注合并问题）已修复，复审通过。
 - 结果：全量测试通过（非 slow）。用仓库中 13 个单元的复核表做“全部确认”的临时演练，162 条初标出处与当前匿名件全部一致（测试 test_real_review_pack_spans_match_current_anonymized_files 持续检查；Q05/Q06 补遮后如有片段引用被遮内容，该测试会报出）。
 - 未决：真实人工裁决表与两份初标 JSON 不在仓库中，列布局按表头名称识别。用户拿到文件后先运行 `PYTHONPATH=src python3 scripts/import_adjudication.py --xlsx <裁决表.xlsx> --inspect` 核对列识别，再运行 `... --initial-1 <初标1> --initial-2 <初标2> --check-only`，无问题后去掉 --check-only 写出并提交。13 单元复核表填回 output/label_review_13/units/ 后运行 `PYTHONPATH=src python3 scripts/import_review13.py --reviewer 队员乙 --date <完成日期>`。用时可用 --minutes-json 传入，缺省记 0。
+
+## 2026-10-12 协议偏离记录与 Q05、Q06 补遮
+### 已完成
+- 补遮（5ba79a4）：Q05.txt、Q06.txt 联系区手机号整行替换为“[电话已匿名]”（同 Q02，保留 CRLF），units.json、unit_assets.json 的 anon_sha256、blind_subset.json 的 units_sha256、复核包 output/label_review_13/ 中的副本与 5 个初标 meta 同步更新。盲标名单可重现；13 单元初标中指向 Q05、Q06 的 61 条出处全部匹配；全量 645 项测试通过。PROJECT_LOG 2026-10-12 条目中的明文号码同步替换。
+- 补遮前确认：正式批次（含待续跑的 siliconflow-B）只读合成测试集与协议哈希字符串，不读 data/seeds/，补遮不影响续跑。
+- docs/protocol/偏离记录.md：9 条。1 盲标初标由大模型生成；2 匿名件补遮（含新旧哈希）；3 方案第五节测试集生成时点文字；4 截止日期更正；5 冻结后代码与脚本改动；6 预算口径；7 进程中断后续跑；8 DeepSeek-Flash 思考组全部失败；9 硅基流动余额不足停批。
+- AIC_最终方案.md 第五节：测试集时点改为“提示词随协议冻结，测试集在协议冻结后生成”；“标注”一项按第 1 条改写。新哈希记在偏离记录第 3 条。
+- reviewer 审查一轮：严重 1 项（PROJECT_LOG 残留明文号码）与一般 6 项，均已修改。
+
+### 未决
+- 报告 4.6 节、PPT 大纲与 fig4 图注改为引用偏离记录（归报告线程与方案图线程）。
+- 方案第八节评委问答表仍写“测试集在系统定稿前冻结”，第十一节排期按旧截止日期，均不在本线程负责范围。
+- 盲标 Q05-u3 两份初标与裁决结果在仓库外，导入时由出处核对确认；第 9 条在硅基流动续跑完成后补记。
+- freeze_protocol.py --check 会报告 seeds、方案与 src 不同，以偏离记录为准。
