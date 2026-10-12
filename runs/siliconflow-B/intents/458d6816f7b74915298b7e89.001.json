@@ -1,0 +1,8 @@
+{
+  "config_id": "kimi",
+  "intent_at": "2026-10-12T02:59:33.550714Z",
+  "n": 1,
+  "prompt_sha256": "cfa11909773721d34f090be82d46481b3e9911d0e12c04604bf36ca59ce5cb0c",
+  "provider": "siliconflow",
+  "run_key": "formal|extract|kimi|T-test-034|extract|C1|r1"
+}
