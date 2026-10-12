@@ -5,7 +5,27 @@
   "param_snapshot": "tariff-2026-10-09",
   "fx_date": "2026-10-09",
   "fx_cny_per_usd": "6.733",
-  "data_dir": "data/taskgen/dev_v3"
+  "data_dir": "data/taskgen/dev_v3",
+  "field_cn": {
+   "quote_entity": "报价主体",
+   "mode": "运输方式",
+   "rate_tiers": "计费方式与阶梯单价",
+   "min_kg_shipment": "整票最低计费重",
+   "min_kg_carton": "单箱最低计费重",
+   "dim_divisor": "计泡系数",
+   "rounding_kg": "计重进位",
+   "fuel_pct": "燃油附加费",
+   "surcharges": "附加费",
+   "broker_fee_cny": "报关（清关）费",
+   "isf_fee_cny": "ISF 申报费",
+   "ddp": "包税范围与进口商（IOR）",
+   "includes": "报价包含",
+   "excludes": "报价不含",
+   "transit_days": "时效",
+   "validity": "有效期",
+   "liability": "赔付",
+   "claims": "资质宣称"
+  }
  },
  "cases": [
   {
@@ -632,7 +652,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "9–13 天",
+         "value": "9 至 13 天",
          "quotes": [
           {
            "text": "时效9-13天",
@@ -642,7 +662,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "9–13 天",
+         "review_value": "9 至 13 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -714,61 +734,100 @@
            "value": "无最低计费重",
            "quotes": [
             "不设最低计费重"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           },
           {
            "value": "45 kg",
            "quotes": [
             "备注：整票45kg起计"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": {
+          "value": "45 kg",
+          "missing": false,
+          "quotes": [
+           "备注：整票45kg起计"
+          ],
+          "model": "qwen_plus"
+         },
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         },
         {
          "key": "min_kg_carton",
          "label": "单箱最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（ds_flash 与 qwen_plus）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（ds_flash 未抽取到）",
          "values": [
           {
-           "value": "无最低计费重",
-           "quotes": [
-            "超重费：83元/箱（单箱超22kg）"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "ds_flash"
           },
           {
            "value": "22 kg",
+           "missing": false,
            "quotes": [
             "超重费：83元/箱（单箱超22kg）"
-           ]
+           ],
+           "model": "qwen_plus"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         },
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（ds_flash 与 qwen_plus）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "清关费400元/票"
-           ]
+           ],
+           "model": "ds_flash"
           },
           {
-           "value": "不收",
-           "quotes": [
-            "清关费400元/票"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -869,6 +928,11 @@
          "2664.78",
          "3353.53"
         ],
+        "range_fields": [
+         "整票最低计费重",
+         "单箱最低计费重",
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 13 天，超过要求的 12 天"
@@ -879,7 +943,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3064.78",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C2",
@@ -1186,7 +1260,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "Transit 6-9 days",
@@ -1196,7 +1270,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -1378,6 +1452,7 @@
         "total": "3262.53",
         "per_unit": "36.25",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -1386,7 +1461,9 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3262.53",
+       "diff_reasons": []
       },
       {
        "cand_id": "C3",
@@ -1684,7 +1761,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit 7-10 days",
@@ -1694,7 +1771,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -1871,6 +1948,7 @@
         "total": "3004.53",
         "per_unit": "33.38",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -1879,7 +1957,9 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3004.53",
+       "diff_reasons": []
       },
       {
        "cand_id": "C4",
@@ -2181,7 +2261,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit | 7-10 days",
@@ -2191,7 +2271,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -2263,17 +2343,36 @@
            "value": "100 kg",
            "quotes": [
             "Whole lot 最低计费重 | 100kg"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           },
           {
            "value": "45 kg",
            "quotes": [
             "备注：Whole lot 45kg 起计"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": {
+          "value": "100 kg",
+          "missing": false,
+          "quotes": [
+           "Whole lot 最低计费重 | 100kg"
+          ],
+          "model": "qwen_plus"
+         },
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -2373,6 +2472,9 @@
          "2800.65",
          "4388.65"
         ],
+        "range_fields": [
+         "整票最低计费重"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -2381,7 +2483,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "4388.65",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "整票最低计费重"
+         ],
+         "text": "冲突取低值：整票最低计费重"
+        }
+       ]
       }
      ],
      "decision": {
@@ -2400,17 +2512,12 @@
        {
         "cand": "C1",
         "kind": "冲突",
-        "text": "报价1的整票最低计费重有两种取值：无最低计费重 与 45 kg"
+        "text": "报价1的单箱最低计费重有两种取值：未抽取到 与 22 kg（一方漏抽（ds_flash 未抽取到））"
        },
        {
         "cand": "C1",
         "kind": "冲突",
-        "text": "报价1的单箱最低计费重有两种取值：无最低计费重 与 22 kg"
-       },
-       {
-        "cand": "C1",
-        "kind": "冲突",
-        "text": "报价1的报关（清关）费有两种取值：400 元/票 与 不收"
+        "text": "报价1的报关（清关）费有两种取值：400 元/票 与 未抽取到（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C1",
@@ -2420,7 +2527,7 @@
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的整票最低计费重有两种取值：100 kg 与 45 kg"
+        "text": "报价4的整票最低计费重有两种取值：100 kg 与 45 kg（同一份报价内两处表述不一致）"
        }
       ],
       "triggers": {
@@ -2431,7 +2538,11 @@
         "conflict"
        ]
       },
-      "match_gold": true
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：完全一致"
+      }
      },
      "m0": {
       "decision": "ask",
@@ -2454,7 +2565,17 @@
        "报价1时效9-13天卡在12天边缘，有延误违约风险",
        "报价2/3燃油附加费高达20%，显著推高成本"
       ],
-      "match_gold": false
+      "ask_fields": [
+       "C1.broker_fee_cny",
+       "C2.fuel_pct",
+       "C3.broker_fee_cny",
+       "C4.min_kg_shipment"
+      ],
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：多问 报价1的报关（清关）费、报价2的燃油附加费、报价3的报关（清关）费"
+      }
      }
     },
     "qwen_plus": {
@@ -2787,7 +2908,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "9–13 天",
+         "value": "9 至 13 天",
          "quotes": [
           {
            "text": "时效9-13天",
@@ -2797,7 +2918,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "9–13 天",
+         "review_value": "9 至 13 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -2862,68 +2983,107 @@
         {
          "key": "min_kg_shipment",
          "label": "整票最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "intra",
+         "origin_cn": "ds_flash 自身两处表述不一致",
          "values": [
           {
            "value": "无最低计费重",
            "quotes": [
             "不设最低计费重"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           },
           {
            "value": "45 kg",
            "quotes": [
             "备注：整票45kg起计"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": {
+          "value": "45 kg",
+          "missing": false,
+          "quotes": [
+           "备注：整票45kg起计"
+          ],
+          "model": "qwen_plus"
+         },
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         },
         {
          "key": "min_kg_carton",
          "label": "单箱最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（ds_flash 未抽取到）",
          "values": [
           {
            "value": "22 kg",
+           "missing": false,
            "quotes": [
             "超重费：83元/箱（单箱超22kg）"
-           ]
+           ],
+           "model": "qwen_plus"
           },
           {
-           "value": "无最低计费重",
-           "quotes": [
-            "超重费：83元/箱（单箱超22kg）"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         },
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
-           "value": "不收",
-           "quotes": [
-            "清关费400元/票"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           },
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "清关费400元/票"
-           ]
+           ],
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -3017,6 +3177,11 @@
          "2664.78",
          "3353.53"
         ],
+        "range_fields": [
+         "整票最低计费重",
+         "单箱最低计费重",
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 13 天，超过要求的 12 天"
@@ -3027,7 +3192,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3064.78",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C2",
@@ -3334,7 +3509,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "- Transit 6-9 days",
@@ -3344,7 +3519,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -3522,6 +3697,7 @@
         "total": "3262.53",
         "per_unit": "36.25",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -3530,7 +3706,9 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3262.53",
+       "diff_reasons": []
       },
       {
        "cand_id": "C3",
@@ -3824,7 +4002,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "14) Transit 7-10 days",
@@ -3834,7 +4012,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -3984,6 +4162,7 @@
         "total": "3004.53",
         "per_unit": "33.38",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -3992,7 +4171,9 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "3004.53",
+       "diff_reasons": []
       },
       {
        "cand_id": "C4",
@@ -4290,7 +4471,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit | 7-10 days",
@@ -4300,7 +4481,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -4365,24 +4546,43 @@
         {
          "key": "min_kg_shipment",
          "label": "整票最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "intra",
+         "origin_cn": "ds_flash 自身两处表述不一致",
          "values": [
           {
            "value": "100 kg",
            "quotes": [
             "Whole lot 最低计费重 | 100kg"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           },
           {
            "value": "45 kg",
            "quotes": [
             "备注：Whole lot 45kg 起计"
-           ]
+           ],
+           "missing": false,
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": {
+          "value": "100 kg",
+          "missing": false,
+          "quotes": [
+           "Whole lot 最低计费重 | 100kg"
+          ],
+          "model": "qwen_plus"
+         },
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -4499,6 +4699,9 @@
          "2800.65",
          "4388.65"
         ],
+        "range_fields": [
+         "整票最低计费重"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -4507,7 +4710,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "4388.65",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "整票最低计费重"
+         ],
+         "text": "冲突取低值：整票最低计费重"
+        }
+       ]
       }
      ],
      "decision": {
@@ -4526,17 +4739,12 @@
        {
         "cand": "C1",
         "kind": "冲突",
-        "text": "报价1的整票最低计费重有两种取值：无最低计费重 与 45 kg"
+        "text": "报价1的单箱最低计费重有两种取值：22 kg 与 未抽取到（一方漏抽（ds_flash 未抽取到））"
        },
        {
         "cand": "C1",
         "kind": "冲突",
-        "text": "报价1的单箱最低计费重有两种取值：22 kg 与 无最低计费重"
-       },
-       {
-        "cand": "C1",
-        "kind": "冲突",
-        "text": "报价1的报关（清关）费有两种取值：不收 与 400 元/票"
+        "text": "报价1的报关（清关）费有两种取值：未抽取到 与 400 元/票（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C1",
@@ -4546,11 +4754,15 @@
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的整票最低计费重有两种取值：100 kg 与 45 kg"
+        "text": "报价4的整票最低计费重有两种取值：100 kg 与 45 kg（ds_flash 自身两处表述不一致）"
        }
       ],
       "triggers": {},
-      "match_gold": true
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：完全一致"
+      }
      },
      "m0": {
       "decision": "choose",
@@ -4566,7 +4778,12 @@
        "FWD-58未列明清关费，存在隐藏成本",
        "FWD-40强制100kg计费，性价比极低，属典型低价诱导高价结算"
       ],
-      "match_gold": false
+      "ask_fields": [],
+      "score": {
+       "decision_correct": false,
+       "decision_label": "决策错误（正式评分口径）",
+       "ask_line": "追问字段与标准答案：少问 报价4的整票最低计费重"
+      }
      }
     }
    },
@@ -5543,7 +5760,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "3–5 天",
+         "value": "3 至 5 天",
          "quotes": [
           {
            "text": "Transit | 3-5 days",
@@ -5553,7 +5770,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "3–5 天",
+         "review_value": "3 至 5 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -5719,6 +5936,7 @@
         "total": "17816.95",
         "per_unit": "19.80",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -5727,7 +5945,9 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "17816.95",
+       "diff_reasons": []
       },
       {
        "cand_id": "C2",
@@ -6029,7 +6249,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "3–5 天",
+         "value": "3 至 5 天",
          "quotes": [
           {
            "text": "时效 | 3-5天",
@@ -6039,7 +6259,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "3–5 天",
+         "review_value": "3 至 5 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -6196,6 +6416,7 @@
         "total": "16583.95",
         "per_unit": "18.43",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -6204,7 +6425,9 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "16583.95",
+       "diff_reasons": []
       },
       {
        "cand_id": "C3",
@@ -6507,7 +6730,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "5–8 天",
+         "value": "5 至 8 天",
          "quotes": [
           {
            "text": "时效 | 5-8天",
@@ -6517,7 +6740,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "5–8 天",
+         "review_value": "5 至 8 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -6582,24 +6805,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（ds_flash 与 qwen_plus）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
            "value": "150 元/票",
+           "missing": false,
            "quotes": [
             "清关费 | 150元/票"
-           ]
+           ],
+           "model": "ds_flash"
           },
           {
-           "value": "不收",
-           "quotes": [
-            "清关费 | 150元/票"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -6697,6 +6930,9 @@
          "15994.45",
          "16144.45"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 8 天，超过要求的 6 天"
@@ -6707,7 +6943,17 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "16144.45",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C4",
@@ -7014,7 +7260,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "4–7 天",
+         "value": "4 至 7 天",
          "quotes": [
           {
            "text": "Transit | 4-7 days",
@@ -7024,7 +7270,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "4–7 天",
+         "review_value": "4 至 7 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -7089,46 +7335,66 @@
         {
          "key": "min_kg_carton",
          "label": "单箱最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（ds_flash 与 qwen_plus）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（ds_flash 未抽取到）",
          "values": [
           {
-           "value": "无最低计费重",
-           "quotes": [
-            "超重费 | 89 CNY per ctn（单箱超22kg）"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "ds_flash"
           },
           {
            "value": "22 kg",
+           "missing": false,
            "quotes": [
             "超重费 | 89 CNY per ctn（单箱超22kg）"
-           ]
+           ],
+           "model": "qwen_plus"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         },
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（ds_flash 与 qwen_plus）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
            "value": "150 元/票",
+           "missing": false,
            "quotes": [
             "备注：Customs filing fee 150 CNY per shpt"
-           ]
+           ],
+           "model": "ds_flash"
           },
           {
-           "value": "不收",
-           "quotes": [
-            "备注：Customs filing fee 150 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -7230,6 +7496,10 @@
          "14143.50",
          "14293.50"
         ],
+        "range_fields": [
+         "单箱最低计费重",
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 7 天，超过要求的 6 天"
@@ -7240,7 +7510,17 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "14293.50",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       }
      ],
      "decision": {
@@ -7250,12 +7530,12 @@
       "ask_fields": [],
       "questions": [],
       "m4_risks": [],
-      "reason": "在满足时效且包税风险不为“高”的 2 份报价中，报价2的确定成本最低，为 16583.95 元，比次低报价低 1233.00 元。",
+      "reason": "在满足时效且包税风险不为“高”的 2 份报价中，报价2的计算成本最低，为 16583.95 元，比次低报价低 1233.00 元。",
       "risks": [
        {
         "cand": "C3",
         "kind": "冲突",
-        "text": "报价3的报关（清关）费有两种取值：150 元/票 与 不收"
+        "text": "报价3的报关（清关）费有两种取值：150 元/票 与 未抽取到（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C3",
@@ -7265,12 +7545,7 @@
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的单箱最低计费重有两种取值：无最低计费重 与 22 kg"
-       },
-       {
-        "cand": "C4",
-        "kind": "冲突",
-        "text": "报价4的报关（清关）费有两种取值：150 元/票 与 不收"
+        "text": "报价4的报关（清关）费有两种取值：150 元/票 与 未抽取到（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C4",
@@ -7279,7 +7554,11 @@
        }
       ],
       "triggers": {},
-      "match_gold": true
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：均无需追问"
+      }
      },
      "m0": {
       "decision": "choose",
@@ -7303,7 +7582,12 @@
        "体积重除数6000对本票无实际优惠，实重225kg远大于体积重",
        "报价1、3触发超尺寸费（箱长60cm>58cm），报价4触发超重费（25kg>22kg）"
       ],
-      "match_gold": true
+      "ask_fields": [],
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：均无需追问"
+      }
      }
     },
     "qwen_plus": {
@@ -7635,7 +7919,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "3–5 天",
+         "value": "3 至 5 天",
          "quotes": [
           {
            "text": "Transit | 3-5 days",
@@ -7645,7 +7929,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "3–5 天",
+         "review_value": "3 至 5 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -7807,6 +8091,7 @@
         "total": "17816.95",
         "per_unit": "19.80",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -7815,7 +8100,9 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "17816.95",
+       "diff_reasons": []
       },
       {
        "cand_id": "C2",
@@ -8109,7 +8396,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "3–5 天",
+         "value": "3 至 5 天",
          "quotes": [
           {
            "text": "时效 | 3-5天",
@@ -8119,7 +8406,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "3–5 天",
+         "review_value": "3 至 5 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -8269,6 +8556,7 @@
         "total": "16583.95",
         "per_unit": "18.43",
         "range": null,
+        "range_fields": [],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -8277,7 +8565,9 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "16583.95",
+       "diff_reasons": []
       },
       {
        "cand_id": "C3",
@@ -8567,7 +8857,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "5–8 天",
+         "value": "5 至 8 天",
          "quotes": [
           {
            "text": "时效 | 5-8天",
@@ -8577,7 +8867,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "5–8 天",
+         "review_value": "5 至 8 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -8642,24 +8932,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
-           "value": "不收",
-           "quotes": [
-            "清关费 | 150元/票"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           },
           {
            "value": "150 元/票",
+           "missing": false,
            "quotes": [
             "清关费 | 150元/票"
-           ]
+           ],
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -8753,6 +9053,9 @@
          "15994.45",
          "16144.45"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 8 天，超过要求的 6 天"
@@ -8763,7 +9066,17 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "16144.45",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C4",
@@ -9062,7 +9375,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "4–7 天",
+         "value": "4 至 7 天",
          "quotes": [
           {
            "text": "Transit | 4-7 days",
@@ -9072,7 +9385,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "4–7 天",
+         "review_value": "4 至 7 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -9137,46 +9450,66 @@
         {
          "key": "min_kg_carton",
          "label": "单箱最低计费重",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（ds_flash 未抽取到）",
          "values": [
           {
            "value": "22 kg",
+           "missing": false,
            "quotes": [
             "超重费 | 89 CNY per ctn（单箱超22kg）"
-           ]
+           ],
+           "model": "qwen_plus"
           },
           {
-           "value": "无最低计费重",
-           "quotes": [
-            "超重费 | 89 CNY per ctn（单箱超22kg）"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         },
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（qwen_plus 与 ds_flash）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（qwen_plus 未抽取到）",
          "values": [
           {
-           "value": "不收",
-           "quotes": [
-            "备注：Customs filing fee 150 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "qwen_plus"
           },
           {
            "value": "150 元/票",
+           "missing": false,
            "quotes": [
             "备注：Customs filing fee 150 CNY per shpt"
-           ]
+           ],
+           "model": "ds_flash"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -9275,6 +9608,10 @@
          "14143.50",
          "14293.50"
         ],
+        "range_fields": [
+         "单箱最低计费重",
+         "报关（清关）费"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "时效最长 7 天，超过要求的 6 天"
@@ -9285,7 +9622,17 @@
         ],
         "deadline_days": 6,
         "defaulted": []
-       }
+       },
+       "gold_total": "14293.50",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（qwen_plus 未抽取到）"
+        }
+       ]
       }
      ],
      "decision": {
@@ -9295,12 +9642,12 @@
       "ask_fields": [],
       "questions": [],
       "m4_risks": [],
-      "reason": "在满足时效且包税风险不为“高”的 2 份报价中，报价2的确定成本最低，为 16583.95 元，比次低报价低 1233.00 元。",
+      "reason": "在满足时效且包税风险不为“高”的 2 份报价中，报价2的计算成本最低，为 16583.95 元，比次低报价低 1233.00 元。",
       "risks": [
        {
         "cand": "C3",
         "kind": "冲突",
-        "text": "报价3的报关（清关）费有两种取值：不收 与 150 元/票"
+        "text": "报价3的报关（清关）费有两种取值：未抽取到 与 150 元/票（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C3",
@@ -9310,12 +9657,7 @@
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的单箱最低计费重有两种取值：22 kg 与 无最低计费重"
-       },
-       {
-        "cand": "C4",
-        "kind": "冲突",
-        "text": "报价4的报关（清关）费有两种取值：不收 与 150 元/票"
+        "text": "报价4的报关（清关）费有两种取值：未抽取到 与 150 元/票（一方漏抽（qwen_plus 未抽取到））"
        },
        {
         "cand": "C4",
@@ -9324,7 +9666,11 @@
        }
       ],
       "triggers": {},
-      "match_gold": true
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：均无需追问"
+      }
      },
      "m0": {
       "decision": "choose",
@@ -9340,7 +9686,12 @@
        "所有报价均不含查验费，CBP查验可能导致$200+额外成本及到仓延误",
        "报价1和报价4破损不赔，报价3赔付不足且DAP条款违反亚马逊FBA清关要求"
       ],
-      "match_gold": true
+      "ask_fields": [],
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：均无需追问"
+      }
      }
     }
    },
@@ -9947,7 +10298,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit 7-10 days",
@@ -9957,7 +10308,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -10022,24 +10373,43 @@
         {
          "key": "ddp",
          "label": "包税范围与进口商（IOR）",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（glm 与 kimi）",
+         "origin": "intra",
+         "origin_cn": "kimi 自身两处表述不一致",
          "values": [
           {
            "value": "包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代",
-           "quotes": [
-            "报价包含：头程运费、目的港清关、关税、MPF"
-           ]
+           "quotes": [],
+           "missing": false,
+           "model": "kimi"
           },
           {
            "value": "包税（DDP），含关税和 MPF，税金由报价承担，进口商：货代",
-           "quotes": [
-            "DDP包税，含全部进口环节税费"
-           ]
+           "quotes": [],
+           "missing": false,
+           "model": "kimi"
           }
          ],
+         "shared_quotes": [
+          "报价包含：头程运费、目的港清关、关税、MPF",
+          "DDP包税，含全部进口环节税费"
+         ],
+         "other_side": {
+          "value": "包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代",
+          "missing": false,
+          "quotes": [
+           "DDP 包税，含全部进口环节税费",
+           "Importer (IOR)：Forwarder"
+          ],
+          "model": "glm"
+         },
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         }
        ],
        "gaps": [],
@@ -10137,6 +10507,9 @@
         "total": "4185.00",
         "per_unit": "11.63",
         "range": null,
+        "range_fields": [
+         "包税范围与进口商（IOR）"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "包税价格低于税费下限，包税风险为高"
@@ -10147,7 +10520,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "4585.00",
+       "diff_reasons": [
+        {
+         "kind": "missed",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "字段漏抽：报关（清关）费（两个模型都未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C2",
@@ -10449,7 +10832,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "时效 | 6-9天",
@@ -10459,7 +10842,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -10550,7 +10933,7 @@
         "level": "none",
         "level_cn": "不标",
         "is_ddp": false,
-        "ddp_text": "不包税（DAP），进口商：未指明",
+        "ddp_text": "",
         "ddp_missing": true,
         "ddp_conflicting": false,
         "chargeable_kg": "90",
@@ -10559,12 +10942,7 @@
         "freight_ref_cny_per_kg": null,
         "floor_source": "none",
         "docs": [],
-        "quotes": [
-         {
-          "text": "报价包含 | 头程运费、目的港清关",
-          "verified": true
-         }
-        ]
+        "quotes": []
        },
        "claims": [
         {
@@ -10637,7 +11015,13 @@
         "contingent": [],
         "total": "11513.19",
         "per_unit": "31.98",
-        "range": null,
+        "range": [
+         "6009.30",
+         "11513.19"
+        ],
+        "range_fields": [
+         "包税范围与进口商（IOR）"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -10648,7 +11032,17 @@
         "defaulted": [
          "包税范围与进口商（IOR）"
         ]
-       }
+       },
+       "gold_total": "6027.95",
+       "diff_reasons": [
+        {
+         "kind": "default",
+         "fields": [
+          "包税范围与进口商（IOR）"
+         ],
+         "text": "缺失字段按默认值计算：包税范围与进口商（IOR）"
+        }
+       ]
       },
       {
        "cand_id": "C3",
@@ -10959,7 +11353,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit 7-10 days",
@@ -10969,7 +11363,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -11034,24 +11428,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（glm 与 kimi）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（kimi 未抽取到）",
          "values": [
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "Customs filing fee 400 CNY per shpt"
-           ]
+           ],
+           "model": "glm"
           },
           {
-           "value": "不收",
-           "quotes": [
-            "Customs filing fee 400 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "kimi"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -11152,6 +11556,9 @@
          "9067.89",
          "9467.89"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -11160,7 +11567,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "9467.89",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（kimi 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C4",
@@ -11461,7 +11878,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "Transit 6-9 days",
@@ -11471,7 +11888,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -11536,24 +11953,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（glm 与 kimi）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（glm 未抽取到）",
          "values": [
           {
-           "value": "不收",
-           "quotes": [
-            "Customs filing fee 400 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "glm"
           },
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "Customs filing fee 400 CNY per shpt"
-           ]
+           ],
+           "model": "kimi"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -11652,6 +12079,9 @@
          "8743.89",
          "9143.89"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -11660,7 +12090,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "9143.89",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（glm 未抽取到）"
+        }
+       ]
       }
      ],
      "decision": {
@@ -11682,11 +12122,6 @@
       "risks": [
        {
         "cand": "C1",
-        "kind": "冲突",
-        "text": "报价1的包税范围与进口商（IOR）有两种取值：包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代 与 包税（DDP），含关税和 MPF，税金由报价承担，进口商：货代"
-       },
-       {
-        "cand": "C1",
         "kind": "包税",
         "text": "报价1包税风险为“高”：包税单价 46.50 元/kg，税费下限 61.15 元/kg"
        },
@@ -11703,12 +12138,12 @@
        {
         "cand": "C3",
         "kind": "冲突",
-        "text": "报价3的报关（清关）费有两种取值：400 元/票 与 不收"
+        "text": "报价3的报关（清关）费有两种取值：400 元/票 与 未抽取到（一方漏抽（kimi 未抽取到））"
        },
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的报关（清关）费有两种取值：不收 与 400 元/票"
+        "text": "报价4的报关（清关）费有两种取值：未抽取到 与 400 元/票（一方漏抽（glm 未抽取到））"
        }
       ],
       "triggers": {
@@ -11716,7 +12151,11 @@
         "ddp_risk"
        ]
       },
-      "match_gold": false
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：多问 报价3的报关（清关）费、报价4的报关（清关）费"
+      }
      },
      "m0": {
       "decision": "choose",
@@ -11735,7 +12174,12 @@
        "Q4旺季空派可能延误，12天时效要求需留buffer",
        "3倍运费赔付(约1.2万元)低于货值(约1.6万元人民币)"
       ],
-      "match_gold": false
+      "ask_fields": [],
+      "score": {
+       "decision_correct": false,
+       "decision_label": "决策错误（正式评分口径）",
+       "ask_line": "追问字段与标准答案：少问 报价2的包税范围与进口商（IOR）"
+      }
      }
     },
     "kimi": {
@@ -12062,7 +12506,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit 7-10 days",
@@ -12072,7 +12516,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -12132,19 +12576,38 @@
          "values": [
           {
            "value": "包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代",
-           "quotes": [
-            "报价包含：头程运费、目的港清关、关税、MPF"
-           ]
+           "quotes": [],
+           "missing": false,
+           "model": "kimi"
           },
           {
            "value": "包税（DDP），含关税和 MPF，税金由报价承担，进口商：货代",
-           "quotes": [
-            "DDP包税，含全部进口环节税费"
-           ]
+           "quotes": [],
+           "missing": false,
+           "model": "kimi"
           }
          ],
+         "shared_quotes": [
+          "报价包含：头程运费、目的港清关、关税、MPF",
+          "DDP包税，含全部进口环节税费"
+         ],
+         "other_side": {
+          "value": "包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代",
+          "missing": false,
+          "quotes": [
+           "DDP 包税，含全部进口环节税费",
+           "Importer (IOR)：Forwarder"
+          ],
+          "model": "glm"
+         },
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": false,
+         "affects": {
+          "cost": false,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": false
         }
        ],
        "gaps": [
@@ -12251,6 +12714,9 @@
         "total": "4185.00",
         "per_unit": "11.63",
         "range": null,
+        "range_fields": [
+         "包税范围与进口商（IOR）"
+        ],
         "feasible": false,
         "infeasible_reasons": [
          "包税价格低于税费下限，包税风险为高"
@@ -12261,7 +12727,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "4585.00",
+       "diff_reasons": [
+        {
+         "kind": "missed",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "字段漏抽：报关（清关）费（两个模型都未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C2",
@@ -12546,7 +13022,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "时效 | 6-9天",
@@ -12556,7 +13032,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -12732,7 +13208,13 @@
         "contingent": [],
         "total": "11513.19",
         "per_unit": "31.98",
-        "range": null,
+        "range": [
+         "6009.30",
+         "11513.19"
+        ],
+        "range_fields": [
+         "包税范围与进口商（IOR）"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -12743,7 +13225,17 @@
         "defaulted": [
          "包税范围与进口商（IOR）"
         ]
-       }
+       },
+       "gold_total": "6027.95",
+       "diff_reasons": [
+        {
+         "kind": "default",
+         "fields": [
+          "包税范围与进口商（IOR）"
+         ],
+         "text": "缺失字段按默认值计算：包税范围与进口商（IOR）"
+        }
+       ]
       },
       {
        "cand_id": "C3",
@@ -13037,7 +13529,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "7–10 天",
+         "value": "7 至 10 天",
          "quotes": [
           {
            "text": "Transit 7-10 days",
@@ -13047,7 +13539,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "7–10 天",
+         "review_value": "7 至 10 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -13112,24 +13604,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（kimi 与 glm）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（kimi 未抽取到）",
          "values": [
           {
-           "value": "不收",
-           "quotes": [
-            "Customs filing fee 400 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "kimi"
           },
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "Customs filing fee 400 CNY per shpt"
-           ]
+           ],
+           "model": "glm"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 0,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -13223,6 +13725,9 @@
          "9067.89",
          "9467.89"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -13231,7 +13736,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "9467.89",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（kimi 未抽取到）"
+        }
+       ]
       },
       {
        "cand_id": "C4",
@@ -13533,7 +14048,7 @@
          "label": "时效",
          "status": "stated",
          "status_cn": "明示",
-         "value": "6–9 天",
+         "value": "6 至 9 天",
          "quotes": [
           {
            "text": "Transit 6-9 days",
@@ -13543,7 +14058,7 @@
          "downgraded": false,
          "gap": false,
          "defaulted": false,
-         "review_value": "6–9 天",
+         "review_value": "6 至 9 天",
          "review_status": "stated",
          "review_status_cn": "明示",
          "review_differs": false
@@ -13608,24 +14123,34 @@
         {
          "key": "broker_fee_cny",
          "label": "报关（清关）费",
-         "origin": "review",
-         "origin_cn": "两个模型抽取不一致（kimi 与 glm）",
+         "origin": "missed",
+         "origin_cn": "一方漏抽（glm 未抽取到）",
          "values": [
           {
            "value": "400 元/票",
+           "missing": false,
            "quotes": [
             "Customs filing fee 400 CNY per shpt"
-           ]
+           ],
+           "model": "kimi"
           },
           {
-           "value": "不收",
-           "quotes": [
-            "Customs filing fee 400 CNY per shpt"
-           ]
+           "value": "未抽取到",
+           "missing": true,
+           "quotes": [],
+           "model": "glm"
           }
          ],
+         "shared_quotes": [],
+         "other_side": null,
          "resolved_idx": 1,
-         "in_cost": true
+         "in_cost": true,
+         "affects": {
+          "cost": true,
+          "ddp": false,
+          "feasible": false
+         },
+         "affects_any": true
         }
        ],
        "gaps": [],
@@ -13749,6 +14274,9 @@
          "8743.89",
          "9143.89"
         ],
+        "range_fields": [
+         "报关（清关）费"
+        ],
         "feasible": true,
         "infeasible_reasons": [],
         "transit": [
@@ -13757,7 +14285,17 @@
         ],
         "deadline_days": 12,
         "defaulted": []
-       }
+       },
+       "gold_total": "9143.89",
+       "diff_reasons": [
+        {
+         "kind": "conflict",
+         "fields": [
+          "报关（清关）费"
+         ],
+         "text": "冲突取低值：报关（清关）费；一方漏抽（glm 未抽取到）"
+        }
+       ]
       }
      ],
      "decision": {
@@ -13777,11 +14315,6 @@
       "m4_risks": [],
       "reason": "未决字段会改变最优选择或使可行性无法判断，先追问再选：报价2的包税范围与进口商（IOR）、报价3的报关（清关）费、报价4的报关（清关）费。",
       "risks": [
-       {
-        "cand": "C1",
-        "kind": "冲突",
-        "text": "报价1的包税范围与进口商（IOR）有两种取值：包税（DDP），含全部进口环节税费，税金由报价承担，进口商：货代 与 包税（DDP），含关税和 MPF，税金由报价承担，进口商：货代"
-       },
        {
         "cand": "C1",
         "kind": "缺口",
@@ -13810,12 +14343,12 @@
        {
         "cand": "C3",
         "kind": "冲突",
-        "text": "报价3的报关（清关）费有两种取值：不收 与 400 元/票"
+        "text": "报价3的报关（清关）费有两种取值：未抽取到 与 400 元/票（一方漏抽（kimi 未抽取到））"
        },
        {
         "cand": "C4",
         "kind": "冲突",
-        "text": "报价4的报关（清关）费有两种取值：400 元/票 与 不收"
+        "text": "报价4的报关（清关）费有两种取值：400 元/票 与 未抽取到（一方漏抽（glm 未抽取到））"
        },
        {
         "cand": "C4",
@@ -13836,7 +14369,11 @@
         "claim_insufficient"
        ]
       },
-      "match_gold": false
+      "score": {
+       "decision_correct": true,
+       "decision_label": "决策正确（正式评分口径）",
+       "ask_line": "追问字段与标准答案：多问 报价3的报关（清关）费、报价4的报关（清关）费"
+      }
      },
      "m0": {
       "decision": null,
@@ -13844,7 +14381,12 @@
       "choice_label": null,
       "questions": [],
       "risks": [],
-      "match_gold": false
+      "ask_fields": [],
+      "score": {
+       "decision_correct": false,
+       "decision_label": "决策错误（输出无法解析）（正式评分口径）",
+       "ask_line": "追问字段与标准答案：少问 报价2的包税范围与进口商（IOR）"
+      }
      }
     }
    },

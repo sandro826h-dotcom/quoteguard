@@ -33,7 +33,7 @@
     el.appendChild(typeof c === "object" ? c : document.createTextNode(String(c)));
   }
   function money(s) {
-    if (s === null || s === undefined) return "—";
+    if (s === null || s === undefined) return "";
     return Number(s).toLocaleString("zh-CN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
   function caseObj() { return DATA.cases.find(function (c) { return c.id === state.case; }); }
@@ -260,7 +260,7 @@
 
   // ---------------------------------------------------------------- step 2
   function verifyCell(f) {
-    if (!f.quotes.length) return h("span", { class: "muted", text: "—" });
+    if (!f.quotes.length) return h("span", { class: "muted", text: "" });
     var allOk = f.quotes.every(function (q) { return q.verified; });
     return h("span", { class: allOk ? "ok" : "no", title: allOk ? "出处在原文中" : "出处不在原文中" });
   }
@@ -283,7 +283,7 @@
           f.downgraded ? h("span", { class: "tag warn", text: "出处无法核验，按缺失处理" }) : null),
         h("td", null, f.quotes.length ? f.quotes.map(function (x) {
           return h("span", { class: "q" + (x.verified ? "" : " bad"), text: x.text });
-        }) : h("span", { class: "muted", text: "—" })),
+        }) : h("span", { class: "muted", text: "未抽取到" })),
         h("td", { class: "chk" }, verifyCell(f)));
       return tr;
     });
@@ -340,16 +340,22 @@
       }
       var secs = [];
       if (q.conflicts.length) {
-        secs.push(h("div", { class: "sec" }, h("h4", { text: "冲突字段（两个取值都有出处，不由系统擅自取舍）" }),
+        secs.push(h("div", { class: "sec" }, h("h4", { text: "冲突字段（两个取值并列，追问前成本取较低值）" }),
           q.conflicts.map(function (c) {
+            var aff = c.affects.cost ? "影响成本" : (c.affects.ddp || c.affects.feasible ? "影响包税档或可行性" : "不影响成本");
             return h("div", { style: "margin-bottom:6px" },
               h("div", { class: "small" }, h("b", { text: c.label }), "　", h("span", { class: "tag warn", text: c.origin_cn }),
-                " ", c.in_cost ? h("span", { class: "tag", text: "影响成本" }) : h("span", { class: "tag", text: "不影响成本" })),
+                " ", h("span", { class: "tag", text: aff })),
               h("div", { class: "vs" }, c.values.map(function (v, i) {
                 var used = c.resolved_idx === i;
-                return h("div", { class: used ? "used" : "" }, v.value, used ? h("span", { class: "muted", text: "　← 成本计算采用" }) : null,
+                return h("div", { class: used ? "used" : "" },
+                  v.missing ? h("span", { class: "muted", text: "未抽取到" }) : v.value,
+                  used ? h("span", { class: "muted", text: "　← 成本计算采用" }) : null,
+                  v.model ? h("span", { class: "q", text: "来源：" + modelName(v.model) }) : null,
                   v.quotes.length ? h("span", { class: "q", text: "出处：" + v.quotes.join(" ／ ") }) : null);
-              })));
+              })),
+              c.shared_quotes.length ? h("div", { class: "small muted", text: "模型给出的出处（未按取值配对）：" + c.shared_quotes.join(" ／ ") }) : null,
+              c.other_side ? h("div", { class: "small muted", text: modelName(c.other_side.model) + " 的抽取：" + c.other_side.value + (c.other_side.quotes.length ? "；出处：" + c.other_side.quotes.join(" ／ ") : "") }) : null);
           })));
       }
       if (q.gaps.length) {
@@ -388,7 +394,8 @@
       var gate = [h("div", null, h("span", { class: "level " + d.level, text: LEVEL_CN[d.level] }), " ",
         d.ddp_missing ? h("span", { class: "tag warn", text: "包税条款未写明" }) : null,
         d.ddp_conflicting ? h("span", { class: "tag warn", text: "包税条款有两种取值" }) : null)];
-      if (d.ddp_text) gate.push(h("div", { class: "small", style: "margin-top:3px", text: "报价写法：" + d.ddp_text }));
+      if (d.ddp_missing || q.defaulted.some(function (x) { return x.key === "ddp"; })) gate.push(h("div", { class: "small", style: "margin-top:3px", text: "报价写法：报价未写明；成本暂按不包税计算" }));
+      else if (d.ddp_text) gate.push(h("div", { class: "small", style: "margin-top:3px", text: "报价写法：" + d.ddp_text }));
       var kv = [["计费重", d.chargeable_kg + " kg"], ["税费下限（关税 + MPF）", d.tax_floor_cny_per_kg + " 元/kg"]];
       if (d.is_ddp) {
         kv.push(["报价包税单价", d.quote_cny_per_kg + " 元/kg"]);
@@ -451,12 +458,12 @@
     var bars = cf.quotes.map(function (q) {
       var v = quoteVerdict(q, dec);
       var best = v === "recommended", off = v === "infeasible";
-      var base = Number(q.cost.total), hi = q.cost.range ? Number(q.cost.range[1]) : base;
+      var base = Number(q.cost.total), hi = q.cost.range ? Number(q.cost.range[1]) : base, lo = q.cost.range ? Number(q.cost.range[0]) : base;
       var track = h("div", { class: "track" },
-        hi > base ? h("div", { class: "fillbar ext", style: "width:" + (hi / axis * 100) + "%" }) : null,
-        h("div", { class: "fillbar " + (best ? "best" : off ? "off" : ""), style: "width:" + (base / axis * 100) + "%" }));
+        h("div", { class: "fillbar " + (best ? "best" : off ? "off" : ""), style: "width:" + (base / axis * 100) + "%" }),
+        q.cost.range ? h("div", { class: "rangebox", style: "left:" + (lo / axis * 100) + "%;width:" + ((hi - lo) / axis * 100) + "%" }) : null);
       var val = h("div", { class: "val num" }, money(q.cost.total) + " 元",
-        q.cost.range ? h("div", { class: "small muted", text: "区间 " + money(q.cost.range[0]) + " – " + money(q.cost.range[1]) }) : null);
+        q.cost.range ? h("div", { class: "small muted", text: "区间 " + money(q.cost.range[0]) + " 至 " + money(q.cost.range[1]) }) : null);
       return h("div", { class: "bar-row" + (off ? " off" : "") },
         h("div", { class: "lab" + (best ? " best" : "") }, qLabel(q, true), best ? h("div", { class: "tag solid", text: "推荐" }) : null,
           off ? h("div", { class: "tag", text: "不可行" }) : null, v === "ask" ? h("div", { class: "tag warn", text: "待追问" }) : null),
@@ -473,7 +480,7 @@
       var l = q.cost.lines.find(function (x) { return x.code === code; });
       return l ? l.amount : null;
     }
-    var head = h("tr", null, h("th", { text: "费用项（元）" }), cf.quotes.map(function (q) {
+    var head = h("tr", null, h("th", { text: "费用项（元），冲突项取低值计算" }), cf.quotes.map(function (q) {
       var v = quoteVerdict(q, dec);
       return h("th", { class: "num" + (v === "recommended" ? " best" : v === "infeasible" ? " off" : ""), text: q.label });
     }));
@@ -485,21 +492,24 @@
       if (all0) { zeroLines.push(labelOf[code]); return; }
       body.push(h("tr", null, h("td", { text: labelOf[code] }), cf.quotes.map(function (q) {
         var v = quoteVerdict(q, dec), a = lineAmt(q, code);
-        return h("td", { class: "num" + (v === "recommended" ? " best" : v === "infeasible" ? " off" : ""), text: a === null ? "—" : money(a) });
+        return h("td", { class: "num" + (v === "recommended" ? " best" : v === "infeasible" ? " off" : ""), text: a === null ? "" : money(a) });
       })));
     });
-    body.push(h("tr", { class: "total" }, h("td", { text: "确定成本合计" }), cf.quotes.map(function (q) {
+    body.push(h("tr", { class: "total" }, h("td", { text: "计算成本合计" }), cf.quotes.map(function (q) {
       var v = quoteVerdict(q, dec);
       return h("td", { class: "num" + (v === "recommended" ? " best" : v === "infeasible" ? " off" : ""), text: money(q.cost.total) });
     })));
     body.push(h("tr", null, h("td", { text: "每件成本" }), cf.quotes.map(function (q) { return h("td", { class: "num", text: money(q.cost.per_unit) }); })));
     body.push(h("tr", null, h("td", { text: "不确定字段导致的区间" }), cf.quotes.map(function (q) {
-      return h("td", { class: "num", text: q.cost.range ? money(q.cost.range[0]) + "–" + money(q.cost.range[1]) : "无" });
+      return h("td", { class: "num", text: q.cost.range ? money(q.cost.range[0]) + " 至 " + money(q.cost.range[1]) : "无" });
+    })));
+    body.push(h("tr", null, h("td", { text: "区间涉及的字段" }), cf.quotes.map(function (q) {
+      return h("td", { class: "r", text: q.cost.range ? q.cost.range_fields.join("、") : "" });
     })));
     body.push(h("tr", null, h("td", { text: "时效 / 要求" }), cf.quotes.map(function (q) {
       var t = q.cost.transit;
       var over = t && t[1] > q.cost.deadline_days;
-      return h("td", { class: "num" + (over ? " warn-text" : ""), text: t ? (t[0] === t[1] ? t[0] : t[0] + "–" + t[1]) + " 天 / " + q.cost.deadline_days + " 天" : "未写明" });
+      return h("td", { class: "num" + (over ? " warn-text" : ""), text: t ? (t[0] === t[1] ? t[0] : t[0] + " 至 " + t[1]) + " 天 / " + q.cost.deadline_days + " 天" : "未写明" });
     })));
     body.push(h("tr", null, h("td", { text: "是否可行" }), cf.quotes.map(function (q) {
       return h("td", { class: "r" + (q.cost.feasible ? "" : " warn-text") }, q.cost.feasible ? "可行" : q.cost.infeasible_reasons.join("；"));
@@ -507,7 +517,7 @@
     var table = h("table", { class: "costtbl" }, h("thead", null, head), h("tbody", null, body));
     return h("div", null,
       h("div", { class: "step-head" }, h("h2", { text: "5 到仓成本对比" }),
-        h("span", { class: "hint", text: "条形为确定成本（冲突字段取较低成本取值），虚线段为另一取值下的增加额；灰显为不可行。" })),
+        h("span", { class: "hint", text: "条形为计算成本（冲突项取低值，缺失项按默认值）；虚线框为各取值下的成本区间；灰显为不可行。" })),
       h("section", { class: "card" }, h("div", { class: "body bars" }, bars)),
       h("div", { style: "height:12px" }),
       h("section", { class: "card" }, h("div", { class: "body" }, table)),
@@ -527,10 +537,11 @@
       document.body.removeChild(ta);
     }
   }
+  function fieldCn(n) { return (DATA.meta.field_cn && DATA.meta.field_cn[n]) || n; }
   function goldLine(c) {
     var g = c.gold;
     return g.decision === "choose" ? "选择 " + c.quotes.find(function (q) { return q.cand_id === g.choice; }).label : "追问：" + g.ask_fields.map(function (f) {
-      var p = f.split("."); return c.quotes.find(function (q) { return q.cand_id === p[0]; }).label + " " + p[1];
+      var p = f.split("."); return c.quotes.find(function (q) { return q.cand_id === p[0]; }).label + "的" + fieldCn(p[1]);
     }).join("、");
   }
   function stepPassport() {
@@ -542,7 +553,7 @@
       return h("li", null, h("span", { class: "kind", text: "[" + r.kind + "]" }), r.text);
     }) : [h("li", { text: "未发现风险项。" })];
     var ev = h("table", { class: "evtable" },
-      h("thead", null, h("tr", null, ["报价", "状态", "时效", "包税风险", "资质证据", "确定成本（元）"].map(function (t, i) { return h("th", { text: t, class: i === 5 ? "num" : "" }); }))),
+      h("thead", null, h("tr", null, ["报价", "状态", "时效", "包税风险", "资质证据", "计算成本（元，冲突项取低值）"].map(function (t, i) { return h("th", { text: t, class: i === 5 ? "num" : "" }); }))),
       h("tbody", null, cf.quotes.map(function (q) {
         var v = quoteVerdict(q, dec);
         var vt = { recommended: "推荐", feasible: "可行", infeasible: "不可行", ask: "待追问" }[v];
@@ -551,10 +562,10 @@
         return h("tr", null,
           h("td", null, h("b", { text: q.label }), " " + quoteMeta(q.cand_id).alias),
           h("td", null, h("span", { class: "tag " + (v === "recommended" ? "solid" : v === "infeasible" || v === "ask" ? "warn" : ""), text: vt })),
-          h("td", { class: tt && tt[1] > q.cost.deadline_days ? "warn-text" : "", text: tt ? (tt[0] === tt[1] ? tt[0] : tt[0] + "–" + tt[1]) + " 天（要求 ≤" + q.cost.deadline_days + "）" : "未写明" }),
+          h("td", { class: tt && tt[1] > q.cost.deadline_days ? "warn-text" : "", text: tt ? (tt[0] === tt[1] ? tt[0] : tt[0] + " 至 " + tt[1]) + " 天（要求 ≤" + q.cost.deadline_days + "）" : "未写明" }),
           h("td", { class: q.ddp.level === "none" ? "" : "warn-text", text: LEVEL_CN[q.ddp.level] }),
           h("td", { class: q.claims.some(function (x) { return x.status === "insufficient" || x.status === "contradicted"; }) ? "warn-text" : "", text: cl }),
-          h("td", { class: "num", text: money(q.cost.total) + (q.cost.range ? "（至 " + money(q.cost.range[1]) + "）" : "") }));
+          h("td", { class: "num", text: money(q.cost.total) + (q.cost.range ? "（区间 " + money(q.cost.range[0]) + " 至 " + money(q.cost.range[1]) + "）" : "") }));
       })));
     var qs = dec.questions;
     var qBlock = qs.length
@@ -573,26 +584,29 @@
       h("div", { class: "print-note", text: "dev 集合成任务（合成示例）· 预试验记录离线回放 · 配置 " + modelName(state.cfg) }));
     // folds
     var m0 = cf.m0;
-    var m0Body = m0.decision === null
-      ? h("p", { class: "small", text: "该次输出未能解析为有效结论（预试验单次输出）。" })
-      : h("div", null,
-        h("p", { class: "small" }, "同一模型直接读报价并作答（无抽取、计算与核验）。结论：",
-          h("b", { text: m0.decision === "choose" ? "选择 " + m0.choice_label : "追问" }), "；与标准答案" + (m0.match_gold ? "一致" : "不一致") + "。"),
-        m0.questions.length ? [h("h4", { text: "其追问" }), h("ol", { class: "small" }, m0.questions.map(function (x) { return h("li", { text: x }); }))] : null,
-        m0.risks.length ? [h("h4", { text: "其风险提示" }), h("ul", { class: "small" }, m0.risks.map(function (x) { return h("li", { text: x }); }))] : null);
+    var m0Body = h("div", null,
+      h("p", { class: "small" }, "同一模型直接读报价并作答（无抽取、计算与核验）。结论：",
+        h("b", { text: m0.decision === null ? "无有效输出" : (m0.decision === "choose" ? "选择 " + m0.choice_label : "追问") })),
+      h("p", { class: "small" }, h("b", { text: m0.score.decision_label })),
+      h("p", { class: "small", text: m0.score.ask_line }),
+      m0.questions.length ? [h("h4", { text: "其追问" }), h("ol", { class: "small" }, m0.questions.map(function (x) { return h("li", { text: x }); }))] : null,
+      m0.risks.length ? [h("h4", { text: "其风险提示" }), h("ul", { class: "small" }, m0.risks.map(function (x) { return h("li", { text: x }); }))] : null);
     var goldRows = c.quotes.map(function (q) {
       var g = c.gold.per_cand[q.cand_id];
       var sys = cf.quotes.find(function (x) { return x.cand_id === q.cand_id; });
-      var diff = Number(g.total_cny) !== Number(sys.cost.total);
+      var same = Number(g.total_cny) === Number(sys.cost.total);
       return h("tr", null, h("td", { text: q.label }), h("td", { class: "num", text: money(g.total_cny) }),
         h("td", { class: "num", text: money(sys.cost.total) }), h("td", { text: g.ddp_level === "none" ? "不标" : LEVEL_CN[g.ddp_level] }),
-        h("td", { text: g.feasible ? "可行" : "不可行" }), h("td", { class: diff ? "warn-text" : "", text: diff ? "有差异（系统取冲突较低值）" : "一致" }));
+        h("td", { text: g.feasible ? "可行" : "不可行" }),
+        h("td", { class: same ? "" : "warn-text", text: same ? "一致" : sys.diff_reasons.map(function (r) { return r.text; }).join("；") }));
     });
     var goldBody = h("div", null,
-      h("p", { class: "small" }, "标准答案：", h("b", { text: goldLine(c) }), "；系统结论" + (dec.match_gold ? "与之一致。" : "与之不一致。")),
-      h("table", { class: "evtable" }, h("thead", null, h("tr", null, ["报价", "标准成本（元）", "系统确定成本（元）", "标准包税档", "标准可行性", "对比"].map(function (t, i) { return h("th", { text: t, class: i === 1 || i === 2 ? "num" : "" }); }))),
+      h("p", { class: "small" }, "标准答案：", h("b", { text: goldLine(c) })),
+      h("p", { class: "small" }, "系统（M4）：", h("b", { text: dec.score.decision_label })),
+      h("p", { class: "small", text: dec.score.ask_line }),
+      h("table", { class: "evtable" }, h("thead", null, h("tr", null, ["报价", "标准成本（元）", "系统计算成本（元）", "标准包税档", "标准可行性", "成本差异原因"].map(function (t, i) { return h("th", { text: t, class: i === 1 || i === 2 ? "num" : "" }); }))),
         h("tbody", null, goldRows)),
-      h("p", { class: "small muted", text: "标准答案由数据生成器给出（合成任务，答案已知）。冲突字段的标准成本按其真实取值计算，系统在尚未追问时取较低成本取值，二者可能不同。" }));
+      h("p", { class: "small muted", text: "标准答案由数据生成器给出（合成任务，答案已知）。决策口径与正式评分一致；成本差异原因由逐费用行与标准答案对比判定。" }));
     var mdl = cf.model;
     var meta = h("div", { class: "small" },
       h("div", { text: "抽取模型：" + mdl.requested.join("、") + "（返回 " + mdl.returned.join("、") + "），服务商 " + PROVIDER_CN[mdl.provider] }),

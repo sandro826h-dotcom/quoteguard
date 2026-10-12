@@ -202,3 +202,5 @@ details.fold .body { padding: 6px 14px 12px; }
   .passport .print-note { display: block !important; }
 }
 .print-note { display: none; margin-top: 12px; color: var(--ink-3); font-size: 11px; }
+
+.rangebox { position: absolute; top: -2px; bottom: -2px; border: 1px dashed var(--accent); }
