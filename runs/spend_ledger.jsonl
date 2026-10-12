@@ -1667,3 +1667,9 @@
 {"amount": 0.287404, "at": "2026-10-12T01:18:55.975237Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M1|qwen_plus|T-test-021|answer|ALL|r0"}
 {"amount": 0.013975, "at": "2026-10-12T01:19:17.781050Z", "batch_id": "think-B-retry", "currency": "USD", "kind": "observation", "run_key": "formal|M1|ds_flash_think|T-test-041|answer|ALL|r0"}
 {"amount": 0.04466, "at": "2026-10-12T01:19:19.774402Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-021|extract|C1|r1"}
+{"amount": 0.051636, "at": "2026-10-12T01:19:46.758268Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-021|extract|C2|r1"}
+{"amount": 0.046872, "at": "2026-10-12T01:20:11.643148Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-021|extract|C3|r1"}
+{"amount": 0.0134425, "at": "2026-10-12T01:20:26.040455Z", "batch_id": "think-B-retry", "currency": "USD", "kind": "observation", "run_key": "formal|M1|ds_flash_think|T-test-042|answer|ALL|r0"}
+{"amount": 0.048176, "at": "2026-10-12T01:20:37.147300Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-021|extract|C4|r1"}
+{"amount": 0.043024, "at": "2026-10-12T01:21:00.515395Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_plus|T-test-021|extract|C5|r1"}
+{"amount": 0.1570225, "at": "2026-10-12T01:21:03.558864Z", "batch_id": "siliconflow-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M1|kimi|T-test-023|answer|ALL|r0"}
