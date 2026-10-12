@@ -1,0 +1,108 @@
+{
+ "label": "pilot_flowtest",
+ "seed": 20261011,
+ "B": 9999,
+ "argv": [
+  "--preset",
+  "pilot"
+ ],
+ "command": "python scripts/make_results.py --preset pilot",
+ "generated_at": "2026-10-12T07:30:07Z",
+ "git": {
+  "commit": "01a9a3f46dbca5ed0280ede5be7662abafa0ada5",
+  "dirty": true
+ },
+ "fx": {
+  "cny_per_usd": 6.733,
+  "source": "参数快照 tariff_snapshot_2026-10-09.json，中间价日期 2026-10-09",
+  "date": "2026-10-09"
+ },
+ "inputs": {
+  "scores": [
+   {
+    "path": "/home/user/quoteguard/runs/derived/pilot_rescore_20261010_fullreview/a/scores",
+    "files": 6,
+    "tree_sha256": "181c9eb86d62f28c92a94e480edaeae591feac317eb5963f169be76fd791d896",
+    "key_files": {
+     "aggregate.json": "69d92dfb4d8549951b627e386aa50f25b98a0f22e90179336989444331d62644",
+     "aggregate_overall.json": "ac278a0c107c8d1e534227f9370a9f5d5bcd168c6e98bb30d5db8f5da94f7903",
+     "rows.json": "e50cc00f6c67c37f49f91f67d43d48cbf661a9c27d007a680b47cadd55057157"
+    }
+   },
+   {
+    "path": "/home/user/quoteguard/runs/derived/pilot_rescore_20261010_fullreview/b/scores",
+    "files": 6,
+    "tree_sha256": "d12eaaebf0e9420f588967d4b35c2a1c88a042bf48e65fb5f9753ad24c2b844e",
+    "key_files": {
+     "aggregate.json": "38d47cbb66f5b7951933d8d283ee5fea112e31bb99a06288725962c1b69e3125",
+     "aggregate_overall.json": "60997b9882e2a9b30a92a71fa15ca631b60aa7a2b1ca3cfa0e1fb06590bedfe7",
+     "rows.json": "b3bffd99340fcaa9908aab262e893799f813397e51bcbf60c22dba186d1b5a35"
+    }
+   }
+  ],
+  "outputs": [
+   {
+    "path": "/home/user/quoteguard/runs/derived/pilot_rescore_20261010_fullreview/a/outputs",
+    "files": 21,
+    "tree_sha256": "1e9a7a834f7d958ba2fb6f478466245873f744036bb65dfc077e0670987f11f4"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/derived/pilot_rescore_20261010_fullreview/b/outputs",
+    "files": 11,
+    "tree_sha256": "1e825522ceb88e8b71b6774d69f50c7e2caa7c7758e72c6a765183b976d8fe80"
+   }
+  ],
+  "tasks": [
+   {
+    "path": "/home/user/quoteguard/data/tasks/dev/tasks",
+    "files": 24,
+    "tree_sha256": "3a3edc938216bd938a2993eae5cfa3b86c3336538491c0078c5b13175be62ed3"
+   }
+  ],
+  "gold": [
+   {
+    "path": "/home/user/quoteguard/data/gold/dev",
+    "files": 24,
+    "tree_sha256": "449d40f12864b025a831ce3ea0258c1b468fccaab65a810bd9ae75e13a703b03"
+   }
+  ],
+  "batches": [
+   {
+    "path": "/home/user/quoteguard/runs/pilota-A-live",
+    "files": 8,
+    "tree_sha256": "929c7ba78a103b482fec78d24e46d8e8e00490488e94b00eb2ff096df21575dd"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/pilota-B-live",
+    "files": 52,
+    "tree_sha256": "56c43bc9bbcf9c5615df4f9de3d2a2d3433191a54cc093d0b74de5bccfe22318"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/pilota-B-retry-live",
+    "files": 12,
+    "tree_sha256": "76eed47f06f678681602828181d0c811d8d295916e5fd126f8f3b3c9275de759"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/pilotb-A-live",
+    "files": 8,
+    "tree_sha256": "645c782b71599d118ae7947ea9826afb9188f8c2173752b58353002b093f4107"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/pilotb-B-live",
+    "files": 26,
+    "tree_sha256": "992a775ee7499452589255144f3b1bddd11d6bbfd79170f4ba51611c5995faae"
+   },
+   {
+    "path": "/home/user/quoteguard/runs/pilotb-B-retry-live",
+    "files": 16,
+    "tree_sha256": "313107717850dc005d314edc6cd5152099ac4df6e163335d870dc1eb276cc536"
+   }
+  ],
+  "ledger": [
+   {
+    "path": "/home/user/quoteguard/runs/spend_ledger.jsonl",
+    "sha256": "e1b63d6ffa4080ae5895c4cec59131ad3b0adaec5b38b8f2e1a76ff7b1d9e048"
+   }
+  ]
+ }
+}

@@ -1,0 +1,214 @@
+{
+ "id": "5-2",
+ "title": "流程测试（预试验重算数据，不作结论）：表 5-2 决策正确率（非显式三层 3 个测试任务）",
+ "columns": [
+  "配置",
+  "M0",
+  "M1",
+  "M2",
+  "M3",
+  "M4"
+ ],
+ "rows": [
+  [
+   "glm",
+   "0.0%",
+   "无数据",
+   "0.0%",
+   "0.0%",
+   "100.0%"
+  ],
+  [
+   "kimi",
+   "0.0%",
+   "无数据",
+   "0.0%",
+   "0.0%",
+   "100.0%"
+  ],
+  [
+   "ds_flash",
+   "100.0%",
+   "无数据",
+   "50.0%",
+   "50.0%",
+   "100.0%"
+  ],
+  [
+   "qwen_plus",
+   "50.0%",
+   "无数据",
+   "50.0%",
+   "50.0%",
+   "100.0%"
+  ],
+  [
+   "合并（95% CI）",
+   "50.0% [0.0%, 100.0%]",
+   "无数据",
+   "33.3% [0.0%, 100.0%]",
+   "33.3% [0.0%, 100.0%]",
+   "100.0% [100.0%, 100.0%]"
+  ]
+ ],
+ "notes": [
+  "无数据：该配置或方法在评分输出中没有对应行。合并行为各配置合并，方括号内为按任务整簇 bootstrap 的 95% CI（B = 9999，seed = 20261011）。单配置格不给 CI。"
+ ],
+ "data": {
+  "cells": [
+   {
+    "config": "glm",
+    "method": "M0",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M1",
+    "n": 0,
+    "acc": null
+   },
+   {
+    "config": "glm",
+    "method": "M2",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M3",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M4",
+    "n": 1,
+    "acc": 1.0
+   },
+   {
+    "config": "kimi",
+    "method": "M0",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M1",
+    "n": 0,
+    "acc": null
+   },
+   {
+    "config": "kimi",
+    "method": "M2",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M3",
+    "n": 1,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M4",
+    "n": 1,
+    "acc": 1.0
+   },
+   {
+    "config": "ds_flash",
+    "method": "M0",
+    "n": 2,
+    "acc": 1.0
+   },
+   {
+    "config": "ds_flash",
+    "method": "M1",
+    "n": 0,
+    "acc": null
+   },
+   {
+    "config": "ds_flash",
+    "method": "M2",
+    "n": 2,
+    "acc": 0.5
+   },
+   {
+    "config": "ds_flash",
+    "method": "M3",
+    "n": 2,
+    "acc": 0.5
+   },
+   {
+    "config": "ds_flash",
+    "method": "M4",
+    "n": 2,
+    "acc": 1.0
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M0",
+    "n": 2,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M1",
+    "n": 0,
+    "acc": null
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M2",
+    "n": 2,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M3",
+    "n": 2,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M4",
+    "n": 2,
+    "acc": 1.0
+   }
+  ],
+  "merged": {
+   "M0": {
+    "est": 0.5,
+    "lo": 0.0,
+    "hi": 1.0,
+    "n": 6
+   },
+   "M1": {
+    "est": null,
+    "lo": null,
+    "hi": null,
+    "n": 0
+   },
+   "M2": {
+    "est": 0.3333333333333333,
+    "lo": 0.0,
+    "hi": 1.0,
+    "n": 6
+   },
+   "M3": {
+    "est": 0.3333333333333333,
+    "lo": 0.0,
+    "hi": 1.0,
+    "n": 6
+   },
+   "M4": {
+    "est": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "n": 6
+   }
+  },
+  "n_tasks": 3
+ }
+}

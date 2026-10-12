@@ -321,3 +321,16 @@
 
 ## 2026-10-12 方案图与 PPT 大纲改为引用偏离记录
 - fig4_annotation（重新生成）、docs/figures/README.md 图 4 图注、docs/slides/PPT大纲.md 第 12、14、21 页：盲标初标改写为“OpenAI Codex 在两个相互隔离的上下文中分别生成”，偏离出处由“项目日志”改为 docs/protocol/偏离记录.md 第 1 条；第 12 页改报裁决人对两份初标各自的逐字段改正率；第 14 页注明 9 条偏离并点出第 8、9 条对结果页分母的影响。其余三张图未变。纯文字改动，未送审。
+
+## 2026-10-12 结果出图出表流水线（scripts/make_results.py）
+### 已完成
+- scripts/make_results.py：从 orchestrate assemble/score 的输出、批次目录与支出账本生成报告第五章表格（tables.md，另存每表 CSV/JSON）与灰度图 fig5_e1_accuracy_by_layer、fig6_e2_risk（PNG 300dpi、PDF、SVG），以及带输入哈希与 argv 的 manifest.json。正式结果出来后运行 `PYTHONPATH=src python scripts/make_results.py --preset formal`（输出 output/results/formal/，图按 docstring 的命令复制到 docs/figures/）。
+- 覆盖：表 5-1（执行概况，另附截断比例、GLM 推理 token、失败调用核对）、5-2（非显式三层决策正确率，合并行按任务整簇 bootstrap）、图 5-1 数据、5-3（按模态分组）、遗憾与可行集外、核价误差及 M4 对 M2 配对差、5-4（风险检出）、5-5（拒答与追问）、5-6（成本与时延、思考组）、5-7（复核机制）、5-9（主终点，读 endpoints.json）、5-10（事前决策规则判定）。统计点估计与 CI 调用 metrics.metric_values_one，与 score 输出的 aggregate 可对账；精确率按冲突、缺口、包税风险三类计，与规则 6 同口径。
+- 思考组：协议附录未对 formal_think 运行 score，脚本在内存中按 score_all 的写法评分，不写盘。
+- 流程测试：用预试验重算数据跑通，产出 output/results/pilot_flowtest/，每张表图标注“流程测试（预试验重算数据，不作结论）”。表 5-7 与 fullreview_summary.json 一致。
+- tests/test_make_results.py 30 项，全量 675 项通过。reviewer 审查一轮，2 项严重问题（思考组评分缺口、精确率口径）修复后复审通过。
+### 未覆盖（评分输出中没有，表中写“评分输出无此项”）
+- 图片转写准确率；反事实任务字段准确率、出处准确率、出处降级率与词表覆盖率；无依据宣称的采纳率；按缺口字段分组的拒答；M0、M1 自由文本映射人工抽检一致率；真实报价集（表 5-8）与效益分析。
+### 未决
+- 表 5-9、5-10 编号由报告线程确认后写入正文。
+- 每任务成本取组装输出的 cost（每个配置全额记账转写，M4 含复核方抽取），口径已在表注写明。

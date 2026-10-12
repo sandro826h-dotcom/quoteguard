@@ -1,0 +1,94 @@
+{
+ "id": "5-7",
+ "title": "流程测试（预试验重算数据，不作结论）：表 5-7 全部复核与只复核触发报价的对比",
+ "columns": [
+  "指标",
+  "M4（全部复核）",
+  "M4_trig（只复核触发报价）"
+ ],
+ "rows": [
+  [
+   "评分任务数（配置 × 任务）",
+   "6",
+   "6"
+  ],
+  [
+   "复核比例（已复核候选 / 全部候选）",
+   "100.0%",
+   "25.0%"
+  ],
+  [
+   "检出的冲突数",
+   "4",
+   "2"
+  ],
+  [
+   "漏检的冲突数",
+   "0",
+   "2"
+  ],
+  [
+   "复核发现的缺口数",
+   "2",
+   "1"
+  ],
+  [
+   "漏检的缺口数",
+   "0",
+   "1"
+  ],
+  [
+   "冲突、缺口、包税风险误报项数",
+   "16",
+   "6"
+  ],
+  [
+   "有风险而未复核的报价数",
+   "0 / 16",
+   "11 / 16"
+  ],
+  [
+   "决策正确率",
+   "100.0%（6/6）",
+   "66.7%（4/6）"
+  ],
+  [
+   "每任务成本（元）",
+   "0.2535",
+   "0.1726"
+  ]
+ ],
+ "notes": [
+  "有风险而未复核的报价数一栏的分母为金标签中含风险项的候选报价数；统计范围为全部层级、全部配置。"
+ ],
+ "data": {
+  "M4": {
+   "outputs": 6,
+   "decisions_correct": 6,
+   "conflict_detected": 4,
+   "conflict_missed": 0,
+   "gap_detected": 2,
+   "gap_missed": 0,
+   "false_positives_conflict_gap_ddp": 16,
+   "gold_risk_candidates": 16,
+   "gold_risk_not_reviewed": 0,
+   "candidates": 24,
+   "reviewed": 24,
+   "cost_per_task": 0.25351937716666667
+  },
+  "M4_TRIG": {
+   "outputs": 6,
+   "decisions_correct": 4,
+   "conflict_detected": 2,
+   "conflict_missed": 2,
+   "gap_detected": 1,
+   "gap_missed": 1,
+   "false_positives_conflict_gap_ddp": 6,
+   "gold_risk_candidates": 16,
+   "gold_risk_not_reviewed": 11,
+   "candidates": 24,
+   "reviewed": 6,
+   "cost_per_task": 0.17257543858333335
+  }
+ }
+}

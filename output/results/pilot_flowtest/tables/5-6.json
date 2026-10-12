@@ -1,0 +1,381 @@
+{
+ "id": "5-6",
+ "title": "流程测试（预试验重算数据，不作结论）：表 5-6 每次审计的调用成本与时延",
+ "columns": [
+  "配置",
+  "方法",
+  "每任务调用数",
+  "每任务 token",
+  "每任务成本（元）",
+  "每任务串行时延之和的中位数（秒）",
+  "每个正确决策的成本（元）"
+ ],
+ "rows": [
+  [
+   "glm",
+   "M0",
+   "2.0",
+   "5,790",
+   "0.0741",
+   "29.7",
+   "无数据"
+  ],
+  [
+   "glm",
+   "M2",
+   "5.0",
+   "9,554",
+   "0.1496",
+   "43.0",
+   "无数据"
+  ],
+  [
+   "glm",
+   "M3",
+   "5.0",
+   "9,554",
+   "0.1496",
+   "43.0",
+   "无数据"
+  ],
+  [
+   "glm",
+   "M4",
+   "10.0",
+   "19,137",
+   "0.3028",
+   "192.7",
+   "0.3028"
+  ],
+  [
+   "kimi",
+   "M0",
+   "2.0",
+   "6,069",
+   "0.0879",
+   "79.6",
+   "无数据"
+  ],
+  [
+   "kimi",
+   "M2",
+   "5.0",
+   "9,583",
+   "0.1532",
+   "149.7",
+   "无数据"
+  ],
+  [
+   "kimi",
+   "M3",
+   "5.0",
+   "9,583",
+   "0.1532",
+   "149.7",
+   "无数据"
+  ],
+  [
+   "kimi",
+   "M4",
+   "10.0",
+   "19,137",
+   "0.3028",
+   "192.7",
+   "0.3028"
+  ],
+  [
+   "ds_flash",
+   "M0",
+   "1.5",
+   "4,145",
+   "0.0217",
+   "10.7",
+   "0.0217"
+  ],
+  [
+   "ds_flash",
+   "M2",
+   "4.5",
+   "8,048",
+   "0.0428",
+   "15.6",
+   "0.0855"
+  ],
+  [
+   "ds_flash",
+   "M3",
+   "4.5",
+   "8,048",
+   "0.0428",
+   "15.6",
+   "0.0855"
+  ],
+  [
+   "ds_flash",
+   "M4",
+   "9.0",
+   "16,158",
+   "0.2289",
+   "117.8",
+   "0.2289"
+  ],
+  [
+   "qwen_plus",
+   "M0",
+   "1.5",
+   "5,271",
+   "0.1271",
+   "68.1",
+   "0.2542"
+  ],
+  [
+   "qwen_plus",
+   "M2",
+   "4.5",
+   "8,110",
+   "0.1861",
+   "102.1",
+   "0.3722"
+  ],
+  [
+   "qwen_plus",
+   "M3",
+   "4.5",
+   "8,110",
+   "0.1861",
+   "102.1",
+   "0.3722"
+  ],
+  [
+   "qwen_plus",
+   "M4",
+   "9.0",
+   "16,158",
+   "0.2289",
+   "117.8",
+   "0.2289"
+  ]
+ ],
+ "notes": [
+  "成本取组装输出的 cost 字段，含按配置全额记账的转写与 M4 复核方抽取；美元部分按 6.733 元/美元折算（参数快照 tariff_snapshot_2026-10-09.json，中间价日期 2026-10-09）。",
+  "每任务 token 为输出所依赖调用的输入与输出 token 之和；时延为输出所依赖各调用时延之和（执行器在同一服务商内顺序调用）取各任务中位数。",
+  "每个正确决策的成本为该配置、方法下全部任务的总成本除以决策正确的任务数。统计范围为全部层级。"
+ ],
+ "data": {
+  "lines": [
+   {
+    "config": "glm",
+    "method": "M0",
+    "n": 1,
+    "calls": 2.0,
+    "tokens": 5790.0,
+    "cost": 0.074056,
+    "latency": 29.654870000000003,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M2",
+    "n": 1,
+    "calls": 5.0,
+    "tokens": 9554.0,
+    "cost": 0.14958800000000003,
+    "latency": 43.018699999999995,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M3",
+    "n": 1,
+    "calls": 5.0,
+    "tokens": 9554.0,
+    "cost": 0.14958800000000003,
+    "latency": 43.018699999999995,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "glm",
+    "method": "M4",
+    "n": 1,
+    "calls": 10.0,
+    "tokens": 19137.0,
+    "cost": 0.302836,
+    "latency": 192.70955,
+    "cost_per_correct": 0.302836,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 1.0
+   },
+   {
+    "config": "kimi",
+    "method": "M0",
+    "n": 1,
+    "calls": 2.0,
+    "tokens": 6069.0,
+    "cost": 0.08789,
+    "latency": 79.60899,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M2",
+    "n": 1,
+    "calls": 5.0,
+    "tokens": 9583.0,
+    "cost": 0.153248,
+    "latency": 149.69084999999998,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M3",
+    "n": 1,
+    "calls": 5.0,
+    "tokens": 9583.0,
+    "cost": 0.153248,
+    "latency": 149.69084999999998,
+    "cost_per_correct": null,
+    "correct": 0,
+    "missing_calls": 0,
+    "acc": 0.0
+   },
+   {
+    "config": "kimi",
+    "method": "M4",
+    "n": 1,
+    "calls": 10.0,
+    "tokens": 19137.0,
+    "cost": 0.302836,
+    "latency": 192.70954999999995,
+    "cost_per_correct": 0.302836,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 1.0
+   },
+   {
+    "config": "ds_flash",
+    "method": "M0",
+    "n": 2,
+    "calls": 1.5,
+    "tokens": 4145.0,
+    "cost": 0.02165837775,
+    "latency": 10.740314999999999,
+    "cost_per_correct": 0.02165837775,
+    "correct": 2,
+    "missing_calls": 0,
+    "acc": 1.0
+   },
+   {
+    "config": "ds_flash",
+    "method": "M2",
+    "n": 2,
+    "calls": 4.5,
+    "tokens": 8048.5,
+    "cost": 0.04277306574999999,
+    "latency": 15.61695,
+    "cost_per_correct": 0.08554613149999998,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 0.5
+   },
+   {
+    "config": "ds_flash",
+    "method": "M3",
+    "n": 2,
+    "calls": 4.5,
+    "tokens": 8048.5,
+    "cost": 0.04277306574999999,
+    "latency": 15.61695,
+    "cost_per_correct": 0.08554613149999998,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 0.5
+   },
+   {
+    "config": "ds_flash",
+    "method": "M4",
+    "n": 2,
+    "calls": 9.0,
+    "tokens": 16158.5,
+    "cost": 0.22886106574999998,
+    "latency": 117.75043,
+    "cost_per_correct": 0.22886106574999998,
+    "correct": 2,
+    "missing_calls": 0,
+    "acc": 1.0
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M0",
+    "n": 2,
+    "calls": 1.5,
+    "tokens": 5271.0,
+    "cost": 0.127086,
+    "latency": 68.14883499999999,
+    "cost_per_correct": 0.254172,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M2",
+    "n": 2,
+    "calls": 4.5,
+    "tokens": 8110.0,
+    "cost": 0.186088,
+    "latency": 102.13347999999999,
+    "cost_per_correct": 0.372176,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M3",
+    "n": 2,
+    "calls": 4.5,
+    "tokens": 8110.0,
+    "cost": 0.186088,
+    "latency": 102.13347999999999,
+    "cost_per_correct": 0.372176,
+    "correct": 1,
+    "missing_calls": 0,
+    "acc": 0.5
+   },
+   {
+    "config": "qwen_plus",
+    "method": "M4",
+    "n": 2,
+    "calls": 9.0,
+    "tokens": 16158.5,
+    "cost": 0.22886106574999998,
+    "latency": 117.75043,
+    "cost_per_correct": 0.22886106574999998,
+    "correct": 2,
+    "missing_calls": 0,
+    "acc": 1.0
+   }
+  ],
+  "fx": {
+   "cny_per_usd": 6.733,
+   "source": "参数快照 tariff_snapshot_2026-10-09.json，中间价日期 2026-10-09",
+   "date": "2026-10-09"
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "id": "5-1",
+ "title": "流程测试（预试验重算数据，不作结论）：表 5-1 正式实验执行概况",
+ "columns": [
+  "服务商",
+  "配置",
+  "计划调用",
+  "有效观测",
+  "补跑",
+  "无有效观测",
+  "支出"
+ ],
+ "rows": [
+  [
+   "DeepSeek 官方",
+   "ds_flash",
+   "13",
+   "13",
+   "0",
+   "0",
+   "0.0295 美元"
+  ],
+  [
+   "阿里云百炼",
+   "qwen_plus、qwen_vl",
+   "13",
+   "13",
+   "4",
+   "0",
+   "1.1648 元"
+  ],
+  [
+   "硅基流动",
+   "glm、glm_v、kimi",
+   "14",
+   "14",
+   "6",
+   "0",
+   "0.7543 元"
+  ],
+  [
+   "合计",
+   "",
+   "40",
+   "40",
+   "10",
+   "0",
+   "1.9191 元、0.0295 美元"
+  ]
+ ],
+ "notes": [
+  "计划调用：各批次计划文件中不重复的 run_key；有效观测：每个 run_key 取最早的有效观测；补跑：名称含 retry 的批次中的观测数；无有效观测：计划 run_key 无有效观测，即最终失败，按组装输出核对见表 5-1c。",
+  "支出取支出账本中属于所给批次的记录，按观测的服务商归类；千问为免费额度按官方标价折算，硅基流动为代金券，DeepSeek 为现金。",
+  "账本中不属于所给批次、未计入的记录：dashscope-A 60 条、dashscope-B 668 条、deepseek-A 60 条、deepseek-B 668 条、siliconflow-A 120 条、siliconflow-B 532 条、step0-live 17 条、step0b-live 2 条、step0c-live 1 条、think-B 48 条、think-B-retry 48 条。"
+ ],
+ "data": {
+  "plan": {
+   "deepseek": 13,
+   "siliconflow": 14,
+   "dashscope": 13
+  },
+  "valid": {
+   "deepseek": 13,
+   "siliconflow": 14,
+   "dashscope": 13
+  },
+  "retry": {
+   "dashscope": 4,
+   "siliconflow": 6
+  },
+  "fail": {},
+  "spend": {
+   "deepseek": {
+    "USD": 0.029453500000000004
+   },
+   "dashscope": {
+    "CNY": 1.164796
+   },
+   "siliconflow": {
+    "CNY": 0.7543335
+   }
+  }
+ }
+}
