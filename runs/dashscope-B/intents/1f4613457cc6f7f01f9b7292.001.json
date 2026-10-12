@@ -1,0 +1,8 @@
+{
+  "config_id": "qwen_plus",
+  "intent_at": "2026-10-12T01:37:58.999033Z",
+  "n": 1,
+  "prompt_sha256": "2f5850dd905f2e44e2a41588f693dbfbc63a72664ebf38b93fea0f61b811358c",
+  "provider": "dashscope",
+  "run_key": "formal|extract|qwen_plus|T-test-023|extract|C1|r1"
+}
