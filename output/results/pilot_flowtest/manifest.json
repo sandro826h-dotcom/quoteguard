@@ -7,9 +7,9 @@
   "pilot"
  ],
  "command": "python scripts/make_results.py --preset pilot",
- "generated_at": "2026-10-12T07:30:07Z",
+ "generated_at": "2026-10-12T11:16:46Z",
  "git": {
-  "commit": "01a9a3f46dbca5ed0280ede5be7662abafa0ada5",
+  "commit": "6be11516b1f9e34bb1251da3646846b9ac55d3a9",
   "dirty": true
  },
  "fx": {
@@ -104,5 +104,13 @@
     "sha256": "e1b63d6ffa4080ae5895c4cec59131ad3b0adaec5b38b8f2e1a76ff7b1d9e048"
    }
   ]
+ },
+ "baselines": {
+  "prereg_file": "docs/protocol/补充预注册_离线基线.md",
+  "prereg_sha256_recorded": "de2886d2a06a964ce4f5d1e3fce3fc30e2d630947a5291f72f2f48cf17579006",
+  "prereg_sha256_actual": "de2886d2a06a964ce4f5d1e3fce3fc30e2d630947a5291f72f2f48cf17579006",
+  "experiment": "ds_flash=pilota,qwen_plus=pilota,glm=pilotb,kimi=pilotb",
+  "seed": 20261010,
+  "data_dir": "/home/user/quoteguard/data/taskgen/dev_v3"
  }
 }

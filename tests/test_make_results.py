@@ -552,3 +552,105 @@ def test_undefined_endpoint_pvalues(tmp_path):
     rules = {r[0]: r for r in table(res, "5-10")["rows"]}
     assert rules["主终点 1 是否显著"][1] == "无法计算，未判定" and rules["主终点 3 是否非劣"][3] == "无输入，未判定"
     assert "任一配置" in " ".join(table(res, "5-10")["notes"])
+
+
+# ------------------------------------------------------------------ offline baselines
+def _ship(*cartons):
+    from types import SimpleNamespace
+    from quoteguard.schema import Carton
+    return SimpleNamespace(cartons=[Carton(n, 10, 10, 10, kg) for n, kg in cartons])
+
+
+def _terms(tiers, status="stated"):
+    from quoteguard.schema import Field, QuoteTerms, RateTier
+    mk = lambda ts: [RateTier(lo, None, price, cur, unit) for lo, price, cur, unit in ts]
+    if status == "conflicting":
+        return QuoteTerms(rate_tiers=Field([mk(tiers[0]), mk(tiers[1])], "conflicting"))
+    if status == "missing":
+        return QuoteTerms()
+    return QuoteTerms(rate_tiers=Field(mk(tiers), status))
+
+
+def test_bl_ask_rule_and_inheritance():
+    m4 = {"task_id": "T1", "method": "M4", "config_id": "c", "decision": "choose", "choice": "C2", "ask_fields": [],
+          "failed_calls": ["k1"], "cost": {"CNY": 1.0},
+          "per_cand": {"C1": {"conflicts": ["min_kg_shipment"], "gaps": ["isf_fee_cny", "dim_divisor"], "cost_cny": 5},
+                       "C2": {"conflicts": ["min_kg_shipment"], "gaps": [], "cost_cny": 6}, "C3": {"conflicts": [], "gaps": []}}}
+    b = mr.derive_bl_ask(m4)
+    assert b["method"] == "BL_ASK" and b["decision"] == "ask" and b["choice"] is None
+    assert b["ask_fields"] == ["C1.min_kg_shipment", "C1.isf_fee_cny", "C1.dim_divisor", "C2.min_kg_shipment"]
+    assert b["failed_calls"] == ["k1"] and b["per_cand"]["C1"]["cost_cny"] == 5 and b["cost"] == {"CNY": 1.0}
+    assert m4["decision"] == "choose"          # source untouched
+    clean = {**m4, "per_cand": {"C1": {"conflicts": [], "gaps": []}, "C2": {}}}
+    c = mr.derive_bl_ask(clean)
+    assert c["decision"] == "choose" and c["choice"] == "C2" and c["ask_fields"] == [] and c["method"] == "BL_ASK"
+
+
+def test_bl_price_tier_selection_and_units():
+    from decimal import Decimal as D
+    ship = _ship((2, 10), (1, 5))                      # actual weight 25 kg
+    t = [(0, 20, "CNY", "per_kg"), (21, 15, "CNY", "per_kg"), (45, 10, "CNY", "per_kg")]
+    assert mr.list_price_cny(ship, _terms(t), 7) == D(15) * 25
+    assert mr.list_price_cny(ship, _terms([(0, 900, "CNY", "per_shpt")]), 7) == D(900)
+    assert mr.list_price_cny(ship, _terms([(0, 3, "USD", "per_kg")]), 7) == D(3) * 25 * 7
+    assert mr.list_price_cny(ship, _terms([(0, 100, "USD", "per_shpt")]), "6.5") == D(650)
+    assert mr.list_price_cny(ship, _terms([(30, 9, "CNY", "per_kg")]), 7) is None       # no tier covers 25 kg
+    assert mr.list_price_cny(ship, _terms([], "missing"), 7) is None
+    conf = _terms([[(0, 12, "CNY", "per_kg")], [(0, 99, "CNY", "per_kg")]], "conflicting")
+    assert mr.list_price_cny(ship, conf, 7) == D(300)                                      # first value
+    assert mr.list_price_cny(ship, _terms([(0, 1, "CNY", "per_cbm")]), 7) is None
+
+
+def test_bl_price_choice_ties_and_no_price():
+    ship = _ship((1, 10))
+    m2 = {"task_id": "T1", "config_id": "c", "calls": ["a"], "failed_calls": ["x"], "cost": {"USD": 0.1}}
+    terms = {"C1": _terms([(0, 12, "CNY", "per_kg")]), "C2": _terms([(0, 10, "CNY", "per_kg")]),
+             "C3": _terms([(0, 100, "CNY", "per_shpt")]), "C4": _terms([], "missing")}
+    b = mr.derive_bl_price(ship, ["C1", "C2", "C3", "C4"], terms, 7, m2)
+    assert b["method"] == "BL_PRICE" and b["decision"] == "choose" and b["choice"] == "C2"     # C2 and C3 tie at 100, earlier wins
+    assert b["per_cand"]["C4"]["cost_cny"] is None and b["per_cand"]["C1"]["cost_cny"] == 120
+    assert b["failed_calls"] == ["x"] and b["calls"] == ["a"] and b["cost"] == {"USD": 0.1} and b["ask_fields"] == []
+    none = mr.derive_bl_price(ship, ["C1", "C4"], {"C1": _terms([], "missing"), "C4": _terms([], "missing")}, 7, m2)
+    assert none["decision"] == "ask" and none["choice"] is None and none["ask_fields"] == []
+    assert mr.parse_experiments("formal", ["a", "b"]) == {"a": "formal", "b": "formal"}
+    assert mr.parse_experiments("a=p1,b=p2", ["a", "b", "c"]) == {"a": "p1", "b": "p2"}
+
+
+def test_baseline_pairwise_differences_numeric(tmp_path):
+    import numpy as np
+    layers = {"T1": "explicit", "T2": "implicit", "T3": "conflict", "T4": "insufficient"}
+    corr = {"M4": {"A": [1, 1, 1, 0], "B": [1, 1, 0, 1]}, "BL_ASK": {"A": [1, 0, 1, 0], "B": [1, 0, 0, 0]},
+            "BL_PRICE": {"A": [1, 0, 0, 0], "B": [1, 1, 0, 0]}, "M0": {"A": [1, 1, 0, 0], "B": [0, 1, 0, 0]}}
+    rows = []
+    for m, d in corr.items():
+        for c, vals in d.items():
+            for (tid, lay), v in zip(layers.items(), vals):
+                rows.append({"task_id": tid, "method": m, "config_id": c, "layer": lay, "decision_correct": v, "gold_type": "choose",
+                             "false_ask": 0, "missed_ask": 0, "ask_cover": None, "out_of_feasible": None, "regret_abs": None,
+                             "regret_rel": None})
+    res = mr.Result("pilot_flowtest", 300, 11, {"cny_per_usd": 7.0, "source": "t"})
+    mr.table_baselines(res, [r for r in rows if r["method"] in mr.METHODS], [r for r in rows if r["method"].startswith("BL")])
+    d = res.ctx["baseline_diffs"]
+    # non-explicit tasks T2..T4: M4 4/6, BL_ASK 1/6, BL_PRICE 1/6, M0 2/6 ; all four tasks: M4 6/8, BL_ASK 3/8, BL_PRICE 3/8, M0 3/8
+    assert d["M4 对 BL_ASK|ne"]["est"] == pytest.approx(4 / 6 - 1 / 6)
+    assert d["M4 对 BL_PRICE|ne"]["est"] == pytest.approx(4 / 6 - 1 / 6)
+    assert d["M0 对 BL_PRICE|ne"]["est"] == pytest.approx(2 / 6 - 1 / 6)
+    assert d["M4 对 BL_ASK|all"]["est"] == pytest.approx(6 / 8 - 3 / 8)
+    assert d["M0 对 BL_PRICE|all"]["est"] == pytest.approx(0.0) and d["M4 对 BL_PRICE|all"]["n_tasks"] == 4
+    # independent bootstrap of M4 - BL_ASK on the non-explicit tasks, same draws
+    tasks = ["T2", "T3", "T4"]
+    diff = {t: sum(corr["M4"][c][int(t[1]) - 1] - corr["BL_ASK"][c][int(t[1]) - 1] for c in "AB") for t in tasks}
+    idx = np.random.default_rng(11).integers(0, 3, size=(300, 3))
+    boots = np.array([sum(diff[tasks[i]] for i in row) / (2 * 3) for row in idx])
+    lo, hi = np.quantile(boots, [0.025, 0.975])
+    assert d["M4 对 BL_ASK|ne"]["lo"] == pytest.approx(lo) and d["M4 对 BL_ASK|ne"]["hi"] == pytest.approx(hi)
+    t = next(x for x in res.tables if x["id"] == "5-11")
+    assert "不计算 p 值" in " ".join(t["notes"]) and mr.PREREG_SHA256 in " ".join(t["notes"]) and "流程测试" in t["title"]
+    assert t["rows"][0][1].startswith("+50.0 [")
+    assert {x["id"] for x in res.tables} >= {"5-11", "5-11b", "5-11c", "5-11d"}
+
+
+def test_baselines_in_run_without_experiment_flag(fx):
+    _inp, res = fx
+    assert any("BL_PRICE" in u for u in res.uncovered)       # fixture passes no --bl-experiment
+    assert table(res, "5-11")["rows"][0][0] == "M4 对 BL_ASK"

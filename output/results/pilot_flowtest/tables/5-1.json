@@ -55,13 +55,13 @@
  ],
  "data": {
   "plan": {
-   "deepseek": 13,
    "siliconflow": 14,
+   "deepseek": 13,
    "dashscope": 13
   },
   "valid": {
-   "deepseek": 13,
    "siliconflow": 14,
+   "deepseek": 13,
    "dashscope": 13
   },
   "retry": {

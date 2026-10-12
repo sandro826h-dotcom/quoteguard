@@ -11,13 +11,14 @@
 
     PYTHONPATH=src python scripts/make_results.py --label formal --out output/results/formal \\
         --scores runs/derived/formal/scores --outputs runs/derived/formal/outputs \\
-        --think-scores runs/derived/formal_think/scores --think-outputs runs/derived/formal_think/outputs \\
+        --think-outputs runs/derived/formal_think/outputs \\
         --tasks data/tasks/test/tasks --gold data/gold/test \\
         --batches runs/deepseek-A runs/deepseek-A-retry runs/deepseek-B runs/deepseek-B-retry \\
                   runs/dashscope-A runs/dashscope-A-retry runs/dashscope-B runs/dashscope-B-retry \\
                   runs/siliconflow-A runs/siliconflow-A-retry runs/siliconflow-B runs/siliconflow-B-retry \\
                   runs/think-B runs/think-B-retry \\
-        --ledger runs/spend_ledger.jsonl --seed 20261011 --B 9999
+        --ledger runs/spend_ledger.jsonl --seed 20261011 --B 9999 \\
+        --bl-experiment formal --bl-seed 20261010
 
 （预设只纳入实际存在的批次目录与思考组目录。）
 
@@ -33,7 +34,11 @@
         --tasks data/tasks/dev/tasks --gold data/gold/dev \\
         --batches runs/pilota-A-live runs/pilota-B-live runs/pilota-B-retry-live \\
                   runs/pilotb-A-live runs/pilotb-B-live runs/pilotb-B-retry-live \\
-        --ledger runs/spend_ledger.jsonl --seed 20261011 --B 9999
+        --ledger runs/spend_ledger.jsonl --seed 20261011 --B 9999 \\
+        --bl-experiment ds_flash=pilota,qwen_plus=pilota,glm=pilotb,kimi=pilotb --bl-seed 20261010 \\
+        --bl-data-dir data/taskgen/dev_v3
+
+离线基线 BL_ASK、BL_PRICE 按 docs/protocol/补充预注册_离线基线.md 从 M4 输出与批次观测在内存中派生并评分（表 5-11 系列），不写入 runs/。
 
 正式结果出来后把两张图复制到 docs/figures/（报告引用 ../figures/fig5_e1_accuracy_by_layer.svg 与 ../figures/fig6_e2_risk.svg）：
 
@@ -93,6 +98,7 @@ PRESETS = {
         "batches": [f"runs/{p}-{s}{r}" for p in PROVIDERS for s in "AB" for r in ("", "-retry")]
                    + ["runs/think-B", "runs/think-B-retry"],
         "ledger": "runs/spend_ledger.jsonl",
+        "bl_experiment": "formal", "bl_seed": 20261010, "bl_data_dir": None,
     },
     "pilot": {
         "label": "pilot_flowtest",
@@ -103,6 +109,8 @@ PRESETS = {
         "batches": ["runs/pilota-A-live", "runs/pilota-B-live", "runs/pilota-B-retry-live",
                     "runs/pilotb-A-live", "runs/pilotb-B-live", "runs/pilotb-B-retry-live"],
         "ledger": "runs/spend_ledger.jsonl",
+        "bl_experiment": "ds_flash=pilota,qwen_plus=pilota,glm=pilotb,kimi=pilotb", "bl_seed": 20261010,
+        "bl_data_dir": "data/taskgen/dev_v3",
     },
 }
 
@@ -1045,6 +1053,245 @@ def table_rules(res: Result, ep: Optional[dict], real_acc: Optional[dict]):
             data=rows)
 
 
+# ------------------------------------------------------------------ offline baselines (docs/protocol/补充预注册_离线基线.md)
+PREREG_FILE = "docs/protocol/补充预注册_离线基线.md"
+PREREG_SHA256 = "de2886d2a06a964ce4f5d1e3fce3fc30e2d630947a5291f72f2f48cf17579006"
+BASELINES = ("BL_ASK", "BL_PRICE")
+FIRST_ERR = "no extraction"
+
+
+def derive_bl_ask(m4: dict) -> dict:
+    """BL_ASK from one M4 output: any conflict or gap on any quote means ask, with the union of the
+    fields as C<k>.<field>; otherwise decision and choice stay as in M4. All other fields, failed_calls
+    included, are copied from M4."""
+    import copy
+    o = copy.deepcopy(m4)
+    o["method"] = "BL_ASK"
+    fields = []
+    for cid, pc in (m4.get("per_cand") or {}).items():
+        for f in list((pc or {}).get("conflicts") or []) + list((pc or {}).get("gaps") or []):
+            x = f"{cid}.{f}"
+            if x not in fields:
+                fields.append(x)
+    if fields:
+        o["decision"], o["choice"], o["ask_fields"] = "ask", None, fields
+    return o
+
+
+def list_price_cny(shipment, terms, fx) -> Optional["Decimal"]:
+    """List price of one quote: tier with the largest min_kg not above the actual weight (sum of the gross
+    weights of all cartons), per_kg unit price times that weight or a per-shipment price, USD converted at fx.
+    A conflicting rate_tiers takes its first value. None when no price can be computed."""
+    from decimal import Decimal
+    f = terms.rate_tiers
+    if f.status == "missing" or f.value is None:
+        return None
+    tiers = f.value[0] if f.status == "conflicting" else f.value
+    if not tiers:
+        return None
+    w = sum((Decimal(c.kg) * c.n for c in shipment.cartons), Decimal(0))
+    ok = [t for t in tiers if t.min_kg <= w]
+    if not ok:
+        return None
+    t = max(ok, key=lambda x: x.min_kg)
+    if t.unit == "per_kg":
+        amount = t.price * w
+    elif t.unit == "per_shpt":
+        amount = t.price
+    else:
+        return None
+    if t.currency == "USD":
+        return amount * Decimal(str(fx))
+    return amount if t.currency == "CNY" else None
+
+
+def derive_bl_price(shipment, order: Sequence[str], terms_by_cand: dict, fx, m2: dict) -> dict:
+    """BL_PRICE from the first extraction: the quote with the lowest list price (ties go to the earlier one),
+    never asks unless no quote has a computable price (then ask without fields). per_cand holds cost_cny only.
+    calls, cost and failed_calls come from the M2 output."""
+    prices = {cid: list_price_cny(shipment, terms_by_cand[cid], fx) for cid in order if cid in terms_by_cand}
+    cands = [(p, k, cid) for k, (cid, p) in enumerate(prices.items()) if p is not None]
+    choice = min(cands)[2] if cands else None
+    per = {cid: {"cost_cny": prices.get(cid), "ddp_level": None, "claim_status": None, "hidden_fees": [],
+                 "conflicts": [], "gaps": []} for cid in order}
+    return {"task_id": m2.get("task_id"), "method": "BL_PRICE", "config_id": m2.get("config_id"),
+            "decision": "choose" if choice else "ask", "choice": choice, "ask_fields": [], "questions": [], "risks": [],
+            "per_cand": per, "parse_ok": True, "parse_error": None, "calls": list(m2.get("calls") or []),
+            "failed_calls": list(m2.get("failed_calls") or []), "cost": dict(m2.get("cost") or {}),
+            "raw_text": None, "diagnostics": {}}
+
+
+def parse_experiments(spec: str, configs) -> dict:
+    """'formal' or 'cfg=name,cfg=name' -> {config: experiment}."""
+    if "=" not in spec:
+        return {c: spec for c in configs}
+    m = dict(x.split("=", 1) for x in spec.split(",") if x)
+    return {c: m[c] for c in configs if c in m}
+
+
+def first_extractions(args, m2_keys, obs: dict) -> dict:
+    """{(config, task): (shipment, order, {cand: (QuoteTerms, error)}, fx)} rebuilt like orchestrate.assemble
+    (render to a temporary directory, transcripts from the observations, first extraction normalized)."""
+    import tempfile
+    from quoteguard import methods_llm as ml
+    from quoteguard import methods_pipeline as mp
+    from quoteguard import orchestrate as orch
+    kw = {}
+    if args.bl_data_dir:
+        kw["data_dir"] = Path(args.bl_data_dir)
+    ctx = orch.Context(Path(args.tasks), tempfile.mkdtemp(prefix="make_results_ctx_"), **kw)
+    tasks = {t.task_id: t for t in ctx.tasks}
+    obs_list = list(obs.values())
+    fx = ctx.snapshot.fx_cny_per_usd()
+    exp = parse_experiments(args.bl_experiment, {k[0] for k in m2_keys})
+    out = {}
+    for c, tid in sorted(m2_keys):
+        if c not in exp or tid not in tasks:
+            continue
+        t = tasks[tid]
+        _, ti0 = ctx.prepare(t)
+        ti = ml.apply_transcriptions(ti0, obs_list, ctx.models[c].vision_config_id)
+        ext = {}
+        for r in mp.extraction_requests(ti, c, exp[c], repeat=orch.EXTRACT_REPEAT, seed=args.bl_seed):
+            o = orch._find(obs, r)
+            if not orch.call_failed(o, extract=True):
+                ext[r["cand_id"]] = o["text"]
+        coll = mp._collect(ti, ext, t.shipment.mode, fx)
+        out[(c, tid)] = (t.shipment, [q.cand_id for q in ti.quotes], coll, fx)
+    return out
+
+
+def build_baselines(args, outputs: dict, gold: dict, bat: dict, res: Result, main_configs) -> list:
+    """Scored rows of BL_ASK and BL_PRICE (in memory; nothing is written)."""
+    outs = []
+    for (m, c, t), o in sorted(outputs.items()):
+        if m == "M4" and c in main_configs:
+            outs.append(derive_bl_ask(o))
+    m2 = {(c, t): o for (m, c, t), o in outputs.items() if m == "M2" and c in main_configs}
+    if m2 and bat["selected"] and getattr(args, "bl_experiment", None):
+        ext = first_extractions(args, set(m2), bat["selected"])
+        for (c, t), (ship, order, coll, fx) in sorted(ext.items()):
+            outs.append(derive_bl_price(ship, order, {cid: x[0] for cid, x in coll.items()}, fx, m2[(c, t)]))
+    else:
+        res.miss("BL_PRICE：需要 M2 输出、--batches 与 --bl-experiment，缺少其中之一，未计算")
+    if not any(o["method"] == "BL_ASK" for o in outs):
+        res.miss("BL_ASK：评分输出对应的 outputs 中没有 M4 输出，未计算")
+    rows = []
+    for o in outs:
+        row = metrics.score_task(o, gold[o["task_id"]])
+        row.update(cost_usd=(o.get("cost") or {}).get("USD"), cost_cny=(o.get("cost") or {}).get("CNY"),
+                   n_calls=len(o.get("calls", [])))
+        rows.append(row)
+    return metrics.attach_layers(rows, args.tasks) if rows else []
+
+
+def _paired_diff(rows, a: str, b: str, ne: bool, B: int, seed: int) -> tuple:
+    """Pooled decision-accuracy difference a - b over configurations, paired by (config, task);
+    clusters are tasks."""
+    pa = {(r["config_id"], r["task_id"]): r for r in rows if r["method"] == a}
+    pb = {(r["config_id"], r["task_id"]): r for r in rows if r["method"] == b}
+    recs: dict = {}
+    for k in sorted(set(pa) & set(pb)):
+        if ne and pa[k]["layer"] in metrics.NONEXPLICIT_EXCLUDE:
+            continue
+        t = recs.setdefault(k[1], {"task_id": k[1], "a": 0.0, "an": 0, "b": 0.0, "bn": 0})
+        t["a"] += pa[k]["decision_correct"]
+        t["an"] += 1
+        t["b"] += pb[k]["decision_correct"]
+        t["bn"] += 1
+
+    def fn(rs):
+        return _div(sum(r["a"] for r in rs), sum(r["an"] for r in rs)) - _div(sum(r["b"] for r in rs), sum(r["bn"] for r in rs))
+    est, lo, hi = boot(list(recs.values()), fn, B, seed)
+    return est, lo, hi, len(recs)
+
+
+def fdiff(est, lo, hi) -> str:
+    if est is None:
+        return EMPTY
+    f = lambda v: f"{100 * v:+.1f}"
+    return f"{f(est)} [{f(lo)}, {f(hi)}]" if lo is not None and hi is not None else f(est)
+
+
+def _prereg_notes() -> list:
+    notes = [f"评分前补充预注册的探索性对照：不进入主终点 Holm 族，不计算 p 值。预注册文件 {PREREG_FILE}，sha256 {PREREG_SHA256}。"]
+    f = ROOT / PREREG_FILE
+    if f.exists() and sha256_file(f) != PREREG_SHA256:
+        notes.append("预注册文件当前的 sha256 与上述记录不一致。")
+    return notes
+
+
+def table_baselines(res: Result, rows: list, bl_rows: list):
+    allr = [r for r in rows if r["method"] in ("M0", "M4")] + bl_rows
+    notes0 = _prereg_notes()
+    cmp = (("M4 对 BL_ASK", "M4", "BL_ASK"), ("M4 对 BL_PRICE", "M4", "BL_PRICE"), ("M0 对 BL_PRICE", "M0", "BL_PRICE"))
+    body, data = [], {}
+    for name, a, b in cmp:
+        line = [name]
+        for ne in (True, False):
+            est, lo, hi, n = _paired_diff(allr, a, b, ne, res.B, res.seed)
+            data[f"{name}|{'ne' if ne else 'all'}"] = {"est": est, "lo": lo, "hi": hi, "n_tasks": n}
+            line.append(f"{fdiff(est, lo, hi)}（{n} 个任务）" if est is not None else EMPTY)
+        body.append(line)
+    res.ctx["baseline_diffs"] = data
+    ntasks = len({r["task_id"] for r in allr})
+    res.add("5-11", "表 5-11 评分前补充预注册的探索性对照：M4、M0 与两条离线基线的决策正确率差（各配置合并，整簇 bootstrap 95% 区间）",
+            ["比较", "非显式层", "全部任务"], body,
+            ["差值为合并决策正确率之差，单位百分点，方括号内为按任务整簇 bootstrap 的 95% 区间；同一（配置，任务）配对，非显式层指显式层以外的三层。"] + notes0,
+            data=data)
+
+    ms = ("M0", "M4", "BL_ASK", "BL_PRICE")
+    cfgs = ordered_configs({r["config_id"] for r in allr})
+    body, data = [], {}
+
+    def cell(rs):
+        if not rs:
+            return EMPTY
+        return fci(*boot(rs, f_acc, res.B, res.seed))
+
+    for scope, ne in (("非显式层", True), ("全部任务", False)):
+        base = [r for r in allr if not ne or r["layer"] not in metrics.NONEXPLICIT_EXCLUDE]
+        body.append([scope, f"合并（{len({r['task_id'] for r in base})} 个任务）"] + [cell(_rows_of(base, method=m)) for m in ms])
+        for c in cfgs:
+            body.append([scope, c] + [fpct(f_acc(_rows_of(base, method=m, config_id=c))) if _rows_of(base, method=m, config_id=c) else EMPTY
+                                      for m in ms])
+        if not ne:
+            for lay in LAYERS:
+                body.append([scope, LAYER_NAMES[lay]] + [cell(_rows_of(base, method=m, layer=lay)) for m in ms])
+    res.add("5-11b", "表 5-11 附 决策正确率（合并、按配置、按层级）", ["范围", "分组", *ms], body,
+            ["合并与层级行为各配置合并，方括号内为 95% CI；按配置的格不给 CI。"] + notes0)
+
+    body = []
+    for scope, ne in (("非显式层", True), ("全部任务", False)):
+        base = [r for r in allr if not ne or r["layer"] not in metrics.NONEXPLICIT_EXCLUDE]
+        for name, fn in (("误拒率（金标签为推荐时追问）", f_false_ask),
+                         ("漏问率（金标签为追问时推荐）", lambda rs: _mean_of("missed_ask")([r for r in rs if r["gold_type"] == "ask"]))):
+            line = [scope, name]
+            for m in ms:
+                rs = _rows_of(base, method=m)
+                line.append(fci(*boot(rs, fn, res.B, res.seed)) if rs else EMPTY)
+            body.append(line)
+    res.add("5-11c", "表 5-11 附 误拒率与漏问率", ["范围", "指标", *ms], body,
+            ["各配置合并，方括号内为 95% CI；样本中无对应金标签类型的格子写“无数据”。"] + notes0)
+
+    body, data = [], {}
+    for scope, ne in (("非显式层", True), ("全部任务", False)):
+        rs = [r for r in bl_rows if r["method"] == "BL_PRICE" and (not ne or r["layer"] not in metrics.NONEXPLICIT_EXCLUDE)]
+        if not rs:
+            body.append([scope, EMPTY, "", "", "", ""])
+            continue
+        est, lo, hi = boot(rs, f_regret_abs, res.B, res.seed)
+        rel = _mean_of("regret_rel")(rs)
+        oest, olo, ohi = boot(rs, _mean_of("out_of_feasible"), res.B, res.seed)
+        nsel = sum(1 for r in rs if r.get("regret_abs") is not None or r.get("out_of_feasible") == 1)
+        data[scope] = {"n": nsel, "regret": est, "lo": lo, "hi": hi, "rel": None if rel != rel else rel, "oof": oest}
+        body.append([scope, nsel, fci(est, lo, hi, "num"), fpct(None if rel != rel else rel),
+                     fnum(None if est is None else 100 * est, 1), fci(oest, olo, ohi)])
+    res.add("5-11d", "表 5-11 附 BL_PRICE 的决策遗憾与可行集外比例",
+            ["范围", "给出推荐的评分行数（配置 × 任务）", "每票多付金额（元）", "占最优成本比例", "每百票多付金额（元）", "选中可行集外报价的比例"],
+            body, ["口径同表 5-2r：遗憾只统计推荐落在可行集内的行，可行集外比例的分母为给出推荐的行。"] + notes0, data=data)
+
+
 # ------------------------------------------------------------------ figures
 GRAYS = {"M0": "#FFFFFF", "M1": "#D9D9D9", "M2": "#B0B0B0", "M3": "#808080", "M4": "#2B2B2B"}
 HATCH = {"M0": "", "M1": "", "M2": "//", "M3": "..", "M4": ""}
@@ -1159,7 +1406,7 @@ def csv_text(t: dict) -> str:
     return buf.getvalue()
 
 
-ORDER = ["5-1", "5-1b", "5-1c", "5-2", "5-2f", "5-3", "5-2r", "5-2c", "5-4", "5-4f", "5-5", "5-5b", "5-5c", "5-5d", "5-6", "5-6b",
+ORDER = ["5-1", "5-1b", "5-1c", "5-2", "5-2f", "5-3", "5-2r", "5-2c", "5-4", "5-4f", "5-5", "5-5b", "5-5c", "5-5d", "5-11", "5-11b", "5-11c", "5-11d", "5-6", "5-6b",
          "5-7", "5-9", "5-10"]
 
 
@@ -1190,7 +1437,11 @@ def build_manifest(args, res: Result, inputs: dict, argv: Optional[Sequence[str]
     argv = list(sys.argv[1:] if argv is None else argv)
     m = {"label": res.label, "seed": res.seed, "B": res.B, "argv": argv, "command": "python scripts/make_results.py " + " ".join(argv),
          "generated_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "git": git_info(),
-         "fx": res.fx, "inputs": {}}
+         "fx": res.fx, "inputs": {},
+         "baselines": {"prereg_file": PREREG_FILE, "prereg_sha256_recorded": PREREG_SHA256,
+                       "prereg_sha256_actual": sha256_file(ROOT / PREREG_FILE) if (ROOT / PREREG_FILE).exists() else None,
+                       "experiment": getattr(args, "bl_experiment", None), "seed": getattr(args, "bl_seed", None),
+                       "data_dir": getattr(args, "bl_data_dir", None)}}
     for k, v in inputs.items():
         if v is None:
             continue
@@ -1243,13 +1494,15 @@ def run(args) -> Result:
     table_regret_cost(res, main_rows)
     table_risk(res, main_rows)
     table_ask(res, main_rows, tasks, gold)
+    bl_rows = build_baselines(args, outputs, gold, bat, res, set(ordered_configs({r["config_id"] for r in main_rows})))
+    table_baselines(res, main_rows, bl_rows)
     table_cost(res, main_rows, outputs, bat, think_rows, think_outputs)
     table_review(res, all_rows, outputs, gold)
     table_endpoints(res, ep)
     table_rules(res, ep, real_acc)
-    for item in ("真实报价集抽取结果（报告 5.7、表 5-8）：由真实报价集运行另行产出，本脚本不含",
+    for item in ("真实报价集抽取结果（报告 5.8、表 5-8）：由真实报价集运行另行产出，本脚本不含",
                  "M0、M1 自由文本映射的人工抽检一致率：人工抽检记录，不在评分输出中",
-                 "效益分析（报告 5.9）所需的人工逐份核算对比：估算口径文件，不在评分输出中"):
+                 "效益分析（报告 5.10）所需的人工逐份核算对比：估算口径文件，不在评分输出中"):
         res.miss(item)
     return res
 
@@ -1271,6 +1524,10 @@ def parse_args(argv=None):
     ap.add_argument("--B", type=int, default=BOOT_B)
     ap.add_argument("--fx-snapshot", dest="fx_snapshot", default=str(ROOT / "data/params/tariff_snapshot_2026-10-09.json"))
     ap.add_argument("--usd-cny", dest="usd_cny", type=float, default=None)
+    ap.add_argument("--bl-experiment", dest="bl_experiment", default=None,
+                    help="experiment name of the first extraction (BL_PRICE), or cfg=name,cfg=name")
+    ap.add_argument("--bl-seed", dest="bl_seed", type=int, default=20261010)
+    ap.add_argument("--bl-data-dir", dest="bl_data_dir", default=None, help="taskgen data directory (default data/taskgen)")
     ap.add_argument("--real-accuracy", dest="real_accuracy", default=None,
                     help="JSON {\"field_accuracy\": {config: value}} of the real quote set run (optional)")
     a = ap.parse_args(argv)
@@ -1283,6 +1540,11 @@ def parse_args(argv=None):
                 setattr(a, key, _abs(p[key]))
         if a.label is None:
             a.label = p["label"]
+        if a.bl_experiment is None:
+            a.bl_experiment = p["bl_experiment"]
+            a.bl_seed = p["bl_seed"]
+            if a.bl_data_dir is None and p["bl_data_dir"]:
+                a.bl_data_dir = str(ROOT / p["bl_data_dir"])
         if a.batches is None:
             a.batches = [str(ROOT / b) for b in p["batches"] if (ROOT / b).exists()]
         for key in ("think_scores", "think_outputs"):

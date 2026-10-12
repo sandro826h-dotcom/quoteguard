@@ -361,3 +361,9 @@
 - 新增 4.4.4 节：按 docs/protocol/补充预注册_离线基线.md（sha256 de2886d2…，提交 70bfd144，偏离记录第 10 条）写 BL_ASK、BL_PRICE 与三对比较，探索性，不算 p 值、不进 Holm 族、不触发事前决策规则；原 4.4.4 改为 4.4.5。
 - 第五章新增 5.5 与离线基线的对照（表 5-11，结果待填），其后小节顺延为 5.6–5.11；4.6 摘要表补第 10 条。
 - 盲标抽检结果位改为三项一致率：status、value（全部）、value（金标签为明示或推出的项），与 scripts/import_spotcheck.py 一致。
+
+## 2026-10-12 离线基线加入结果流水线（make_results.py）
+- 按 docs/protocol/补充预注册_离线基线.md（sha256 de2886d2a06a964ce4f5d1e3fce3fc30e2d630947a5291f72f2f48cf17579006）实现 BL_ASK（由 M4 输出派生，有冲突或缺口即追问）与 BL_PRICE（由首次抽取重建条款，按实重适用档位的标价选最低，从不追问），内存中按 metrics.score_task 评分，不写 runs/。
+- 新增表 5-11（三对比较 M4−BL_ASK、M4−BL_PRICE、M0−BL_PRICE，非显式与全部任务并列，任务整簇 bootstrap 95% CI，不计 p 值、不进 Holm 族）及 5-11b（分配置、分层级正确率）、5-11c（误拒率与漏问率）、5-11d（BL_PRICE 遗憾与可行集外比例）。manifest 记录预注册文件 sha256，文件变动时表注提示。
+- 字面实现时的选择：实重取 Σ(箱数 × 单箱毛重)；归一化后的档位单位均为 per_kg，整票价分支只对 per_shpt 生效；差值只用两方法都有评分行的（配置，任务）配对；BL_PRICE 重建观测用 experiment=formal、seed 20261010（与正式计划的 run_key 前缀一致）。
+- 预试验流程测试（3 个任务）：M4 100%、BL_ASK 66.7%、M0 50%、BL_PRICE 0%（BL_PRICE 两次推荐都落在可行集外）。测试 35 项，全量 702 项通过；reviewer 简审通过。
