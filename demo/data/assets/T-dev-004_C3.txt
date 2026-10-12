@@ -1,0 +1,23 @@
+FWD-58：
+Quoted by：SYN-Bluewater Cargo
+1) 走空派 A 渠道
+2) 0-20kg，单价37.5 CNY per kg
+3) 21-100kg，单价36 CNY per kg
+4) 101-300kg，单价36 CNY per kg
+5) 301kg 起，单价34.5 CNY per kg
+6) 运输方式为 Air
+7) 不含税，关税客户自理
+8) Importer (IOR)：Seller
+9) Remote area 地区附加费：10 CNY per kg（Remote area 地址）
+10) Oversize 费：61.5 CNY per ctn（单箱最长边超58cm）
+11) FSC 20%
+12) 报价包含：头程运费、目的港清关
+13) 不含：查验费、仓储费、关税、MPF
+14) Transit 7-10 days
+15) Whole lot 21kg 起计
+16) 体积重除以6000
+17) 计费重按1kg 进位
+18) SYN-Bluewater Cargo 已取得 NVOCC
+19) Claim：按申报货值赔付，上限 20 美元/kg
+20) 报价有效期2026-10-01 至2026-10-31
+FBA 头程可订, pls confirm
