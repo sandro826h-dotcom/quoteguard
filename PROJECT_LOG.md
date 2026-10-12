@@ -254,3 +254,10 @@
 - 抽取问题原样展示：qwen-plus 把超重阈值读成单箱最低计费重、把赔付条款读成资质宣称；案例 C 报价1 报关费两模型都漏抽，包税单价显示 46.50 元/kg（含报关费约 50.94），档位仍为“高”。
 ### 未决
 - 正式实验结果出来后，可把案例换成测试集样例或补充结果页；录制视频由团队完成。
+
+## 2026-10-12 硅基流动代金券用完（批次停止）
+- 03:37Z siliconflow-B 返回余额不足（manifest status=stopped_balance，reason=insufficient_balance），完成 532/668，下一条 run_key 为 formal|M0|glm|T-test-039|answer|ALL|r0。按 CLAUDE.md：停批、保存记录、不重试、不换模型。
+- 账本记录的硅基流动正式批次支出（按 configs/rates.json 标价估算）：siliconflow-A 1.92 元，siliconflow-B 29.76 元。实际代金券面额与扣费以服务商账单为准。
+- 需要用户：为硅基流动充值或补代金券后，执行 `nohup bash scripts/run_formal.sh siliconflow >> runs/formal_logs/siliconflow.log 2>&1 &`，在原批次目录续跑剩余 136 个请求（协议第七节续跑规则）；之后脚本自动做补跑。
+- DeepSeek 全部完成（含思考组，思考组 96 次调用全部因推理耗尽 12000 token 上限无正文，记为最终失败）；百炼仍在运行。
+
