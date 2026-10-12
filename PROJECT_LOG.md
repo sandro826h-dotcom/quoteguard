@@ -350,3 +350,9 @@
 ## 2026-10-12 盲标一致性抽检导入
 - 做了什么：新增 scripts/import_spotcheck.py，读新队友独立填写的盲标字段抽检表（盲标字段抽检表.xlsx，工作表“抽检”，列 编号、单元、原件、渠道/目的区域、字段、字段含义、status、value、币种、原文依据、备注），与 data/seeds/labels/<seed_id>.gold.json 逐项比较，写出 data/seeds/spotcheck.json：status 一致率、value 一致率（全部抽检项）、value 一致率（金标签为 stated/implied 的项）、不一致编号、抽样种子与输入哈希。value 比较按 schema 规范形式（5 与 5.0 相同，省略的默认键按默认值）；币种列补齐价格条目缺的 currency。tests/test_label_import.py 增加 3 项合成示例测试，共 22 项通过。按项目额度安排，这一块未送 reviewer。
 - 未决：金标签写出后（import_adjudication.py），用户在本机运行 `PYTHONPATH=src python3 scripts/import_spotcheck.py --xlsx 盲标字段抽检表.xlsx --seed 20261012 --checker 队员乙 --date <完成日期>`，先加 --check-only 检查。
+
+
+## 2026-10-12 补充预注册：离线基线
+- 做了什么：按用户决定写 docs/protocol/补充预注册_离线基线.md，定义 BL_ASK（取 M4 输出，任一报价有冲突或缺口即追问）与 BL_PRICE（取首次抽取，按适用档位单价 × 实重选标价最低，从不追问），按 score_task 评分；比较 M4 对 BL_ASK、M4 对 BL_PRICE、M0 对 BL_PRICE，任务整簇 bootstrap 95% 区间（B=9999，种子 20261011），不算 p 值，不进 Holm 族。
+- 结果：文件 sha256 de2886d2a06a964ce4f5d1e3fce3fc30e2d630947a5291f72f2f48cf17579006，提交 70bfd14（2026-10-12T11:10:12Z）；写定时 runs/derived/ 下没有 formal 目录。偏离记录新增第 10 条。
+- 未决：基线计算加入 scripts/make_results.py（演示系统线程）；报告写“评分前补充预注册的探索性对照”（报告线程）。
