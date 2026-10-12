@@ -261,3 +261,25 @@
 - 需要用户：为硅基流动充值或补代金券后，执行 `nohup bash scripts/run_formal.sh siliconflow >> runs/formal_logs/siliconflow.log 2>&1 &`，在原批次目录续跑剩余 136 个请求（协议第七节续跑规则）；之后脚本自动做补跑。
 - DeepSeek 全部完成（含思考组，思考组 96 次调用全部因推理耗尽 12000 token 上限无正文，记为最终失败）；百炼仍在运行。
 
+
+## 2026-10-12 正式实验进展与会话交接
+### 状态（05:45Z）
+- DeepSeek：deepseek-A 60/60、deepseek-B 668/668 完成，无补跑；思考组 think-B 48/48、think-B-retry 48/48，96 次调用全部 finish_reason=length（推理耗尽 12000 token），正文为空，按协议记为最终失败。
+- 百炼：dashscope-A 60/60、dashscope-B 668/668 完成，无补跑。千问免费额度未触发 403。
+- 硅基流动：siliconflow-A 120/120 完成；siliconflow-B 532/668，03:37Z 余额不足停止（stopped_balance），待充值续跑。
+- 正式批次账本支出（按 configs/rates.json 标价估算）：DeepSeek 4.00 + 思考组 1.32 = 5.32 美元；百炼 61.06 元（免费额度折算）；硅基流动 31.67 元。
+- 当前没有后台进程在运行。
+
+### 续跑与收尾命令
+1. 硅基流动充值后：`nohup bash scripts/run_formal.sh siliconflow >> runs/formal_logs/siliconflow.log 2>&1 &`（原批次目录续跑剩余 136 个请求，完成后脚本自动做 siliconflow-B-retry）。云端会话空闲约 20 分钟后台进程会停，会话中用 `bash scripts/watch_formal.sh`（后台任务）加前台轮询保持活动。
+2. 三家完成后按协议附录组装与评分：
+   - `PYTHONPATH=src python -m quoteguard.orchestrate assemble --tasks data/tasks/test/tasks --gold data/gold/test --batches runs/deepseek-A,runs/deepseek-B,runs/dashscope-A,runs/dashscope-B,runs/siliconflow-A,runs/siliconflow-B[,runs/siliconflow-B-retry] --configs ds_pro,ds_flash,qwen_max,qwen_plus,glm,kimi --methods M0,M1,M2,M3,M4,M4_trig --experiment formal --seed 20261010 --out runs/derived/formal`
+   - `... assemble --batches runs/deepseek-A,runs/think-B,runs/think-B-retry --configs ds_flash_think --methods M1 --experiment formal --seed 20261010 --out runs/derived/formal_think`
+   - `PYTHONPATH=src python -m quoteguard.orchestrate score --outputs runs/derived/formal/outputs --gold data/gold/test --tasks data/tasks/test/tasks --endpoints --seed 20261011 --sims 99999 --B 9999`
+   - 结果按 AIC_最终方案.md 第七节事前决策规则解读，写入 PROJECT_LOG。
+3. 13 单元复核包已交付（output/label_review_13/），等新队友复核。
+
+### 需要用户做的事
+- 硅基流动充值或补代金券（剩余 136 次，按标价约 7–8 元）。
+- 决定思考组是否在协议外做提高输出上限的探索（不进主终点）。
+- 决定 Q05.txt、Q06.txt 手机号补遮方式。
