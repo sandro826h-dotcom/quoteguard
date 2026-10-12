@@ -12,7 +12,10 @@ runs/derived/pilot_rescore_20261010_fullreview and exits with an error when they
 """
 from __future__ import annotations
 
+import copy
+import itertools
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -25,11 +28,12 @@ sys.path.insert(0, str(ROOT / "src"))
 import openpyxl  # noqa: E402
 
 from quoteguard import gate, locate  # noqa: E402
+from quoteguard.decide import GAP_FIELDS, value_set  # noqa: E402
 from quoteguard import methods_llm as ml  # noqa: E402
 from quoteguard import methods_pipeline as mp  # noqa: E402
 from quoteguard.calc_py import landed_cost  # noqa: E402
 from quoteguard.orchestrate import Context, assemble, load_observations  # noqa: E402
-from quoteguard.schema import Task  # noqa: E402
+from quoteguard.schema import Field, Task  # noqa: E402
 from quoteguard.util import sha256_file  # noqa: E402
 
 DEMO = Path(__file__).resolve().parent
@@ -153,9 +157,9 @@ def fmt_value(name: str, v) -> str:
     if name in ("includes", "excludes"):
         return "、".join(v) if v else "无"
     if name == "transit_days":
-        return f"{v[0]} 天" if v[0] == v[1] else f"{v[0]}–{v[1]} 天"
+        return f"{v[0]} 天" if v[0] == v[1] else f"{v[0]} 至 {v[1]} 天"
     if name == "validity":
-        return f"{v[0] or '—'} 至 {v[1] or '—'}"
+        return f"{v[0] or '未写明'} 至 {v[1] or '未写明'}"
     if name == "claims":
         if not v:
             return "无资质宣称"
@@ -176,7 +180,6 @@ def get_field(terms, name: str):
     """Field object of a term, with quote_entity as a pseudo field built from the plain attribute."""
     if name == "quote_entity":
         e = getattr(terms, "quote_entity", None)
-        from quoteguard.schema import Field
         return Field(e, "stated" if e else "missing", [])
     return getattr(terms, name)
 
@@ -231,22 +234,44 @@ def run_ext(ti, cfg, exp, obs):
     return {r["cand_id"]: obs[r["run_key"]]["text"] for r in reqs if r["run_key"] in obs}, [r["run_key"] for r in reqs]
 
 
-def cost_range(shipment, terms, snapshot):
-    """(min, max) of the total over both values of every conflicting term; None when nothing conflicts."""
+def cost_range(shipment, terms, snapshot, value_sets):
+    """((min, max) strings or None, field names) of the total over both values of every conflicting term and over
+    the value set of every required term that is missing (e.g. DDP scope). None when the total cannot vary."""
     names = terms.conflicting()
-    if not names:
-        return None
-    import itertools
+    mode = shipment.mode
+    miss = [n for n in mp.required_fields(mode) if n in GAP_FIELDS and n in value_sets and getattr(terms, n).status == "missing"]
+    if not names and not miss:
+        return None, []
+    sets = [value_set(value_sets, n) for n in miss]
     totals = []
     for combo in itertools.product((0, 1), repeat=len(names)):
-        t, _d = mp._calc_ready(mp._fix(terms, names, combo), shipment.mode)
-        try:
-            totals.append(landed_cost(shipment, t, snapshot).total_cny)
-        except ValueError:
-            continue
+        base = mp._fix(terms, names, combo)
+        for vals in itertools.product(*sets):
+            t = copy.deepcopy(base)
+            for n, v in zip(miss, vals):
+                setattr(t, n, Field(v, "stated", []))
+            t, _d = mp._calc_ready(t, mode)
+            try:
+                totals.append(landed_cost(shipment, t, snapshot).total_cny)
+            except ValueError:
+                continue
+    fields = names + miss
     if not totals or min(totals) == max(totals):
-        return None
-    return [money_s(min(totals)), money_s(max(totals))]
+        return None, fields
+    return [money_s(min(totals)), money_s(max(totals))], fields
+
+
+def variant_outcome(shipment, terms, snapshot, freight_floor, chosen, name, idx):
+    """(total, ddp level, feasible) with conflicting term `name` fixed to value idx and the others as chosen."""
+    names = terms.conflicting()
+    ch = dict(chosen)
+    ch[name] = idx
+    t, _d = mp._calc_ready(mp._fix(terms, names, [ch[n] for n in names]), shipment.mode)
+    bd = landed_cost(shipment, t, snapshot)
+    dd = gate.ddp_from_breakdown(shipment, t, snapshot, bd, freight_floor)
+    td = t.plain("transit_days")
+    feas = td is not None and td[1] <= shipment.deadline_days and dd.level != "high"
+    return bd.total_cny, dd.level, feas
 
 
 def spans_view(f, text: str) -> list:
@@ -260,13 +285,144 @@ def spans_view(f, text: str) -> list:
     return out
 
 
-def pair_values(name, f, spans):
-    """Two readable values of a conflicting term, each with the quotes that go with it when they pair up."""
-    vals = [fmt_value(name, x) for x in f.value]
-    qs = [s["text"] for s in spans]
-    if len(qs) == 2:
-        return [{"value": vals[0], "quotes": [qs[0]]}, {"value": vals[1], "quotes": [qs[1]]}]
-    return [{"value": vals[0], "quotes": qs}, {"value": vals[1], "quotes": qs}]
+def side_view(name, f, text, model):
+    if f.status == "missing":
+        return {"value": "未抽取到", "missing": True, "quotes": [], "model": model}
+    v = " ｜ ".join(fmt_value(name, x) for x in f.value) if f.status == "conflicting" else fmt_value(name, f.value)
+    return {"value": v, "missing": False, "quotes": [x["text"] for x in spans_view(f, text)], "model": model}
+
+
+NUMERIC_PAIRED = ("min_kg_shipment", "min_kg_carton", "dim_divisor", "rounding_kg", "fuel_pct", "broker_fee_cny",
+                  "isf_fee_cny", "transit_days")
+
+
+def _digits(x: str) -> set:
+    return set(re.findall(r"\d+(?:\.\d+)?", x))
+
+
+def pair_intra(name, vals, quotes):
+    """Fragments of a two-valued conflict inside one extraction. Only a numeric term whose two fragments carry the
+    values' own numbers is paired; otherwise the fragments stay together under the conflict (None)."""
+    if len(quotes) != 2 or name not in NUMERIC_PAIRED:
+        return None
+    d = [_digits(v) for v in vals]
+    q = [_digits(x) for x in quotes]
+
+    def fits(i, j):       # fragment j can belong to value i
+        return not d[i] or bool(d[i] & q[j])
+    own = fits(0, 0) and fits(1, 1)
+    swapped = fits(0, 1) and fits(1, 0)
+    if own:
+        return [[quotes[0]], [quotes[1]]]
+    if swapped:
+        return [[quotes[1]], [quotes[0]]]
+    return None
+
+
+def conflict_view(name, f1, f2, text1, text2, cfg, partner):
+    """Two values of a conflicting term. A cross-model conflict shows each value with the fragments of the model
+    that produced it; a side that extracted nothing shows 'not extracted' and no fragment. A conflict inside one
+    extraction (both values from the same model) pairs fragments only where they can be told apart."""
+    for f, text, model, other_f, other_text, other_model in ((f1, text1, cfg, f2, text2, partner),
+                                                             (f2, text2, partner, f1, text1, cfg)):
+        if f.status == "conflicting":
+            sp = [x["text"] for x in spans_view(f, text)]
+            vals = [fmt_value(name, x) for x in f.value]
+            paired = pair_intra(name, vals, sp)
+            two = [{"value": vals[k], "quotes": paired[k] if paired else [], "missing": False, "model": model}
+                   for k in (0, 1)]
+            shared = [] if paired else sp
+            origin_cn = "同一份报价内两处表述不一致"
+            other = None
+            if model != cfg:
+                origin_cn = f"{model} 自身两处表述不一致"
+            if other_f.status != "missing" and other_f.status != "conflicting":
+                other = side_view(name, other_f, other_text, other_model)
+            return "intra", origin_cn, two, shared, other
+    two = [side_view(name, f1, text1, cfg), side_view(name, f2, text2, partner)]
+    miss = [x["model"] for x in two if x["missing"]]
+    if miss:
+        return "missed", "一方漏抽（" + "、".join(miss) + " 未抽取到）", two, [], None
+    return "review", f"两个模型抽取不一致（{cfg} 与 {partner}）", two, [], None
+
+
+LINE_FIELDS = {"fuel": ["fuel_pct"], "broker": ["broker_fee_cny"], "isf": ["isf_fee_cny"], "duty": ["ddp"], "mpf": ["ddp"],
+               "hmf": ["ddp"], "RES": ["surcharges"], "REM": ["surcharges"], "OVS": ["surcharges"], "OVW": ["surcharges"],
+               "INSP": ["surcharges"], "freight": ["rate_tiers", "min_kg_shipment", "min_kg_carton", "dim_divisor", "rounding_kg"]}
+
+
+def explain_cost_diff(bd, gold_pc, tm, mode, f1, f2, conflicts):
+    """Reasons why the calculated cost differs from the answer file, line by line; [] when equal.
+    f1, f2: the verified extractions of the two models; conflicts: the exported conflicts of the quote."""
+    sysl = {c: Decimal(str(a)) for c, a in bd.lines}
+    goldl = {c: Decimal(str(a)) for c, a in gold_pc["lines"]}
+    diff = [c for c in goldl if goldl[c] != sysl.get(c)]
+    if not diff:
+        return []
+    origin = {c["key"]: c for c in conflicts}
+    reasons, seen = [], set()
+    req = mp.required_fields(mode)
+    freight_explained = False
+    for code in diff:
+        names = LINE_FIELDS.get(code, [])
+        hit = next((n for n in names if getattr(tm, n).status == "conflicting"), None)
+        kind = "conflict"
+        if hit is None:
+            hit = next((n for n in names if getattr(tm, n).status == "missing"
+                        or (getattr(f1, n).status == "missing" and getattr(f2, n).status == "missing")), None)
+            kind = ("default" if hit in req else "missed") if hit else None
+        if hit is None:
+            if code == "fuel" and freight_explained:
+                continue
+            key = ("other", code)
+            if key not in seen:
+                seen.add(key)
+                reasons.append({"kind": "other", "fields": [LINE_CN.get(code, code)], "text": f"其他：{LINE_CN.get(code, code)}"})
+            continue
+        if code == "freight":
+            freight_explained = True
+        key = (kind, hit)
+        if key in seen:
+            continue
+        seen.add(key)
+        lab = FIELD_CN[hit]
+        extra = ""
+        if kind == "conflict" and origin.get(hit, {}).get("origin") == "missed":
+            extra = "；" + origin[hit]["origin_cn"]
+        text = {"conflict": f"冲突取低值：{lab}{extra}",
+                "missed": f"字段漏抽：{lab}（两个模型都未抽取到）",
+                "default": f"缺失字段按默认值计算：{lab}"}[kind]
+        reasons.append({"kind": kind, "fields": [lab], "text": text})
+    return reasons
+
+
+def load_scores() -> dict:
+    out = {}
+    for d in ("a", "b"):
+        for r in json.loads((DERIVED / d / "scores" / "rows.json").read_text("utf-8")):
+            out[(d, r["method"], r["config_id"], r["task_id"])] = r
+    return out
+
+
+def score_view(row, gold_ask, labels):
+    """Official scoring of one output: decision verdict and the comparison of its ask fields with the answer."""
+    ok = bool(row["decision_correct"])
+    used = set(row["ask_fields_used"])
+    gask = set(gold_ask)
+
+    def lab(f):
+        c, n = f.split(".", 1)
+        return f"{labels.get(c, c)}的{FIELD_CN.get(n, n)}"
+    extra, lack = sorted(used - gask), sorted(gask - used)
+    if not extra and not lack:
+        line = "追问字段与标准答案：完全一致" if gask else "追问字段与标准答案：均无需追问"
+    else:
+        line = "追问字段与标准答案：" + "；".join(
+            x for x in (("多问 " + "、".join(lab(f) for f in extra)) if extra else "",
+                        ("少问 " + "、".join(lab(f) for f in lack)) if lack else "") if x)
+    note = "" if row["parse_ok"] else "（输出无法解析）"
+    return {"decision_correct": ok, "decision_label": ("决策正确" if ok else "决策错误") + note + "（正式评分口径）",
+            "ask_line": line}
 
 
 # ---------------------------------------------------------------- main build
@@ -277,10 +433,9 @@ def build(work: Path) -> dict:
         d = tdirs.setdefault(c["dir"], work / f"tasks_{c['dir']}")
         d.mkdir(exist_ok=True)
         shutil.copy(TASKS_DIR / f"{c['task']}.json", d / f"{c['task']}.json")
-    assets = DEMO / "data" / "assets"
-    if assets.exists():
-        shutil.rmtree(assets)
-    assets.mkdir(parents=True)
+    assets = work / "assets_new"
+    assets.mkdir()
+    scores = load_scores()
 
     cases_out, m4_exports = [], {}
     groups = {}
@@ -347,14 +502,16 @@ def build(work: Path) -> dict:
             # first extraction, source-checked; review merge as run_m4 does it
             collected, terms, down, _info, trig = mp._stage_one(task, ti, ext, ctx.snapshot, ctx.freight_floor, reg)
             first = {cid: collected[cid][0] for cid in order}
-            partner_terms, merged_diff = {}, {}
+            partner_terms, merged_diff, first_v, partner_v = {}, {}, {}, {}
             for q in ti.quotes:
                 cid = q.cand_id
                 t2, err = mp._as_terms(pext[cid], mode, fx)
                 if err:
                     raise SystemExit(f"review extraction failed for {cid}: {err}")
                 partner_terms[cid] = t2
+                first_v[cid] = copy.deepcopy(terms[cid])
                 t2v, _d = locate.verify_terms(t2, ti_p.quote_text(ti_p.quotes[order.index(cid)]))
+                partner_v[cid] = t2v
                 terms[cid], diff = mp.merge_extractions(terms[cid], t2v, mode)
                 if diff:
                     merged_diff[cid] = diff
@@ -372,9 +529,12 @@ def build(work: Path) -> dict:
                 i = info[cid]
                 price = i["price"]
                 # consistency of the replicated pipeline with the assembled M4 output
-                assert tm.conflicting() == pc["conflicts"], (case["id"], cfg, cid, "conflicts")
-                assert ("error" not in price) and money_s(price["bd"].total_cny) == pc["cost_cny"], (case["id"], cfg, cid, "cost")
-                assert i["ddp_level"] == pc["ddp_level"], (case["id"], cfg, cid, "ddp")
+                if tm.conflicting() != pc["conflicts"]:
+                    raise SystemExit(f"{case['id']}/{cfg}/{cid}: conflicts differ from M4 output")
+                if "error" in price or money_s(price["bd"].total_cny) != pc["cost_cny"]:
+                    raise SystemExit(f"{case['id']}/{cfg}/{cid}: cost differs from M4 output")
+                if i["ddp_level"] != pc["ddp_level"]:
+                    raise SystemExit(f"{case['id']}/{cfg}/{cid}: DDP level differs from M4 output")
 
                 fields = []
                 for name in FIELD_ORDER:
@@ -393,16 +553,16 @@ def build(work: Path) -> dict:
 
                 conflicts = []
                 for name in tm.conflicting():
-                    f = getattr(tm, name)
-                    f1 = getattr(t1, name)
-                    origin = "intra" if f1.status == "conflicting" else "review"
-                    sp = spans_view(f, text)
+                    origin, origin_cn, two, shared, other = conflict_view(
+                        name, getattr(first_v[cid], name), getattr(partner_v[cid], name), text, ptext, cfg, partner)
                     resolved = pc["conflict_resolved"].get(name)
+                    outs = [variant_outcome(task.shipment, tm, ctx.snapshot, ctx.freight_floor, pc["conflict_resolved"], name, k)
+                            for k in (0, 1)]
+                    aff = {"cost": outs[0][0] != outs[1][0], "ddp": outs[0][1] != outs[1][1], "feasible": outs[0][2] != outs[1][2]}
                     conflicts.append({
-                        "key": name, "label": FIELD_CN[name], "origin": origin,
-                        "origin_cn": "同一份报价内两处表述不一致" if origin == "intra" else f"两个模型抽取不一致（{cfg} 与 {partner}）",
-                        "values": pair_values(name, f, sp), "resolved_idx": resolved,
-                        "in_cost": name not in mp.INERT_FIELDS})
+                        "key": name, "label": FIELD_CN[name], "origin": origin, "origin_cn": origin_cn,
+                        "values": two, "shared_quotes": shared, "other_side": other, "resolved_idx": resolved,
+                        "in_cost": aff["cost"], "affects": aff, "affects_any": any(aff.values())})
                 # ddp numbers
                 ddp_term = tm.plain("ddp") if tm.ddp.status != "conflicting" else None
                 p_terms = price["terms"]
@@ -412,14 +572,14 @@ def build(work: Path) -> dict:
                 dd_used = p_terms.plain("ddp")
                 ddp_out = {
                     "level": dd.level, "level_cn": DDP_LEVEL_CN[dd.level], "is_ddp": bool(dd_used and dd_used.is_ddp),
-                    "ddp_text": field_text("ddp", t1.ddp) if t1.ddp.status != "missing" else "",
+                    "ddp_text": field_text("ddp", t1.ddp) if tm.ddp.status != "missing" and t1.ddp.status != "missing" else "",
                     "ddp_missing": tm.ddp.status == "missing", "ddp_conflicting": tm.ddp.status == "conflicting",
                     "chargeable_kg": dec(bd.chargeable_kg), "tax_floor_cny_per_kg": money_s(floor_all.quantize(Decimal("0.01"))),
                     "quote_cny_per_kg": None if not (dd_used and dd_used.is_ddp) else money_s(dd.quote_cny_per_kg.quantize(Decimal("0.01"))),
                     "freight_ref_cny_per_kg": None if dd.freight_ref_cny_per_kg is None else money_s(dd.freight_ref_cny_per_kg),
                     "floor_source": dd.floor_source,
                     "docs": list(dd.docs_to_request),
-                    "quotes": spans_view(t1.ddp, text) if t1.ddp.status != "missing" else []}
+                    "quotes": spans_view(t1.ddp, text) if tm.ddp.status != "missing" and t1.ddp.status != "missing" else []}
 
                 # claims
                 claims_out = []
@@ -449,16 +609,18 @@ def build(work: Path) -> dict:
                     reasons.append(f"时效最长 {td[1]} 天，超过要求的 {task.shipment.deadline_days} 天")
                 if i["ddp_level"] == "high":
                     reasons.append("包税价格低于税费下限，包税风险为高")
+                rng, rng_fields = cost_range(task.shipment, tm, ctx.snapshot, ctx.value_sets)
                 cost_out = {
                     "chargeable_kg": dec(bd.chargeable_kg),
                     "lines": [{"code": c_, "label": LINE_CN.get(c_, c_), "amount": money_s(a)} for c_, a in bd.lines],
                     "contingent": [{"code": c_, "label": LINE_CN.get(c_, c_), "amount": money_s(a)} for c_, a in bd.contingent],
                     "total": money_s(bd.total_cny), "per_unit": money_s(bd.per_unit_cny),
-                    "range": cost_range(task.shipment, tm, ctx.snapshot),
+                    "range": rng, "range_fields": [FIELD_CN[n] for n in rng_fields],
                     "feasible": bool(i["feasible"]), "infeasible_reasons": reasons,
                     "transit": None if td is None else td, "deadline_days": task.shipment.deadline_days,
                     "defaulted": [FIELD_CN.get(n, n) for n in price["defaulted"]]}
-                assert bool(i["feasible"]) == (not reasons), (case["id"], cfg, cid, "feasible", reasons)
+                if bool(i["feasible"]) != (not reasons):
+                    raise SystemExit(f"{case['id']}/{cfg}/{cid}: feasibility reasons differ ({reasons})")
                 per_q.append({
                     "cand_id": cid, "label": q.label,
                     "transcript": q.text if q.modality == "image" else None,
@@ -469,7 +631,9 @@ def build(work: Path) -> dict:
                     "hidden_fees": [{"key": n, "label": FIELD_CN.get(n, n)} for n in pc["hidden_fees"]],
                     "triggers": [TRIGGER_CN.get(r, r) for r in m4["diagnostics"]["triggers"].get(cid, [])],
                     "norm_notes": m4["diagnostics"]["norm_notes"].get(cid, []),
-                    "ddp": ddp_out, "claims": claims_out, "cost": cost_out})
+                    "ddp": ddp_out, "claims": claims_out, "cost": cost_out,
+                    "gold_total": gold["per_cand"][cid]["total_cny"],
+                    "diff_reasons": explain_cost_diff(bd, gold["per_cand"][cid], tm, mode, first_v[cid], partner_v[cid], conflicts)})
 
             # decision
             feas = [(Decimal(p_["cost"]["total"]), p_["cand_id"]) for p_ in per_q if p_["cost"]["feasible"]]
@@ -478,7 +642,7 @@ def build(work: Path) -> dict:
                 ch = m4["choice"]
                 best = next(a for a, c_ in feas if c_ == ch)
                 second = next((a for a, c_ in feas if c_ != ch), None)
-                reason = (f"在满足时效且包税风险不为“高”的 {len(feas)} 份报价中，{cid_label[ch]}的确定成本最低，"
+                reason = (f"在满足时效且包税风险不为“高”的 {len(feas)} 份报价中，{cid_label[ch]}的计算成本最低，"
                           f"为 {money_s(best)} 元" + (f"，比次低报价低 {money_s(second - best)} 元。" if second is not None else "。"))
             else:
                 names = [f"{cid_label.get(f.split('.')[0], f.split('.')[0])}的{FIELD_CN.get(f.split('.', 1)[1], f.split('.', 1)[1])}"
@@ -489,8 +653,10 @@ def build(work: Path) -> dict:
             for p_ in per_q:
                 lab = p_["label"]
                 for cf in p_["conflicts"]:
+                    if not cf["affects_any"]:
+                        continue
                     risks.append({"cand": p_["cand_id"], "kind": "冲突",
-                                  "text": f"{lab}的{cf['label']}有两种取值：{cf['values'][0]['value']} 与 {cf['values'][1]['value']}"})
+                                  "text": f"{lab}的{cf['label']}有两种取值：{cf['values'][0]['value']} 与 {cf['values'][1]['value']}（{cf['origin_cn']}）"})
                 for g_ in p_["gaps"]:
                     risks.append({"cand": p_["cand_id"], "kind": "缺口", "text": f"{lab}未写明{g_['label']}"})
                 if p_["ddp"]["level"] in ("verify", "high"):
@@ -503,11 +669,11 @@ def build(work: Path) -> dict:
                 for r_ in p_["cost"]["infeasible_reasons"]:
                     risks.append({"cand": p_["cand_id"], "kind": "不可行", "text": f"{lab}：{r_}"})
 
-            def gold_match(m):
-                g = gold["decision"]
-                if m["decision"] != g["type"]:
-                    return False
-                return m["choice"] == g["choice"] if g["type"] == "choose" else sorted(m["ask_fields"]) == sorted(g["ask_fields"])
+            gold_ask = gold["decision"]["ask_fields"]
+            m4_score = score_view(scores[(case["dir"], "M4", cfg, case["task"])], gold_ask, cid_label)
+            m0_score = score_view(scores[(case["dir"], "M0", cfg, case["task"])], gold_ask, cid_label)
+            if sorted(scores[(case["dir"], "M4", cfg, case["task"])]["ask_fields_used"]) != sorted(m4["ask_fields"]):
+                raise SystemExit(f"{case['id']}/{cfg}: scored ask fields differ from the M4 output")
             req_m, ret_m = obs_models(obs, ekeys)
             preq_m, pret_m = obs_models(obs, pkeys)
             vreq, vret = obs_models(obs, [k for k in m4["calls"] if "|transcribe|" in k and f"|{vcfg}|" in k])
@@ -516,7 +682,7 @@ def build(work: Path) -> dict:
                 "type": m4["decision"], "choice": m4["choice"], "choice_label": cid_label.get(m4["choice"]) if m4["choice"] else None,
                 "ask_fields": m4["ask_fields"], "questions": m4["questions"], "m4_risks": m4["risks"],
                 "reason": reason, "risks": risks, "triggers": m4["diagnostics"]["triggers"],
-                "match_gold": gold_match(m4)}
+                "score": m4_score}
             m4_exports[(case["id"], cfg)] = {"decision": m4["decision"], "choice": m4["choice"], "questions": m4["questions"],
                                              "cost": {c_: pc_["cost_cny"] for c_, pc_ in m4["per_cand"].items()},
                                              "exported_cost": {p_["cand_id"]: p_["cost"]["total"] for p_ in per_q},
@@ -531,7 +697,8 @@ def build(work: Path) -> dict:
                 "n_calls": len(m4["calls"]), "cost": m4["cost"],
                 "quotes": per_q, "decision": decision,
                 "m0": {"decision": m0["decision"], "choice": m0["choice"], "choice_label": cid_label.get(m0["choice"]) if m0["choice"] else None,
-                       "questions": m0["questions"], "risks": m0["risks"], "match_gold": gold_match(m0)}}
+                       "questions": m0["questions"], "risks": m0["risks"], "ask_fields": scores[(case["dir"], "M0", cfg, case["task"])]["ask_fields_used"],
+                       "score": m0_score}}
 
         gold_out = {
             "decision": gold["decision"]["type"], "choice": gold["decision"]["choice"],
@@ -546,7 +713,8 @@ def build(work: Path) -> dict:
             "registry": {"snapshot_id": reg["snapshot_id"], "is_synthetic": reg["is_synthetic"]}})
     return {"meta": {"title": "运价明镜 QuoteGuard", "note": "dev 集合成任务；预试验记录离线回放",
                      "param_snapshot": ctx.snapshot.snapshot_id, "fx_date": ctx.snapshot.fx_date(),
-                     "fx_cny_per_usd": dec(ctx.snapshot.fx_cny_per_usd()), "data_dir": "data/taskgen/dev_v3"},
+                     "fx_cny_per_usd": dec(ctx.snapshot.fx_cny_per_usd()), "data_dir": "data/taskgen/dev_v3",
+                     "field_cn": FIELD_CN},
             "cases": cases_out}, m4_exports
 
 
@@ -570,6 +738,11 @@ def main() -> int:
     try:
         data, exports = build(work)
         check_consistency(exports)
+        dst = DEMO / "data" / "assets"
+        if dst.exists():
+            shutil.rmtree(dst)
+        (DEMO / "data").mkdir(exist_ok=True)
+        shutil.copytree(work / "assets_new", dst)
         (DEMO / "data").mkdir(exist_ok=True)
         (DEMO / "data" / "cases.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), "utf-8")
         for c in data["cases"]:
@@ -577,7 +750,7 @@ def main() -> int:
                 d = v["decision"]
                 print(f"case {c['id']} {c['task_id']} {cfg}: M4 {d['type']} {d['choice'] or d['ask_fields']} "
                       f"| gold {c['gold']['decision']} {c['gold']['choice'] or c['gold']['ask_fields']} "
-                      f"| match={d['match_gold']} | M0 {v['m0']['decision']} {v['m0']['choice']} match={v['m0']['match_gold']}")
+                      f"| M4 {d['score']['decision_label']} | M0 {v['m0']['decision']} {v['m0']['choice']} {v['m0']['score']['decision_label']}")
         print("wrote", DEMO / "data" / "cases.json")
     finally:
         shutil.rmtree(work, ignore_errors=True)
