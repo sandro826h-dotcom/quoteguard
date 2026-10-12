@@ -3,7 +3,10 @@
   "budget": {
     "CNY": 138.846
   },
+  "completed": 668,
   "created_at": "2026-10-11T18:31:40.138872Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-12T05:33:52.011109Z",
   "identity": {
     "base_urls": {
       "dashscope": "https://dashscope.aliyuncs.com/compatible-mode/v1"
@@ -17,7 +20,18 @@
   },
   "kind": "formal",
   "plan_id": "formal-dashscope-B",
-  "runs": [],
-  "status": "running",
-  "stop": null
+  "runs": [
+    {
+      "finished_at": "2026-10-12T05:33:52.011064Z",
+      "skipped_done": 28,
+      "started_at": "2026-10-11T22:20:49.318222Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "CNY": 59.905904
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 668
 }
