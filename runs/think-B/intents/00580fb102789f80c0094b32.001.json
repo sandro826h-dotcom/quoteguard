@@ -1,0 +1,8 @@
+{
+  "config_id": "ds_flash_think",
+  "intent_at": "2026-10-12T00:19:57.889627Z",
+  "n": 1,
+  "prompt_sha256": "ff0adba366fc475d7c6a5cc0003e0f5787017ea0161996d6842f344012aeb54e",
+  "provider": "deepseek",
+  "run_key": "formal|M1|ds_flash_think|T-test-040|answer|ALL|r0"
+}
