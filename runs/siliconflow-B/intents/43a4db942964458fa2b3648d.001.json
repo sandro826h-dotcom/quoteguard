@@ -1,0 +1,8 @@
+{
+  "config_id": "glm",
+  "intent_at": "2026-10-12T02:54:33.375381Z",
+  "n": 1,
+  "prompt_sha256": "419e8163ed5fa0919a6ee637c217a6550e6fd28f7bb199e8d631a639b8807e7d",
+  "provider": "siliconflow",
+  "run_key": "formal|extract|glm|T-test-034|extract|C2|r1"
+}
