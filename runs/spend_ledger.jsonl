@@ -2214,3 +2214,4 @@
 {"amount": 0.062236, "at": "2026-10-12T04:57:47.512193Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-045|extract|C4|r1"}
 {"amount": 0.053996, "at": "2026-10-12T04:58:06.825986Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-045|extract|C5|r1"}
 {"amount": 0.06014, "at": "2026-10-12T04:58:26.782186Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|extract|qwen_max|T-test-045|extract|C6|r1"}
+{"amount": 0.16488, "at": "2026-10-12T04:59:52.347268Z", "batch_id": "dashscope-B", "currency": "CNY", "kind": "observation", "run_key": "formal|M0|qwen_plus|T-test-045|answer|ALL|r0"}
