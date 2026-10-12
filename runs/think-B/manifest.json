@@ -3,7 +3,10 @@
   "budget": {
     "USD": 8.002
   },
+  "completed": 48,
   "created_at": "2026-10-11T23:36:45.438756Z",
+  "failed_providers": [],
+  "finished_at": "2026-10-12T00:30:21.541065Z",
   "identity": {
     "base_urls": {
       "deepseek": "https://api.deepseek.com/v1"
@@ -17,7 +20,18 @@
   },
   "kind": "formal",
   "plan_id": "formal-think-B",
-  "runs": [],
-  "status": "running",
-  "stop": null
+  "runs": [
+    {
+      "finished_at": "2026-10-12T00:30:21.541019Z",
+      "skipped_done": 0,
+      "started_at": "2026-10-11T23:36:45.440007Z",
+      "status": "completed"
+    }
+  ],
+  "spent": {
+    "USD": 0.6580505
+  },
+  "status": "completed",
+  "stop": null,
+  "total": 48
 }
