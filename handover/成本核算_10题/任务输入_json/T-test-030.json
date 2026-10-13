@@ -1,0 +1,609 @@
+{
+ "task_id": "T-test-030",
+ "shipment": {
+  "cartons": [
+   {
+    "height_cm": "40",
+    "kg": "16.5",
+    "length_cm": "60",
+    "n": 12,
+    "width_cm": "40"
+   }
+  ],
+  "deadline_days": 6,
+  "dest": {
+   "addr_type": "commercial",
+   "fba_code": "ONT8",
+   "remote": false,
+   "zip": "92551"
+  },
+  "goods": [
+   {
+    "desc": "棉制 T 恤",
+    "hts": "6109.10.00",
+    "qty": 792,
+    "unit_value_usd": "7.7"
+   }
+  ],
+  "mode": "express",
+  "ship_date": "2026-10-12",
+  "shipment_id": "T-test-030"
+ },
+ "candidates": [
+  {
+   "cand_id": "C1",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "快递经济线"
+    },
+    "claims": {
+     "status": "stated",
+     "value": []
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "actual",
+      "ior": "seller",
+      "is_ddp": false,
+      "scope": "duty"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "6000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费",
+      "关税",
+      "MPF"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0.1"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按申报货值赔付，上限 20 美元/kg"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "45"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "express"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "44",
+       "min_kg": "0",
+       "price": "37.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "99",
+       "min_kg": "45",
+       "price": "36.5",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "100",
+       "price": "29.0",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "1"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "10.5",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      5,
+      8
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C2",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "快递专线 B"
+    },
+    "claims": {
+     "status": "stated",
+     "value": []
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "included",
+      "ior": "forwarder",
+      "is_ddp": true,
+      "scope": "duty"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "6000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费",
+      "MPF"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0.1"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关",
+      "关税"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "丢失按运费赔付，破损不赔"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "21"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "express"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "44",
+       "min_kg": "0",
+       "price": "131.9",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "99",
+       "min_kg": "45",
+       "price": "124.9",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "100",
+       "price": "120.4",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "0.5"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "6.0",
+       "basis": "per_ctn",
+       "code": "RES",
+       "condition": "residential",
+       "contingent": false,
+       "currency": "USD",
+       "threshold": null
+      },
+      {
+       "amount": "9.0",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      },
+      {
+       "amount": "118.0",
+       "basis": "per_ctn",
+       "code": "OVW",
+       "condition": "ctn_kg_gt",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": "22"
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      5,
+      8
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C3",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "快递专线 A"
+    },
+    "claims": {
+     "status": "stated",
+     "value": []
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "actual",
+      "ior": "seller",
+      "is_ddp": false,
+      "scope": "duty"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "5000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费",
+      "关税",
+      "MPF"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0.1"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "丢失按运费赔付，破损不赔"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "45"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "express"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "20",
+       "min_kg": "0",
+       "price": "48.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "44",
+       "min_kg": "21",
+       "price": "45.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "99",
+       "min_kg": "45",
+       "price": "38.5",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "100",
+       "price": "38.5",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "0.5"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "4.0",
+       "basis": "per_ctn",
+       "code": "RES",
+       "condition": "residential",
+       "contingent": false,
+       "currency": "USD",
+       "threshold": null
+      },
+      {
+       "amount": "11.5",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      },
+      {
+       "amount": "78.0",
+       "basis": "per_ctn",
+       "code": "OVS",
+       "condition": "ctn_longest_side_gt",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": "58"
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      4,
+      6
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C4",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "快递专线 A"
+    },
+    "claims": {
+     "status": "stated",
+     "value": []
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "included",
+      "ior": "forwarder",
+      "is_ddp": true,
+      "scope": "all"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "5000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0.1"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关",
+      "关税",
+      "MPF"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按运费 3 倍赔付"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "45"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "express"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "20",
+       "min_kg": "0",
+       "price": "73.9",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "44",
+       "min_kg": "21",
+       "price": "71.3",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "99",
+       "min_kg": "45",
+       "price": "70.9",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "100",
+       "price": "63.0",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "0.5"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "7.0",
+       "basis": "per_ctn",
+       "code": "RES",
+       "condition": "residential",
+       "contingent": false,
+       "currency": "USD",
+       "threshold": null
+      },
+      {
+       "amount": "7.5",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      3,
+      5
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  }
+ ]
+}

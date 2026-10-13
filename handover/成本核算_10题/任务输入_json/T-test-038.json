@@ -1,0 +1,618 @@
+{
+ "task_id": "T-test-038",
+ "shipment": {
+  "cartons": [
+   {
+    "height_cm": "42",
+    "kg": "14.0",
+    "length_cm": "58",
+    "n": 6,
+    "width_cm": "48"
+   }
+  ],
+  "deadline_days": 32,
+  "dest": {
+   "addr_type": "commercial",
+   "fba_code": "MDW2",
+   "remote": false,
+   "zip": "60436"
+  },
+  "goods": [
+   {
+    "desc": "玩具",
+    "hts": "9503.00.00",
+    "qty": 210,
+    "unit_value_usd": "7.3"
+   }
+  ],
+  "mode": "sea",
+  "ship_date": "2026-10-26",
+  "shipment_id": "T-test-038"
+ },
+ "candidates": [
+  {
+   "cand_id": "C1",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "400"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "海派 A"
+    },
+    "claims": {
+     "status": "stated",
+     "value": [
+      {
+       "entity": "SYN-Silverfin Shipping",
+       "jurisdiction": "US",
+       "reg_no": null,
+       "type": "FMC_OTI"
+      }
+     ]
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "actual",
+      "ior": "seller",
+      "is_ddp": false,
+      "scope": "duty"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "6000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费",
+      "关税",
+      "MPF",
+      "HMF"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按申报货值赔付，上限 20 美元/kg"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "100"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "sea"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "199",
+       "min_kg": "0",
+       "price": "13.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "499",
+       "min_kg": "200",
+       "price": "12.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "500",
+       "price": "11.0",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "1"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "12.0",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      },
+      {
+       "amount": "74.0",
+       "basis": "per_ctn",
+       "code": "OVS",
+       "condition": "ctn_longest_side_gt",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": "58"
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      24,
+      30
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C2",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "海派 B"
+    },
+    "claims": {
+     "status": "stated",
+     "value": [
+      {
+       "entity": "SYN-Brightwater Freight",
+       "jurisdiction": "CN",
+       "reg_no": null,
+       "type": "MOT_NVOCC"
+      }
+     ]
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "included",
+      "ior": "forwarder",
+      "is_ddp": true,
+      "scope": "all"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "6000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关",
+      "关税",
+      "MPF",
+      "HMF"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按申报货值赔付，上限 20 美元/kg"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "0"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "sea"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "199",
+       "min_kg": "0",
+       "price": "17.3",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "499",
+       "min_kg": "200",
+       "price": "16.3",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "500",
+       "price": "15.6",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "1"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "5.0",
+       "basis": "per_ctn",
+       "code": "RES",
+       "condition": "residential",
+       "contingent": false,
+       "currency": "USD",
+       "threshold": null
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      28,
+      35
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C3",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "150"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "海派 A"
+    },
+    "claims": {
+     "status": "stated",
+     "value": [
+      {
+       "entity": "SYN-Larkspur Cargo",
+       "jurisdiction": "US",
+       "reg_no": "SYN-FMC-1002",
+       "type": "FMC_OTI"
+      }
+     ]
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "actual",
+      "ior": "seller",
+      "is_ddp": false,
+      "scope": "duty"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "6000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费",
+      "关税",
+      "MPF",
+      "HMF"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "200"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按申报货值赔付，上限 20 美元/kg"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "100"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "sea"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "199",
+       "min_kg": "0",
+       "price": "11.5",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "499",
+       "min_kg": "200",
+       "price": "11.0",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "500",
+       "price": "10.5",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "1"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "7.5",
+       "basis": "per_kg",
+       "code": "REM",
+       "condition": "remote",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": null
+      },
+      {
+       "amount": "41.0",
+       "basis": "per_ctn",
+       "code": "OVS",
+       "condition": "ctn_longest_side_gt",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": "58"
+      },
+      {
+       "amount": "1374.5",
+       "basis": "per_shpt",
+       "code": "INSP",
+       "condition": "always",
+       "contingent": true,
+       "currency": "CNY",
+       "threshold": null
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      26,
+      32
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  },
+  {
+   "cand_id": "C4",
+   "terms": {
+    "broker_fee_cny": {
+     "status": "stated",
+     "value": "150"
+    },
+    "channel": {
+     "status": "stated",
+     "value": "海派 B"
+    },
+    "claims": {
+     "status": "stated",
+     "value": [
+      {
+       "entity": "SYN-Copperfield Logistics",
+       "jurisdiction": "CN",
+       "reg_no": null,
+       "type": "MOT_NVOCC"
+      }
+     ]
+    },
+    "ddp": {
+     "status": "stated",
+     "value": {
+      "cap_cny_per_kg": null,
+      "duty_terms": "included",
+      "ior": "forwarder",
+      "is_ddp": true,
+      "scope": "all"
+     }
+    },
+    "dim_divisor": {
+     "status": "stated",
+     "value": "5000"
+    },
+    "excludes": {
+     "status": "stated",
+     "value": [
+      "查验费",
+      "仓储费"
+     ]
+    },
+    "fuel_pct": {
+     "status": "stated",
+     "value": "0"
+    },
+    "includes": {
+     "status": "stated",
+     "value": [
+      "头程运费",
+      "目的港清关",
+      "关税",
+      "MPF",
+      "HMF"
+     ]
+    },
+    "isf_fee_cny": {
+     "status": "stated",
+     "value": "0"
+    },
+    "liability": {
+     "status": "stated",
+     "value": "按申报货值赔付，上限 20 美元/kg"
+    },
+    "min_kg_carton": {
+     "status": "stated",
+     "value": "0"
+    },
+    "min_kg_shipment": {
+     "status": "stated",
+     "value": "0"
+    },
+    "mode": {
+     "status": "stated",
+     "value": "sea"
+    },
+    "rate_tiers": {
+     "status": "stated",
+     "value": [
+      {
+       "currency": "CNY",
+       "max_kg": "199",
+       "min_kg": "0",
+       "price": "11.3",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": "499",
+       "min_kg": "200",
+       "price": "9.1",
+       "unit": "per_kg"
+      },
+      {
+       "currency": "CNY",
+       "max_kg": null,
+       "min_kg": "500",
+       "price": "9.1",
+       "unit": "per_kg"
+      }
+     ]
+    },
+    "rounding_kg": {
+     "status": "stated",
+     "value": "1"
+    },
+    "surcharges": {
+     "status": "stated",
+     "value": [
+      {
+       "amount": "5.5",
+       "basis": "per_ctn",
+       "code": "RES",
+       "condition": "residential",
+       "contingent": false,
+       "currency": "USD",
+       "threshold": null
+      },
+      {
+       "amount": "117.0",
+       "basis": "per_ctn",
+       "code": "OVW",
+       "condition": "ctn_kg_gt",
+       "contingent": false,
+       "currency": "CNY",
+       "threshold": "22"
+      }
+     ]
+    },
+    "transit_days": {
+     "status": "stated",
+     "value": [
+      28,
+      35
+     ]
+    },
+    "validity": {
+     "status": "stated",
+     "value": [
+      "2026-10-01",
+      "2026-10-31"
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "selection": {
+  "seed": 20261011,
+  "quota": {
+   "explicit": 3,
+   "implicit": 3,
+   "conflict": 2,
+   "insufficient": 2
+  },
+  "rule": "按 layer 分组，task_id 排序后 Random(seed) 依次打乱，各取前 quota 个",
+  "task_ids": [
+   "T-test-005",
+   "T-test-040",
+   "T-test-042",
+   "T-test-020",
+   "T-test-030",
+   "T-test-038",
+   "T-test-029",
+   "T-test-034",
+   "T-test-008",
+   "T-test-036"
+  ]
+ },
+ "test_manifest_sha256": "6f03325e22245359b9dba32c64449b75f2f70e8098bf2e926fc1ba4ccc8561af",
+ "param_snapshot": {
+  "path": "data/params/tariff_snapshot_2026-10-09.json",
+  "sha256": "30a7269dd0462a1d02ca438c7611ab3c455ddaf13d247deb0b8d6ea81ddad1a2",
+  "version": "2026-10-10.1"
+ },
+ "task_input_sha256": {
+  "T-test-005": "f9003fa223c0310c3e734f4b1fcde3bfeda448733d72399e49cab94b89f8bbea",
+  "T-test-040": "186767558c8db3a9676a1b84182cc48bd19d5d840f4ab75cf7bb4cac07058a7a",
+  "T-test-042": "467ee51067d57e086f2b16126cb596128863295cd6f06f93355143a6b53471dc",
+  "T-test-020": "9e368d55ae8f6aac8e5337a4f9ab960b78a58316a21a93becfb6cb14f752e4d7",
+  "T-test-030": "66748b2510fdd6809565e59b5cf07d894497d8f640583d39a1229cd4c1bf0b95",
+  "T-test-038": "e3b15cb59d0b2fa7e380dd3f6eaec1cf9a205de7ebac9fa01569580bdbb679a1",
+  "T-test-029": "1a71122bab401025758a0bee461f55e1b99cc2f9efc72fbef9d24e0fb432a908",
+  "T-test-034": "fa1787f1f014e355bb0c124efdb816c9244f491941ef11d269f617b0d909ac3f",
+  "T-test-008": "51b27f6781683232578f5a8bb33001fb165bf94ecd93224a511d0cbffb5a1d33",
+  "T-test-036": "ce4d50abfe34b64a2c413dd4ac72fccd812289d550c5f4841b7075a7c3ed1850"
+ },
+ "gold_included": false
+}
